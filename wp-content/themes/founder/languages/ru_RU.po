@@ -1,0 +1,495 @@
+# Copyright (C) 2015 Compete Themes
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Founder 1.20\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/theme/style\n"
+"POT-Creation-Date: 2015-11-16 12:42:25+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-12-07 11:14+0300\n"
+"Last-Translator: \n"
+"Language-Team: serenitatis <me@serenitatis.ru>\n"
+"X-Generator: grunt-wp-i18n 0.4.9\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: 404.php:7
+msgid "404: Page Not Found"
+msgstr "404: Не найдено"
+
+#: 404.php:10
+msgid "Looks like nothing was found on this url.  Double-check that the url is correct or try the search form below to find what you were looking for."
+msgstr "Похоже, что здесь ничего не найдено. Еще раз проверьте ссылку или попробуйте воспользоваться поиском для нахождения нужного вам."
+
+#: comments.php:26
+#: comments.php:45
+#: comments.php:66
+msgid "Comments"
+msgstr "Комментарии"
+
+#: comments.php:26
+#: comments.php:45
+#: comments.php:66
+#: content/comments-link.php:5
+#: content/comments-link.php:8
+msgid "One Comment"
+msgstr "Один комментарий"
+
+#: comments.php:26
+#: comments.php:45
+#: comments.php:66
+#: content/comments-link.php:5
+#: content/comments-link.php:8
+msgid "% Comments"
+msgstr "% комментариев"
+
+#: comments.php:58
+msgid "Comments are closed, but <a href=\"%s\" title=\"Trackback URL for this post\">trackbacks</a> and pingbacks are open."
+msgstr "Комментирование закрыто, но <a href=\"%s\" title=\"Trackback URL for this post\">обратные ссылки</a> and пинги открыты."
+
+#: comments.php:79
+#: comments.php:85
+msgid "Comments are closed."
+msgstr "Комментарии отключены."
+
+#: content/archive-header.php:5
+msgid "archive icon"
+msgstr "иконка архива"
+
+#: content/archive-header.php:7
+msgid "Category archive for:"
+msgstr "Архив категории:"
+
+#: content/archive-header.php:17
+msgid "tag icon"
+msgstr "иконка метки"
+
+#: content/archive-header.php:19
+msgid "Tag archive for:"
+msgstr "Архив меток:"
+
+#: content/archive-header.php:29
+msgid "author icon"
+msgstr "иконка автора"
+
+#: content/archive-header.php:31
+msgid "Author archive for:"
+msgstr "Архив автора:"
+
+#: content/archive-header.php:41
+msgid "calendar icon"
+msgstr "архив календаря"
+
+#: content/archive-header.php:43
+msgid "Date archive for:"
+msgstr "Дата архива:"
+
+#: content/comments-link.php:2
+msgid "comment icon"
+msgstr "иконка комментария"
+
+#: content/comments-link.php:5
+msgid "Comments closed"
+msgstr "Комментарии закрыты"
+
+#: content/comments-link.php:8
+msgid "Leave a Comment"
+msgstr "Оставить комментарий"
+
+#: content/post-categories.php:16
+msgid "Published in"
+msgstr "Опубликовано в"
+
+#: content/post-categories.php:18
+msgid "View all posts in %s"
+msgstr "Смотреть все записи в %s"
+
+#: content/post-meta.php:8
+msgid "Published %1$s by %2$s"
+msgstr "Опуликовано %2$s в %1$s"
+
+#: content/post-nav-attachment.php:3
+msgid "Previous Image"
+msgstr "Предыдущая картинка"
+
+#: content/post-nav-attachment.php:6
+msgid "Next Image"
+msgstr "Следующая картинка"
+
+#: content/post-nav.php:11
+msgid "Previous Post"
+msgstr "Предыдущая запись"
+
+#: content/post-nav.php:13
+msgid "The Previous Post"
+msgstr "Предыдущая запись"
+
+#: content/post-nav.php:20
+msgid "No Older Posts"
+msgstr "Нет записей старее"
+
+#: content/post-nav.php:22
+#: content/post-nav.php:48
+msgid "Return to Blog"
+msgstr "Вернуться в блог"
+
+#: content/post-nav.php:37
+msgid "Next Post"
+msgstr "Следующая запись"
+
+#: content/post-nav.php:39
+msgid "The Next Post"
+msgstr "Следующая запись"
+
+#: content/post-nav.php:46
+msgid "No Newer Posts"
+msgstr "Нет записей новее"
+
+#: content/post-tags.php:6
+msgid "Tagged in"
+msgstr "Метки"
+
+#: content/post-tags.php:9
+msgid "View all posts tagged %s"
+msgstr "Смотреть все посты с меткой %s"
+
+#: content-page.php:10
+#: content.php:11
+msgid "Pages:"
+msgstr "Страницы:"
+
+#: footer.php:9
+msgid "<a href=\"%s\">Founder WordPress Theme</a> by Compete Themes."
+msgstr "<a href=\"%s\">Founder WordPress Theme</a> by Compete Themes."
+
+#: functions.php:45
+msgid "Primary"
+msgstr "Первичное"
+
+#: functions.php:56
+msgid "Primary Sidebar"
+msgstr "Первичный сайдбар"
+
+#: functions.php:58
+msgid "Widgets in this area will be shown in the sidebar."
+msgstr "Виджеты в этой зоне будут показаны в боковой панеле."
+
+#: functions.php:83
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш комментарий ожидает модерации."
+
+#: functions.php:91
+msgid "Reply"
+msgstr "Ответить"
+
+#: functions.php:95
+msgid "Edit"
+msgstr "Правка"
+
+#: functions.php:116
+msgid "optional"
+msgstr "необязательно"
+
+#: functions.php:124
+msgid "Name"
+msgstr "Имя"
+
+#: functions.php:131
+msgid "Email"
+msgstr "Почта"
+
+#: functions.php:138
+msgid "Website"
+msgstr "Сайт"
+
+#: functions.php:153
+msgid "Comment"
+msgstr "Комментарий"
+
+#: functions.php:194
+#: functions.php:201
+#: functions.php:214
+msgid "Continue reading"
+msgstr "Продолжить чтение"
+
+#: functions.php:384
+msgid "email icon"
+msgstr "иконка почты"
+
+#: functions.php:427
+#: header.php:25
+#: inc/scripts.php:13
+msgid "open menu"
+msgstr "открыть меню"
+
+#: functions.php:439
+msgid "Featured Post"
+msgstr "Заметная запись"
+
+#: functions.php:474
+msgid "Customizer settings deleted"
+msgstr "Настройки кастомизатора удалены"
+
+#: header.php:12
+msgid "Skip to content"
+msgstr "Перейти к контенту"
+
+#: header.php:26
+msgid "primary menu icon"
+msgstr "иконка первичного меню"
+
+#: inc/customizer.php:12
+msgid "Front Page"
+msgstr "Главная страница"
+
+#: inc/customizer.php:92
+msgid "Activate the <a target=\"_blank\" href=\"%s\">Founder Pro Plugin</a> for advanced header image functionality."
+msgstr "Активируйте <a target=\"_blank\" href=\"%s\">Founder Pro Plugin</a> для расширенной функциональности картинки в заголовке."
+
+#: inc/customizer.php:99
+msgid "Activate the <a target=\"_blank\" href=\"%s\">Founder Pro Plugin</a> to change your colors."
+msgstr "Активируйте <a target=\"_blank\" href=\"%s\">Founder Pro Plugin</a> для смены цветов."
+
+#: inc/customizer.php:106
+msgid "Activate the <a target=\"_blank\" href=\"%s\">Founder Pro Plugin</a> to change your font."
+msgstr "Активируйте <a target=\"_blank\" href=\"%s\">Founder Pro Plugin</a> для смены шрифта."
+
+#: inc/customizer.php:113
+msgid "Activate the <a target=\"_blank\" href=\"%s\">Founder Pro Plugin</a> to get hide/show controls."
+msgstr "Активируйте <a target=\"_blank\" href=\"%s\">Founder Pro Plugin</a> для отображения/скрытия управления."
+
+#: inc/customizer.php:120
+msgid "Activate the <a target=\"_blank\" href=\"%s\">Founder Pro Plugin</a> to customize the footer text."
+msgstr "Активируйте <a target=\"_blank\" href=\"%s\">Founder Pro Plugin</a> для текста в подвале."
+
+#: inc/customizer.php:128
+msgid "Logo"
+msgstr "Логотип"
+
+#: inc/customizer.php:143
+msgid "Upload custom logo."
+msgstr "Загрузить свой логотип."
+
+#: inc/customizer.php:159
+msgid "Social Media Icons"
+msgstr "Иконки соцсетей"
+
+#: inc/customizer.php:161
+msgid "Add the URL for each of your social profiles."
+msgstr "Добавьте URL на каждый ваш профиль в соцсети."
+
+#: inc/customizer.php:177
+msgid "Email Address"
+msgstr "Почта"
+
+#: inc/customizer.php:239
+msgid "Blog"
+msgstr "Блог"
+
+#: inc/customizer.php:252
+msgid "Show full posts on blog?"
+msgstr "Отображать полные записи в блоге?"
+
+#: inc/customizer.php:257
+#: inc/customizer.php:504
+msgid "Yes"
+msgstr "Да"
+
+#: inc/customizer.php:258
+#: inc/customizer.php:505
+msgid "No"
+msgstr "Нет"
+
+#: inc/customizer.php:271
+msgid "Excerpt length"
+msgstr "Длина анонса"
+
+#: inc/customizer.php:282
+msgid "Comment Display"
+msgstr "Показывать комментарии"
+
+#: inc/customizer.php:296
+msgid "Show comments on:"
+msgstr "Показывать комментарии на:"
+
+#: inc/customizer.php:301
+#: inc/customizer.php:482
+msgid "Posts"
+msgstr "Записях"
+
+#: inc/customizer.php:302
+#: inc/customizer.php:483
+msgid "Pages"
+msgstr "Страницах"
+
+#: inc/customizer.php:303
+#: inc/customizer.php:484
+msgid "Attachments"
+msgstr "Вложениях"
+
+#: inc/customizer.php:304
+#: inc/customizer.php:485
+msgid "Do not show"
+msgstr "Не показывать"
+
+#: inc/customizer.php:313
+msgid "Custom CSS"
+msgstr "Свой CSS"
+
+#: inc/customizer.php:327
+msgid "Add Custom CSS Here:"
+msgstr "Добавьте ваш CSS тут:"
+
+#: inc/customizer.php:341
+msgid "Header Image"
+msgstr "Изображение заголовка"
+
+#: inc/customizer.php:363
+msgid "Colors"
+msgstr "Цвета"
+
+#: inc/customizer.php:385
+msgid "Font"
+msgstr "Шрифт"
+
+#: inc/customizer.php:407
+msgid "Display Controls"
+msgstr "Отображение управления"
+
+#: inc/customizer.php:429
+msgid "Footer Text"
+msgstr "Текст в подвале"
+
+#: inc/customizer.php:457
+msgid "Show"
+msgstr "Показать"
+
+#: inc/customizer.php:458
+msgid "Hide"
+msgstr "Скрыть"
+
+#: inc/scripts.php:14
+msgid "close menu"
+msgstr "закрыть меню"
+
+#: inc/scripts.php:15
+#: sidebar-primary.php:10
+msgid "open sidebar"
+msgstr "открыть боковую панель"
+
+#: inc/scripts.php:16
+msgid "close sidebar"
+msgstr "скрыть боковую панель"
+
+#: search.php:10
+msgid "%d search result for \"%s\""
+msgstr "%d найдено для \"%s\""
+
+#: search.php:12
+msgid "No search results for \"%s\""
+msgstr "Ничего не найдено для \"%s\""
+
+#: search.php:42
+msgid "Can't find what you're looking for? Try refining your search:"
+msgstr "Невозможно найти что-либо по вашему запросу. Попробуйте скорректировать его:"
+
+#: searchform.php:3
+msgid "Search"
+msgstr "Поиск"
+
+#: searchform.php:4
+msgid "Search for:"
+msgstr "Поиск:"
+
+#: searchform.php:5
+msgid "Go"
+msgstr "Вперед"
+
+#: sidebar-primary.php:11
+msgid "sidebar icon"
+msgstr "иконка для боковой панели"
+
+#: theme-options.php:21
+msgid "Founder Dashboard"
+msgstr "Founder Dashboard"
+
+#: theme-options.php:24
+msgid "Customization"
+msgstr "Настройка"
+
+#: theme-options.php:25
+msgid "Click the \"Customize\" link in your menu, or use the button below to get started customizing Founder"
+msgstr "Используйте ссылку \"Настройка\" в меню сайта, или используйте ссылку выше для настройки Founder."
+
+#: theme-options.php:27
+msgid "Use Customizer"
+msgstr "Использовать настройщик"
+
+#: theme-options.php:31
+msgid "Support"
+msgstr "Поддержка"
+
+#: theme-options.php:32
+msgid "You can find the knowledgebase, changelog, support forum, and more in the Founder Support Center"
+msgstr "Вы сможете получить поддержку, найти список обновлений, посетить форум поддержки и многое в центре поддержке Founder"
+
+#: theme-options.php:34
+msgid "Visit Support Center"
+msgstr "Посетить центр поддержки"
+
+#: theme-options.php:38
+msgid "Get More Features & Flexibility"
+msgstr "Еще больше функций и гибкости"
+
+#: theme-options.php:39
+msgid "Download the Founder Pro plugin and unlock custom colors, featured sliders, header images, and more"
+msgstr "Скачайте плагин Founder Pro и получите доступ к настройке цветов, слайдеров, изображений заголовков и еще много чего."
+
+#: theme-options.php:41
+msgid "See Full Feature List"
+msgstr "Увидеть полный список функций"
+
+#: theme-options.php:45
+msgid "WordPress Resources"
+msgstr "Ресурсы WordPress"
+
+#: theme-options.php:46
+msgid "Save time and money searching for WordPress products by following our recommendations"
+msgstr "Сэкономьте время и деньги использовав нащи рекомендации по продуктам WordPress"
+
+#: theme-options.php:48
+msgid "View Resources"
+msgstr "Просмотр ресурсов"
+
+#: theme-options.php:52
+#: theme-options.php:60
+msgid "Reset Customizer Settings"
+msgstr "Сброс настроек кастомизатора"
+
+#: theme-options.php:54
+msgid "<strong>Warning:</strong> Clicking this button will erase your current settings in the <a href=\"%s\">Customizer</a>"
+msgstr "<strong>Внимание:</strong> Нажатие этой кнопки сбросит все настройки<a href=\"%s\">кастомизатора</a>"
+
+#. Theme Name of the plugin/theme
+msgid "Founder"
+msgstr "Founder"
+
+#. Theme URI of the plugin/theme
+msgid "https://www.competethemes.com/founder/"
+msgstr "https://www.competethemes.com/founder/"
+
+#. Description of the plugin/theme
+msgid "Founder's minimalist design presents your content in a simple, clean, and professional manner. As a responsive theme, Founder is beautiful on phones, tablets, and laptops, and is optimized to load quickly on each. Built with Google's multilingual font, Noto Sans, it is compatible with hundreds of languages. Lastly, as an accessibility-ready theme, visitors around the world can appreciate your content regardless of disability. Get excited to share your site, and download Founder today. You can view a fully-setup live demo here: https://www.competethemes.com/founder-live-demo/"
+msgstr "Минималистичный дизайн темы Founder покажет ваш контент в простом, понятном и профессиональном виде. Тема поддерживает адаптивный дизайн? что делает Founder отличным выбором для смартфонов, планшетов, ноутбуков и т.д., обеспечивает быструю загрузку на них. Построена с применением мультиязычного шрифта Noto Sans от Google, что делает тему совсместимой с множеством языков. Помимо этого, тема поддерживает редим для людей с ограниченными возможностями. Скачайте Founder сейчас. Вы сможете ознакомится с полнофункциональной демо-версий здесь: https://www.competethemes.com/founder-live-demo/"
+
+#. Author of the plugin/theme
+msgid "Compete Themes"
+msgstr "Compete Themes"
+
+#. Author URI of the plugin/theme
+msgid "https://www.competethemes.com/"
+msgstr "https://www.competethemes.com/"
+

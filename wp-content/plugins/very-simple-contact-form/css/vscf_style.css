@@ -1,0 +1,28 @@
+/* Very Simple Contact Form */
+#vscf {width:100%; clear:both; margin:0; padding:0; border:0;}
+#vscf p {margin:0 0 10px;}
+
+
+/* Label and Input fields */
+#vscf label {font-size:1em; text-transform:none; font-weight:normal;}
+#vscf input, #vscf textarea {font-size:1em; -webkit-appearance:none; -moz-appearance:none;}
+#vscf_name, #vscf_email, #vscf_subject, #vscf_captcha, #vscf_firstname, #vscf_lastname {width:70%;}
+#vscf_message {width:90%;}
+
+
+/* Hide the 2 fake Honeypot fields */
+#vscf_firstname, #vscf_lastname {visibility:hidden; display:none;}
+
+
+/* Input fields error */
+#vscf input.error, #vscf textarea.error {border-color:#e77776; color:#e77776;}
+
+
+/* Error and Thank You message */
+#vscf span.error {color:#e77776;}
+#vscf span.hide {display:none;}
+.vscf_info {margin:0 0 10px; font-style:italic; font-size:1.25em;}
+
+
+/* Widget */
+.vscf_sidebar {}

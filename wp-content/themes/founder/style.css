@@ -29,7 +29,6 @@ Founder is distributed under the terms of the GNU GPL
          url('assets/clearsans/ClearSans-Regular.svg#open_sans') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
@@ -41,7 +40,6 @@ Founder is distributed under the terms of the GNU GPL
          url('assets/clearsans/ClearSans-Bold.svg#open_sansbold') format('svg');
     font-weight: bold;
     font-style: normal;
-
 }
 
 @font-face {
@@ -53,7 +51,6 @@ Founder is distributed under the terms of the GNU GPL
          url('assets/clearsans/ClearSans-BoldItalic.svg#open_sansbold_italic') format('svg');
     font-weight: bold;
     font-style: italic;
-
 }
 
 @font-face {
@@ -65,7 +62,6 @@ Founder is distributed under the terms of the GNU GPL
          url('assets/clearsans/ClearSans-Italic.svg#open_sansitalic') format('svg');
     font-weight: normal;
     font-style: italic;
-
 }
 
 
@@ -78,7 +74,7 @@ h1, h2, .toggle-navigation, .social-media-icons a, .toggle-sidebar i, .comments-
 
 .wp-caption-text, input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="file"]):not([type="image"]),
 textarea, input[type="submit"], .tagline, .menu-primary-items a,
-.menu-unset ul a, .widget, .post-header p, .more-link, .post-comments, .post-tags span, .post-tags li, .further-reading span, .sticky-status span, .archive-header h2, .comment-footer span,
+.menu-unset ul a, .widget, .post-header p, .more-link, .post-comments, .further-reading span, .sticky-status span, .archive-header h2, .comment-footer span,
 .comment-footer a, #cancel-comment-reply-link {
   font-size: 0.6875em;
   /* 11px / 16px */
@@ -483,7 +479,7 @@ a img {
   outline: none;
 }
 .site-header .search-form-container button:focus i {
-  color: #E37D39;
+  color: #800000;
 }
 .site-header .search-form-container button.open + form {
   opacity: 1;
@@ -565,7 +561,7 @@ a img {
     transition: color 0.1s ease-in-out;
   }
   .social-media-icons a:hover, .social-media-icons a:active, .social-media-icons a:focus {
-    color: #E37D39;
+    color: #800000;
   }
 
   .site-header .search-form-container {
@@ -1429,31 +1425,22 @@ a img {
   margin: 0.75em 0 0;
 }
 
-.post-after {
-  position: relative;
-  padding-top: 1.5em;
-  margin-top: 3em;
-}
-.post-after:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4.5em;
-  height: 1px;
-  background: #D4D4D4;
+.post-source {
+    display: block;
+	margin: 5px 0 5px 0;
 }
 
 .post-categories {
-  margin: 1.5em 0;
+  	margin: 0px;
+    display: inline-block;
+    margin-right: 1em;
 }
 .post-categories span {
-  margin-right: 1.5em;
+  margin-right: 0.2em;
 }
 .post-categories a {
   display: inline-block;
   color: #1A1A1A;
-  margin-right: 1.5em;
 }
 .post-categories a:link, .post-categories a:visited {
   color: #1A1A1A;
@@ -1463,28 +1450,35 @@ a img {
 }
 
 .post-tags {
-  margin: 1.5em 0;
+    margin: 0px;
+    margin-right: 1em;
+    display: inline-block;
 }
 .post-tags ul {
   list-style: none;
   display: inline-block;
-  margin: 0 0 0 1.5em;
+  margin: 0 0 0 0.2em;
 }
 .post-tags li {
   display: inline-block;
-  margin-right: 12px;
+  margin-right: 8px;
+}
+.post-tags > ul li:last-child {
+  margin-right: 0px;
 }
 .post-tags a {
   display: inline-block;
-  background: #F7F7F7;
-  border: solid 1px #EDEDED;
-  padding: 4px 12px;
-  -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
 }
-.post-tags a:hover, .post-tags a:active, .post-tags a:focus {
-  background: #EDEDED;
-  border-color: #D4D4D4;
+.post-tags > ul li a:after {
+ 	content: ', ';
+}
+.post-tags >ul li:last-child a:after {
+  content: '';
+}
+
+.post-meta {
+    display: inline-block;
 }
 
 .further-reading {
@@ -1578,7 +1572,7 @@ a img {
   }
 
   .singular .post-content {
-    margin-top: 3em;
+    margin-top: 0em;
   }
 }
 @media all and (min-width: 75em) {

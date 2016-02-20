@@ -336,6 +336,10 @@ if ( ! function_exists( 'ct_founder_social_icons_output' ) ) {
 					} else {
 						$class = 'fa fa-' . $active_site;
 					}
+                                   if ( $active_site == 'steam') {
+                                          $class = 'fa fa-star';
+                                          $active_site = 'diaspora*';
+                                   }
 					if ( $active_site == 'email-form' ) {
 						$class = 'fa fa-envelope-o';
 					}
@@ -351,7 +355,7 @@ if ( ! function_exists( 'ct_founder_social_icons_output' ) ) {
 						<li>
 							<a class="<?php echo esc_attr( $active_site ); ?>" target="_blank"
 							   href="<?php echo esc_url( get_theme_mod( $key ), array( 'http', 'https', 'skype' ) ); ?>">
-								<i class="<?php echo esc_attr( $class ); ?>" title="<?php esc_attr( $active_site ); ?>"></i>
+								<i class="<?php echo esc_attr( $class ); ?>" title="<?php echo esc_attr( $active_site ); ?>"></i>
 							</a>
 						</li>
 					<?php } else { ?>

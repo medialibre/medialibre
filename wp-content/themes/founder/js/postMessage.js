@@ -127,6 +127,9 @@
                         } else {
                             var siteClass = 'fa fa-' + siteName;
                         }
+			if ( siteName == 'steam') {
+			    siteClass = 'fa fa-star';
+			}
 
                         // output the content for the icon
                         if( siteName == 'email' ) {
@@ -136,7 +139,7 @@
                             socialMediaIcons.append('<li><a class="' + siteName + '" target="_blank" href="' + $(this).val() + '"><i class="fa fa-envelope-o"></i></a></li>');
                         }
                         else {
-                            socialMediaIcons.append('<li><a class="' + siteName + '" target="_blank" href="' + $(this).val() + '"><i class="' + siteClass + '"></i></a></li>');
+                            socialMediaIcons.append('<li><a class="' + siteName + '" target="_blank" href="' + $(this).val() + '"><i class="' + siteClass + '" title="' + siteName  +'"></i></a></li>');
                         }
                     }
                 });

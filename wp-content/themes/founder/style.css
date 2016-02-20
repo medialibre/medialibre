@@ -777,6 +777,7 @@ a img {
   .menu-unset ul a:active,
   .menu-unset ul a:focus {
     border-color: #1A1A1A;
+    transition: border-color 1s;
   }
   .menu-primary-items ul,
   .menu-unset ul ul {

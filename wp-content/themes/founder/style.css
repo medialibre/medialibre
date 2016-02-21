@@ -760,7 +760,7 @@ a img {
   }
   .menu-primary-items li.menu-item-has-children > a:after,
   .menu-unset ul li.menu-item-has-children > a:after {
-    content: ' + ';
+    content: ' ▼ ';
     border-bottom: solid 1px white;
   }
   .menu-primary-items a,
@@ -1854,3 +1854,12 @@ If you want to make CSS edits, use the "Custom CSS" section in the Customizer in
 If you want more information about customizing Founder with CSS, check out this guide: https://www.competethemes.com/help/custom-css-founder/
 
 */
+
+
+.form-title {
+    display: none;
+}
+
+.ccf-form-complete {
+    text-align: center;
+}

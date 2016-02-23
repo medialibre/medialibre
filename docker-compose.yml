@@ -1,0 +1,16 @@
+db:
+  image: orchardup/mysql
+  environment:
+  - MYSQL_DATABASE=medialibre
+  - MYSQL_USER=medialibre
+  - MYSQL_PASSWORD=medialibre
+  - MYSQL_ROOT_PASSWORD=toor
+web:
+  build: .
+  command: php -S 0.0.0.0:8000 -t /code
+  ports:
+    - "8000:8000"
+  volumes:
+    - .:/code
+  links:
+    - db

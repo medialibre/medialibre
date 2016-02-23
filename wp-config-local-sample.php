@@ -16,4 +16,9 @@ define('LOGGED_IN_SALT',   '');
 define('NONCE_SALT',       '');
 
 define('WPCOM_API_KEY',    '');
+
+define('WP_SITEURL', 'https://' . $_SERVER['SERVER_NAME'] . '/wordpress');
+define('WP_HOME',    'https://' . $_SERVER['SERVER_NAME']);
+define('WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'] . '/wp-content');
+define('WP_CONTENT_URL', 'https://' . $_SERVER['SERVER_NAME'] . '/wp-content');
 ?>

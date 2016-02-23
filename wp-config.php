@@ -10,11 +10,6 @@ define('WP_DEBUG', false);
 
 define('WP_POST_REVISIONS', 3);
 
-define('WP_SITEURL', 'https://' . $_SERVER['SERVER_NAME'] . '/wordpress');
-define('WP_HOME',    'https://' . $_SERVER['SERVER_NAME']);
-define('WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'] . '/wp-content');
-define('WP_CONTENT_URL', 'https://' . $_SERVER['SERVER_NAME'] . '/wp-content');
-
 if ( !defined('ABSPATH') )
     define('ABSPATH', dirname(__FILE__) . '/');
 

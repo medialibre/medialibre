@@ -1863,3 +1863,8 @@ If you want more information about customizing Founder with CSS, check out this 
 .ccf-form-complete {
     text-align: center;
 }
+
+.post-288 li {
+    margin-bottom: 15px;
+    list-style-type: square;
+ }

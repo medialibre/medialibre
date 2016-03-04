@@ -11,9 +11,12 @@
                 $custom_fields = get_post_custom();
                 $source_title = $custom_fields['source_title'];
                 $source_url = $custom_fields['source_url'];
-				if ($source_url) {
+				if ($source_url[0]) {
                     echo "<div class='post-source'>";
               		echo "από: <a href='" . $source_url[0] . "' target='_blank'>" . $source_title[0] . "</a>";
+                    if ($source_url[1]) {
+                        echo " &bull; <a href='" . $source_url[1] . "' target='_blank'>" . $source_title[1] . "</a>";
+                    }
                     echo "</div>";
               	}
             ?>

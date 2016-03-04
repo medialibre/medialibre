@@ -149,7 +149,7 @@
 						if ( this.field.get( 'slug' ) !== field.get( 'slug' ) ) {
 							var type = field.get( 'type' );
 
-							if ( 'address' !== type && 'checkboxes' !== type && 'date' !== type && 'name' !== type && 'file' !== type && 'recaptcha' !== type && 'section-header' !== type && 'html' !== type ) {
+							if ( 'address' !== type && 'checkboxes' !== type && 'date' !== type && 'name' !== type && 'file' !== type && 'recaptcha' !== type && 'simple-captcha' !== type && 'section-header' !== type && 'html' !== type ) {
 								option = document.createElement( 'option' );
 								option.innerHTML = field.get( 'slug' );
 								option.value = field.get( 'slug' );
@@ -475,7 +475,7 @@
 				fields.each( function( field ) {
 					type = field.get( 'type' );
 
-					if ( 'html' !== type && 'section-header' !== type && 'recaptcha' !== type ) {
+					if ( 'html' !== type && 'section-header' !== type && 'recaptcha' !== type && 'simple-captcha' !== type ) {
 						variablesText += '[' + field.get( 'slug' ) + '] ';
 					}
 				} );
@@ -789,20 +789,24 @@
 			},
 
 			saveField: function() {
-				var conditionals = this.el.querySelectorAll( '.conditionals' )[0].querySelectorAll( '.conditional' );
+				var conditionalsWrapper = this.el.querySelectorAll( '.conditionals' );
 
-				_.each( conditionals, function( conditional ) {
-					$( conditional ).trigger( 'saveConditional' );
-				});
+				if ( conditionalsWrapper.length ) {
+					var conditionals = conditionalsWrapper[0].querySelectorAll( '.conditional' );
 
-				this.model.set( 'conditionalType', this.el.querySelectorAll( '.field-conditional-type' )[0].value );
-				this.model.set( 'conditionalFieldsRequired', this.el.querySelectorAll( '.field-conditional-fields-required' )[0].value );
+					_.each( conditionals, function( conditional ) {
+						$( conditional ).trigger( 'saveConditional' );
+					});
 
-				var oldConditionals = this.model.get( 'conditionalsEnabled' );
-				this.model.set( 'conditionalsEnabled', ( this.el.querySelectorAll( '.field-conditionals-enabled' )[0].value == 1 ) ? true : false );
+					this.model.set( 'conditionalType', this.el.querySelectorAll( '.field-conditional-type' )[0].value );
+					this.model.set( 'conditionalFieldsRequired', this.el.querySelectorAll( '.field-conditional-fields-required' )[0].value );
 
-				if ( oldConditionals !== this.model.get( 'conditionalsEnabled' ) ) {
-					this.render( 'advanced' );
+					var oldConditionals = this.model.get( 'conditionalsEnabled' );
+					this.model.set( 'conditionalsEnabled', ( this.el.querySelectorAll( '.field-conditionals-enabled' )[0].value == 1 ) ? true : false );
+
+					if ( oldConditionals !== this.model.get( 'conditionalsEnabled' ) ) {
+						this.render( 'advanced' );
+					}
 				}
 			},
 
@@ -815,17 +819,20 @@
 
 				var conditionalsCollection = this.model.get( 'conditionals' );
 
-				var conditionals = this.el.querySelectorAll( '.conditionals' )[0];
+				var conditionalsWrapper = this.el.querySelectorAll( '.conditionals' );
 
-				if ( conditionalsCollection.length >= 1 ) {
+				if ( conditionalsWrapper.length ) {
 
-					conditionalsCollection.each( function( model ) {
-						var view = new wp.ccf.views.FieldConditional( { model: model, field: this.model, fieldCollection: this.collection } ).render();
-						conditionals.appendChild( view.el );
-					}, this );
-				} else {
-					var conditional = new wp.ccf.models.FieldConditional();
-					conditionalsCollection.add( conditional );
+					if ( conditionalsCollection.length >= 1 ) {
+
+						conditionalsCollection.each( function( model ) {
+							var view = new wp.ccf.views.FieldConditional( { model: model, field: this.model, fieldCollection: this.collection } ).render();
+							conditionalsWrapper[0].appendChild( view.el );
+						}, this );
+					} else {
+						var conditional = new wp.ccf.models.FieldConditional();
+						conditionalsCollection.add( conditional );
+					}
 				}
 
 				return this;
@@ -897,6 +904,28 @@
 				this.model.set( 'description', this.el.querySelectorAll( '.field-description' )[0].value );
 				this.model.set( 'siteKey', this.el.querySelectorAll( '.field-site-key' )[0].value );
 				this.model.set( 'secretKey', this.el.querySelectorAll( '.field-secret-key' )[0].value );
+				this.model.set( 'className', this.el.querySelectorAll( '.field-class-name' )[0].value );
+
+				this.constructor.__super__.saveField.apply( this, arguments );
+
+				return this;
+			}
+		}
+	);
+
+	wp.ccf.views.Fields['simple-captcha'] = wp.ccf.views.Fields['simple-captcha'] || wp.ccf.views.FieldBase.extend(
+		{
+			template: wp.ccf.utils.template( 'ccf-simple-captcha-template' ),
+
+			saveField: function() {
+				// @todo: fix this ie8 hack
+				if ( this.el.innerHTML === '' ) {
+					return;
+				}
+
+				this.model.set( 'label', this.el.querySelectorAll( '.field-label' )[0].value );
+				this.model.set( 'description', this.el.querySelectorAll( '.field-description' )[0].value );
+				this.model.set( 'placeholder', this.el.querySelectorAll( '.field-placeholder' )[0].value );
 				this.model.set( 'className', this.el.querySelectorAll( '.field-class-name' )[0].value );
 
 				this.constructor.__super__.saveField.apply( this, arguments );
@@ -1126,9 +1155,22 @@
 				this.model.set( 'slug', this.el.querySelectorAll( '.field-slug' )[0].value );
 				this.model.set( 'label', this.el.querySelectorAll( '.field-label' )[0].value );
 				this.model.set( 'description', this.el.querySelectorAll( '.field-description' )[0].value );
+
+				var oldType = this.model.get( 'addressType' );
+
 				this.model.set( 'addressType', this.el.querySelectorAll( '.field-address-type' )[0].value );
+
+				var defaultCountry = this.el.querySelectorAll( '.field-default-country' );
+				if ( defaultCountry.length ) {
+					this.model.set( 'defaultCountry', defaultCountry[0].value );
+				}
+
 				this.model.set( 'className', this.el.querySelectorAll( '.field-class-name' )[0].value );
 				this.model.set( 'required', ( this.el.querySelectorAll( '.field-required' )[0].value == 1 ) ? true : false  );
+
+				if ( oldType !== this.model.get( 'addressType' ) ) {
+					this.render();
+				}
 
 				this.constructor.__super__.saveField.apply( this, arguments );
 
@@ -1797,6 +1839,9 @@
 				var pause = this.el.querySelectorAll( '.form-pause' )[0].value;
 				this.model.set( 'pause', ( parseInt( pause ) ) ? true : false );
 
+				var requireLoggedIn = this.el.querySelectorAll( '.form-require-logged-in' )[0].value;
+				this.model.set( 'requireLoggedIn', ( parseInt( requireLoggedIn ) ) ? true : false );
+
 				var postCreation = this.el.querySelectorAll( '.form-post-creation' )[0].value;
 				this.model.set( 'postCreation', ( parseInt( postCreation ) ) ? true : false );
 
@@ -2426,7 +2471,7 @@
 			},
 
 			menuClick: function( event ) {
-				var view = event.target.getAttribute( 'data-view' );
+				var view = event.currentTarget.getAttribute( 'data-view' );
 
 				if ( 'form-pane' === view ) {
 					wp.ccf.currentForm = null;

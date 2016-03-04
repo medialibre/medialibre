@@ -21,3 +21,20 @@ function addtoany_excerpt_remove() {
 		}	
 	}
 }
+
+/**
+ * Load AMP (Accelerated Mobile Pages) compatibility functions
+ */
+add_action( 'amp_post_template_css', 'addtoany_amp_additional_css_styles' );
+
+function addtoany_amp_additional_css_styles( $amp_template ) {
+	// only CSS here please...
+	?>
+	.addtoany_list a {
+		padding: 0 4px;
+	}
+	.addtoany_list a amp-img {
+		display: inline-block;
+	}
+	<?php
+}

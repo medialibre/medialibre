@@ -32,6 +32,9 @@ class CCF_Form_Handler {
 			'recaptcha' => array(
 				'validator' => array( $this, 'valid_recaptcha' ),
 			),
+			'simple-captcha' => array(
+				'validator' => array( $this, 'valid_simple_captcha' ),
+			),
 			'paragraph-text' => array(
 				'sanitizer' => 'sanitize_text_field',
 				'validator' => array( $this, 'not_empty' ),
@@ -228,7 +231,7 @@ class CCF_Form_Handler {
 
 		if ( $required ) {
 			if ( ! is_array( $value ) ) {
-				if ( empty( $value ) ) {
+				if ( empty( $value ) && $value !== '0' ) {
 					$error = true;
 				}
 			} else {
@@ -262,6 +265,25 @@ class CCF_Form_Handler {
 
 		if ( empty( $data->success ) ) {
 			return array( 'recaptcha' => esc_html__( 'Your reCAPTCHA response was incorrect.', 'custom-contact-forms' ) );
+		}
+
+		return true;
+	}
+
+	/**
+	 * Check if simple captcha response is valid
+	 *
+	 * @since  7.7
+	 * @param  string $value
+	 * @param  int $field_id
+	 * @param  boolean $required
+	 * @return boolean|array
+	 */
+	public function valid_simple_captcha( $value, $field_id, $required ) {
+		$slug = get_post_meta( $field_id, 'ccf_field_slug', true );
+
+		if ( empty( $value ) || empty( $_SESSION['ccf_simple_captcha_' . $slug] ) || empty( $_SESSION['ccf_simple_captcha_' . $slug]['code'] ) || strtolower( $_SESSION['ccf_simple_captcha_' . $slug]['code'] ) !== strtolower( trim( $value ) ) ) {
+			return array( 'simple-captcha' => esc_html__( 'Your CAPTCHA response was incorrect.', 'custom-contact-forms' ) );
 		}
 
 		return true;
@@ -551,7 +573,19 @@ class CCF_Form_Handler {
 	 * @since 6.0
 	 */
 	public function setup() {
-		add_action( 'init', array( $this, 'submit_listen' ) );
+		add_action( 'init', array( $this, 'submit_listen' ), 11 );
+		add_action( 'init', array( $this, 'start_session' ) );
+	}
+
+	/**
+	 * Start a session for captcha later
+	 *
+	 * @since  7.7
+	 */
+	public function start_session() {
+		if ( session_id() === '' ) {
+			session_start();
+		}
 	}
 
 	/**
@@ -609,7 +643,7 @@ class CCF_Form_Handler {
 		$submission = array();
 
 		$skip_fields = apply_filters( 'ccf_skip_fields', array( 'html', 'section-header' ), $form->ID );
-		$save_skip_fields = apply_filters( 'ccf_save_skip_fields', array( 'recaptcha' ), $form->ID );
+		$save_skip_fields = apply_filters( 'ccf_save_skip_fields', array( 'recaptcha', 'simple-captcha' ), $form->ID );
 		$file_ids = array();
 		$all_form_fields = array();
 
@@ -690,6 +724,16 @@ class CCF_Form_Handler {
 				update_post_meta( $submission_id, 'ccf_submission_form_fields', $all_form_fields );
 
 				update_post_meta( $submission_id, 'ccf_submission_ip', sanitize_text_field( $_SERVER['REMOTE_ADDR'] ) );
+
+				/**
+				 * @since  7.7
+				 */
+				if ( ! empty( $_POST['form_page'] ) ) {
+					$form_page = $_POST['form_page'];
+					update_post_meta( $submission_id, 'ccf_submission_form_page', esc_url_raw( $form_page ) );
+				} else {
+					$form_page = null;
+				}
 
 				foreach ( $file_ids as $file_id ) {
 					wp_update_post( array(
@@ -791,8 +835,6 @@ class CCF_Form_Handler {
 
 			$notifications = get_post_meta( $form_id, 'ccf_form_notifications', true );
 
-			$form_page = ( ! empty( $_POST['form_page'] ) ) ? $_POST['form_page'] : null;
-
 			if ( ! empty( $notifications ) ) {
 				foreach ( $notifications as $notification ) {
 					if ( ! empty( $notification['active'] ) && ! empty( $notification['addresses'] ) ) {
@@ -823,7 +865,7 @@ class CCF_Form_Handler {
 									<?php endif; ?>
 								</div>
 								<div style="margin-bottom: 10px;">
-									<?php if ( ! empty( $field ) ) : ?>
+									<?php if ( ! empty( $field ) || $field === '0') : ?>
 
 										<?php if ( 'date' === $type ) : ?>
 
@@ -909,6 +951,10 @@ class CCF_Form_Handler {
 
 						if ( false !== stripos( $message, '[current_date_time]' ) ) {
 							$message = str_ireplace( '[current_date_time]', date( 'F j, Y, g:i a' ), $message );
+						}
+
+						if ( false !== stripos( $message, '[form_page_url]' ) ) {
+							$message = str_ireplace( '[form_page_url]', esc_url_raw( $form_page ), $message );
 						}
 
 						foreach ( $fields as $field_id ) {
@@ -1032,7 +1078,7 @@ class CCF_Form_Handler {
 			}
 
 			if ( 'redirect' === $output['action_type'] ) {
-				$output['completion_redirect_url'] = get_post_meta( $form_id, 'ccf_form_completion_redirect_url', true );
+				$output['completion_redirect_url'] = apply_filters( 'ccf_form_completion_redirect_url', get_post_meta( $form_id, 'ccf_form_completion_redirect_url', true ), $form_id );
 			} else {
 				$output['completion_message'] = get_post_meta( $form_id, 'ccf_form_completion_message', true );
 

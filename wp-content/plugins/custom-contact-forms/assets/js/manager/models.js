@@ -206,6 +206,7 @@
 					postFieldMappings: new wp.ccf.collections.PostFieldMappings(),
 					notifications: new wp.ccf.collections.FormNotifications(),
 					pause: false,
+					requireLoggedIn: false,
 					pauseMessage: ccfSettings.pauseMessage,
 					theme: 'none'
 				};
@@ -687,6 +688,25 @@
 
 			required: function() {
 				return [ 'siteKey', 'secretKey' ];
+			},
+
+			isImmutable: true,
+
+			initialize: function() {
+				return this.constructor.__super__.initialize.apply( this, arguments );
+			}
+		}
+	);
+
+	wp.ccf.models.Fields['simple-captcha'] = wp.ccf.models.Fields['simple-captcha'] || wp.ccf.models.StandardField.extend(
+		{
+			defaults: function() {
+				var defaults = {
+					type: 'simple-captcha',
+					placeholder: ccfSettings.defaultSimpleCaptchaPlaceholder
+				};
+
+				return _.defaults( defaults, this.constructor.__super__.defaults() );
 			},
 
 			isImmutable: true,

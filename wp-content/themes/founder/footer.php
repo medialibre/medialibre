@@ -6,7 +6,7 @@
 	<span>
         <?php
         //$footer_text = '<span class="fa fa-cc"></span> 2016 <a href="https://www.hackerspace.gr/" target="_blank">Hackerspace.gr</a> | Το περιεχόμενο διατίθεται με άδεια <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike</a>.';
-		$footer_text = 'Το περιεχόμενο των κειμένων ανήκει στ@ν αρχικ@ συγγραφέα/μέσο, όπου αναγράφεται.<br>Οι μεταφράσεις μας διατίθονται με άδεια <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike</a>.';
+		$footer_text = 'Το περιεχόμενο των κειμένων ανήκει στ@ν αρχικ@ συγγραφέα/μέσο, όπου αναγράφεται.<br>Οι μεταφράσεις μας διατίθονται με άδεια <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike</a>.<br><span class="fa fa-cc"></span> 2016 <a href="https://www.hackerspace.gr/" target="_blank">Hackerspace.gr</a>';
         $footer_text = apply_filters( 'ct_founder_footer_text', $footer_text );
         echo wp_kses_post( $footer_text );
         ?>

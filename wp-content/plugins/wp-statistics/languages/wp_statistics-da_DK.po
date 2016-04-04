@@ -1,12 +1,12 @@
-# Translation of WP Statistics in Indonesian
+# Translation of WP Statistics in Danish
 # This file is distributed under the same license as the WP Statistics package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-03-28 09:00:58+0000\n"
+"PO-Revision-Date: +0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: GlotPress/1.0.2\n"
 "Project-Id-Version: WP Statistics\n"
 
@@ -20,11 +20,11 @@ msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:185
 msgid "If the gzopen() function is installed.  gzopen() is required for the GeoIP database to be downloaded successfully."
-msgstr "Jika fungsi gzopen () diinstal. gzopen () diperlukan agar database GeoIP bisa diunduh dengan sukses."
+msgstr ""
 
 #: wp-statistics/wps-updates.php:16
 msgid "Error the download_url() or gzopen() functions do not exist!"
-msgstr "Kesalahan: fungsi download_url() atau gzopen () tidak ditemukan!"
+msgstr ""
 
 #: wp-statistics/wps-updates.php:45
 msgid "Error setting permissions of the GeoIP database directory, make sure your web server has permissions to write to directories in : %s"
@@ -48,43 +48,43 @@ msgstr ""
 
 #: wp-statistics/ajax.php:299
 msgid "ERROR: Widget not found!"
-msgstr "ERROR: Widget tidak ditemukan!"
+msgstr ""
 
 #: wp-statistics/dashboard.php:111 wp-statistics/editor.php:66
 #: wp-statistics/includes/log/log.php:20
 msgid "Loading..."
-msgstr "Memuat..."
+msgstr ""
 
 #: wp-statistics/dashboard.php:129 wp-statistics/editor.php:84
 #: wp-statistics/includes/log/log.php:2
 msgid "Reloading..."
-msgstr "Memuat ulang ..."
+msgstr ""
 
 #: wp-statistics/includes/log/top-visitors.php:41
 #: wp-statistics/wp-statistics.php:447
 msgid "Top Visitors"
-msgstr "Pengunjung Tertinggi"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:206
 msgid "optimization page"
-msgstr "Halaman optimasi"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-maintenance.php:35
 #: wp-statistics/includes/settings/tabs/wps-maintenance.php:63
 msgid "Enabled"
-msgstr "Diaktifkan"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-maintenance.php:30
 msgid "Purge Old Data Daily"
-msgstr "Hapus data lama per hari"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-maintenance.php:41
 msgid "A WP Cron job will be run daily to purge any data older than a set number of days."
-msgstr "WP Cron Job akan dijalankan setiap hari untuk membersihkan data lebih tua dari jumlah hari yang ditetapkan."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-maintenance.php:47
 msgid "Purge data older than"
-msgstr "Hapus data lebih lama dari"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-maintenance.php:58
 msgid "Purge High Hit Count Visitors Daily"
@@ -104,11 +104,11 @@ msgstr ""
 
 #: wp-statistics/shortcode.php:181
 msgid "Post/Page ID"
-msgstr "ID Post / Halaman"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:435
 msgid "Ask.com"
-msgstr "Ask.com"
+msgstr ""
 
 #: wp-statistics/shortcode.php:158
 msgid "The time frame to get the statistic for, strtotime() (http://php.net/manual/en/datetime.formats.php) will be used to calculate it. Use \"total\" to get all recorded dates."
@@ -128,19 +128,19 @@ msgstr ""
 
 #: wp-statistics/wp-statistics.php:206
 msgid "Database updates are required, please go to %s and update the following: %s"
-msgstr "Perbarui database yang diperlukan, kunjungi %s dan perbarui:%s"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:197
 msgid "countries database index"
-msgstr "indeks database negara"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:190
 msgid "search table"
-msgstr "tabel pencarian"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:184
 msgid "settings page"
-msgstr "halaman pengaturan"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:184 wp-statistics/wp-statistics.php:206
 msgid ","
@@ -148,7 +148,7 @@ msgstr ""
 
 #: wp-statistics/wp-statistics.php:184
 msgid "The following features are disabled, please go to %s and enable them: %s"
-msgstr "Fitur berikut dinonaktifkan, silakan pergi ke%s dan aktifkan:%s"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:179
 msgid "hit tracking"
@@ -164,23 +164,23 @@ msgstr ""
 
 #: wp-statistics/includes/optimization/wps-optimization.php:196
 msgid "Search table conversion complete, %d rows added."
-msgstr "Pencarian konversi tabel selesai,%d baris ditambahkan."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:113
 msgid "Older installs of WP Statistics store details of searches in the visitors table which can become a performance issue on large datasets.  A new table has been created to hold this information in a more scalable fashion."
-msgstr "Instalasi WP Statistics versi lama menyimpan hasil pencarian di tabel pengunjung an bisa mengakibatkan masalah performa pada data berukuran besar. Sebuah tabel baru telah dibuat untuk menyimpan informasi ini secara lebih rapi."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:94
 msgid "Search Table"
-msgstr "Cari Tabel"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:99
 msgid "Convert"
-msgstr "Konversi"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:106
 msgid "Convert Now!"
-msgstr "Lakukan konversi sekarang!"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:107
 msgid "Older installs of WP Statistics store details of searches in the visitors table which can become a performance issue on large datasets.  A new table has been created to hold this information in a more scalable fashion, however the old data must first be converted to the new format before it can be used."
@@ -232,11 +232,11 @@ msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:24
 msgid "404 Pages"
-msgstr "Halaman 404"
+msgstr ""
 
 #: wp-statistics/includes/log/top-visitors.php:26
 msgid "Date"
-msgstr "Tanggal"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:151
 msgid "Treat any visitor with corrupt browser info (missing IP address or empty user agent string) as a robot."
@@ -281,32 +281,32 @@ msgstr ""
 
 #: wp-statistics/includes/functions/purge-hits.php:25
 msgid "%s records purged successfully."
-msgstr "%s catatan berhasil dibersihkan."
+msgstr ""
 
 #: wp-statistics/ajax.php:178
 #: wp-statistics/includes/functions/purge-hits.php:32
 msgid "Number of hits must be greater than or equal to 10!"
-msgstr "Jumlah kunjungan harus lebih besar dari atau sama dengan 10!"
+msgstr ""
 
 #: wp-statistics/shortcode.php:141
 msgid "Page Visits"
-msgstr "Jumlah Kunjungan Halaman"
+msgstr ""
 
 #: wp-statistics/shortcode.php:144
 msgid "Page Count"
-msgstr "Jumlah Halaman"
+msgstr ""
 
 #: wp-statistics/shortcode.php:145
 msgid "Comment Count"
-msgstr "Jumlah Komentar"
+msgstr ""
 
 #: wp-statistics/shortcode.php:146
 msgid "Spam Count"
-msgstr "Jumlah Spam"
+msgstr ""
 
 #: wp-statistics/shortcode.php:147
 msgid "User Count"
-msgstr "Jumlah Pengguna"
+msgstr ""
 
 #: wp-statistics/shortcode.php:148
 msgid "Post Average"
@@ -322,7 +322,7 @@ msgstr ""
 
 #: wp-statistics/shortcode.php:162
 msgid "Search Provider"
-msgstr "Penyedia Layanan Pencarian"
+msgstr ""
 
 #: wp-statistics/shortcode.php:165
 msgid "The search provider to get statistics on."
@@ -330,7 +330,7 @@ msgstr ""
 
 #: wp-statistics/shortcode.php:169
 msgid "Number Format"
-msgstr "Format Angka"
+msgstr ""
 
 #: wp-statistics/shortcode.php:172
 msgid "The format to display numbers in: i18n, english, none."
@@ -342,12 +342,12 @@ msgstr ""
 
 #: wp-statistics/shortcode.php:177
 msgid "International"
-msgstr "Internasional"
+msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:191
 #: wp-statistics/includes/log/hit-statistics.php:164
 msgid "Hits Statistics Summary"
-msgstr "Ringkasan Statistik Hits"
+msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:201
 #: wp-statistics/includes/log/hit-statistics.php:175
@@ -370,68 +370,68 @@ msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:24
 msgid "Fell like showing us how much you enjoy WP Statistics?  Drop by our %s page and show us some love!"
-msgstr "Ingin menunjukkan kepada kami betapa Anda menikmati WP Statistics? Mampir halaman %s kami dan tunjukkan cinta Anda!"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:24
 msgid "donation"
-msgstr "donasi"
+msgstr ""
 
 #: wp-statistics/includes/log/log.php:6
 msgid "Donate Now!"
-msgstr "Kirim Donasi Sekarang!"
+msgstr ""
 
 #: wp-statistics/includes/log/log.php:6
 msgid "Close"
-msgstr "Tutup"
+msgstr ""
 
 #: wp-statistics/shortcode.php:135
 msgid "Select the statistic you wish to display."
-msgstr "Pilih statistik yang ingin ditampilkan."
+msgstr ""
 
 #: wp-statistics/shortcode.php:132
 msgid "Statistic"
-msgstr "Statistik"
+msgstr ""
 
 #: wp-statistics/shortcode.php:143
 msgid "Post Count"
-msgstr "Jumlah Posting"
+msgstr ""
 
 #: wp-statistics/shortcode.php:155
 msgid "Time Frame"
-msgstr "Rentang Waktu"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:1032
 msgid "to"
-msgstr "sampai"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:1032
 #: wp-statistics/includes/log/top-visitors.php:29
 msgid "Go"
-msgstr "Mulai"
+msgstr ""
 
 #: wp-statistics/includes/log/top-pages.php:102
 msgid "Rank #5"
-msgstr "Peringkat 5"
+msgstr ""
 
 #: wp-statistics/includes/log/top-pages.php:102
 msgid "Rank #4"
-msgstr "Peringkat 4"
+msgstr ""
 
 #: wp-statistics/includes/log/top-pages.php:102
 msgid "Rank #3"
-msgstr "Peringkat 3"
+msgstr ""
 
 #: wp-statistics/includes/log/top-pages.php:102
 msgid "Rank #1"
-msgstr "Peringkat 1"
+msgstr ""
 
 #: wp-statistics/includes/log/top-pages.php:102
 msgid "Rank #2"
-msgstr "Peringkat 2"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:60
 msgid "Visits Table"
-msgstr "Tabel Kunjungan"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:75
 msgid "Older installs of WP Statistics allow for duplicate entries in the visits table in a corner case.  Newer installs protect against this with a unique index on the table.  To create the index on the older installs duplicate entries must be deleted first.  Clicking \"Update Now\" will scan the vistits table, delete duplicate entries and add the index."
@@ -447,17 +447,17 @@ msgstr ""
 
 #: wp-statistics/includes/log/last-visitor.php:68
 msgid "Filtered by"
-msgstr "Disaring berdasarkan"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:1026
 #: wp-statistics/includes/functions/functions.php:1029
 msgid "Range"
-msgstr "Rentang"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:1032
 #: wp-statistics/includes/log/top-visitors.php:29
 msgid "MM/DD/YYYY"
-msgstr "MM/DD/YYYY"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:342
 msgid "Do not use the translations and instead use the English defaults for WP Statistics (requires two page loads)"
@@ -465,11 +465,11 @@ msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:336
 msgid "Force English"
-msgstr "Gunakan bahasa Inggris"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:331
 msgid "Languages"
-msgstr "Bahasa"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:227
 msgid "Note: this option will NOT handle url parameters (anything after the ?), only to the script name.  Entries less than two characters will be ignored."
@@ -490,41 +490,41 @@ msgstr ""
 #: wp-statistics/includes/log/widgets/quickstats.php:52
 #: wp-statistics/includes/log/widgets/summary.php:52
 msgid "Last 365 Days (Year)"
-msgstr "365 Hari Terakhir (Tahun)"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/quickstats.php:46
 #: wp-statistics/includes/log/widgets/summary.php:46
 msgid "Last 30 Days (Month)"
-msgstr "30 Hari Terakhir (Bulan)"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/quickstats.php:40
 #: wp-statistics/includes/log/widgets/summary.php:40
 msgid "Last 7 Days (Week)"
-msgstr "7 Hari Terakhir (Minggu)"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:441
 msgid "Yahoo!"
-msgstr "Yahoo!"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:442
 msgid "Yandex"
-msgstr "Yandex"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:438
 msgid "clearch.org"
-msgstr "clearch.org"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:439
 msgid "DuckDuckGo"
-msgstr "DuckDuckGo"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:437
 msgid "Bing"
-msgstr "Bing"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:436
 msgid "Baidu"
-msgstr "Baidu"
+msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:24
 msgid "Feeds"
@@ -536,11 +536,11 @@ msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:24
 msgid "Login Page"
-msgstr "Halaman Login"
+msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:24
 msgid "Admin Page"
-msgstr "Halaman Admin"
+msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:24
 msgid "Self Referral"
@@ -548,15 +548,15 @@ msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:24
 msgid "IP Match"
-msgstr "Pencocokan IP"
+msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:24
 msgid "Robot"
-msgstr "Robot"
+msgstr ""
 
 #: wp-statistics/includes/log/online.php:100
 msgid "Currently there are no users online in the site."
-msgstr "Saat ini tidak ada pengguna yang online."
+msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:24
 msgid "Robot Threshold"
@@ -582,23 +582,23 @@ msgstr ""
 #: wp-statistics/includes/settings/tabs/wps-general.php:229
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:122
 msgid "Enable or disable this feature"
-msgstr "Mengaktifkan atau menonaktifkan fitur ini"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:99
 msgid "Check for online users every"
-msgstr "Mengecek user online setiap"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:104
 msgid "Second"
-msgstr "Detik"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:105
 msgid "Time for the check accurate online user in the site. Now: %s Second"
-msgstr "Waktu untuk cek akurat pengguna online di situs. Sekarang: %s detik"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:111
 msgid "Record all user"
-msgstr "Rekam semua pengguna"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:117
 msgid "Ignores the exclusion settings and records all users that are online (including self referrals and robots).  Should only be used for troubleshooting."
@@ -606,77 +606,77 @@ msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:155
 msgid "Store entire user agent string"
-msgstr "Menyimpan seluruh pengguna agen string"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:161
 msgid "Only enabled for debugging"
-msgstr "Hanya diaktifkan untuk debugging"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:167
 msgid "Coefficient per visitor"
-msgstr "Koefisiensi per pengunjung"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:172
 msgid "For each visit to account for several hits. Currently %s."
-msgstr "Untuk setiap kunjungan untuk mendata beberapa hit. Saat ini %s."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:177
 #: wp-statistics/includes/settings/tabs/wps-general.php:182
 #: wp-statistics/wp-statistics.php:418 wp-statistics/wp-statistics.php:516
 msgid "Pages"
-msgstr "Halaman"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:194
 msgid "Track all pages"
-msgstr "Melacak semua halaman"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:209
 msgid "Strip parameters from URI"
-msgstr "Buang parameter dari URI"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:215
 msgid "This will remove anything after the ? in a URL."
-msgstr "Anda akan menghapus semua setelah ? dalam URL."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:223
 msgid "Disable hits column in post/pages list"
-msgstr "Menonaktifkan hits kolom di daftar posting/halaman"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:234
 msgid "Miscellaneous"
-msgstr "Lain-lain"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:239
 msgid "Show stats in menu bar"
-msgstr "Tampilkan statistik pada menu bar"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:244
 msgid "No"
-msgstr "Tidak"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:245
 msgid "Yes"
-msgstr "Ya"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:247
 msgid "Show stats in admin menu bar"
-msgstr "Menampilkan statistik pada halaman admin"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:253
 msgid "Hide admin notices about non active features"
-msgstr "Sembunyikan pemberitahuan untuk admin tentang fitur yang tidak aktif"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:259
 msgid "By default WP Statistics displays an alert if any of the core features are disabled on every admin page, this option will disable these notices."
-msgstr "Secara default WP Statistics menampilkan peringatan jika salah satu fitur inti dinonaktifkan pada setiap halaman admin, opsi ini akan menonaktifkan pemberitahuan ini."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:265
 msgid "Delete the manual"
-msgstr "Hapus manual"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:271
 msgid "By default WP Statistics stores the admin manual in the plugin directory (~5 meg), if this option is enabled it will be deleted now and during upgrades in the future."
-msgstr "Secara default WP Statistics toko admin manual dalam direktori plugin (~ 5 meg), jika opsi ini diaktifkan akan dihapus sekarang dan selama upgrade di masa depan."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:276
 msgid "Search Engines"
@@ -684,71 +684,71 @@ msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:293
 msgid "Disabling all search engines is not allowed, doing so will result in all search engines being active."
-msgstr "Menonaktifkan semua mesin pencari tidak diperbolehkan. Apabila dilakukan, semua mesin pencari akan aktif."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:308
 msgid "disable"
-msgstr "menonaktifkan"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:309
 msgid "Disable %s from data collection and reporting."
-msgstr "Mematikan %s dari pengumpulan data dan pelaporan."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:315
 msgid "Charts"
-msgstr "Grafik"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:320
 msgid "Include totals"
-msgstr "Termasuk Total"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:326
 msgid "Add a total line to charts with multiple values, like the search engine referrals"
-msgstr "Menambahkan baris total grafik dengan beberapa nilai, seperti arahan mesin pencarian"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:32
 msgid "GeoIP settings"
-msgstr "Pengaturan GeoIP"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:37
 msgid "IP location services provided by GeoLite2 data created by MaxMind, available from %s."
-msgstr "IP lokasi layanan yang disediakan oleh GeoLite2 data yang dibuat oleh MaxMind, tersedia dari %s."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:47
 msgid "GeoIP collection"
-msgstr "GeoIP koleksi"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:53
 msgid "For get more information and location (country) from visitor, enable this feature."
-msgstr "Untuk mendapatkan informasi lebih lanjut dan lokasi (negara) dari pengunjung, mengaktifkan fitur ini."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:59
 msgid "Update GeoIP Info"
-msgstr "Memperbarui GeoIP Info"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:64
 msgid "Download GeoIP Database"
-msgstr "Ambil GeoIP Database"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:71
 msgid "Schedule monthly update of GeoIP DB"
-msgstr "Jadwal bulanan pembaruan GeoIP DB"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:97
 msgid "Download of the GeoIP database will be scheduled for 2 days after the first Tuesday of the month."
-msgstr "Download GeoIP database akan dijadwalkan selama 2 hari setelah hari Selasa pertama bulan."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:98
 msgid "This option will also download the database if the local filesize is less than 1k (which usually means the stub that comes with the plugin is still in place)."
-msgstr "Opsi ini juga akan download database jika filesize lokal adalah kurang dari 1k (yang biasanya berarti rintisan yang datang dengan plugin ini masih di tempat)."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:104
 msgid "Populate missing GeoIP after update of GeoIP DB"
-msgstr "Mengisi GeoIP hilang setelah update GeoIP DB"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:110
 msgid "Update any missing GeoIP data after downloading a new database."
-msgstr "Memperbarui data GeoIP hilang setelah men-download database baru."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:116
 msgid "Country code for private IP addresses"
@@ -760,35 +760,35 @@ msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:132
 msgid "GeoIP collection is disabled due to the following reasons:"
-msgstr "Koleksi GeoIP dinonaktifkan karena alasan berikut:"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:135
 msgid "GeoIP collection requires PHP %s or above, it is currently disabled due to the installed PHP version being  "
-msgstr "Koleksi GeoIP memerlukan PHP %s atau di atas, saat ini dinonaktifkan karena menjadi versi PHP diinstal "
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:140
 msgid "GeoIP collection requires the cURL PHP extension and it is not loaded on your version of PHP!"
-msgstr "Koleksi GeoIP memerlukan ekstensi PHP cURL dan tidak diambil pada versi PHP!"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:146
 msgid "GeoIP collection requires the BC Math PHP extension and it is not loaded on your version of PHP!"
-msgstr "Koleksi GeoIP memerlukan ekstensi PHP matematika BC dan tidak diambil pada versi PHP!"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:152
 msgid "PHP safe mode detected!  GeoIP collection is not supported with PHP's safe mode enabled!"
-msgstr "Mode PHP aman terdeteksi! Koleksi GeoIP tidak didukung dengan PHP mode aman diaktifkan!"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-maintenance.php:20
 msgid "This will permanently delete data from the database each day, are you sure you want to enable this option?"
-msgstr "Ini akan secara permanen menghapus data dari database setiap hari, Apakah Anda yakin Anda ingin mengaktifkan opsi ini?"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-maintenance.php:52
 msgid "Days"
-msgstr "Hari"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-maintenance.php:53
 msgid "The number of days to keep statistics for.  Minimum value is 30 days.  Invalid values will disable the daily maintenance."
-msgstr "Jumlah hari untuk menjaga statistik untuk. Nilai minimum adalah 30 hari. Nilai-nilai yang tidak valid akan menonaktifkan pemeliharaan harian."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:44
 msgid "Common Report Options"
@@ -796,7 +796,7 @@ msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:49
 msgid "E-mail addresses"
-msgstr "Alamat e-mail"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:54
 msgid "A comma separated list of e-mail addresses to send reports to."
@@ -818,7 +818,7 @@ msgstr ""
 #: wp-statistics/includes/log/exclusions.php:24
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:76
 msgid "GeoIP"
-msgstr "GeoIP"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:82
 msgid "Send a report whenever the GeoIP database is updated."
@@ -844,11 +844,11 @@ msgstr ""
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:116
 #: wp-statistics/schedule.php:221
 msgid "Statistical reporting"
-msgstr "Laporan Statistik"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:129
 msgid "Schedule"
-msgstr "Jadwal"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:153
 msgid "Select how often to receive statistical report."
@@ -856,15 +856,15 @@ msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:159
 msgid "Send reports via"
-msgstr "Mengirim laporan melalui"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:165
 msgid "Email"
-msgstr "Email"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:167
 msgid "SMS"
-msgstr "SMS"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:170
 msgid "Select delivery method for statistical report."
@@ -872,15 +872,15 @@ msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:173
 msgid "Note: To send SMS text messages please install the %s plugin."
-msgstr "Catatan: Untuk mengirim SMS teks pesan silahkan install %s plugin."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:173
 msgid "WordPress SMS"
-msgstr "WordPress SMS"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:180
 msgid "Report body"
-msgstr "Laporan tubuh"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:185
 msgid "Enter the contents of the report."
@@ -894,45 +894,45 @@ msgstr ""
 #: wp-statistics/widget.php:38 wp-statistics/widget.php:247
 #: wp-statistics/wp-statistics.php:621
 msgid "User Online"
-msgstr "User sedang online"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:189
 #: wp-statistics/widget.php:52 wp-statistics/widget.php:253
 msgid "Today Visitor"
-msgstr "Pengunjung hari ini"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:190
 #: wp-statistics/widget.php:45 wp-statistics/widget.php:250
 msgid "Today Visit"
-msgstr "Pengunjung Hari ini"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:191
 #: wp-statistics/widget.php:66 wp-statistics/widget.php:259
 msgid "Yesterday Visitor"
-msgstr "Pengunjung kemarin"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:192
 #: wp-statistics/widget.php:59
 msgid "Yesterday Visit"
-msgstr "Kemarin"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:193
 #: wp-statistics/widget.php:101 wp-statistics/widget.php:274
 msgid "Total Visitor"
-msgstr "Total pengunjung"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:194
 #: wp-statistics/widget.php:94 wp-statistics/widget.php:271
 msgid "Total Visit"
-msgstr "Jumlah Pengunjung"
+msgstr ""
 
 #: wp-statistics/shortcode.php:175
 msgid "None"
-msgstr "Tidak ada"
+msgstr ""
 
 #: wp-statistics/includes/settings/wps-settings.php:108
 msgid "About"
-msgstr "Tentang"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-overview-display.php:20
 msgid "Dashboard"
@@ -966,40 +966,40 @@ msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-overview-display.php:69
 msgid "Map type"
-msgstr "Peta jenis"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:440
 #: wp-statistics/includes/settings/tabs/wps-overview-display.php:75
 msgid "Google"
-msgstr "Google"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-overview-display.php:75
 msgid "JQVMap"
-msgstr "JQVMap"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-overview-display.php:82
 msgid "The \"Google\" option will use Google's mapping service to plot the recent visitors (requires access to Google)."
-msgstr "\"Google\" pilihan akan menggunakan layanan pemetaan Google untuk plot pengunjung baru (memerlukan akses ke Google)."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-overview-display.php:83
 msgid "The \"JQVMap\" option will use JQVMap javascript mapping library to plot the recent visitors (requires no extenral services)."
-msgstr "\"JQVMap\" pilihan akan menggunakan JQVMap javascript Perpustakaan pemetaan untuk plot pengunjung baru (memerlukan tidak ada layanan extenral)."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-overview-display.php:89
 msgid "Disable map"
-msgstr "Menonaktifkan peta"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-overview-display.php:95
 msgid "Disable the map display"
-msgstr "Menonaktifkan tampilan peta"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-overview-display.php:101
 msgid "Get country location from Google"
-msgstr "Mendapatkan negara lokasi dari Google"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-overview-display.php:107
 msgid "This feature may cause a performance degradation when viewing statistics and is only valid if the map type is set to \"Google\"."
-msgstr "Fitur ini dapat menyebabkan penurunan kinerja ketika melihat statistik dan ini hanya berlaku jika jenis peta diatur ke \"Google\"."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-removal.php:15
 msgid "WP Statisitcs Removal"
@@ -1027,7 +1027,7 @@ msgstr ""
 
 #: wp-statistics/includes/settings/wps-settings.php:100
 msgid "General"
-msgstr "Umum"
+msgstr ""
 
 #: wp-statistics/includes/settings/wps-settings.php:101
 msgid "Notifications"
@@ -1039,7 +1039,7 @@ msgstr ""
 
 #: wp-statistics/includes/settings/wps-settings.php:106
 msgid "Maintenance"
-msgstr "Pemeliharaan"
+msgstr ""
 
 #: wp-statistics/includes/settings/wps-settings.php:107
 msgid "Removal"
@@ -1054,105 +1054,105 @@ msgstr ""
 #: wp-statistics/includes/settings/tabs/wps-overview-display.php:116
 #: wp-statistics/includes/settings/tabs/wps-removal.php:42
 msgid "Update"
-msgstr "Update"
+msgstr ""
 
 #: wp-statistics/schedule.php:10
 msgid "Once Weekly"
-msgstr "Sekali seminggu"
+msgstr ""
 
 #: wp-statistics/schedule.php:17
 msgid "Once Every 2 Weeks"
-msgstr "Setiap 2 minggu sekali"
+msgstr ""
 
 #: wp-statistics/schedule.php:24
 msgid "Once Every 4 Weeks"
-msgstr "Setiap 4 minggu"
+msgstr ""
 
 #: wp-statistics/widget.php:14 wp-statistics/wp-statistics.php:408
 #: wp-statistics/wp-statistics.php:469
 msgid "Statistics"
-msgstr "Statistik"
+msgstr ""
 
 #: wp-statistics/widget.php:15
 msgid "Show site stats in sidebar."
-msgstr "Tampilkan statistik situs di sidebar."
+msgstr ""
 
 #: wp-statistics/widget.php:73 wp-statistics/widget.php:262
 msgid "Week Visit"
-msgstr "Pengunjung Minggu ini"
+msgstr ""
 
 #: wp-statistics/widget.php:80 wp-statistics/widget.php:265
 msgid "Month Visit"
-msgstr "Pengunjung Bulan ini"
+msgstr ""
 
 #: wp-statistics/widget.php:87 wp-statistics/widget.php:268
 msgid "Years Visit"
-msgstr "Pengunjung Tahun ini"
+msgstr ""
 
 #: wp-statistics/widget.php:108 wp-statistics/widget.php:277
 msgid "Total Page Views"
-msgstr "Total tampilan halaman"
+msgstr ""
 
 #: wp-statistics/widget.php:116
 msgid "Search Engine referred"
-msgstr "Pencari yang disebut"
+msgstr ""
 
 #: wp-statistics/widget.php:123 wp-statistics/widget.php:300
 msgid "Total Posts"
-msgstr "Jumlah Posting"
+msgstr ""
 
 #: wp-statistics/widget.php:130 wp-statistics/widget.php:303
 msgid "Total Pages"
-msgstr "Jumlah Halaman"
+msgstr ""
 
 #: wp-statistics/widget.php:137 wp-statistics/widget.php:306
 msgid "Total Comments"
-msgstr "Jumlah Komentar"
+msgstr ""
 
 #: wp-statistics/widget.php:144 wp-statistics/widget.php:309
 msgid "Total Spams"
-msgstr "Jumlah Spam"
+msgstr ""
 
 #: wp-statistics/widget.php:151 wp-statistics/widget.php:312
 msgid "Total Users"
-msgstr "Jumlah Anggota"
+msgstr ""
 
 #: wp-statistics/widget.php:158 wp-statistics/widget.php:315
 msgid "Average Posts"
-msgstr "Rata-rata Posting"
+msgstr ""
 
 #: wp-statistics/widget.php:165 wp-statistics/widget.php:318
 msgid "Average Comments"
-msgstr "Rata-rata Komentar"
+msgstr ""
 
 #: wp-statistics/widget.php:172 wp-statistics/widget.php:321
 msgid "Average Users"
-msgstr "Rata-rata Anggota"
+msgstr ""
 
 #: wp-statistics/shortcode.php:151 wp-statistics/widget.php:179
 #: wp-statistics/widget.php:324
 msgid "Last Post Date"
-msgstr "Tanggal Posting Terakhir"
+msgstr ""
 
 #: wp-statistics/widget.php:240
 msgid "Name"
-msgstr "Nama"
+msgstr ""
 
 #: wp-statistics/widget.php:244
 msgid "Items"
-msgstr "Butir"
+msgstr ""
 
 #: wp-statistics/widget.php:256 wp-statistics/wp-statistics.php:646
 msgid "Yesterday visit"
-msgstr "Pengunjung Kemarin"
+msgstr ""
 
 #: wp-statistics/widget.php:280
 msgid "Search Engine Referred"
-msgstr "Pencari yang disebut"
+msgstr ""
 
 #: wp-statistics/widget.php:283
 msgid "Select type of search engine"
-msgstr "Pilih opsi untuk mesin pencari"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:122
 msgid "WP Statistics has been removed, please disable and delete it."
@@ -1160,41 +1160,41 @@ msgstr ""
 
 #: wp-statistics/wp-statistics.php:54
 msgid "WP Statistics"
-msgstr "WP Statistics"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:55
 msgid "Complete statistics for your WordPress site."
-msgstr "Statistik lengkap untuk situs WordPress Anda."
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:313 wp-statistics/wp-statistics.php:428
 #: wp-statistics/wp-statistics.php:523
 msgid "Settings"
-msgstr "Pengaturan"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:325
 msgid "Click here to visit the plugin on WordPress.org"
-msgstr "Klik di sini untuk mengunjungi plugin di WordPress.org"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:325
 msgid "Visit WordPress.org page"
-msgstr "Kunjungi halaman WordPress.org"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:328
 msgid "Click here to rate and review this plugin on WordPress.org"
-msgstr "Klik di sini untuk menilai dan meninjau plugin ini di WordPress.org"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:328
 msgid "Rate this plugin"
-msgstr "Menilai plugin ini"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:372
 msgid "WP Statistics - Hits"
-msgstr "WP Statistics - Hits"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:411 wp-statistics/wp-statistics.php:472
 #: wp-statistics/wp-statistics.php:510
 msgid "Overview"
-msgstr "Ikhtisar"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:417 wp-statistics/wp-statistics.php:515
 msgid "Online"
@@ -1207,11 +1207,11 @@ msgstr ""
 #: wp-statistics/shortcode.php:142 wp-statistics/wp-statistics.php:420
 #: wp-statistics/wp-statistics.php:518
 msgid "Searches"
-msgstr "Pencarian"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:421 wp-statistics/wp-statistics.php:519
 msgid "Search Words"
-msgstr "Kata-kata pencarian"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:422 wp-statistics/wp-statistics.php:520
 msgid "Top Visitors Today"
@@ -1219,11 +1219,11 @@ msgstr ""
 
 #: wp-statistics/wp-statistics.php:427 wp-statistics/wp-statistics.php:522
 msgid "Optimization"
-msgstr "Optimasi"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:433 wp-statistics/wp-statistics.php:486
 msgid "Manual"
-msgstr "Manual"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:501
 msgid "Site"
@@ -1235,36 +1235,36 @@ msgstr ""
 
 #: wp-statistics/wp-statistics.php:628
 msgid "Today visitor"
-msgstr "Pengunjung hari ini"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:634
 msgid "Today visit"
-msgstr "Hari ini mengunjungi"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:640
 msgid "Yesterday visitor"
-msgstr "Pengunjung kemarin"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:652
 msgid "View Stats"
-msgstr "Lihat statistik"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:676
 msgid "Download ODF file"
-msgstr "Men-download ODF file"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:677
 msgid "Download HTML file"
-msgstr "Men-download HTML file"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:681
 msgid "Manual file not found."
-msgstr "Manual file tidak ditemukan."
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:748 wp-statistics/wp-statistics.php:880
 #: wp-statistics/wp-statistics.php:915
 msgid "You do not have sufficient permissions to access this page."
-msgstr "Anda tidak mempunyai akses yang cukup untuk halaman ini"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:301
 msgid "WP Statistics %s installed on"
@@ -1272,19 +1272,19 @@ msgstr ""
 
 #: wp-statistics/wps-updates.php:54
 msgid "Error downloading GeoIP database from: %s - %s"
-msgstr "Men-download GeoIP database dari kesalahan: %s - %s"
+msgstr ""
 
 #: wp-statistics/wps-updates.php:65
 msgid "Error could not open downloaded GeoIP database for reading: %s"
-msgstr "Kesalahan tidak dapat membuka database GeoIP download untuk membaca: %s"
+msgstr ""
 
 #: wp-statistics/wps-updates.php:72
 msgid "Error could not open destination GeoIP database for writing %s"
-msgstr "Kesalahan tidak dapat membuka tujuan GeoIP database untuk menulis %s"
+msgstr ""
 
 #: wp-statistics/wps-updates.php:88
 msgid "GeoIP Database updated successfully!"
-msgstr "GeoIP Database diperbarui berhasil!"
+msgstr ""
 
 #: wp-statistics/wps-updates.php:113
 msgid "GeoIP update on"
@@ -1292,11 +1292,11 @@ msgstr ""
 
 #: wp-statistics/wps-updates.php:180
 msgid "Error downloading browscap database from: %s - %s"
-msgstr "Men-download browscap database dari kesalahan: %s - %s"
+msgstr ""
 
 #: wp-statistics/wps-updates.php:289
 msgid "browscap database updated successfully!"
-msgstr "database browscap yang berhasil!"
+msgstr ""
 
 #: wp-statistics/wps-updates.php:299
 msgid "browscap database updated failed!  Cache file too large, reverting to previous browscap.ini."
@@ -1308,7 +1308,7 @@ msgstr ""
 
 #: wp-statistics/wps-updates.php:329
 msgid "browscap already at current version!"
-msgstr "browscap sudah di versi saat ini!"
+msgstr ""
 
 #: wp-statistics/wps-updates.php:342
 msgid "Browscap.ini update on"
@@ -1321,11 +1321,11 @@ msgstr ""
 #: wp-statistics/dashboard.php:57
 #: wp-statistics/includes/log/widgets/browsers.php:41
 msgid "Top 10 Browsers"
-msgstr "Top 10 browser"
+msgstr ""
 
 #: wp-statistics/dashboard.php:58 wp-statistics/wp-statistics.php:457
 msgid "Top 10 Countries"
-msgstr "Top 10 negara"
+msgstr ""
 
 #: wp-statistics/dashboard.php:59
 msgid "Today's Visitor Map"
@@ -1335,40 +1335,40 @@ msgstr ""
 #: wp-statistics/includes/log/hit-statistics.php:8
 #: wp-statistics/wp-statistics.php:446
 msgid "Hit Statistics"
-msgstr "Statistik hit"
+msgstr ""
 
 #: wp-statistics/dashboard.php:61 wp-statistics/wp-statistics.php:450
 msgid "Top 10 Pages"
-msgstr "Top 10 halaman"
+msgstr ""
 
 #: wp-statistics/dashboard.php:62
 #: wp-statistics/includes/log/last-visitor.php:36
 #: wp-statistics/wp-statistics.php:451
 msgid "Recent Visitors"
-msgstr "Pengunjung terkini"
+msgstr ""
 
 #: wp-statistics/dashboard.php:63
 #: wp-statistics/includes/log/top-referring.php:59
 #: wp-statistics/includes/log/top-referring.php:81
 #: wp-statistics/wp-statistics.php:456
 msgid "Top Referring Sites"
-msgstr "Top merujuk situs"
+msgstr ""
 
 #: wp-statistics/dashboard.php:64
 #: wp-statistics/includes/log/widgets/quickstats.php:75
 #: wp-statistics/includes/log/widgets/summary.php:75
 #: wp-statistics/wp-statistics.php:448
 msgid "Search Engine Referrals"
-msgstr "Cari mesin arahan"
+msgstr ""
 
 #: wp-statistics/dashboard.php:65 wp-statistics/wp-statistics.php:454
 msgid "Summary"
-msgstr "Ringkasan"
+msgstr ""
 
 #: wp-statistics/dashboard.php:66 wp-statistics/includes/log/last-search.php:31
 #: wp-statistics/wp-statistics.php:449
 msgid "Latest Search Words"
-msgstr "Kata-kata pencarian terbaru"
+msgstr ""
 
 #: wp-statistics/dashboard.php:67
 msgid "Top 10 Visitors Today"
@@ -1380,11 +1380,11 @@ msgstr ""
 
 #: wp-statistics/includes/functions/geoip-populate.php:24
 msgid "Unable to load the GeoIP database, make sure you have downloaded it in the settings page."
-msgstr "Tidak dapat memuat GeoIP database, pastikan Anda telah men-download di halaman pengaturan."
+msgstr ""
 
 #: wp-statistics/includes/functions/geoip-populate.php:48
 msgid "Updated %s GeoIP records in the visitors database."
-msgstr "Diperbarui %s GeoIP record di database pengunjung."
+msgstr ""
 
 #: wp-statistics/includes/functions/purge.php:21
 #: wp-statistics/includes/functions/purge.php:39
@@ -1392,7 +1392,7 @@ msgstr "Diperbarui %s GeoIP record di database pengunjung."
 #: wp-statistics/includes/functions/purge.php:61
 #: wp-statistics/includes/functions/purge.php:94
 msgid "%s data older than %s days purged successfully."
-msgstr "data %s lebih tua dari %s hari dibersihkan berhasil."
+msgstr ""
 
 #: wp-statistics/includes/functions/purge.php:23
 #: wp-statistics/includes/functions/purge.php:41
@@ -1400,7 +1400,7 @@ msgstr "data %s lebih tua dari %s hari dibersihkan berhasil."
 #: wp-statistics/includes/functions/purge.php:63
 #: wp-statistics/includes/functions/purge.php:96
 msgid "No records found to purge from %s!"
-msgstr "Tidak ada catatan ditemukan untuk membersihkan dari %s!"
+msgstr ""
 
 #: wp-statistics/includes/functions/purge-hits.php:45
 #: wp-statistics/includes/functions/purge.php:109
@@ -1409,11 +1409,11 @@ msgstr ""
 
 #: wp-statistics/includes/functions/purge.php:114
 msgid "Please select a value over 30 days."
-msgstr "Silakan pilih nilai lebih dari 30 hari."
+msgstr ""
 
 #: wp-statistics/includes/log/all-browsers.php:21
 msgid "Browser Statistics"
-msgstr "Browser Statistik"
+msgstr ""
 
 #: wp-statistics/includes/log/all-browsers.php:29
 #: wp-statistics/includes/log/all-browsers.php:113
@@ -1433,79 +1433,79 @@ msgstr "Browser Statistik"
 #: wp-statistics/includes/log/top-referring.php:77
 #: wp-statistics/includes/log/top-visitors.php:40
 msgid "Click to toggle"
-msgstr "Klik untuk beralih"
+msgstr ""
 
 #: wp-statistics/includes/log/all-browsers.php:30
 #: wp-statistics/wp-statistics.php:413 wp-statistics/wp-statistics.php:455
 #: wp-statistics/wp-statistics.php:511
 msgid "Browsers"
-msgstr "Browser"
+msgstr ""
 
 #: wp-statistics/includes/log/all-browsers.php:57
 msgid "Browsers by type"
-msgstr "Browser berdasarkan jenis"
+msgstr ""
 
 #: wp-statistics/includes/log/all-browsers.php:114
 #: wp-statistics/includes/log/widgets/top.visitors.php:18
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:302
 msgid "Platform"
-msgstr "Platform"
+msgstr ""
 
 #: wp-statistics/includes/log/all-browsers.php:141
 msgid "Browsers by platform"
-msgstr "Browser oleh platform"
+msgstr ""
 
 #: wp-statistics/includes/log/all-browsers.php:249
 msgid "%s Version"
-msgstr "Versi %s"
+msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:8
 msgid "Attention: Exclusion are not currently set to be recorded, the results below may not reflect current statistics!"
-msgstr "Perhatian: Pengecualian tidak saat ini diatur untuk direkam, hasil di bawah ini mungkin tidak mencerminkan Statistik!"
+msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:64
 msgid "Exclusions Statistics"
-msgstr "Pengecualian Statistik"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:970
 msgid "10 Days"
-msgstr "10 hari"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:970
 msgid "20 Days"
-msgstr "20 hari"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:970
 msgid "30 Days"
-msgstr "30 hari"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:970
 msgid "2 Months"
-msgstr "2 bulan"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:970
 msgid "3 Months"
-msgstr "3 bulan"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:970
 msgid "6 Months"
-msgstr "6 bulan"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:970
 msgid "9 Months"
-msgstr "9 bulan"
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:970
 msgid "1 Year"
-msgstr "1 tahun"
+msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:73
 msgid "Exclusions Statistical Chart"
-msgstr "Grafik Statistik pengecualian"
+msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:95
 msgid "Excluded hits in the last"
-msgstr "Dikecualikan hits di terakhir"
+msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:95
 #: wp-statistics/includes/log/hit-statistics.php:66
@@ -1514,25 +1514,25 @@ msgstr "Dikecualikan hits di terakhir"
 #: wp-statistics/includes/log/widgets/search.php:42
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:208
 msgid "days"
-msgstr "hari"
+msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:116
 msgid "Number of excluded hits"
-msgstr "Jumlah hit dikecualikan"
+msgstr ""
 
 #: wp-statistics/includes/log/hit-statistics.php:27
 msgid "Hits Statistics Chart"
-msgstr "Grafik Statistik hits"
+msgstr ""
 
 #: wp-statistics/includes/log/hit-statistics.php:66
 #: wp-statistics/includes/log/widgets/hits.php:42
 msgid "Hits in the last"
-msgstr "Hits di terakhir"
+msgstr ""
 
 #: wp-statistics/includes/log/hit-statistics.php:87
 #: wp-statistics/includes/log/widgets/hits.php:63
 msgid "Number of visits and visitors"
-msgstr "Jumlah kunjungan dan pengunjung"
+msgstr ""
 
 #: wp-statistics/includes/log/hit-statistics.php:101
 #: wp-statistics/includes/log/hit-statistics.php:170
@@ -1540,7 +1540,7 @@ msgstr "Jumlah kunjungan dan pengunjung"
 #: wp-statistics/includes/log/widgets/quickstats.php:24
 #: wp-statistics/includes/log/widgets/summary.php:24
 msgid "Visit"
-msgstr "Kunjungi"
+msgstr ""
 
 #: wp-statistics/includes/log/hit-statistics.php:101
 #: wp-statistics/includes/log/hit-statistics.php:171
@@ -1548,11 +1548,11 @@ msgstr "Kunjungi"
 #: wp-statistics/includes/log/widgets/quickstats.php:23
 #: wp-statistics/includes/log/widgets/summary.php:23
 msgid "Visitor"
-msgstr "Pengunjung"
+msgstr ""
 
 #: wp-statistics/includes/log/last-search.php:65
 msgid "Latest Search Word Statistics"
-msgstr "Cari kata Statistik terbaru"
+msgstr ""
 
 #: wp-statistics/includes/log/last-search.php:110
 #: wp-statistics/includes/log/last-visitor.php:101
@@ -1562,7 +1562,7 @@ msgstr "Cari kata Statistik terbaru"
 #: wp-statistics/includes/log/widgets/recent.php:14
 #: wp-statistics/includes/log/widgets/words.php:27
 msgid "#hash#"
-msgstr "#hash #"
+msgstr ""
 
 #: wp-statistics/includes/log/last-search.php:115
 #: wp-statistics/includes/log/last-visitor.php:106
@@ -1572,7 +1572,7 @@ msgstr "#hash #"
 #: wp-statistics/includes/log/widgets/words.php:42
 #: wp-statistics/includes/settings/tabs/wps-overview-display.php:60
 msgid "Map"
-msgstr "Peta"
+msgstr ""
 
 #: wp-statistics/includes/log/last-search.php:159
 #: wp-statistics/includes/log/last-visitor.php:139
@@ -1580,7 +1580,7 @@ msgstr "Peta"
 #: wp-statistics/includes/log/top-pages.php:205
 #: wp-statistics/includes/log/top-referring.php:153
 msgid "Page"
-msgstr "Halaman"
+msgstr ""
 
 #: wp-statistics/includes/log/last-search.php:159
 #: wp-statistics/includes/log/last-visitor.php:139
@@ -1588,7 +1588,7 @@ msgstr "Halaman"
 #: wp-statistics/includes/log/top-pages.php:205
 #: wp-statistics/includes/log/top-referring.php:153
 msgid "From"
-msgstr "Dari"
+msgstr ""
 
 #: wp-statistics/includes/log/last-search.php:47
 #: wp-statistics/includes/log/last-visitor.php:38
@@ -1597,11 +1597,11 @@ msgstr "Dari"
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:192
 #: wp-statistics/widget.php:296
 msgid "All"
-msgstr "Semua"
+msgstr ""
 
 #: wp-statistics/includes/log/last-visitor.php:68
 msgid "Recent Visitor Statistics"
-msgstr "Statistik pengunjung terkini"
+msgstr ""
 
 #: wp-statistics/includes/log/online.php:11
 #: wp-statistics/includes/log/online.php:18
@@ -1614,26 +1614,26 @@ msgstr ""
 
 #: wp-statistics/includes/log/page-statistics.php:26
 msgid "Page Trend for Post ID"
-msgstr "Halaman tren untuk posting ID"
+msgstr ""
 
 #: wp-statistics/includes/log/page-statistics.php:35
 msgid "Page Trend"
-msgstr "Halaman tren"
+msgstr ""
 
 #: wp-statistics/includes/log/search-statistics.php:19
 #: wp-statistics/includes/log/search-statistics.php:28
 msgid "Search Engine Referral Statistics"
-msgstr "Cari mesin arahan Statistik"
+msgstr ""
 
 #: wp-statistics/includes/log/search-statistics.php:69
 #: wp-statistics/includes/log/widgets/search.php:42
 msgid "Search engine referrals in the last"
-msgstr "Cari mesin arahan dalam terakhir"
+msgstr ""
 
 #: wp-statistics/includes/log/search-statistics.php:90
 #: wp-statistics/includes/log/widgets/search.php:63
 msgid "Number of referrals"
-msgstr "Jumlah arahan"
+msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:24
 #: wp-statistics/includes/log/search-statistics.php:104
@@ -1643,58 +1643,58 @@ msgstr "Jumlah arahan"
 #: wp-statistics/includes/log/widgets/summary.php:58
 #: wp-statistics/includes/log/widgets/summary.php:105
 msgid "Total"
-msgstr "Total"
+msgstr ""
 
 #: wp-statistics/includes/log/top-countries.php:18
 #: wp-statistics/includes/log/top-countries.php:27
 msgid "Top Countries"
-msgstr "Negara teratas"
+msgstr ""
 
 #: wp-statistics/includes/log/top-countries.php:31
 #: wp-statistics/includes/log/widgets/countries.php:9
 #: wp-statistics/includes/log/widgets/top.visitors.php:11
 msgid "Rank"
-msgstr "Peringkat"
+msgstr ""
 
 #: wp-statistics/includes/log/top-countries.php:32
 #: wp-statistics/includes/log/widgets/countries.php:10
 #: wp-statistics/includes/log/widgets/top.visitors.php:13
 msgid "Flag"
-msgstr "Bendera"
+msgstr ""
 
 #: wp-statistics/includes/log/top-countries.php:33
 #: wp-statistics/includes/log/widgets/countries.php:11
 #: wp-statistics/includes/log/widgets/top.visitors.php:14
 msgid "Country"
-msgstr "Negara"
+msgstr ""
 
 #: wp-statistics/includes/log/top-countries.php:34
 #: wp-statistics/includes/log/widgets/countries.php:12
 msgid "Visitor Count"
-msgstr "Jumlah pengunjung"
+msgstr ""
 
 #: wp-statistics/includes/log/top-pages.php:20
 #: wp-statistics/includes/log/top-pages.php:156
 msgid "Top Pages"
-msgstr "Atas halaman"
+msgstr ""
 
 #: wp-statistics/includes/log/top-pages.php:30
 msgid "Top 5 Pages Trends"
-msgstr "Atas 5 Halaman tren"
+msgstr ""
 
 #: wp-statistics/includes/log/top-pages.php:67
 msgid "Top 5 Page Trending Stats"
-msgstr "Top 5 halaman statistik tren"
+msgstr ""
 
 #: wp-statistics/includes/log/top-pages.php:88
 #: wp-statistics/includes/log/widgets/page.php:63
 msgid "Number of Hits"
-msgstr "Jumlah Hits"
+msgstr ""
 
 #: wp-statistics/includes/log/top-pages.php:184
 #: wp-statistics/includes/log/widgets/pages.php:13
 msgid "No page title found"
-msgstr "Judul Halaman tidak ditemukan"
+msgstr ""
 
 #: wp-statistics/includes/log/top-pages.php:187
 #: wp-statistics/includes/log/widgets/pages.php:16
@@ -1703,20 +1703,20 @@ msgstr "Judul Halaman tidak ditemukan"
 #: wp-statistics/includes/settings/tabs/wps-general.php:127
 #: wp-statistics/shortcode.php:139
 msgid "Visits"
-msgstr "Kunjungan"
+msgstr ""
 
 #: wp-statistics/includes/log/top-referring.php:4
 msgid "To be added soon"
-msgstr "Akan ditambahkan segera"
+msgstr ""
 
 #: wp-statistics/includes/log/top-referring.php:79
 msgid "Referring sites from"
-msgstr "Merujuk situs dari"
+msgstr ""
 
 #: wp-statistics/includes/log/top-referring.php:137
 #: wp-statistics/includes/log/widgets/referring.php:35
 msgid "References"
-msgstr "Referensi"
+msgstr ""
 
 #: wp-statistics/includes/log/top-visitors.php:12
 msgid "Top 100 Visitors Today"
@@ -1724,87 +1724,87 @@ msgstr ""
 
 #: wp-statistics/includes/log/log.php:17
 msgid "About WP Statistics Version %s"
-msgstr "Tentang WP Statistics Versi %s"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/about.php:11
 msgid "Website"
-msgstr "Situs web"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/about.php:12
 msgid "Rate and Review"
-msgstr "Tingkat dan Review"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/about.php:16
 msgid "More Information"
-msgstr "Informasi lebih lanjut"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/about.php:25
 #: wp-statistics/includes/settings/tabs/wps-about.php:12
 msgid "This product includes GeoLite2 data created by MaxMind, available from %s."
-msgstr "Produk ini termasuk data GeoLite2 yang dibuat oleh MaxMind, tersedia dari %s."
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/browsers.php:34
 msgid "Other"
-msgstr "Lainnya"
+msgstr ""
 
 #: wp-statistics/wp-statistics.php:445
 msgid "Today Visitors Map"
-msgstr "Hari peta pengunjung"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/referring.php:36
 msgid "Address"
-msgstr "Alamat"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/quickstats.php:12
 #: wp-statistics/includes/log/widgets/summary.php:12
 msgid "User(s) Online"
-msgstr "Pengguna Online"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/quickstats.php:28
 #: wp-statistics/includes/log/widgets/quickstats.php:80
 #: wp-statistics/includes/log/widgets/summary.php:28
 #: wp-statistics/includes/log/widgets/summary.php:80
 msgid "Today"
-msgstr "Hari ini"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/quickstats.php:34
 #: wp-statistics/includes/log/widgets/quickstats.php:81
 #: wp-statistics/includes/log/widgets/summary.php:34
 #: wp-statistics/includes/log/widgets/summary.php:81
 msgid "Yesterday"
-msgstr "Kemarin"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/quickstats.php:99
 #: wp-statistics/includes/log/widgets/summary.php:99
 msgid "Daily Total"
-msgstr "Harian Total"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/quickstats.php:118
 #: wp-statistics/includes/log/widgets/summary.php:118
 msgid "Current Time and Date"
-msgstr "Saat ini waktu dan tanggal"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/quickstats.php:118
 #: wp-statistics/includes/log/widgets/summary.php:118
 msgid "(Adjustment)"
-msgstr "(Penyesuaian)"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/quickstats.php:122
 #: wp-statistics/includes/log/widgets/summary.php:122
 msgid "Date: %s"
-msgstr "Tanggal: %s"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/quickstats.php:126
 #: wp-statistics/includes/log/widgets/summary.php:126
 msgid "Time: %s"
-msgstr "Waktu: %s"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/top.visitors.php:12
 #: wp-statistics/includes/settings/tabs/wps-maintenance.php:80
 #: wp-statistics/wp-statistics.php:337 wp-statistics/wp-statistics.php:416
 #: wp-statistics/wp-statistics.php:514
 msgid "Hits"
-msgstr "Hits"
+msgstr ""
 
 #: wp-statistics/includes/log/widgets/top.visitors.php:15
 msgid "IP"
@@ -1824,11 +1824,11 @@ msgstr ""
 #: wp-statistics/ajax.php:184 wp-statistics/ajax.php:302
 #: wp-statistics/includes/optimization/wps-optimization.php:6
 msgid "Access denied!"
-msgstr "Akses ditolak!"
+msgstr ""
 
 #: wp-statistics/ajax.php:31
 msgid "%s agent data deleted successfully."
-msgstr "%s agen data dihapus berhasil."
+msgstr ""
 
 #: wp-statistics/ajax.php:34
 msgid "No agent data found to remove!"
@@ -1837,11 +1837,11 @@ msgstr ""
 #: wp-statistics/ajax.php:38 wp-statistics/ajax.php:68
 #: wp-statistics/ajax.php:120 wp-statistics/ajax.php:126
 msgid "Please select the desired items."
-msgstr "Pilih item yang dikehendaki."
+msgstr ""
 
 #: wp-statistics/ajax.php:62
 msgid "%s platform data deleted successfully."
-msgstr "%s platform data dihapus berhasil."
+msgstr ""
 
 #: wp-statistics/ajax.php:65
 msgid "No platform data found to remove!"
@@ -1849,72 +1849,72 @@ msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:1074
 msgid "%s table data deleted successfully."
-msgstr "data tabel %s berhasil dihapus."
+msgstr ""
 
 #: wp-statistics/includes/functions/functions.php:1078
 msgid "Error, %s not emptied!"
-msgstr "Kesalahan, %s tidak dikosongkan!"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:5
 msgid "Database Setup"
-msgstr "Database Setup"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:10
 msgid "Re-run Install"
-msgstr "Kembali menjalankan instalasi"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:14
 msgid "Install Now!"
-msgstr "Instal sekarang!"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:15
 msgid "If for some reason your installation of WP Statistics is missing the database tables or other core items, this will re-execute the install process."
-msgstr "Jika untuk beberapa alasan Anda instalasi WP Statistics tidak ada tabel database atau item inti lainnya, ini akan mengeksekusi ulang pernyataan proses instalasi."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:20
 msgid "Database Index"
-msgstr "Indeks database"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:25
 #: wp-statistics/includes/optimization/tabs/wps-optimization-updates.php:21
 #: wp-statistics/wp-statistics.php:414 wp-statistics/wp-statistics.php:512
 msgid "Countries"
-msgstr "Negara"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:42
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:74
 #: wp-statistics/includes/optimization/tabs/wps-optimization-updates.php:25
 #: wp-statistics/includes/optimization/tabs/wps-optimization-updates.php:40
 msgid "Update Now!"
-msgstr "Perbarui sekarang!"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:43
 msgid "Older installs of WP Statistics allow for duplicate entries in the visitors table in a corner case.  Newer installs protect against this with a unique index on the table.  To create the index on the older installs duplicate entries must be deleted first.  Clicking \"Update Now\" will scan the vistitors table, delete duplicate entries and add the index."
-msgstr "Remaja menginstal WP Statistics memungkinkan untuk entri duplikat dalam tabel pengunjung dalam kasus sudut. Menginstall baru melindungi terhadap ini dengan indeks unik di atas meja. Untuk membuat indeks di menginstall remaja entri duplikat harus dihapus terlebih dahulu. Mengklik \"Update Now\" akan memindai tabel vistitors, menghapus entri duplikat dan menambahkan indeks."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:44
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:108
 msgid "This operation could take a long time on installs with many rows in the visitors table."
-msgstr "Operasi ini dapat mengambil waktu lama untuk menginstal dengan banyak baris dalam tabel pengunjung."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:50
 msgid "Older installs of WP Statistics allow for duplicate entries in the visitors table in a corner case.  Newer installs protect against this with a unique index on the table."
-msgstr "Remaja menginstal WP Statistics memungkinkan untuk entri duplikat dalam tabel pengunjung dalam kasus sudut. Menginstall baru melindungi terhadap ini dengan indeks unik di atas meja."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:51
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:83
 #: wp-statistics/includes/optimization/tabs/wps-optimization-database.php:114
 msgid "Congratulations, your installation is already up to date, nothing to do."
-msgstr "Selamat, instalasi ini sudah sampai tanggal, tidak ada hubungannya."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-export.php:8
 #: wp-statistics/includes/optimization/wps-optimization.php:235
 msgid "Export"
-msgstr "Ekspor"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-export.php:13
 msgid "Export from"
-msgstr "Ekspor dari"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-export.php:18
 #: wp-statistics/includes/optimization/tabs/wps-optimization-export.php:37
@@ -1924,31 +1924,31 @@ msgstr "Ekspor dari"
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:134
 #: wp-statistics/includes/settings/tabs/wps-notifications.php:164
 msgid "Please select"
-msgstr "Silakan pilih"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-export.php:26
 msgid "Select the table for the output file."
-msgstr "Pilih tabel untuk output file."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-export.php:32
 msgid "Export To"
-msgstr "Ekspor ke"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-export.php:42
 msgid "Select the output file type."
-msgstr "Pilih jenis file output."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-export.php:48
 msgid "Include Header Row"
-msgstr "Termasuk baris Header"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-export.php:53
 msgid "Include a header row as the first line of the exported file."
-msgstr "Sertakan baris header sebagai baris pertama dari file yang diekspor."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-export.php:54
 msgid "Start Now!"
-msgstr "Mulai sekarang!"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-historical.php:15
 msgid "Historical Values"
@@ -1964,7 +1964,7 @@ msgstr ""
 #: wp-statistics/shortcode.php:140 wp-statistics/wp-statistics.php:423
 #: wp-statistics/wp-statistics.php:521
 msgid "Visitors"
-msgstr "Pengunjung"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-historical.php:31
 msgid "Number of historical number of visitors to the site (current value is %s)."
@@ -1984,82 +1984,82 @@ msgstr ""
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:107
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:141
 msgid "Are you sure?"
-msgstr "Kamu yakin?"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:175
 msgid "Data"
-msgstr "Data"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:180
 msgid "Empty Table"
-msgstr "Meja kosong"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:194
 msgid "All data table will be lost."
-msgstr "Semua tabel data akan hilang."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:195
 msgid "Clear now!"
-msgstr "Jelas sekarang!"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:203
 msgid "Purge records older than"
-msgstr "Membersihkan lebih tua dari catatan"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:209
 msgid "Deleted user statistics data older than the selected number of days.  Minimum value is 30 days."
-msgstr "Dihapus pengguna data statistik lebih tua dari nomor yang dipilih hari. Nilai minimum adalah 30 hari."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:210
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:225
 msgid "Purge now!"
-msgstr "Membersihkan sekarang!"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:232
 msgid "Delete User Agent Types"
-msgstr "Menghapus jenis agen pengguna"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:237
 msgid "Delete Agents"
-msgstr "Hapus agen"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:252
 msgid "All visitor data will be lost for this agent type."
-msgstr "Semua data pengunjung akan hilang untuk jenis agen ini."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:253
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:277
 msgid "Delete now!"
-msgstr "Menghapus sekarang!"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:261
 msgid "Delete Platforms"
-msgstr "Menghapus platform"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-purging.php:276
 msgid "All visitor data will be lost for this platform type."
-msgstr "Semua data pengunjung akan hilang untuk jenis platform ini."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:17
 msgid "Resources"
-msgstr "Sumber daya"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:22
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:27
 msgid "Memory usage in PHP"
-msgstr "Penggunaan memori di PHP"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:26
 msgid "Byte"
-msgstr "Byte"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:33
 msgid "PHP Memory Limit"
-msgstr "Batas memori PHP"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:38
 msgid "The memory limit a script is allowed to consume, set in php.ini."
-msgstr "Batas memori script diperbolehkan mengkonsumsi, mengatur dalam php.ini."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:44
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:55
@@ -2069,7 +2069,7 @@ msgstr "Batas memori script diperbolehkan mengkonsumsi, mengatur dalam php.ini."
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:99
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:110
 msgid "Number of rows in the %s table"
-msgstr "Jumlah baris dalam tabel %s"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:48
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:59
@@ -2079,7 +2079,7 @@ msgstr "Jumlah baris dalam tabel %s"
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:103
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:114
 msgid "Row"
-msgstr "Baris"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:49
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:60
@@ -2089,129 +2089,129 @@ msgstr "Baris"
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:104
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:115
 msgid "Number of rows"
-msgstr "Jumlah baris"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:120
 msgid "Version Info"
-msgstr "Versi Info"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:125
 msgid "WP Statistics Version"
-msgstr "Versi WP Statistics"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:130
 msgid "The WP Statistics version you are running."
-msgstr "Versi WP Statistics Anda menjalankan."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:136
 msgid "PHP Version"
-msgstr "Versi PHP"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:141
 msgid "The PHP version you are running."
-msgstr "Versi PHP yang Anda jalankan."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:147
 msgid "PHP Safe Mode"
-msgstr "Mode PHP aman"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:152
 msgid "Is PHP Safe Mode active.  The GeoIP code is not supported in Safe Mode."
-msgstr "Adalah Mode PHP aman aktif. Kode GeoIP tidak didukung dalam Mode aman."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:158
 msgid "jQuery Version"
-msgstr "jQuery versi"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:163
 msgid "The jQuery version you are running."
-msgstr "Versi jQuery Anda menjalankan."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:169
 msgid "cURL Version"
-msgstr "cURL versi"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:173
 msgid "cURL not installed"
-msgstr "cURL tidak diinstal"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:174
 msgid "The PHP cURL Extension version you are running.  cURL is required for the GeoIP code, if it is not installed GeoIP will be disabled."
-msgstr "PHP cURL versi ekstensi Anda menjalankan. cURL diperlukan untuk kode GeoIP, jika tidak diinstal GeoIP akan dinonaktifkan."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:184
 msgid "Installed"
-msgstr "Diinstal"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:184
 msgid "Not installed"
-msgstr "Tidak diinstal"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:190
 msgid "File Info"
-msgstr "Informasi file"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:195
 msgid "GeoIP Database"
-msgstr "GeoIP Database"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:204
 msgid "Database file does not exist."
-msgstr "Database file tidak ada."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:206
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:225
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:244
 msgid ", created on "
-msgstr ", dibuat pada "
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:208
 msgid "The file size and date of the GeoIP database."
-msgstr "Ukuran file dan tanggal GeoIP database."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:214
 msgid "browscap.ini File"
-msgstr "browscap.ini File"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:223
 msgid "browscap.ini file does not exist."
-msgstr "browscap.ini file tidak ada."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:227
 msgid "The file size and date of the browscap.ini file."
-msgstr "Ukuran file dan tanggal berkas browscap.ini."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:233
 msgid "browscap Cache File"
-msgstr "browscap Cache File"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:242
 msgid "browscap cache file does not exist."
-msgstr "browscap cache file tidak ada."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:246
 msgid "The file size and date of the browscap cache file."
-msgstr "Ukuran file dan tanggal browscap cache file."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:251
 msgid "Client Info"
-msgstr "Info klien"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:256
 msgid "Client IP"
-msgstr "Klien IP"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:261
 msgid "The client IP address."
-msgstr "Alamat IP klien."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:267
 msgid "User Agent"
-msgstr "Agen pengguna"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:272
 msgid "The client user agent string."
-msgstr "Klien user agent string."
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-resources.php:278
 msgid "Browser"
@@ -2231,53 +2231,53 @@ msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-updates.php:4
 msgid "This will replace all IP addresses in the database with hash values and cannot be undo, are you sure?"
-msgstr "Ini akan mengganti semua alamat IP di database dengan nilai hash dan tidak bisa membatalkan, Apakah Anda yakin?"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-updates.php:16
 msgid "GeoIP Options"
-msgstr "GeoIP pilihan"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-updates.php:26
 msgid "Updates any unknown location data in the database, this may take a while"
-msgstr "Update data lokasi tak diketahui dalam database, ini mungkin berlangsung agak lama"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-updates.php:31
 #: wp-statistics/includes/settings/tabs/wps-general.php:66
 msgid "IP Addresses"
-msgstr "Alamat IP"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-updates.php:36
 #: wp-statistics/includes/settings/tabs/wps-general.php:71
 msgid "Hash IP Addresses"
-msgstr "Alamat IP hash"
+msgstr ""
 
 #: wp-statistics/includes/optimization/tabs/wps-optimization-updates.php:41
 msgid "Replace IP addresses in the database with hash values, you will not be able to recover the IP addresses in the future to populate location information afterwards and this may take a while"
-msgstr "Mengganti alamat IP dalam database dengan nilai hash, Anda tidak akan dapat memulihkan alamat IP di masa depan untuk mengisi informasi lokasi setelah itu dan ini mungkin berlangsung agak lama"
+msgstr ""
 
 #: wp-statistics/includes/optimization/wps-optimization.php:43
 msgid "IP Addresses replaced with hash values."
-msgstr "Alamat IP diganti dengan nilai hash."
+msgstr ""
 
 #: wp-statistics/includes/optimization/wps-optimization.php:51
 msgid "Install routine complete."
-msgstr "Menginstal rutin lengkap."
+msgstr ""
 
 #: wp-statistics/includes/optimization/wps-optimization.php:234
 msgid "Resources/Information"
-msgstr "Sumber-sumber/informasi"
+msgstr ""
 
 #: wp-statistics/includes/optimization/wps-optimization.php:236
 msgid "Purging"
-msgstr "Membersihkan"
+msgstr ""
 
 #: wp-statistics/includes/optimization/wps-optimization.php:237
 msgid "Database"
-msgstr "Database"
+msgstr ""
 
 #: wp-statistics/includes/optimization/wps-optimization.php:238
 msgid "Updates"
-msgstr "Update"
+msgstr ""
 
 #: wp-statistics/includes/optimization/wps-optimization.php:239
 msgid "Historical"
@@ -2285,84 +2285,84 @@ msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:8
 msgid "WP Statistics V%s"
-msgstr "WP Statistics V %s"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:28
 msgid "Visit Us Online"
-msgstr "Kunjungi kami secara Online"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:32
 msgid "Come visit our great new %s and keep up to date on the latest news about WP Statistics."
-msgstr "Datang mengunjungi kami %s baru yang besar dan tetap up to date berita terbaru tentang WP Statistics."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:32
 msgid "website"
-msgstr "situs web"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:36
 msgid "Rate and Review at WordPress.org"
-msgstr "Menilai dan meninjau di WordPress.org"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:40
 msgid "Thanks for installing WP Statistics, we encourage you to submit a "
-msgstr "Terima kasih untuk menginstal WP Statistics, kami mendorong Anda untuk mengirimkan "
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:40
 msgid "rating and review"
-msgstr "peringkat dan ulasan"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:40
 msgid "over at WordPress.org.  Your feedback is greatly appreciated!"
-msgstr "lebih di WordPress.org. Tanggapan Anda sangat dihargai!"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:44
 msgid "Translations"
-msgstr "Terjemahan"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:48
 msgid "WP Statistics supports internationalization and we encourage our users to submit translations, please visit our %s to see the current status and %s if you would like to help."
-msgstr "WP Statistics mendukung internasionalisasi dan kami menghimbau para pengguna untuk mengirimkan terjemahan, silakan kunjungi kami %s untuk melihat status saat ini dan %s jika Anda ingin membantu."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:48
 msgid "translation collaboration site"
-msgstr "situs terjemahan kolaborasi"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:48
 msgid "drop us a line"
-msgstr "drop kami baris"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:52
 msgid "Support"
-msgstr "Dukungan"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:57
 msgid "We're sorry you're having problem with WP Statistics and we're happy to help out.  Here are a few things to do before contacting us:"
-msgstr "Kami minta maaf Anda mengalami masalah dengan WP Statistics dan kami senang untuk membantu. Berikut adalah beberapa hal yang harus dilakukan sebelum menghubungi kami:"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:60
 #: wp-statistics/includes/settings/tabs/wps-about.php:61
 msgid "Have you read the %s?"
-msgstr "Apakah Anda membaca %s?"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:60
 msgid "FAQs"
-msgstr "Tanya jawab"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:61
 msgid "manual"
-msgstr "manual"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:62
 msgid "Have you search the %s for a similar issue?"
-msgstr "Apakah Anda mencari %s untuk masalah serupa?"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:62
 msgid "support forum"
-msgstr "dukungan forum"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:63
 msgid "Have you search the Internet for any error messages you are receiving?"
-msgstr "Apakah Anda mencari di Internet untuk setiap pesan error yang Anda terima?"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:64
 msgid "Make sure you have access to your PHP error logs."
@@ -2370,55 +2370,55 @@ msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:67
 msgid "And a few things to double-check:"
-msgstr "Dan beberapa hal untuk Periksa:"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:70
 msgid "How's your memory_limit in php.ini?"
-msgstr "Bagaimana Apakah Anda memory_limit dalam php.ini?"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:71
 msgid "Have you tried disabling any other plugins you may have installed?"
-msgstr "Apakah Anda mencoba menonaktifkan plugin lain yang Anda mungkin telah menginstal?"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:72
 msgid "Have you tried using the default WordPress theme?"
-msgstr "Apakah Anda mencoba menggunakan default WordPress theme?"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:73
 msgid "Have you double checked the plugin settings?"
-msgstr "Apakah Anda memeriksa pengaturan plugin?"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:74
 msgid "Do you have all the required PHP extensions installed?"
-msgstr "Apakah Anda memiliki semua ekstensi PHP diperlukan diinstal?"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:75
 msgid "Are you getting a blank or incomplete page displayed in your browser?  Did you view the source for the page and check for any fatal errors?"
-msgstr "Apakah Anda mendapatkan halaman kosong atau tidak lengkap yang ditampilkan dalam browser Anda? Apakah Anda lihat sumber halaman dan memeriksa kesalahan fatal?"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:76
 msgid "Have you checked your PHP and web server error logs?"
-msgstr "Apakah Anda memeriksa Anda PHP dan web log kesalahan server?"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:79
 msgid "Still not having any luck?"
-msgstr "Masih tidak memiliki keberuntungan?"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:79
 msgid "Then please open a new thread on the %s and we'll respond as soon as possible."
-msgstr "Kemudian silahkan buka thread baru pada %s dan kami akan merespon secepat mungkin."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:79
 msgid "WordPress.org support forum"
-msgstr "WordPress.org dukungan forum"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:83
 msgid "Alternatively %s support is available as well."
-msgstr "Atau %s dukungan tersedia juga."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-about.php:83
 msgid "Farsi"
-msgstr "Farsi"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:21
 msgid "WP Statistics Honey Pot Page"
@@ -2431,61 +2431,61 @@ msgstr ""
 #: wp-statistics/includes/settings/tabs/wps-access-level.php:23
 #: wp-statistics/includes/settings/wps-settings.php:103
 msgid "Access Levels"
-msgstr "Tingkat akses"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-access-level.php:52
 msgid "Required user level to view WP Statistics"
-msgstr "Diperlukan tingkat pengguna untuk melihat WP Statistics"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-access-level.php:67
 msgid "Required user level to manage WP Statistics"
-msgstr "Tingkat pengguna diperlukan untuk mengelola WP Statistics"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-access-level.php:75
 msgid "See the %s for details on capability levels."
-msgstr "Lihat %s untuk rincian pada tingkat kemampuan."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-access-level.php:75
 msgid "WordPress Roles and Capabilities page"
-msgstr "Halaman WordPress peran dan kemampuan"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-access-level.php:76
 msgid "Hint: manage_network = Super Admin Network, manage_options = Administrator, edit_others_posts = Editor, publish_posts = Author, edit_posts = Contributor, read = Everyone."
-msgstr "Petunjuk: manage_network = Super Admin jaringan, manage_options = Administrator, edit_others_posts = Editor, publish_posts = penulis, edit_posts = kontributor, membaca = semua orang."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-access-level.php:77
 msgid "Each of the above casscades the rights upwards in the default WordPress configuration.  So for example selecting publish_posts grants the right to Authors, Editors, Admins and Super Admins."
-msgstr "Masing-masing casscades di atas hak-hak ke atas dalam konfigurasi default WordPress. Jadi misalnya memilih publish_posts hibah hak untuk penulis, editor, admin dan Super admin."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-access-level.php:78
 msgid "If you need a more robust solution to delegate access you might want to look at %s in the WordPress plugin directory."
-msgstr "Jika Anda memerlukan solusi yang lebih kuat untuk mendelegasikan akses Anda mungkin ingin melihat %s di WordPress plugin direktori."
+msgstr ""
 
 #: wp-statistics/includes/log/exclusions.php:197
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:46
 #: wp-statistics/includes/settings/wps-settings.php:104
 #: wp-statistics/wp-statistics.php:415 wp-statistics/wp-statistics.php:513
 msgid "Exclusions"
-msgstr "Pengecualian"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:50
 msgid "Record exclusions"
-msgstr "Catatan pengecualian"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:52
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:106
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:133
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:150
 msgid "Enable"
-msgstr "Mengaktifkan"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:53
 msgid "This will record all the excluded hits in a separate table with the reasons why it was excluded but no other information.  This will generate a lot of data but is useful if you want to see the total number of hits your site gets, not just actual user visits."
-msgstr "Ini akan merekam semua hits dikecualikan didalam table yang terpisah dengan alasan mengapa itu dikeluarkan tetapi tanpa informasi lain. Ini akan menghasilkan banyak data tetapi berguna jika Anda ingin melihat jumlah hits situs Anda mendapat, kunjungan pengguna tidak hanya aktual."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:58
 msgid "Exclude User Roles"
-msgstr "Mengecualikan peran pengguna"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:74
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:196
@@ -2493,35 +2493,35 @@ msgstr "Mengecualikan peran pengguna"
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:210
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:217
 msgid "Exclude"
-msgstr "Mengecualikan"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:75
 msgid "Exclude %s role from data collection."
-msgstr "Mengecualikan peranan dari pengumpulan data."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:81
 msgid "IP/Robot Exclusions"
-msgstr "IP Robot pengecualian"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:85
 msgid "Robot list"
-msgstr "Daftar robot"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:98
 msgid "A list of words (one per line) to match against to detect robots.  Entries must be at least 4 characters long or they will be ignored."
-msgstr "Daftar kata (satu per baris) untuk mencocokkan terhadap untuk mendeteksi robot. Entri harus minimal 4 karakter atau mereka akan diabaikan."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:99
 msgid "Reset to Default"
-msgstr "Reset ke Default"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:104
 msgid "Force robot list update after upgrades"
-msgstr "Kekuatan robot daftar update setelah upgrade"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:107
 msgid "Force the robot list to be reset to the default after an update to WP Statistics takes place.  Note if this option is enabled any custom robots you have added to the list will be lost."
-msgstr "Kekuatan Daftar robot diatur ulang ke default setelah update ke WP Statistics berlangsung. Catatan Jika opsi ini diaktifkan setiap kustom robot Anda telah ditambahkan ke daftar akan hilang."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:112
 msgid "Robot visit threshold"
@@ -2533,23 +2533,23 @@ msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:120
 msgid "Excluded IP address list"
-msgstr "Daftar alamat IP dikecualikan"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:123
 msgid "A list of IP addresses and subnet masks (one per line) to exclude from statistics collection (both 192.168.0.0/24 and 192.168.0.0/255.255.255.0 formats are accepted).  To specify an IP address only, use a subnet value of 32 or 255.255.255.255."
-msgstr "Daftar alamat IP dan subnet masker (satu per baris) untuk mengecualikan dari pengumpulan Statistik (format 192.168.0.0/24 dan 192.168.0.0/255.255.255.0 diterima). Untuk menentukan alamat IP hanya, gunakan nilai subnet 32 atau 255.255.255.255."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:124
 msgid "Add 10.0.0.0"
-msgstr "Tambahkan 10.0.0.0"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:125
 msgid "Add 172.16.0.0"
-msgstr "Tambahkan 172.16.0.0"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:126
 msgid "Add 192.168.0.0"
-msgstr "Tambahkan 192.168.0.0"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:131
 msgid "Use honey pot"
@@ -2609,23 +2609,23 @@ msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:190
 msgid "Site URL Exclusions"
-msgstr "Situs URL pengecualian"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:194
 msgid "Excluded login page"
-msgstr "Halaman login dikecualikan"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:197
 msgid "Exclude the login page for registering as a hit."
-msgstr "Mengecualikan halaman login untuk mendaftar sebagai hit."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:201
 msgid "Excluded admin pages"
-msgstr "Halaman admin dikecualikan"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:204
 msgid "Exclude the admin pages for registering as a hit."
-msgstr "Mengecualikan halaman admin untuk mendaftar sebagai hit."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-exclusions.php:208
 msgid "Excluded RSS feeds"
@@ -2637,11 +2637,11 @@ msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:162
 msgid "browscap settings"
-msgstr "pengaturan browscap"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:167
 msgid "browscap usage"
-msgstr "browscap penggunaan"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:52
 #: wp-statistics/includes/settings/tabs/wps-externals.php:76
@@ -2677,53 +2677,53 @@ msgstr "browscap penggunaan"
 #: wp-statistics/includes/settings/tabs/wps-overview-display.php:94
 #: wp-statistics/includes/settings/tabs/wps-overview-display.php:106
 msgid "Active"
-msgstr "Aktif"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:173
 msgid "The browscap database will be downloaded and used to detect robots."
-msgstr "Browscap database akan didownload dan digunakan untuk mendeteksi robot."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:179
 msgid "Update browscap Info"
-msgstr "Memperbarui browscap Info"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:184
 msgid "Download browscap Database"
-msgstr "Men-download browscap Database"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:65
 #: wp-statistics/includes/settings/tabs/wps-externals.php:185
 #: wp-statistics/includes/settings/tabs/wps-externals.php:249
 msgid "Save changes on this page to download the update."
-msgstr "Simpan perubahan pada Halaman ini untuk men-download pembaruan."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:191
 msgid "Schedule weekly update of browscap DB"
-msgstr "Jadwal mingguan update dari browscap DB"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:79
 #: wp-statistics/includes/settings/tabs/wps-externals.php:199
 #: wp-statistics/includes/settings/tabs/wps-externals.php:263
 msgid "Next update will be"
-msgstr "Update berikutnya akan"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-externals.php:215
 msgid "Download of the browscap database will be scheduled for once a week."
-msgstr "Download browscap database akan dijadwalkan untuk sekali seminggu."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:50
 msgid "This will delete the manual when you save the settings, are you sure?"
-msgstr "Ini akan menghapus manual ketika Anda menyimpan pengaturan, Anda yakin?"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:77
 msgid "This feature will not store IP addresses in the database but instead used a unique hash.  The \"Store entire user agent string\" setting will be disabled if this is selected.  You will not be able to recover the IP addresses in the future to recover location information if this is enabled."
-msgstr "Fitur ini tidak akan menyimpan alamat IP dalam database tetapi sebaliknya digunakan hash unik. \"Store seluruh pengguna agen string\" pengaturan akan dinonaktifkan jika ini dipilih. Anda tidak akan dapat memulihkan alamat IP di masa depan untuk memulihkan informasi lokasi jika ini diaktifkan."
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:82
 #: wp-statistics/shortcode.php:138
 msgid "Users Online"
-msgstr "Pengguna Online"
+msgstr ""
 
 #: wp-statistics/includes/settings/tabs/wps-general.php:87
 msgid "User online"
-msgstr "Pengguna online"
+msgstr ""

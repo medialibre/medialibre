@@ -1,9 +1,9 @@
 === AddToAny Share Buttons ===
 Contributors: micropat, addtoany
-Tags: AddToAny, sharing, share, social, share button, share buttons, share links, social icons, social media, media, marketing, bookmark, bookmarks, save, post, posts, page, pages, images, image, admin, analytics, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, amp, woocommerce, ecommerce, e-commerce, amazon, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, google plus, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, instagram, behance, flickr, foursquare, vimeo, youtube, feed, rss, lockerz, addthis, sociable, share this, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpml, wpmu, Add to Any
-Requires at least: 2.8
+Tags: AddToAny, sharing, share, social, share button, share buttons, share links, social icons, social media, media, marketing, bookmark, bookmarks, save, post, posts, page, pages, images, image, admin, analytics, statistics, stats, links, plugin, shortcode, sidebar, widget, responsive, email, e-mail, print, seo, button, amp, woocommerce, ecommerce, e-commerce, amazon, delicious, google, tumblr, linkedin, digg, reddit, facebook, facebook share, facebook like, like, twitter, twitter button, twitter share, tweet, tweet button, google plus, pinterest, pin, pin it, pinit, wanelo, buffer, stumbleupon, bitly, whatsapp, instagram, behance, flickr, foursquare, vimeo, youtube, feed, rss, addthis, sociable, share this, sharethis, shareaholic, icon, icons, vector, SVG, floating, floating buttons, wpml, wpmu, Add to Any
+Requires at least: 3.7
 Tested up to: 4.5
-Stable tag: 1.6.14
+Stable tag: 1.6.17
 
 Share buttons for WordPress including the AddToAny sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp, many more, and follow icons too.
 
@@ -62,14 +62,14 @@ AddToAny is the universal sharing platform, and AddToAny's plugin is the most po
 
 = Wide Support =
 
-* Over 8 years of active development
-* Over 4 million downloads
+* Over 9 years of active development
+* Over 5 million downloads
 * Translated into dozens of languages
 * Ongoing support from the community
 
 This plugin always strives to be the best WordPress plugin for sharing. Development is fueled by your praise and feedback.
 
-<a href="https://www.addtoany.com/share" title="Share">Share</a> this plugin
+<a href="https://www.addtoany.com/share#url=https%3A%2F%2Fwordpress.org%2Fplugins%2Fadd-to-any%2F&title=AddToAny%20Sharing%20Plugin%20for%20WordPress" title="Share">Share</a> this plugin
 
 See also:
 
@@ -96,11 +96,11 @@ To install manually instead:
 
 = Where are the options, and how can I customize the sharing plugin? =
 
-In your Admin panel, go to `Settings` > `AddToAny`. Among other options, you can choose individual sharing icons, a universal share button, and official 3rd party sharing buttons (Facebook Like Button, Twitter Tweet Button, Pinterest Pin It Button, Google+ Share Button, Google +1 Button) to display, and where and how to display them.
+In your Admin panel, go to `Settings` > `AddToAny`.
 
-To place the buttons as a "widget" in your theme (if your theme supports WordPress Widgets), go to `Appearance` > `Widgets`, then drag AddToAny to an available Widget Area and click `Save`.
+Setup Follow buttons (like Instagram, YouTube, etc.) using the AddToAny Follow widget in `Appearance` > `Widgets` (or `Appearance` > `Customize`).
 
-To further customize AddToAny, see the <a href="https://www.addtoany.com/buttons/customize/wordpress">WordPress sharing documentation</a> for the AddToAny plugin. Many customizations will have you copy & paste one or more lines of JavaScript code into "Additional JavaScript" box. The Additional JavaScript box is in `Settings` > `AddToAny`.
+To further customize AddToAny, see the <a href="https://www.addtoany.com/buttons/customize/wordpress">WordPress sharing documentation</a> for the AddToAny plugin. Many customizations will have you copy & paste one or more lines of code into your "Additional JavaScript" or "Additional CSS" box. Those boxes are in `Settings` > `AddToAny`.
 
 = Something is wrong. What should I try first? =
 
@@ -119,19 +119,22 @@ Try another web browser, device, and/or Internet connection to see if the button
 Yes, you can place your sharing buttons exactly where you want them by inserting the following shortcode in a post or page:
 `[addtoany]`
 
-You can customize the shared URL like so:
+Customize the shared URL like so:
 `[addtoany url="https://www.example.com/page.html" title="Some Example Page"]`
 
-You can also display specific share buttons by specifying comma-separated <a href="https://www.addtoany.com/services/">service codes</a>:
+Display specific share buttons by specifying comma-separated <a href="https://www.addtoany.com/services/">service codes</a>:
 `[addtoany buttons="facebook,twitter,google_plus"]`
+
+Share a specific image or video to certain services that accept arbitrary media (Pinterest, Yummly):
+`[addtoany buttons="pinterest,yummly" media="https://www.example.com/media/picture.jpg"]`
 
 = For Facebook sharing, how can I set the thumbnail image and description Facebook uses? =
 
-Facebook expects the Title, Description, and Thumbnail of a shared page to be defined in the actual HTML code of a shared page. Unlike other services that accept common parameters, Facebook only accepts a URL, then Facebook scans the actual page for details. To change the title, description or image on Facebook, you will need to modify your theme or use another plugin that filters your theme.
+Facebook expects the Title, Description, and Thumbnail of a shared page to be defined in the Open Graph <a href="https://www.addtoany.com/ext/meta-tags/" target="_blank">meta tags</a> of a shared page.
 
-Use Facebook's <a href="https://developers.facebook.com/tools/debug/">URL Debugger</a> on your pages to see how Facebook reads your site. "Fetch new scrape information" to test site changes and clear Facebook's cache of a page.
+Use Facebook's <a href="https://developers.facebook.com/tools/debug/sharing/" target="_blank">Sharing Debugger</a> on your pages to see how Facebook reads your site. "Scrape Again" to test site changes and clear Facebook's cache of a page, or use the <a href="https://developers.facebook.com/tools/debug/sharing/batch/" target="_blank">Batch Invalidator</a> to purge Facebook's cache of multiple URLs.
 
-To change the title, description and/or image on Facebook, your theme's header file should be modified according to <a href="https://developers.facebook.com/docs/sharing/opengraph">Facebook's OpenGraph specification</a>. With WordPress, this can be accomplished with plugins such as the <a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a> or the <a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>. Please see those plugins for details, and post in the WordPress or plugin author's forums for more support.
+To change the title, description and/or image on Facebook, your theme's header file should be modified according to <a href="https://developers.facebook.com/docs/sharing/opengraph" target="_blank">Facebook's OpenGraph specification</a>. With WordPress, this can be accomplished with plugins such as the <a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a> or the <a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>. Please see those plugins for details, and post in the WordPress or plugin author's forums for more support.
 
 For more technical information on setting your pages up for Facebook sharing, see "Sharing Best Practices for Websites" in <a href="https://developers.facebook.com/docs/sharing/best-practices">Facebook's documentation</a>.
 
@@ -145,26 +148,49 @@ Upload sharing icons in a single directory to a public location, and make sure t
 
 = How can I place the share buttons in a specific area of my site? =
 
-In the Theme Editor, place this code block where you want the button and individual icons to appear in your theme:
+In the Theme Editor (or another code editor), place this code block where you want the button and individual icons to appear in your theme:
 `<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { ADDTOANY_SHARE_SAVE_KIT(); } ?>`
 
-If you want to customize the shared URL and title, use the following code as a template:
+You can specify [AddToAny service code(s)](https://www.addtoany.com/services/) to show specific share buttons, for example:
 `<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { 
-	ADDTOANY_SHARE_SAVE_KIT( array( 'linkname' => 'Example Page', 'linkurl' => 'https://example.com/page.html' ) );
+	ADDTOANY_SHARE_SAVE_KIT( array( 
+		'buttons' => array( 'facebook', 'twitter', 'google_plus', 'whatsapp' ),
+	) );
 } ?>`
 
-If you want to share the current URL and title (detected on the client-side), use the following code:
+To customize the shared URL and title:
+`<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { 
+	ADDTOANY_SHARE_SAVE_KIT( array( 
+		'linkname' => 'Example Page',
+		'linkurl'  => 'https://example.com/page.html',
+	) );
+} ?>`
+
+To share the current URL and title (detected on the client-side):
 `<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { 
 	ADDTOANY_SHARE_SAVE_KIT( array( 'use_current_page' => true ) );
 } ?>`
 
-If you want to hardcode the shared current URL and modify the title (server-side), use the following code as a template:
+To hardcode the shared current URL and modify the title (server-side):
 `<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { 
-	ADDTOANY_SHARE_SAVE_KIT( array( 'linkname' => ( is_home() ? get_bloginfo( 'description' ) : wp_title( '', false ) ), 'linkurl' => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ) );
+	ADDTOANY_SHARE_SAVE_KIT( array( 
+		'linkname' => ( is_home() ? get_bloginfo( 'description' ) : wp_title( '', false ) ),
+		'linkurl'  => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'],
+	) );
+} ?>`
+
+To share a specific image or video to certain services that accept arbitrary media (Pinterest, Yummly):
+`<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { 
+	ADDTOANY_SHARE_SAVE_KIT( array( 
+		'buttons'   => array( 'pinterest', 'yummly' ),
+		'linkmedia' => 'https://www.example.com/media/picture.jpg',
+		'linkname'  => 'Example Page',
+		'linkurl'   => 'https://www.example.com/page.html',
+	) );
 } ?>`
 
 = How can I add a custom standalone share button? =
-You can create a plugin or customize the following example PHP code to add to your theme's function.php file:
+You can create a plugin or customize the following example PHP code to add to your theme's functions.php file:
 
 `function addtoany_add_services( $services ) {
 	$services['example_share_service'] = array(
@@ -172,14 +198,14 @@ You can create a plugin or customize the following example PHP code to add to yo
 		'icon_url'    => 'https://www.google.com/favicon.ico',
 		'icon_width'  => 32,
 		'icon_height' => 32,
-		'href'        => 'https://www.example.com/share?url=A2A_LINKURL&amp;title=A2A_LINKNAME'
+		'href'        => 'https://www.example.com/share?url=A2A_LINKURL&amp;title=A2A_LINKNAME',
 	);
 	return $services;
 }
 add_filter( 'A2A_SHARE_SAVE_services', 'addtoany_add_services', 10, 1 );`
 
 = How can I add a custom follow button? =
-You can create a plugin or customize the following example PHP code to add to your theme's function.php file:
+You can create a plugin or customize the following example PHP code to add to your theme's functions.php file:
 
 `function addtoany_add_follow_services( $services ) {
 	$services['example_follow_service'] = array(
@@ -187,13 +213,13 @@ You can create a plugin or customize the following example PHP code to add to yo
 		'icon_url'    => 'https://www.google.com/favicon.ico',
 		'icon_width'  => 32,
 		'icon_height' => 32,
-		'href'        => 'https://www.example.com/ID'
+		'href'        => 'https://www.example.com/ID',
 	);
 	return $services;
 }
 add_filter( 'A2A_FOLLOW_services', 'addtoany_add_follow_services', 10, 1 );`
 
-= How can I align the sharing button(s) to the center or to the right side of posts? =
+= How can I align the standard sharing buttons to the center or to the right side of posts? =
 It depends on your theme, but you can try adding the following CSS code to your Additional CSS box in Settings > AddToAny.
 
 To align right:
@@ -299,6 +325,25 @@ Upload (or move) the `add-to-any` plugin directory into the `/wp-content/mu-plug
 5. Settings panel
 
 == Changelog ==
+
+= 1.6.17 =
+* New `media` attribute for sharing a specific image or video to the few services that accept arbitrary media (Pinterest, Yummly)
+* Update `[addtoany]` shortcode to accept specific `media` URL
+ * Specify a direct media URL in the `media` attribute like `[addtoany buttons="pinterest,yummly" media="https://www.example.com/media/picture.jpg"]` to have Pinterest pin that image
+
+= 1.6.16 =
+* Fix customizer preview check for WordPress versions older than 4.0 (thanks Jessica)
+
+= 1.6.15 =
+* AddToAny widgets support new selective refresh in the WordPress 4.5 Customizer
+* AddToAny share endpoints default to HTTPS on HTTPS sites
+* Permit changing the target attribute for custom services (thanks Jasper)
+* The meta box ("Show sharing buttons") below the WordPress editor will no longer show when standard placement is disabled for the current post type
+* Add Kik share button
+* Add Skype share button
+* Add Viber share button
+* Add WeChat share button
+* Add Snapchat follow button
 
 = 1.6.14 =
 * [AMP](https://wordpress.org/plugins/amp/) (Accelerated Mobile Pages) support for share buttons in posts

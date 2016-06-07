@@ -3,8 +3,8 @@ Contributors: benjaminprojas
 Donate link: http://wpeditor.net/
 Tags: code editor, plugin editor, theme editor, page editor, post editor, pages, posts, html, codemirror, plugins, themes, editor, fancybox, post.php, post-new.php, ajax, syntax highlighting, html syntax highlighting
 Requires at least: 3.0
-Tested up to: 4.3.1
-Stable tag: 1.2.5.3
+Tested up to: 4.5.2
+Stable tag: 1.2.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -68,6 +68,23 @@ Yes! While we don't have a need for further developers at this time, any financi
 5. Fancybox integration
 
 == Changelog ==
+
+= 1.2.6.1 =
+* Fixed Firefox conflict: NS_ERROR_FAILURE
+* Fixed 'Add Media' button not working
+
+= 1.2.6 =
+* Added Nivo Lightbox to replace outdated Fancybox
+* Added support for SCSS files
+* Updated CodeMirror library to 5.13.4 including all extensions
+* Updated CodeMirror instance to use wp_editor to avoid conflicts
+* Updated quicktags to use default WordPress quicktags
+* Updated ajax requests to use wp_json_encode
+* Updated registering CodeMirror script to try to avoid conflicts
+* Fixed CSRF and permissions vulnerabilities
+* Fixed issue with duplicate editors on page/post editor
+* Fixed broken functions in plugin/theme editors
+* Fixed duplicating backslashes for unc paths
 
 = 1.2.5.3 =
 * Update language text domain
@@ -169,6 +186,23 @@ Yes! While we don't have a need for further developers at this time, any financi
 * Initial release of WP Editor
 
 == Upgrade Notice ==
+
+= 1.2.6.1 =
+Fixed Firefox conflict: NS_ERROR_FAILURE
+Fixed 'Add Media' button not working
+
+= 1.2.6 =
+Added Nivo Lightbox to replace outdated Fancybox
+Added support for SCSS files
+Updated CodeMirror library to 5.13.4 including all extensions
+Updated CodeMirror instance to use wp_editor to avoid conflicts
+Updated quicktags to use default WordPress quicktags
+Updated ajax requests to use wp_json_encode
+Updated registering CodeMirror script to try to avoid conflicts
+Fixed CSRF and permissions vulnerabilities
+Fixed issue with duplicate editors on page/post editor
+Fixed broken functions in plugin/theme editors
+Fixed duplicating backslashes for unc paths
 
 = 1.2.5.3 =
 Update language text domain

@@ -3,7 +3,7 @@
 Plugin Name: WP Editor
 Plugin URI: http://wpeditor.net
 Description: This plugin modifies the default behavior of the WordPress plugin and theme editors.
-Version: 1.2.5.3
+Version: 1.2.6.1
 Author: Benjamin Rojas
 Author URI: http://benjaminrojas.net
 Text Domain: wpeditor
@@ -26,84 +26,84 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-if(!class_exists('WPEditor')) {
+if ( ! class_exists( 'WPEditor' ) ) {
   
   ob_start();
   
   $wp_34 = false;
-  if(version_compare(get_bloginfo('version'), '3.4', '>=')) {
+  if ( version_compare( get_bloginfo( 'version' ), '3.4', '>=' ) ) {
     $wp_34 = true;
   }
-  define('WP_34', $wp_34);
+  define( 'WP_34', $wp_34 );
 
   $wp_43 = false;
-  if(version_compare(get_bloginfo('version'), '4.3', '>=')) {
+  if ( version_compare( get_bloginfo( 'version' ), '4.3', '>=' ) ) {
     $wp_43 = true;
   }
-  define('WP_43', $wp_43);
+  define( 'WP_43', $wp_43 );
   
   // Define the default path and URL for the WP Editor plugin
   $plugin_file = __FILE__;
-  if(isset($plugin)) {
+  if ( isset( $plugin ) ) {
     $plugin_file = $plugin;
   }
-  elseif(isset($mu_plugin)) {
+  elseif ( isset( $mu_plugin ) ) {
     $plugin_file = $mu_plugin;
   }
-  elseif(isset($network_plugin)) {
+  elseif ( isset( $network_plugin ) ) {
     $plugin_file = $network_plugin;
   }
-  define('WPEDITOR_PATH', WP_PLUGIN_DIR . '/' . basename(dirname($plugin_file)) . '/');
-  define('WPEDITOR_URL', plugin_dir_url(WPEDITOR_PATH) . basename(dirname($plugin_file)) . '/');
+  define( 'WPEDITOR_PATH', WP_PLUGIN_DIR . '/' . basename( dirname( $plugin_file ) ) . '/' );
+  define( 'WPEDITOR_URL', plugin_dir_url( WPEDITOR_PATH ) . basename( dirname( $plugin_file ) ) . '/' );
   
   // Define the WP Editor version number
-  define('WPEDITOR_VERSION_NUMBER', wpEditorVersionNumber());
+  define( 'WPEDITOR_VERSION_NUMBER', wpe_version_number() );
   
   // IS_ADMIN is true when the dashboard or the administration panels are displayed
-  if(!defined('IS_ADMIN')) {
-    define('IS_ADMIN',  is_admin());
+  if ( ! defined( 'IS_ADMIN' ) ) {
+    define( 'IS_ADMIN',  is_admin() );
   }
   
   $windows = false;
-  if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+  if ( strtoupper( substr( PHP_OS, 0, 3 ) ) === 'WIN' ) {
     $windows = true;
   }
   
-  define('WPWINDOWS', $windows);
+  define( 'WPWINDOWS', $windows );
   
-  load_plugin_textdomain('wp-editor', false, '/' . basename(dirname(__FILE__)) . '/languages/');
+  load_plugin_textdomain( 'wp-editor', false, '/' . basename(dirname(__FILE__)) . '/languages/' );
   
   // Load the main WP Editor class
-  require_once(WPEDITOR_PATH . 'classes/WPEditor.php');
+  require_once( WPEDITOR_PATH . 'classes/WPEditor.php' );
   $wpedit = new WPEditor();
 
   // Register activation hook to install WP Editor database tables and system code
-  register_activation_hook(__FILE__, array($wpedit, 'install'));
+  register_activation_hook( __FILE__, array( $wpedit, 'install' ) );
 
   // Check for WordPress 3.1 auto-upgrades
-  if(function_exists('register_update_hook')) {
-    register_update_hook(__FILE__, array($wpedit, 'install'));
+  if ( function_exists( 'register_update_hook' ) ) {
+    register_update_hook( __FILE__, array( $wpedit, 'install' ) );
   }
 
   // Initialize the main WP Editor Class
-  add_action('init',  array($wpedit, 'init'));
+  add_action( 'init',  array( $wpedit, 'init' ) );
   
   // Add settings link to plugin page
-  add_filter('plugin_action_links', 'wpEditorSettingsLink',10,2);
+  add_filter( 'plugin_action_links', 'wpe_settings_link', 10, 2 );
 }
 
-function wpEditorSettingsLink($links, $file) {
-  $thisFile = plugin_basename(WPEDITOR_PATH) . '/' . basename(__FILE__);
-  if($file == $thisFile) {
-    $settings = '<a href="' . admin_url('admin.php?page=wpeditor_admin') . '" title="' . __('Open the settings page for this plugin', 'wp-editor') . '">' . __('Settings', 'wp-editor') . '</a>';
-    array_unshift($links, $settings);
+function wpe_settings_link( $links, $file ) {
+  $thisFile = plugin_basename( WPEDITOR_PATH ) . '/' . basename( __FILE__ );
+  if ( $file == $thisFile ) {
+    $settings = '<a href="' . admin_url( 'admin.php?page=wpeditor_admin' ) . '" title="' . __( 'Open the settings page for this plugin', 'wp-editor' ) . '">' . __( 'Settings', 'wp-editor' ) . '</a>';
+    array_unshift( $links, $settings );
   }
   return $links;
 }
-function wpEditorVersionNumber() {
-  if(!function_exists('get_plugin_data')) {
-    require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+function wpe_version_number() {
+  if ( ! function_exists( 'get_plugin_data' ) ) {
+    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
   }
-  $plugin_data = get_plugin_data(WPEDITOR_PATH . '/wpeditor.php');
+  $plugin_data = get_plugin_data( WPEDITOR_PATH . '/wpeditor.php' );
   return $plugin_data['Version'];
 }

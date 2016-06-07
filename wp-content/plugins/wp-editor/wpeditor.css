@@ -194,7 +194,10 @@ li.indent {
 }
 #plugin-editor-files .plugin-folders ul li.css, #theme-editor-files .theme-folders ul li.css {
   background:url('images/css.png') 0px 0px no-repeat;
-  }
+}
+#plugin-editor-files .plugin-folders ul li.scss, #theme-editor-files .theme-folders ul li.scss {
+  background:url('images/css.png') 0px 0px no-repeat;
+}
 #plugin-editor-files .plugin-folders ul li.txt, #theme-editor-files .theme-folders ul li.txt {
   background:url('images/txt.png') 0px 0px no-repeat;
 }
@@ -371,4 +374,10 @@ a.donate, a.support {
   background-image: -webkit-gradient(linear, left bottom, left top, from(#e3e3e3), to(#fff));
   background-image: -webkit-linear-gradient(bottom, #e3e3e3, #fff);
   background-image: linear-gradient(to top, #e3e3e3, #fff);
+}
+.qt-fullscreen {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px 5px 0 0;
 }

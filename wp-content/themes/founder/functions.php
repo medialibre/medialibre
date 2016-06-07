@@ -579,3 +579,12 @@ function ct_founder_allow_skype_protocol( $protocols ){
 	return $protocols;
 }
 add_filter( 'kses_allowed_protocols' , 'ct_founder_allow_skype_protocol' );
+
+function exclude_category_home( $query ) {
+    if ( $query->is_home ) {
+		$query->set( 'cat', '-31' );
+	}
+	return $query;
+}
+
+add_filter( 'pre_get_posts', 'exclude_category_home' );

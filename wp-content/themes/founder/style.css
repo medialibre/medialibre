@@ -1868,3 +1868,12 @@ If you want more information about customizing Founder with CSS, check out this 
     margin-bottom: 15px;
     list-style-type: square;
  }
+
+.tagcloud {
+    text-align: center;
+ }
+
+.widget_tag_cloud {
+    max-width: 600px;
+    margin: auto;
+ }

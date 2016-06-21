@@ -21,27 +21,27 @@ tags = {};
 				}
 			}
 		});
-        QTags.addButton( 'fullscreen', 'fullscreen', wp_editor_fullscreen );
-        function wp_editor_fullscreen() {
-            if (wp_editor.getOption("fullScreen")) {
-                wp_editor.setOption("fullScreen", false);
-                $('#ed_toolbar').removeClass('fullscreen');
-                $(window).resize();
-            }
-            else {
-                $('#ed_toolbar').addClass('fullscreen');
-                wp_editor.setOption("fullScreen", true);
-            }
-            wp_editor.focus();
-        }
-        /* // remove until we can figure out a way to save via ajax
-        QTags.addButton( 'save', 'save', wp_editor_save );
-        function wp_editor_save() {
-            wp_editor.save();
-            $('#wp_mce_fullscreen').val($('#content').val());
-            window.wp.editor.fullscreen.save();
-            changeReset();
-        }*/
+		QTags.addButton( 'fullscreen', 'fullscreen', wp_editor_fullscreen );
+		function wp_editor_fullscreen() {
+			if (wp_editor.getOption("fullScreen")) {
+				wp_editor.setOption("fullScreen", false);
+				$('#ed_toolbar').removeClass('fullscreen');
+				$(window).resize();
+			}
+			else {
+				$('#ed_toolbar').addClass('fullscreen');
+				wp_editor.setOption("fullScreen", true);
+			}
+			wp_editor.focus();
+		}
+		/* // remove until we can figure out a way to save via ajax
+		QTags.addButton( 'save', 'save', wp_editor_save );
+		function wp_editor_save() {
+			wp_editor.save();
+			$('#wp_mce_fullscreen').val($('#content').val());
+			window.wp.editor.fullscreen.save();
+			changeReset();
+		}*/
 
 		$('body').on('click', '#wp-link-submit', function() {
 			wp_editor.toTextArea();
@@ -125,8 +125,43 @@ tags = {};
 			//wp_editor.scrollTo(getCookie('scrollPositionX'), getCookie('scrollPositionY'));
 		}
 	}
-	window.get_content_cursor = function(element, caret) {
-		var lines = element.value.substr(0, this.selectionStart).split("\n");
+	window.wp_editor_qt = function( element, start = true ) {
+		if ( start ) {
+			wp_editor.save();
+			var fromCursor = wp_editor.getCursor('from');
+			var toCursor = wp_editor.getCursor('to');
+			window.set_content_cursor(element, fromCursor, toCursor);
+		}
+		else {
+			var toCursorNew = window.get_content_cursor(element, 'to');
+			wp_editor.setValue(element.value);
+			wp_editor.setCursor(toCursorNew.line, toCursorNew.ch);
+			wp_editor.refresh();
+			wp_editor.focus();
+		}
+	}
+	window.get_content_cursor = function( element, pos = 'from' ) {
+		if ( document.selection ) { // IE
+			var sel = document.selection.createRange();
+			var selLength = document.selection.createRange().text.length;
+			if(pos == 'from') {
+				sel.moveStart('character', -element.value.length);
+				var caret = sel.text.length - selLength;
+			}
+			else if(pos == 'to') {
+				sel.moveStart('character', -element.value.length);
+				var caret = sel.text.length;
+			}
+		} else if ( element.selectionStart || element.selectionStart === 0 ) { // FF, WebKit, Opera
+			if(pos == 'from') {
+				var caret = element.selectionStart;
+			}
+			else if(pos == 'to') {
+				var caret = element.selectionEnd;
+			}
+		}
+
+		var lines = element.value.substr(0, caret).split("\n");
 		var newLength = 0, line = 0, lineArray = [];
 		$.each(lines, function(key, value) {
 			newLength = newLength + value.length + 1;
@@ -141,16 +176,41 @@ tags = {};
 		});
 		return {"line": line, "ch": caret};
 	}
-	window.set_content_cursor = function(element, cursor) {
-		var lines = element.value.substr(0, this.selectionStart).split("\n");
-		var newLength = 0, line = 1, lineArray = [];
-		lineArray[0] = 0;
-		$.each(lines, function(key, value) {
-			newLength = newLength + value.length + 1;
-			lineArray[line] = newLength;
-			line++;
+	window.set_content_cursor = function( element, fromCursor, toCursor = {} ) {
+
+		if ( document.selection ) { // IE
+			var sel = document.selection.createRange();
+			var selLength = document.selection.createRange().text.length;
+			sel.moveStart('character', -element.value.length);
+			var startPos = sel.text.length - selLength, endPos = sel.text.length;
+		} else if ( element.selectionStart || element.selectionStart === 0 ) { // FF, WebKit, Opera
+			var startPos = element.selectionStart, endPos = element.selectionEnd;
+		}
+		var startLines = element.value.substr(0, start).split("\n");
+		var endLines = element.value.substr(0, end).split("\n");
+		var startNewLength = 0, startLine = 1, startLineArray = [];
+		var endNewLength = 0, endLine = 1, endLineArray = [];
+		
+		if ( $.isEmptyObject( toCursor ) ) {
+			toCursor = fromCursor;
+		}
+
+		startLineArray[0] = 0;
+		$.each(startLines, function(key, value) {
+			startNewLength = startNewLength + value.length + 1;
+			startLineArray[startLine] = startNewLength;
+			startLine++;
 		});
-		var start = lineArray[cursor.line] + cursor.ch, end = lineArray[cursor.line] + cursor.ch;
+
+		endLineArray[0] = 0;
+		$.each(endLines, function(key, value) {
+			endNewLength = endNewLength + value.length + 1;
+			endLineArray[endLine] = endNewLength;
+			endLine++;
+		});
+		
+		var start = startLineArray[fromCursor.line] + fromCursor.ch, end = endLineArray[toCursor.line] + toCursor.ch;
+
 		if(element.setSelectionRange) {
 			$(element).show();
 			element.focus();
@@ -165,22 +225,6 @@ tags = {};
 			range.select();
 		}
 	};
-	/*window.wp_editor_send_to_editor = window.send_to_editor;
-	window.send_to_editor = function(html){
-		console.log('yes2');
-		if(editor_status == 'html') {
-			var cursor = wp_editor.getCursor(true);
-			wp_editor.toTextArea();
-			window.set_content_cursor($('#content'), cursor);
-			window.wp_editor_send_to_editor(html);
-			window.postCodeMirror('content');
-			wp_editor.setCursor(cursor.line, cursor.ch + html.length)
-			wp_editor.focus();
-		}
-		else {
-			window.wp_editor_send_to_editor(html);
-		}
-	};*/
 	window.postCodeMirror = function(element) {
 		var activeLine = WPEPosts.activeLine;
 		wp_editor = CodeMirror.fromTextArea(document.getElementById(element), {
@@ -223,19 +267,19 @@ tags = {};
 			},
 			extraKeys: {
 				"F11": function(cm) {
-                    if (!cm.getOption("fullScreen")) {
-                        $('#ed_toolbar').addClass('fullscreen');
-                    }
-                    else {
-                        $('#ed_toolbar').removeClass('fullscreen');
-                        $(window).resize();
-                    }
+					if (!cm.getOption("fullScreen")) {
+						$('#ed_toolbar').addClass('fullscreen');
+					}
+					else {
+						$('#ed_toolbar').removeClass('fullscreen');
+						$(window).resize();
+					}
 					cm.setOption("fullScreen", !cm.getOption("fullScreen"));
 				},
 				"Esc": function(cm) {
 					if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
-                    $('#ed_toolbar').removeClass('fullscreen');
-                    $(window).resize();
+					$('#ed_toolbar').removeClass('fullscreen');
+					$(window).resize();
 				}
 			}
 		});

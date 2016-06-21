@@ -210,38 +210,16 @@ function edButton(id, display, tagStart, tagEnd, access) {
         i = target.id.replace(name + '_', '');
 
         if ( t.theButtons[i] ) {
-          if(typeof wp_editor !== 'undefined') {
-            _wp_editor_qt(t, i, target, canvas);
-            return;
+          if(typeof wp_editor !== 'undefined') { // WP Editor
+            window.wp_editor_qt(canvas);
           }
           t.theButtons[i].callback.call(t.theButtons[i], target, canvas, t);
+          if(typeof wp_editor !== 'undefined') { // WP Editor
+            window.wp_editor_qt(canvas, false);
+          }
         }
       }
     };
-
-    _wp_editor_qt = function(t, i, target, canvas) {
-      wp_editor.save();
-      var cursor = wp_editor.getCursor();
-      window.set_content_cursor(canvas, cursor);
-      t.theButtons[i].callback.call(t.theButtons[i], target, canvas, t);
-      if(t.theButtons[i].id !== 'close' && t.theButtons[i].id !== 'img' && t.theButtons[i].id !== 'fullscreen' && t.theButtons[i].id !== 'dfw') {
-        var l = t.theButtons[i].tagStart.length, lines = t.theButtons[i].tagStart.substr(0, this.selectionStart).split("\n");
-        if(t.theButtons[i].id !== 'more' && t.theButtons[i].isOpen(t) === false) {
-          l = t.theButtons[i].tagEnd.length;
-          lines = t.theButtons[i].tagEnd.substr(0, this.selectionStart).split("\n");
-        }
-        line = lines.length - 1 + cursor.line;
-      }
-      else {
-        var l = 0;
-        cursor = window.get_content_cursor(canvas, canvas.selectionStart);
-        line = cursor.line
-      }
-      wp_editor.setValue(canvas.value);
-      wp_editor.setCursor(line, cursor.ch + l);
-      wp_editor.refresh();
-      wp_editor.focus();
-    }
 
     setActiveEditor = function() {
       window.wpActiveEditor = id;
@@ -425,11 +403,9 @@ function edButton(id, display, tagStart, tagEnd, access) {
       return false;
     }
 
-    // WP Editor
-    wp_editor.save();
-    var cursor = wp_editor.getCursor();
-    window.set_content_cursor(canvas, cursor);
-    wp_editor.toTextArea();
+    if(typeof wp_editor !== 'undefined') { // WP Editor
+      window.wp_editor_qt(canvas);
+    }
 
     if ( document.selection ) { //IE
       canvas.focus();
@@ -453,15 +429,9 @@ function edButton(id, display, tagStart, tagEnd, access) {
       canvas.focus();
     }
 
-    // WP Editor
-    cursor = window.get_content_cursor(canvas, canvas.selectionStart);
-    line = cursor.line
-    console.log(cursor.ch)
-    console.log(line);
-    window.postCodeMirror(canvas.id);
-    wp_editor.setCursor(line, cursor.ch);
-    wp_editor.refresh();
-    wp_editor.focus();
+    if(typeof wp_editor !== 'undefined') { // WP Editor
+      window.wp_editor_qt(canvas, false);
+    }
 
     return true;
   };

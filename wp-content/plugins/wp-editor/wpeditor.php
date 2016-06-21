@@ -3,7 +3,7 @@
 Plugin Name: WP Editor
 Plugin URI: http://wpeditor.net
 Description: This plugin modifies the default behavior of the WordPress plugin and theme editors.
-Version: 1.2.6.1
+Version: 1.2.6.2
 Author: Benjamin Rojas
 Author URI: http://benjaminrojas.net
 Text Domain: wpeditor

@@ -3,7 +3,7 @@
 Plugin Name: AddToAny Share Buttons
 Plugin URI: https://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
-Version: 1.6.17
+Version: 1.6.18
 Author: AddToAny
 Author URI: https://www.addtoany.com/
 Text Domain: add-to-any
@@ -83,7 +83,7 @@ function ADDTOANY_SHARE_SAVE_KIT( $args = array() ) {
 	
 	$defaults = array(
 		'output_later'         => false,
-		'icon_size'			   => isset( $options['icon_size'] ) ? $options['icon_size'] : '',
+		'icon_size'			   => isset( $options['icon_size'] ) ? $options['icon_size'] : '32',
 	);
 	
 	$args = wp_parse_args( $args, $defaults );
@@ -119,13 +119,13 @@ function ADDTOANY_SHARE_SAVE_KIT( $args = array() ) {
 			$icon_size_classname = isset( $options['custom_icons_height'] ) ? ' a2a_kit_size_' . $options['custom_icons_height'] : '';
 		}
 	// a2a_kit_size_32 if no icon size, or no_small_icons arg is true
-	} elseif ( ! isset( $icon_size ) || isset( $args['no_small_icons'] ) && true == $args['no_small_icons'] ) {
+	} elseif ( empty( $icon_size ) || isset( $args['no_small_icons'] ) && true == $args['no_small_icons'] ) {
 		$icon_size_classname = ' a2a_kit_size_32';
 	// a2a_kit_size_16
-	} elseif ( isset( $icon_size ) && $icon_size == '16' ) {
+	} elseif ( $icon_size == '16' ) {
 		$icon_size_classname = '';
 	// a2a_kit_size_## custom icon size
-	} elseif ( isset( $icon_size ) ) {
+	} elseif ( ! empty( $icon_size ) ) {
 		$icon_size_classname = ' a2a_kit_size_' . $icon_size;
 	}
 	
@@ -197,7 +197,7 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 		'html_container_close' => '',
 		'html_wrap_open'       => '',
 		'html_wrap_close'      => '',
-		'icon_size'			   => isset( $options['icon_size'] ) ? $options['icon_size'] : '',
+		'icon_size'			   => isset( $options['icon_size'] ) ? $options['icon_size'] : '32',
 		'is_follow'            => false,
 		'no_universal_button'  => false,
 		'buttons'              => array(),
@@ -210,7 +210,7 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 	$is_amp = function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ? true : false;
 	
 	// False if "icon_size" is set to '16', or no_small_icons arg is true
-	$large_icons = ( isset( $icon_size ) && $icon_size == '16' 
+	$large_icons = ( $icon_size == '16' 
 		&& ( ! isset( $no_small_icons ) || false == $no_small_icons )
 	) ? false : true;
 	// False if AMP endpoint
@@ -317,9 +317,9 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 			$icon_url = isset( $service['icon_url'] ) ? $service['icon_url'] : false;
 			$icon_url = $is_amp && ! $icon_url ? 'https://static.addtoany.com/buttons/' . $icon . '.svg' : $icon_url;
 			$width_attr = isset( $service['icon_width'] ) ? ' width="' . $service['icon_width'] . '"' : ' width="16"';
-			$width_attr = $is_amp && isset( $icon_size ) ? ' width="' . $icon_size . '"' : $width_attr;
+			$width_attr = $is_amp && ! empty( $icon_size ) ? ' width="' . $icon_size . '"' : $width_attr;
 			$height_attr = isset( $service['icon_height'] ) ? ' height="' . $service['icon_height'] . '"' : ' height="16"';
-			$height_attr = $is_amp && isset( $icon_size ) ? ' height="' . $icon_size . '"' : $height_attr;
+			$height_attr = $is_amp && ! empty( $icon_size ) ? ' height="' . $icon_size . '"' : $height_attr;
 			
 			$url = ( isset( $href ) ) ? $href : $https_or_http . '://www.addtoany.com/add_to/' . $safe_name . '?linkurl=' . $linkurl_enc .'&amp;linkname=' . $linkname_enc;
 			$src = ( $icon_url ) ? $icon_url : $icons_dir . $icon . '.' . $icons_type;
@@ -384,7 +384,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 		'html_container_close' => '',
 		'html_wrap_open' => '',
 		'html_wrap_close' => '',
-		'icon_size'	=> isset( $options['icon_size'] ) ? $options['icon_size'] : '',
+		'icon_size'	=> isset( $options['icon_size'] ) ? $options['icon_size'] : '32',
 		'no_small_icons' => false,
 		'no_universal_button' => false,
 	);
@@ -419,8 +419,8 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 			// If AMP (Accelerated Mobile Page)
 			if ( $is_amp ) {
 				$button_src    = 'https://static.addtoany.com/buttons/a2a.svg';
-				$button_width  = isset( $icon_size ) ? ' width="' . $icon_size .'"'  : ' width="32"';
-				$button_height = isset( $icon_size ) ? ' height="' . $icon_size .'"'  : ' height="32"';
+				$button_width  = ! empty( $icon_size ) ? ' width="' . $icon_size .'"'  : ' width="32"';
+				$button_height = ! empty( $icon_size ) ? ' height="' . $icon_size .'"'  : ' height="32"';
 			} else {
 				// Skip button IMG for A2A icon insertion
 				$button_text = '';	

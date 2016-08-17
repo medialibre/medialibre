@@ -3,8 +3,8 @@ Contributors: mostafa.s1990, GregRoss
 Donate link: http://wp-statistics.com/donate/
 Tags: statistics, stats, visit, visitors, chart, browser, blog, today, yesterday, week, month, year, total, post, page, sidebar, summary, feedburner, hits, pagerank, google, alexa, live visit
 Requires at least: 3.0
-Tested up to: 4.4.2
-Stable tag: 10.1
+Tested up to: 4.5
+Stable tag: 10.2
 License: GPL3
 
 Complete statistics for your WordPress site.
@@ -221,6 +221,26 @@ At the end of the message will be a list of tables that are missing, you can use
 
 If you still have issues open a new thread on the support forum and we'll try and resolve it for you.
 
+= I've changed the permissions for WP Statistics access and now I've lost access to it myself, how to I fix it? =
+
+If you have access to phpMyAdmin (or similar tool) you can query the wp_options table:
+
+	SELECT * FROM wp_options WHERE option_name = 'wp_statistics';
+
+Then edit the value, inside the string will be something like (note: "edit_plugins" will be whatever permission you selected):
+
+	s:15:"read_capability";s:12:"edit_plugins";s:17:"manage_capability";s:12:"edit_plugins";
+
+Replace it with:
+
+	s:15:"read_capability";s:14:"manage_options";s:17:"manage_capability";s:14:"manage_options";
+
+= I see error messages in my PHP log like "WordPress database error Duplicate entry 'YYYY-MM-DD' for key 'unique_date' for ..." =
+
+This is caused by a race condition in the code, it's safe to ignore (it shouldn't be labeled as an error really, but that is part of WordPress that we can't control).
+
+It happens when a new day starts and two visitors hit the site at nearly the same time for the first visit of the day. Both try and create a new row in the table to track the days visits, but only one of them success and the other throws this warning. 
+	
 == Screenshots ==
 1. View stats page.
 2. View latest search words.
@@ -234,10 +254,19 @@ If you still have issues open a new thread on the support forum and we'll try an
 10. View latest search engine referrers Statistics page.
 
 == Upgrade Notice ==
-= 10.1 =
-This is primarily a maintenance release with updates to various libraries and bug fixes.
+= 10.2 =
+This is primarily a maintenance release with updates to various libraries and bug fixes, note that Google Maps is no longer supported.
 
 == Changelog ==
+= 10.2 =
+* Release Date: August 2, 2016
+* Added: Support for use page id in Get_Historical_Data function.
+* Updated: jQuery CSS references.
+* Fixed: Various WP_DEBUG warnings.
+* Fixed: Incorrect URL in quick access widget for some of the totals.
+* Fixed: Make sure to escape the post title in the widget otherwise the graph may not be displayed correctly.
+* Removed: Google Maps support as Google no longer supports keyless access to the API (http://googlegeodevelopers.blogspot.com.es/2016/06/building-for-scale-updates-to-google.html).
+
 = 10.1 =
 * Release Date: April 3, 2016
 * Updated: Top pages page to list the stats for the selected date range in the page list.

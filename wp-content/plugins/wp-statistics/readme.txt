@@ -3,8 +3,8 @@ Contributors: mostafa.s1990, GregRoss
 Donate link: http://wp-statistics.com/donate/
 Tags: statistics, stats, visit, visitors, chart, browser, blog, today, yesterday, week, month, year, total, post, page, sidebar, summary, feedburner, hits, pagerank, google, alexa, live visit
 Requires at least: 3.0
-Tested up to: 4.5
-Stable tag: 10.2
+Tested up to: 4.6
+Stable tag: 10.3
 License: GPL3
 
 Complete statistics for your WordPress site.
@@ -241,6 +241,12 @@ This is caused by a race condition in the code, it's safe to ignore (it shouldn'
 
 It happens when a new day starts and two visitors hit the site at nearly the same time for the first visit of the day. Both try and create a new row in the table to track the days visits, but only one of them success and the other throws this warning. 
 	
+= PHP 7 Support =
+
+WP Statistics is PHP 7 compliant, however some versions of PHP 7 have bugs that can cause issues.  One know issue is with PHP 7.0.4 causing memory exhaustion errors newer versions of PHP 7 do not have this issue.
+
+At this time (August 2016) WP Statistics seems to run fine with PHP 7.0.10, however you may experience issues that we haven't found yet.  If you do, feel free to report it after you've confirmed it is not a problem with PHP.
+	
 == Screenshots ==
 1. View stats page.
 2. View latest search words.
@@ -254,10 +260,21 @@ It happens when a new day starts and two visitors hit the site at nearly the sam
 10. View latest search engine referrers Statistics page.
 
 == Upgrade Notice ==
-= 10.2 =
-This is primarily a maintenance release with updates to various libraries and bug fixes, note that Google Maps is no longer supported.
+= 10.3 =
+This is primarily a maintenance release with updates to various libraries and bug fixes, note that Google Maps is no longer supported as of 10.2.
 
 == Changelog ==
+= 10.3 =
+* Release Date: August 19, 2016
+* Added: Support for minified css/js files and the SCRIPT_DEBUG WordPress define.
+* Added: <label> spans around the text for widget fields for easier styling.
+* Added: 'AdsBot-Google' to the robots list
+* Fixed: Pop up country information on the map dashboard widget will now stay on top of the WordPress dashboard menus.
+* Fixed: WP_DEBUG errors in front end widget.
+* Updated: JQVMap library to version 1.5.1.
+* Updated: jqPlot library to version 1.0.9.
+* Updated: GeoIP library to version 2.4.1.
+
 = 10.2 =
 * Release Date: August 2, 2016
 * Added: Support for use page id in Get_Historical_Data function.

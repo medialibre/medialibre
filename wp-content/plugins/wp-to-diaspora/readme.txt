@@ -3,8 +3,8 @@ Contributors: gutobenn, noplanman
 Donate link: https://github.com/gutobenn/wp-to-diaspora/
 Tags: diaspora, integration, share, post, social, network
 Requires at least: 3.9.2
-Tested up to: 4.4.1
-Stable tag: 1.7
+Tested up to: 4.6
+Stable tag: 1.7.1
 Author URI: https://github.com/gutobenn
 Plugin URI: https://github.com/gutobenn/wp-to-diaspora/
 License: GPLv2 or later
@@ -91,6 +91,9 @@ Basically, the server your WordPress installation is set up on makes a connectio
 Quite straightforward, right?
 
 == Changelog ==
+
+= 1.7.1 =
+* Lower save_post hook priority to make the plugin compatible with WP to Twitter plugin
 
 = 1.7.0 =
 * Make plugin no-js friendly, so that it works properly even if Javascript is disabled

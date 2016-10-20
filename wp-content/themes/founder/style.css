@@ -72,6 +72,19 @@ h1, h2, .toggle-navigation, .social-media-icons a, .toggle-sidebar i, .comments-
   /* 36px */
 }
 
+#toggle-sidebar {
+  font-size: 0.8em;
+  display: inline-block;
+  vertical-align: super;
+  color: #666;
+}
+
+#toggle-sidebar:hover,
+#toggle-sidebar:active,
+#toggle-sidebar:focus {
+  color: #E37D39;
+}
+
 .wp-caption-text, input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="file"]):not([type="image"]),
 textarea, input[type="submit"], .tagline, .menu-primary-items a,
 .menu-unset ul a, .widget, .post-header p, .more-link, .post-comments, .further-reading span, .sticky-status span, .archive-header h2, .comment-footer span,
@@ -1183,6 +1196,7 @@ a img {
 .widget-title {
   font-size: 1em;
   margin-bottom: 1.5em;
+  display: none;
 }
 
 .widget_calendar #calendar_wrap {
@@ -1874,6 +1888,5 @@ If you want more information about customizing Founder with CSS, check out this 
  }
 
 .widget_tag_cloud {
-    max-width: 600px;
     margin: auto;
  }

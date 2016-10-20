@@ -23,12 +23,12 @@ class WPEditorAjax {
 						WPEditorLog::log( '[' . basename( __FILE__ ) . ' - line ' . __LINE__ . "] Caught WPEditor exception: " . $e->getMessage() );
 					}
 				}
-				WPEditorSetting::set_value( $key, trim( stripslashes( $value ) ) );
+				WPEditorSetting::set_value( $key, trim( stripslashes( esc_html( $value ) ) ) );
 			}
 		}
 
 		if (isset( $_REQUEST['_tab'] ) ) {
-			WPEditorSetting::set_value( 'settings_tab', $_REQUEST['_tab'] );
+			WPEditorSetting::set_value( 'settings_tab', esc_html( $_REQUEST['_tab'] ) );
 		}
 
 		if ( $error ) {
@@ -37,7 +37,7 @@ class WPEditorAjax {
 		}
 		else {
 			$result[0] = 'WPEditorAjaxSuccess';
-			$result[1] = '<h3>' . __( 'Success', 'wp-editor' ) . '</h3><p>' . $_REQUEST['_success'] . '</p>'; 
+			$result[1] = '<h3>' . __( 'Success', 'wp-editor' ) . '</h3><p>' . esc_html( $_REQUEST['_success'] ) . '</p>'; 
 		}
 
 		echo wp_json_encode( $result );

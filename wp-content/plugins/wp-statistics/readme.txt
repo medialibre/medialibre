@@ -1,10 +1,10 @@
 === WP Statistics ===
-Contributors: mostafa.s1990, GregRoss
+Contributors: GregRoss, mostafa.s1990
 Donate link: http://wp-statistics.com/donate/
-Tags: statistics, stats, visit, visitors, chart, browser, blog, today, yesterday, week, month, year, total, post, page, sidebar, summary, feedburner, hits, pagerank, google, alexa, live visit
+Tags: statistics, stats, visit, visitors, chart, browser, blog, today, yesterday, week, month, year, total, post, page, sidebar, summary, hits, pagerank, google, alexa, live visit
 Requires at least: 3.0
-Tested up to: 4.6
-Stable tag: 10.3
+Tested up to: 4.7
+Stable tag: 11.0.3
 License: GPL3
 
 Complete statistics for your WordPress site.
@@ -77,21 +77,21 @@ Still not having any luck? Open a new thread on one of the support forums and we
 The admin manual is installed as part of the plugin, simply go to Statistics->Manual to view it.  At the top of the page will also be two icons that will allow you to download it in either ODT or HTML formats.
 
 = What do I do if the plug does not work? =
-Disable / Enable the plugin.  You may also want to remove and re-install it.
+Disable / Enable the plugin.  You may also want to try removing and re-installing it as well.  If it is still not working, please open a new support thread on the [WordPress support forums](http://wordpress.org/support/plugin/wp-statistics).
 
 = All visitors are being set to unknown for their location? =
 Make sure you've downloaded the GeoIP database and the GeoIP code is enabled.
 
-Also, if your running an internal test site with non-routable IP addresses (like 192.168.x.x or 172.28.x.x or 10.x.x.x), these addresses will come up as unknown always.
+Also, if your running an internal test site with non-routable IP addresses (like 192.168.x.x or 172.28.x.x or 10.x.x.x), these addresses will come up as unknown always unless you have defined a location in the "Country code for private IP addresses" setting.
 
 = GeoIP is enabled but no hits are being counted? =
-The GeoIP code requires several things to function, PHP 5.3 or above, the bcmath extension, the cURL extension and PHP cannot be running in safe mode.  All of these conditions are checked for but there may be additional items required.  Check your PHP log files and see if there are any fatal errors listed.
+The GeoIP code requires several things to function, PHP 5.3 or above, the cURL extension and PHP cannot be running in safe mode.  All of these conditions are checked for but there may be additional items required.  Check your PHP log files and see if there are any fatal errors listed.
 
 = How much memory does PHP Statistics require? =
 This depends on how many hits your site gets.  The data collection code is very light weight, however the reporting and statistics code can take a lot of memory to process.  The longer you collect data for the more memory you will need to process it.  At a bare minimum, a basic WordPress site with WP Statistics should have at least 32 meg of RAM available for a page load.  Sites with lots of plugins and high traffic should look at significantly increasing that (128 to 256 meg is not unreasonable).
 
 = I've enabled IP subnet exclusions and now no visitors are recorded? =
-Be very careful to set the subnet mask correctly on the subnet list, it is very easy to catch too much traffic.  Likewise if you are excluding a single IP address make sure to include a subnet mask of 32 or 255.255.255.255 otherwise the default subnet of 0 will be used, catching all ip addresses.
+Be very careful to set the subnet mask correctly on the subnet list, it is very easy to catch too much traffic.  Likewise if you are excluding a single IP address make sure to include a subnet mask of 32 or 255.255.255.255 otherwise you may not get the expected results.
 
 = I'm not receiving e-mail reports? =
 Make sure you have WordPress configured correctly for SMTP and also check your WP Cron is working correctly.  You can use [Cron View](http://wordpress.org/plugins/cron-view) to examine your WP Cron table and see if there are any issues.
@@ -99,7 +99,7 @@ Make sure you have WordPress configured correctly for SMTP and also check your W
 = Does WP Statistics support multi-site? =
 WP Statistics doesn't officially support multi-site however it does have limited functionally associated with it and should function without issue.  However no support is provided at this time.
 
-Version 8.8 is the first release that should install, upgrade and remove correctly on mutli-site as well as have some very basic support for the network admin menu.  This should not be taken as an indication that WP Statistics fully support for multi-site, but only as a very preliminary first step.
+Version 8.8 is the first release that should install, upgrade and remove correctly on mutli-site as well as have some very basic support for the network admin menu.  This should not be taken as an indication that WP Statistics fully supports multi-site, but only as a very preliminary first step.
 
 = Does WP Statistics report on post hits? =
 Yes, version 6.0 has introduced page hit statistics!
@@ -125,7 +125,7 @@ You can also ask MaxMind to unblock your host.  Note that automatic updates will
 
 = I've activated the plugin but the menus don't show up and nothing happens? =
 
-WP Statistics requires PHP 5.3, if it has detected an older version of PHP installed it will active cleanly in WordPress but disable all functionality, you will have to upgrade to PHP 5.3 or above for it to function.  WP Statistics will display an error on your plugin list just below the WP Statistics entry to let you know.
+WP Statistics requires PHP 5.4, if it has detected an older version of PHP installed it will active cleanly in WordPress but disable all functionality, you will have to upgrade to PHP 5.4 or above for it to function.  WP Statistics will display an error at the top of your plugin list to let you know.
 
 If there is no error message there may be something else wrong, your first thing to try is disabling your other plugins as they can sometimes cause conflicts.
 
@@ -133,7 +133,7 @@ If you still don't see the menus, go to the support forums and open a new thread
 
 = I'm using another statistics plugin/service and get different numbers for them, why? =
 
-Pretty much every plugin/service is going to give you different results for visits and vistors, there are several reasons for this:
+Pretty much every plugin/service is going to give you different results for visits and visitors, there are several reasons for this:
 
 * Web crawler detection
 * Detection method (javascript vs server side PHP)
@@ -147,7 +147,7 @@ Since WP Statistics 8.0, PHP 5.3 or above has been required.  If you are using a
 
 Your hosting provider should have a newer version of PHP available, sometimes you must activate it through your hosting control panel.
 
-Since the last release of PHP 5.2 is over 3 years ago (Jan 2011) and is no longer supported or receiving security fixes, if your provider does not support a newer version you should probably be moving hosting providers.
+Since the last release of PHP 5.2 is over 5 years ago (Jan 2011) and is no longer supported or receiving security fixes, if your provider does not support a newer version you should probably be moving hosting providers.
 
 If you have done an upgrade and you can no longer access your site due to the parse error you will have to manually delete the wp-statistics directory from your wordpress/wp-content/plugins directory, either through your hosting providers control panel or FTP.
 
@@ -159,7 +159,7 @@ Don't, upgrade immediately to the latest version of WP Statistics.
 
 = Something has gone horribly wrong and my site no longer loads, how can I disable the plugin without access to the admin area? =
 
-You can manually disable plugins in WordPress by simply renaming the folder they are installed in.  Using FTP or your hosting providers file manager, go to your WordPress directory, from ther go to wp-content/plugins and rename or delete the wp-statistics folder.
+You can manually disable plugins in WordPress by simply renaming the folder they are installed in.  Using FTP or your hosting providers file manager, go to your WordPress directory, from there go to wp-content/plugins and rename or delete the wp-statistics folder.
 
 = I'm getting an error in my PHP log like: Fatal error: Call to undefined method Composer\Autoload\ClassLoader::set() =
 
@@ -187,7 +187,7 @@ The average number of pages a visitor views on your site is Visits/Visitors.
 
 This is usually caused by a PHP fatal error, check the page source and PHP logs.
 
-The most common fatal error is an out of memory error. Check the Statistics->Optimization page and see how much memory is currently assigned to PHP and how much the overview is using.
+The most common fatal error is an out of memory error. Check the Statistics->Optimization page and see how much memory is currently assigned to PHP.
 
 If it is a memory issue you have two choices:
  - Increase PHP's memory allocation
@@ -211,7 +211,7 @@ We do not recommend using a caching plugin along with WP Statistics.
 
 = I get an error message like "PHP Fatal error: Function name must be a string in /../parse-user-agent.php" =
 
-Do you have eAccelerator installed?  If so this is a known issue with eAccelerator and PHP's "anonymous" functions, which are used in the user agent parsing library.  As no new versions of eAccelerator have been released for over 3 years, you should look to replace it or disable it.
+Do you have eAccelerator installed?  If so this is a known issue with eAccelerator and PHP's "anonymous" functions, which are used in the user agent parsing library.  As no new versions of eAccelerator have been released for over 6 years (since January 2010), you should look to replace it or disable it.
 
 = I've installed WP Statistics for the first time on a site and when I go to the statistics pages I get an error saying like "The following plugin table(s) do not exist in the database" =
 
@@ -239,14 +239,36 @@ Replace it with:
 
 This is caused by a race condition in the code, it's safe to ignore (it shouldn't be labeled as an error really, but that is part of WordPress that we can't control).
 
-It happens when a new day starts and two visitors hit the site at nearly the same time for the first visit of the day. Both try and create a new row in the table to track the days visits, but only one of them success and the other throws this warning. 
-	
+It happens when a new day starts and two visitors hit the site at nearly the same time for the first visit of the day. Both try and create a new row in the table to track the days visits, but only one of them success and the other throws this warning.
+
 = PHP 7 Support =
 
-WP Statistics is PHP 7 compliant, however some versions of PHP 7 have bugs that can cause issues.  One know issue is with PHP 7.0.4 causing memory exhaustion errors newer versions of PHP 7 do not have this issue.
+WP Statistics is PHP 7 compliant, however some versions of PHP 7 have bugs that can cause issues.  One know issue is with PHP 7.0.4 causing memory exhaustion errors, newer versions of PHP 7 do not have this issue.
 
 At this time (August 2016) WP Statistics seems to run fine with PHP 7.0.10, however you may experience issues that we haven't found yet.  If you do, feel free to report it after you've confirmed it is not a problem with PHP.
-	
+
+= IPv6 Support =
+
+WP Statistics supports IPv6 as of version 11.0, however PHP must be compiled with IPv6 support enabled, otherwise you may see warnings when a visitor from an IPv6 address hits your site.
+
+You can check if IPv6 support is enabled in PHP by visiting the "Optimization->Resources/Information->Version Info->PHP IPv6 Enabled" section.
+
+If IPv6 is not enabled, you may see an warning like:
+
+	Warning: inet_pton() [function.inet-pton]: Unrecognized address 2003:0006:1507:5d71:6114:d8bd:80c2:1090
+
+= When I upgrade or install WP Statistics 11.0 I get an error message like "Parse error: syntax error, unexpected T_USE, expecting T_FUNCTION in..." =
+
+Since WP Statistics 11.0, PHP 5.4 or above has been required.  If you are using an older version of PHP it cannot understand the new syntax included in WP Statistics 11.0 and generates a parse error.
+
+Your hosting provider should have a newer version of PHP available, sometimes you must activate it through your hosting control panel.
+
+Since the last release of PHP 5.3 is over 2 years ago (Aug 2014) and is no longer supported or receiving security fixes, if your provider does not support a newer version you should probably be moving hosting providers.
+
+If you have done an upgrade and you can no longer access your site due to the parse error you will have to manually delete the wp-statistics directory from your wordpress/wp-content/plugins directory, either through your hosting providers control panel or FTP.
+
+You may also downgrade to WP Statistics 10.3 as a temporary measure, but no new fixes or features will be added to that version and you should move to a newer version of PHP as soon as possible.  You can download the 10.3 here: https://downloads.wordpress.org/plugin/wp-statistics.10.3.zip
+
 == Screenshots ==
 1. View stats page.
 2. View latest search words.
@@ -260,10 +282,50 @@ At this time (August 2016) WP Statistics seems to run fine with PHP 7.0.10, howe
 10. View latest search engine referrers Statistics page.
 
 == Upgrade Notice ==
-= 10.3 =
-This is primarily a maintenance release with updates to various libraries and bug fixes, note that Google Maps is no longer supported as of 10.2.
+= 11.0 =
+PHP 5.4 is now required for version 11.0 and above!  IPv6 is now supported if you have IPv6 support complied in to PHP, if you don't you may see warning messages if you receive visitors from IPv6 addresses (see the FAQ for more information).
 
 == Changelog ==
+= 11.0.3 =
+* Release Date: January 13, 2017
+* Added: Option to reset plugin options without deleting the data.
+* Fixed: If IP hashing as enabled a PHP would be generated during the hashing.
+* Fixed: Typo in JavaScript code that would cause some errors not to be displayed.
+* Fixed: Make sure the historical table exists before checking the keys on it which would cause extra output to be generated on first install.
+* Updated: RTL CSS styles for left/right div's in the admin dashboard, thanks sszdh.
+
+= 11.0.2 =
+* Release Date: December 1, 2016
+* Fixed: Top visitors page css for date picker.
+* Fixed: Incorrect url for link on recent visitors widget.
+* Fixed: Make sure the tick intervals are always whole numbers, otherwise the axis ticks won't match up with the data on line charts.
+* Fixed: Make sure when looking up a page/post ID for a URL to take the latest visited id instead of the first in case the URI has been reused.
+* Fixed: Duplicate display of hit statistics on hits page in some corner cases.
+
+= 11.0.1 =
+* Release Date: November 7, 2016
+* Fixed: Don't refresh a widget if it's not visible, fixes the widget being replaced by a spinner that never goes away.
+* Updated: Minimum PHP version is now 5.4.
+* Updated: Additional error checks for new IP code.
+* Updated: jqPlot library to version development version and added DST fix.
+
+= 11.0 =
+* Release Date: October 28, 2016
+* Added: IPv6 Support.
+* Added: Time attribute to searches shortcode.
+* Added: Basic print styles for the overview and log pages.
+* Fixed: Default provider for searches shortcode.
+* Fixed: Display of top sites list when the display port is very small would .
+* Fixed: CSS for date picker not loading.
+* Fixed: Incorrect stats on some pages for date ranges that end in the past.
+* Fixed: Date range selector on stats now properly displays a custom range after it has been set.
+* Fixed: "Empty" log widget columns could not have widgets added to them.
+* Updated: GeoIP library to version 1.1.1.
+* Updated: phpUserAgent library to 0.5.2.
+* Updated: Language on the front end widget to match the summary widget in the admin.
+* Removed: Check for bc math.
+* Removed: Last bits of google maps code.
+
 = 10.3 =
 * Release Date: August 19, 2016
 * Added: Support for minified css/js files and the SCRIPT_DEBUG WordPress define.

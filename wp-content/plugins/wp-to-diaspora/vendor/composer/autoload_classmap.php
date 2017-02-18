@@ -6,4 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'HTML_To_Markdown' => $baseDir . '/lib/class-html-to-markdown.php',
+    'WP2D_API' => $baseDir . '/lib/class-api.php',
+    'WP2D_Contextual_Help' => $baseDir . '/lib/class-contextual-help.php',
+    'WP2D_Helpers' => $baseDir . '/lib/class-helpers.php',
+    'WP2D_Options' => $baseDir . '/lib/class-options.php',
+    'WP2D_Post' => $baseDir . '/lib/class-post.php',
 );

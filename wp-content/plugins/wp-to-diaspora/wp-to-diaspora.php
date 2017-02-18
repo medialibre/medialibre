@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: WP to diaspora*
- * Plugin URI:  https://github.com/gutobenn/wp-to-diaspora
+ * Plugin URI:  https://github.com/DiasPHPora/wp-to-diaspora
  * Description: Automatically shares WordPress posts on diaspora*
- * Version:     1.7.2
+ * Version:     1.9.1
  * Author:      Augusto Bennemann
  * Author URI:  https://github.com/gutobenn
  * Text Domain: wp-to-diaspora
@@ -22,10 +22,10 @@
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @package   WP_To_Diaspora
- * @version   1.7.2
+ * @version   1.9.1
  * @author    Augusto Bennemann <gutobenn@gmail.com>
  * @copyright Copyright (c) 2015, Augusto Bennemann
- * @link      https://github.com/gutobenn/wp-to-diaspora
+ * @link      https://github.com/DiasPHPora/wp-to-diaspora
  * @license   https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
@@ -33,7 +33,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // Set the current version.
-define( 'WP2D_VERSION', '1.7.2' );
+define( 'WP2D_VERSION', '1.9.1' );
 
 /**
  * WP to diaspora* main plugin class.
@@ -45,7 +45,7 @@ class WP_To_Diaspora {
 	 *
 	 * @var WP_To_Diaspora
 	 */
-	private static $_instance = null;
+	private static $_instance;
 
 	/**
 	 * The minimum required WordPress version.
@@ -54,7 +54,7 @@ class WP_To_Diaspora {
 	 *
 	 * @var string
 	 */
-	private $_min_wp = '3.9.2';
+	private $_min_wp = '3.9.2-src';
 
 	/**
 	 * The minimum required PHP version.
@@ -70,7 +70,7 @@ class WP_To_Diaspora {
 	 *
 	 * @var WP2D_API
 	 */
-	private $_api = null;
+	private $_api;
 
 	/**
 	 * Create / Get the instance of this class.
@@ -80,14 +80,15 @@ class WP_To_Diaspora {
 	public static function instance() {
 		if ( ! isset( self::$_instance ) ) {
 			self::$_instance = new self();
-			self::$_instance->_constants();
 			if ( self::$_instance->_version_check() ) {
+				self::$_instance->_constants();
 				self::$_instance->_includes();
 				self::$_instance->_setup();
 			} else {
 				self::$_instance = null;
 			}
 		}
+
 		return self::$_instance;
 	}
 
@@ -151,7 +152,7 @@ class WP_To_Diaspora {
 	 * @since 1.5.0
 	 */
 	private function _includes() {
-		require WP2D_VENDOR_DIR . '/autoload.php';
+		require_once WP2D_VENDOR_DIR . '/autoload.php';
 		require_once WP2D_LIB_DIR . '/class-api.php';
 		require_once WP2D_LIB_DIR . '/class-contextual-help.php';
 		require_once WP2D_LIB_DIR . '/class-helpers.php';
@@ -182,8 +183,7 @@ class WP_To_Diaspora {
 		// WP2D Post.
 		add_action( 'init', array( 'WP2D_Post', 'setup' ) );
 
-		// AJAX actions for loading pods, aspects and services.
-		add_action( 'wp_ajax_wp_to_diaspora_update_pod_list', array( $this, 'update_pod_list_callback' ) );
+		// AJAX actions for loading aspects and services.
 		add_action( 'wp_ajax_wp_to_diaspora_update_aspects_list', array( $this, 'update_aspects_list_callback' ) );
 		add_action( 'wp_ajax_wp_to_diaspora_update_services_list', array( $this, 'update_services_list_callback' ) );
 
@@ -292,48 +292,6 @@ class WP_To_Diaspora {
 	public function settings_link( $links ) {
 		$links[] = '<a href="' . admin_url( 'options-general.php?page=wp_to_diaspora' ) . '">' . __( 'Settings' ) . '</a>';
 		return $links;
-	}
-
-	/**
-	 * Fetch the updated list of pods from podupti.me and save it to the settings.
-	 *
-	 * @return array The list of pods.
-	 */
-	private function _update_pod_list() {
-		// API url to fetch pods list from podupti.me.
-		$pod_list_url = 'http://podupti.me/api.php?format=json&key=4r45tg';
-		$pods = array();
-
-		// Get the response from the WP_HTTP request.
-		$response = wp_safe_remote_get( $pod_list_url );
-
-		if ( $json = wp_remote_retrieve_body( $response ) ) {
-			$pod_list = json_decode( $json );
-
-			if ( isset( $pod_list->pods ) ) {
-				foreach ( $pod_list->pods as $pod ) {
-					if ( 'no' === $pod->hidden ) {
-						$pods[] = array(
-							'secure' => $pod->secure,
-							'domain' => $pod->domain,
-						);
-					}
-				}
-
-				$options = WP2D_Options::instance();
-				$options->set_option( 'pod_list', $pods );
-				$options->save();
-			}
-		}
-
-		return $pods;
-	}
-
-	/**
-	 * Update the list of pods and return them for use with AJAX.
-	 */
-	public function update_pod_list_callback() {
-		wp_send_json( $this->_update_pod_list() );
 	}
 
 	/**

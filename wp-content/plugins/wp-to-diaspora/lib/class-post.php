@@ -21,10 +21,10 @@ class WP2D_Post {
 	/**
 	 * The original post object.
 	 *
-	 * @var WP_Posts
+	 * @var WP_Post
 	 * @since 1.5.0
 	 */
-	public $post = null;
+	public $post;
 
 	/**
 	 * The original post ID.
@@ -32,7 +32,7 @@ class WP2D_Post {
 	 * @var int
 	 * @since 1.5.0
 	 */
-	public $ID = null;
+	public $ID;
 
 	/**
 	 * If this post should be shared on diaspora*.
@@ -40,7 +40,7 @@ class WP2D_Post {
 	 * @var bool
 	 * @since 1.5.0
 	 */
-	public $post_to_diaspora = null;
+	public $post_to_diaspora;
 
 	/**
 	 * If a link back to the original post should be added.
@@ -48,7 +48,7 @@ class WP2D_Post {
 	 * @var bool
 	 * @since 1.5.0
 	 */
-	public $fullentrylink = null;
+	public $fullentrylink;
 
 	/**
 	 * What content gets posted.
@@ -56,7 +56,7 @@ class WP2D_Post {
 	 * @var string
 	 * @since 1.5.0
 	 */
-	public $display = null;
+	public $display;
 
 	/**
 	 * The types of tags to post. (global,custom,post)
@@ -64,7 +64,7 @@ class WP2D_Post {
 	 * @var array
 	 * @since 1.5.0
 	 */
-	public $tags_to_post = null;
+	public $tags_to_post;
 
 	/**
 	 * The post's custom tags.
@@ -72,7 +72,7 @@ class WP2D_Post {
 	 * @var array
 	 * @since 1.5.0
 	 */
-	public $custom_tags = null;
+	public $custom_tags;
 
 	/**
 	 * Aspects this post gets posted to.
@@ -80,7 +80,7 @@ class WP2D_Post {
 	 * @var array
 	 * @since 1.5.0
 	 */
-	public $aspects = null;
+	public $aspects;
 
 	/**
 	 * Services this post gets posted to.
@@ -88,8 +88,7 @@ class WP2D_Post {
 	 * @var array
 	 * @since 1.5.0
 	 */
-	public $services = null;
-
+	public $services;
 
 	/**
 	 * The post's history of diaspora* posts.
@@ -97,7 +96,7 @@ class WP2D_Post {
 	 * @var array
 	 * @since 1.5.0
 	 */
-	public $post_history = null;
+	public $post_history;
 
 	/**
 	 * If the post actions have all been set up already.
@@ -171,7 +170,7 @@ class WP2D_Post {
 
 			// If no WP2D meta data has been saved yet, this post shouldn't be published.
 			// This can happen if existing posts (before WP2D) get updated externally, not through the post edit screen.
-			// Check gutobenn/wp-to-diaspora#91 for reference.
+			// Check DiasPHPora/wp-to-diaspora#91 for reference.
 			// Also, when we have a post scheduled for publishing, don't touch it.
 			// This is important when modifying scheduled posts using Quick Edit.
 			if ( ! in_array( $this->post->post_status, array( 'auto-draft', 'future' ) ) && ! $meta_current ) {
@@ -275,11 +274,10 @@ class WP2D_Post {
 		 *
 		 * @since 1.5.4.1
 		 *
-		 * @param string $default   The whole HTML of the title link to be outputted.
-		 * @param string $title     The title of the original post.
-		 * @param string $permalink The permalink of the original post.
+		 * @param string    $default   The whole HTML of the title link to be outputted.
+		 * @param WP2D_Post $wp2d_post This object, to allow total customisation of the title.
 		 */
-		$link = apply_filters( 'wp2d_title_filter', $default, $title, $permalink );
+		$link = apply_filters( 'wp2d_title_filter', $default, $this );
 
 		return '<p>' . $link . '</p>';
 	}
@@ -416,9 +414,9 @@ class WP2D_Post {
 		$link = '';
 		if ( $this->fullentrylink ) {
 
-			$text = esc_html( 'Originally posted at:', 'wp-to-diaspora' );
+			$text = esc_html__( 'Originally posted at:', 'wp-to-diaspora' );
 			$permalink = get_permalink( $this->ID );
-			$title = esc_html( 'Permalink', 'wp-to-diaspora' );
+			$title = esc_html__( 'Permalink', 'wp-to-diaspora' );
 			$default = sprintf( '%1$s <a href="%2$s" title="%3$s">%2$s</a>', $text, $permalink, $title );
 
 			/**
@@ -426,12 +424,11 @@ class WP2D_Post {
 			 *
 			 * @since 1.5.4.1
 			 *
-			 * @param string $default   The whole HTML of the text and link to be outputted.
-			 * @param string $text      The "Originally posted at:" text before the link.
-			 * @param string $permalink The permalink of the original post.
-			 * @param string $title     The "Permalink" title of the link.
+			 * @param string    $default   The whole HTML of the text and link to be outputted.
+			 * @param WP2D_Post $wp2d_post This object, to allow total customisation of the title.
+			 * @param string    $text      The "Originally posted at:" text before the link.
 			 */
-			$link = apply_filters( 'wp2d_posted_at_link_filter', $default, $text, $permalink, $title );
+			$link = apply_filters( 'wp2d_posted_at_link_filter', $default, $this, $text );
 
 			$link = '<p>' . $link . '</p>';
 		}

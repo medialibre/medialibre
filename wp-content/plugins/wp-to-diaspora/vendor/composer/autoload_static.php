@@ -20,11 +20,21 @@ class ComposerStaticInit605513f3d5d4ba5250a5f21744f73d4f
         ),
     );
 
+    public static $classMap = array (
+        'HTML_To_Markdown' => __DIR__ . '/../..' . '/lib/class-html-to-markdown.php',
+        'WP2D_API' => __DIR__ . '/../..' . '/lib/class-api.php',
+        'WP2D_Contextual_Help' => __DIR__ . '/../..' . '/lib/class-contextual-help.php',
+        'WP2D_Helpers' => __DIR__ . '/../..' . '/lib/class-helpers.php',
+        'WP2D_Options' => __DIR__ . '/../..' . '/lib/class-options.php',
+        'WP2D_Post' => __DIR__ . '/../..' . '/lib/class-post.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit605513f3d5d4ba5250a5f21744f73d4f::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit605513f3d5d4ba5250a5f21744f73d4f::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit605513f3d5d4ba5250a5f21744f73d4f::$classMap;
 
         }, null, ClassLoader::class);
     }

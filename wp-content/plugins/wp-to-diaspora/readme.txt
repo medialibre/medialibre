@@ -1,12 +1,12 @@
 === WP to diaspora ===
 Contributors: gutobenn, noplanman
-Donate link: https://github.com/gutobenn/wp-to-diaspora/
+Donate link: https://github.com/DiasPHPora/wp-to-diaspora/
 Tags: diaspora, integration, share, post, social, network
 Requires at least: 3.9.2
-Tested up to: 4.6
-Stable tag: 1.7.2
+Tested up to: 4.7.2
+Stable tag: 1.9.1
 Author URI: https://github.com/gutobenn
-Plugin URI: https://github.com/gutobenn/wp-to-diaspora/
+Plugin URI: https://github.com/DiasPHPora/wp-to-diaspora/
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,7 +30,7 @@ Simply add your diaspora* pod, username and password to get started.
 On this page you can also define the default behaviour when publishing new posts.
 These settings can easily be adjusted for each individual post by using the meta box that has been added to the post types that you have selected.
 
-Additional documentation can be found in our [wiki](https://github.com/gutobenn/wp-to-diaspora/wiki)
+Additional documentation can be found in our [wiki](https://github.com/DiasPHPora/wp-to-diaspora/wiki)
 
 = What's diaspora*? =
 diaspora* is a decentralized social network. More about it on https://diasporafoundation.org/
@@ -48,9 +48,9 @@ diaspora* is a decentralized social network. More about it on https://diasporafo
 Your language isn't listed? Then feel free to [contribute your language skills](https://poeditor.com/join/project?hash=c085b3654a5e04c69ec942e0f136716a) and help make this plugin more accessible!
 
 = Development =
-This plugin is completely open source and is a work of love by all who have [contributed](https://github.com/gutobenn/wp-to-diaspora/graphs/contributors).
-If you would like to be part of it and join in, make your way over to the [project page on GitHub](https://github.com/gutobenn/wp-to-diaspora) now.
-Also, if you have an idea you would like to see in this plugin or if you've found a bug, please [let us know](https://github.com/gutobenn/wp-to-diaspora/issues/new).
+This plugin is completely open source and is a work of love by all who have [contributed](https://github.com/DiasPHPora/wp-to-diaspora/graphs/contributors).
+If you would like to be part of it and join in, make your way over to the [project page on GitHub](https://github.com/DiasPHPora/wp-to-diaspora) now.
+Also, if you have an idea you would like to see in this plugin or if you've found a bug, please [let us know](https://github.com/DiasPHPora/wp-to-diaspora/issues/new).
 
 = Credits =
 * Dandelion banner image: [Pixabay](https://pixabay.com/en/dandelion-sky-flower-nature-seeds-463928/)
@@ -91,6 +91,17 @@ Basically, the server your WordPress installation is set up on makes a connectio
 Quite straightforward, right?
 
 == Changelog ==
+
+= 1.9.1 =
+* Fix wrong parameter order for filters
+
+= 1.9.0 =
+* Remove AJAX pod list update and add static list instead
+* Remove certificate bundle downloader and simply refer to the wiki in the help tab
+* Remove some superfluous member value assignments
+
+= 1.8.0 =
+* Update filters to pass WP2D_Post object
 
 = 1.7.2 =
 * Manage translations via translate.wordpress.org
@@ -208,5 +219,7 @@ Quite straightforward, right?
 * First version
 
 == Upgrade Notice ==
-* Bug fixed: posts were published every time edited through the 'quick edit'
-* cURL is not required anymore! Now we use the internal WP_HTTP API
+
+= 1.8.0 =
+Filters have been modified and now get the WP2D_Post object to allow access to all post details.
+If you have any custom filters, they MUST be rewritten to the new format. Check the [Wiki on GitHub](https://github.com/DiasPHPora/wp-to-diaspora/wiki/Filters).

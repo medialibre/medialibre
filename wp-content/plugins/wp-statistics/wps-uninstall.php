@@ -1,14 +1,20 @@
 <?php
 	if( is_admin() ) {
-		GLOBAL $wpdb;
+		GLOBAL $wpdb, $WP_Statistics;
+
+		include_once dirname( __FILE__ ) . '/vendor/donatj/phpuseragentparser/Source/UserAgentParser.php';
+		include_once dirname( __FILE__ ) . '/includes/classes/statistics.class.php';
+
+		$WP_Statistics = new WP_Statistics();
 
 		// Handle multi site implementations
 		if( is_multisite() ) {
 			
 			// Loop through each of the sites.
-			foreach( wp_get_sites() as $blog ) {
+			$sites = $WP_Statistics->get_wp_sites_list();
+			foreach( $sites as $blog_id ) {
 
-				switch_to_blog( $blog['blog_id'] );
+				switch_to_blog( $blog_id );
 				wp_statistics_site_removal( $wpdb->prefix );
 			}
 			

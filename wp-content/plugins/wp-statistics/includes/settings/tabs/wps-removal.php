@@ -4,34 +4,66 @@ if( $wps_nonce_valid ) {
 	if( array_key_exists( 'wps_remove_plugin', $_POST ) ) {
 		if( is_super_admin() ) {
 			update_option( 'wp_statistics_removal', 'true' );
+
+			// We need to reload the page after we reset the options but it's too late to do it through a HTTP redirect so do a 
+			// JavaScript redirect instead.
+			echo '<script type="text/javascript">window.location.href="' .  admin_url() . 'plugins.php";</script>';
 		}
 	}
 
 	if( array_key_exists( 'wps_reset_plugin', $_POST ) ) {
 		if( is_super_admin() ) {
-			GLOBAL $wpdb;
+			GLOBAL $wpdb, $WP_Statistics;
+
+			$default_options = $WP_Statistics->Default_Options();
 			
 			// Handle multi site implementations
 			if( is_multisite() ) {
-				
 				// Loop through each of the sites.
-				foreach( wp_get_sites() as $blog ) {
+				$sites = $WP_Statistics->get_wp_sites_list();
+				foreach( $sites as $blog_id ) {
 
-					switch_to_blog( $blog['blog_id'] );
+					switch_to_blog( $blog_id );
 					
 					// Delete the wp_statistics option.
-					delete_option('wp_statistics');
+					update_option( 'wp_statistics', array() );
 					// Delete the user options.
 					$wpdb->query( "DELETE FROM {$wpdb->prefix}usermeta WHERE meta_key LIKE 'wp_statistics%'");
+
+					$WP_Statistics->load_options();
+					
+					// Set some intelligent defaults.
+					foreach( $default_options as $key => $value ) {
+						if( ! in_array( $key, $excluded_defaults ) && FALSE === $WP_Statistics->get_option( $key ) ) { 
+							$WP_Statistics->store_option( $key, $value ); 
+						}
+					}
+
+					$WP_Statistics->save_options();
 				}
 				
 				restore_current_blog();
 			} else {
-					// Delete the wp_statistics option.
-					delete_option('wp_statistics');
-					// Delete the user options.
-					$wpdb->query( "DELETE FROM {$wpdb->prefix}usermeta WHERE meta_key LIKE 'wp_statistics%'");
+				// Delete the wp_statistics option.
+				update_option( 'wp_statistics', array() );
+				// Delete the user options.
+				$wpdb->query( "DELETE FROM {$wpdb->prefix}usermeta WHERE meta_key LIKE 'wp_statistics%'");
+
+				$WP_Statistics->load_options();
+				
+				// Set some intelligent defaults.
+				foreach( $default_options as $key => $value ) {
+					if( ! in_array( $key, $excluded_defaults ) && FALSE === $WP_Statistics->get_option( $key ) ) { 
+						$WP_Statistics->store_option( $key, $value ); 
+					}
+				}
+
+				$WP_Statistics->save_options();
 			}
+			
+			// We need to reload the page after we reset the options but it's too late to do it through a HTTP redirect so do a 
+			// JavaScript redirect instead.
+			echo '<script type="text/javascript">window.location.href="' .  admin_url() . 'admin.php?page=wps_settings_page";</script>';
 		}
 	}
 }

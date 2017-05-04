@@ -3,7 +3,7 @@
 Plugin Name: AddToAny Share Buttons
 Plugin URI: https://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
-Version: 1.7.7
+Version: 1.7.10
 Author: AddToAny
 Author URI: https://www.addtoany.com/
 Text Domain: add-to-any
@@ -278,11 +278,14 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 			// If Follow kit and HREF specified
 			if ( $is_follow && isset( $service['href'] ) ) {
 				$follow_id = $buttons[ $active_service ]['id'];
-				if ( 'feed' == $safe_name ) {
-					// For "feed" service, stored ID value is actually the URL
+				$is_url = in_array( parse_url( $follow_id, PHP_URL_SCHEME ), array( 'http', 'https' ) );
+				
+				// If it's a URL instead of a service ID
+				if ( $is_url ) {
+					// Just use the given URL instead of the URL template
 					$href = $follow_id;
 				} else {
-					// For all other services, replace
+					// Replace the ID placeholder in the URL template
 					$href = str_replace( '${id}', $follow_id, $service['href'] );
 				}
 				$href = ( 'feed' == $safe_name ) ? $follow_id : $href;
@@ -601,7 +604,7 @@ function ADDTOANY_FOLLOW_KIT( $args = array() ) {
 	$args = wp_parse_args( $args, $defaults );
 	
 	// Add a2a_follow className to Kit classes
-	$args['kit_additional_classes'] = 'a2a_follow';
+	$args['kit_additional_classes'] = trim( $args['kit_additional_classes'] . ' a2a_follow' );
 	
 	// If $args['buttons']['feed']['id'] is set
 	$buttons = $args['buttons'];
@@ -671,46 +674,52 @@ function ADDTOANY_SHARE_SAVE_FLOATING( $args = array() ) {
 	if ( $vertical_type || $horizontal_type ) {
 		// Vertical type?
 		if ( $vertical_type ) {
+			// Prevent overwriting of $args
+			$vertical_args = $args;
+			
 			// Top position
 			$position = ( isset( $options['floating_vertical_position'] ) ) ? $options['floating_vertical_position'] . 'px' : '100px';
 			// Left or right offset
 			$offset = ( isset( $options['floating_vertical_offset'] ) ) ? $options['floating_vertical_offset'] . 'px' : '0px';
 			// Icon size
-			$args['icon_size'] = ( isset( $options['floating_vertical_icon_size'] ) ) ? $options['floating_vertical_icon_size'] : '32';
+			$vertical_args['icon_size'] = ( isset( $options['floating_vertical_icon_size'] ) ) ? $options['floating_vertical_icon_size'] : '32';
 		
 			// Add a2a_vertical_style className to Kit classes
-			$args['kit_additional_classes'] = 'a2a_floating_style a2a_vertical_style';
+			$vertical_args['kit_additional_classes'] = trim( $args['kit_additional_classes'] . ' a2a_floating_style a2a_vertical_style' );
 			
 			// Add declarations to Kit style attribute
 			if ( 'left_docked' === $vertical_type ) {
-				$args['kit_style'] = 'left:' . $offset . ';top:' . $position . ';';
+				$vertical_args['kit_style'] = 'left:' . $offset . ';top:' . $position . ';';
 			} elseif ( 'right_docked' === $vertical_type ) {
-				$args['kit_style'] = 'right:' . $offset . ';top:' . $position . ';';
+				$vertical_args['kit_style'] = 'right:' . $offset . ';top:' . $position . ';';
 			}
 			
-			$floating_html .= ADDTOANY_SHARE_SAVE_KIT( $args );
+			$floating_html .= ADDTOANY_SHARE_SAVE_KIT( $vertical_args );
 		}
 		
 		// Horizontal type?
 		if ( $horizontal_type ) {
+			// Prevent overwriting of $args values
+			$horizontal_args = $args;
+			
 			// Left or right position
 			$position = ( isset( $options['floating_horizontal_position'] ) ) ? $options['floating_horizontal_position'] . 'px' : '0px';
 			// Bottom offset
 			$offset = ( isset( $options['floating_horizontal_offset'] ) ) ? $options['floating_horizontal_offset'] . 'px' : '0px';
 			// Icon size
-			$args['icon_size'] = ( isset( $options['floating_horizontal_icon_size'] ) ) ? $options['floating_horizontal_icon_size'] : '32';
+			$horizontal_args['icon_size'] = ( isset( $options['floating_horizontal_icon_size'] ) ) ? $options['floating_horizontal_icon_size'] : '32';
 
 			// Add a2a_default_style className to Kit classes
-			$args['kit_additional_classes'] = 'a2a_floating_style a2a_default_style';
+			$horizontal_args['kit_additional_classes'] = trim( $args['kit_additional_classes'] . ' a2a_floating_style a2a_default_style' );
 			
 			// Add declarations to Kit style attribute
 			if ( 'left_docked' === $horizontal_type ) {
-				$args['kit_style'] = 'bottom:' . $offset . ';left:' . $position . ';';
+				$horizontal_args['kit_style'] = 'bottom:' . $offset . ';left:' . $position . ';';
 			} elseif ( 'right_docked' === $horizontal_type ) {
-				$args['kit_style'] = 'bottom:' . $offset . ';right:' . $position . ';';
+				$horizontal_args['kit_style'] = 'bottom:' . $offset . ';right:' . $position . ';';
 			}
 			
-			$floating_html .= ADDTOANY_SHARE_SAVE_KIT( $args );
+			$floating_html .= ADDTOANY_SHARE_SAVE_KIT( $horizontal_args );
 		}
 	}
 	
@@ -889,19 +898,19 @@ function A2A_SHARE_SAVE_pre_get_posts( $query ) {
 add_action( 'pre_get_posts', 'A2A_SHARE_SAVE_pre_get_posts' );
 
 
-// [addtoany url="http://example.com/page.html" title="Some Example Page"]
+// [addtoany url="https://www.example.com/page.html" title="Example Page"]
 function A2A_SHARE_SAVE_shortcode( $attributes ) {
-	extract( shortcode_atts( array(
-		'url'     => 'something',
-		'title'   => 'something else',
+	$attributes = shortcode_atts( array(
+		'url'     => '',
+		'title'   => '',
 		'media'   => '',
 		'buttons' => '',
-	), $attributes ) );
+	), $attributes, 'addtoany' );
 	
-	$linkname = isset( $attributes['title'] ) ? $attributes['title'] : false;
-	$linkurl = isset( $attributes['url'] ) ? $attributes['url'] : false;
+	$linkname =  ! empty( $attributes['title'] ) ? $attributes['title'] : false;
+	$linkurl =  ! empty( $attributes['url'] ) ? $attributes['url'] : false;
 	$linkmedia = ! empty( $attributes['media'] ) ? $attributes['media'] : false;
-	$buttons = ! empty( $buttons ) ? explode ( ',', $buttons ) : array();
+	$buttons = ! empty( $buttons ) ? explode( ',', $buttons ) : array();
 	
 	$output_later = true;
 

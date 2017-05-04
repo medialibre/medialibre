@@ -297,12 +297,40 @@
 	function wp_statistics_get_uri() {
 		// Get the site's path from the URL.
 		$site_uri = parse_url( site_url(), PHP_URL_PATH );
+		$site_uri_len = strlen( $site_uri );
 	
+		// Get the site's path from the URL.
+		$home_uri = parse_url( home_url(), PHP_URL_PATH );
+		$home_uri_len = strlen( $home_uri );
+
 		// Get the current page URI.
 		$page_uri = $_SERVER["REQUEST_URI"];
 
-		// Strip the site's path from the URI.
-		$page_uri = substr( $page_uri, strlen( $site_uri ) );
+		/*
+		 * We need to check which URI is longer in case one contains the other.
+		 *
+		 * For example home_uri might be "/site/wp" and site_uri might be "/site".
+		 *
+		 * In that case we want to check to see if the page_uri starts with "/site/wp" before
+		 * we check for "/site", but in the reverse case, we need to swap the order of the check.
+		 */
+		if( $site_uri_len > $home_uri_len ) {
+			if( substr( $page_uri, 0, $site_uri_len ) == $site_uri ) {
+				$page_uri = substr( $page_uri, $site_uri_len );
+			}
+			
+			if( substr( $page_uri, 0, $home_uri_len ) == $home_uri ) {
+				$page_uri = substr( $page_uri, $home_uri_len );
+			}
+		} else {
+			if( substr( $page_uri, 0, $home_uri_len ) == $home_uri ) {
+				$page_uri = substr( $page_uri, $home_uri_len );
+			}
+
+			if( substr( $page_uri, 0, $site_uri_len ) == $site_uri ) {
+				$page_uri = substr( $page_uri, $site_uri_len );
+			}
+		}
 		
 		// If we're at the root (aka the URI is blank), let's make sure to indicate it.
 		if( $page_uri == '' ) { $page_uri = '/'; }
@@ -907,11 +935,19 @@
 		if( array_key_exists( 'rangestart', $_GET ) ) { $rangestart = $_GET['rangestart']; } else { $rangestart = $WP_Statistics->Current_Date( 'm/d/Y', '-' . $current ); } 
 		if( array_key_exists( 'rangeend', $_GET ) ) { $rangeend = $_GET['rangeend']; } else { $rangeend = $WP_Statistics->Current_Date( 'm/d/Y' ); }
 
-		// Now get the number of days in the range.
+		// Convert the text dates to unix timestamps and do some basic sanity checking.
 		$rangestart_utime = $WP_Statistics->strtotimetz( $rangestart );
+		if( false === $rangestart_utime ) { $rangestart_utime = time(); }
 		$rangeend_utime = $WP_Statistics->strtotimetz( $rangeend );
+		if( false === $rangeend_utime || $rangeend_utime < $rangestart_utime ) { $rangeend_utime = time(); }
+
+		// Now get the number of days in the range.
 		$daysToDisplay = (int)( ( $rangeend_utime - $rangestart_utime ) / 24 / 60 / 60 );
 		$today = $WP_Statistics->Current_Date( 'm/d/Y' );
+		
+		// Re-create the range start/end strings from our utime's to make sure we get ride of any cruft and have them in the format we want.
+		$rangestart = $WP_Statistics->Local_Date( 'm/d/Y', $rangestart_utime );
+		$rangeend = $WP_Statistics->Local_Date( 'm/d/Y', $rangeend_utime );
 		
 		// If the rangeend isn't today OR it is but not one of the standard range values, then it's a custom selected value and we need to flag it as such.
 		if( $rangeend != $today || ( $rangeend == $today && ! in_array( $current, $range ) ) ) {
@@ -932,8 +968,8 @@
 			
 			if( $current == $range[$i] ) { echo 'class="current" '; $bold = false;}
 			
-			// Dont' bother adding he date range to the standard links as they're not needed any may confuse the custom range selector.
-			echo 'href="?page=' . $page . '&hitdays=' . $range[$i] . $extrafields . '">' . $desc[$i] . '</a></li>';
+			// Don't bother adding he date range to the standard links as they're not needed any may confuse the custom range selector.
+			echo 'href="?page=' . $page . '&hitdays=' . $range[$i] . esc_url($extrafields) . '">' . $desc[$i] . '</a></li>';
 			
 			if( $i < $rcount - 1 ) {
 				echo ' | ';
@@ -949,7 +985,7 @@
 		parse_str( $extrafields, $parse );
 		
 		foreach( $parse as $key => $value ) {
-			echo '<input type="hidden" name="' . $key . '" value="' . $value . '">';
+			echo '<input type="hidden" name="' . $key . '" value="' . esc_url($value) . '">';
 		}
 			
 		if( $bold ) { 

@@ -4,7 +4,7 @@ Donate link: https://wp-statistics.com/donate/
 Tags: statistics, stats, visit, visitors, chart, browser, blog, today, yesterday, week, month, year, total, post, page, sidebar, summary, hits, pagerank, google, alexa, live visit
 Requires at least: 3.0
 Tested up to: 4.7
-Stable tag: 12.0
+Stable tag: 12.0.6
 License: GPL3
 
 Complete statistics for your WordPress site.
@@ -283,10 +283,45 @@ You may also downgrade to WP Statistics 10.3 as a temporary measure, but no new 
 10. View latest search engine referrers Statistics page.
 
 == Upgrade Notice ==
-= 12.0 =
-PHP 5.4 is now required for version 11.0 and above!
+= 12.0.5 =
+This is a security fix, please update immediately.
 
 == Changelog ==
+= 12.0.6 =
+* Release Date: April 27, 2017
+* Fixed: Additional XSS fixes, thanks Plugin Vulnerabilities Team.
+
+= 12.0.5 =
+* Release Date: April 6, 2017
+* Fixed: Referrers, that are not search engines, are missing from the referrers widget/page.
+* Fixed: Additional XSS fixes, thanks Gen Sato who submitted to JPCERT/CC Vulnerability Handling Team.
+* Fixed: Updated CSS definition for widgets to avoid overflow only for WP Statistics widgets instead of all active widgets to avoid conflicts with other plugins.
+
+= 12.0.4 =
+* Release Date: April 1, 2017
+* Fixed: Additional XSS issue with referrers, thanks Gen Sato who submitted to JPCERT/CC Vulnerability Handling Team.
+* Updated: Optimizations for referrers encoding.
+* Updated: Logic for detecting invalid referrer types to capture more types.
+
+= 12.0.3 =
+* Release Date: March 31, 2017
+* Fixed: Additional XSS issue with referrers, thanks Gen Sato who submitted to JPCERT/CC Vulnerability Handling Team.
+
+= 12.0.2 =
+* Release Date: March 30, 2017
+* Fixed: Top referrer widget was not using the new search table.
+* Fixed: On the referrers page, selecting a host would reset the date range.
+* Fixed: XSS issue with date range picker, thanks Anon submitter to JPCERT/CC Vulnerability Handling Team.
+* Fixed: XSS issue with referrers, thanks Gen Sato who submitted to JPCERT/CC Vulnerability Handling Team.
+
+= 12.0.1 =
+* Release Date: March 24, 2017
+* Added: Check for BCMath or GMP Math extensions to support newer GeoIP database files.
+* Fixed: Robots list not being updated on upgrades properly in some cases.
+* Fixed: wp_statistics_get_uri() to handle cases where site and home URI's are different.
+* Fixed: wp_statistics_get_uri() to validate what is being removed to make sure we don't remove the wrong things.
+* Fixed: Display of individual referring site stats.
+
 = 12.0.0 =
 * Release Date: February 18, 2017
 * Added: Categories, tags and authors stats pages.

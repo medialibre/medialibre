@@ -179,11 +179,11 @@ function wtr_filter_content( $content ) {
 function wtr_time_commitment() {
 	$out = '';
 	global $post;
-	$word_count = str_word_count(strip_tags(get_post_field( 'post_content', $post->ID )));
+	$word_count = str_word_count(strip_tags(get_post_field( 'post_content', $post->ID )), 0, 'αβγδεζηθικλμνξοπρστυφχψωΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ');
 	$time_length = round($word_count / 200);
 	$options = get_option( 'wtr_settings' );
 	$time_format = empty($options['wtr_time_format']) ? '# min read' : $options['wtr_time_format'];
-    $time_label = str_replace('#', '<span class="wtr-time-number">' . $time_length . '</span>', $time_format);
+    $time_label = str_replace('#', '<i class="fa fa-clock-o" aria-hidden="true" style="display:inline-block;margin-right:0.2em;"></i> <span class="wtr-time-number">' . $time_length . '</span>', $time_format);
     $time_size = $options['wtr_time_style_size'];
     $time_color = $options['wtr_time_style_color'];
     $placement = $options['wtr_time_placement'];

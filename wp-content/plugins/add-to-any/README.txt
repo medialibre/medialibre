@@ -2,8 +2,8 @@
 Contributors: micropat, addtoany
 Tags: AddToAny, share, sharing, social, share buttons, share button, social media, media, marketing, links, email, seo, woocommerce, google, linkedin, reddit, facebook, like, twitter, pinterest, whatsapp, instagram, youtube, share this, sharethis, feed, icons
 Requires at least: 3.7
-Tested up to: 4.7
-Stable tag: 1.7.10
+Tested up to: 4.8
+Stable tag: 1.7.11
 
 Share buttons for WordPress including the AddToAny sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp, many more, and follow icons too.
 
@@ -216,17 +216,17 @@ See the [supported follow services](https://www.addtoany.com/buttons/customize/f
 = How can I add a custom standalone share button? =
 You can create a plugin or customize the following example PHP code to add to your theme's functions.php file:
 
-`function addtoany_add_services( $services ) {
+`function addtoany_add_share_services( $services ) {
 	$services['example_share_service'] = array(
 		'name'        => 'Example Share Service',
-		'icon_url'    => 'https://www.google.com/favicon.ico',
+		'icon_url'    => 'https://www.example.com/my-icon.svg',
 		'icon_width'  => 32,
 		'icon_height' => 32,
-		'href'        => 'https://www.example.com/share?url=A2A_LINKURL&amp;title=A2A_LINKNAME',
+		'href'        => 'https://www.example.com/share?url=A2A_LINKURL&title=A2A_LINKNAME',
 	);
 	return $services;
 }
-add_filter( 'A2A_SHARE_SAVE_services', 'addtoany_add_services', 10, 1 );`
+add_filter( 'A2A_SHARE_SAVE_services', 'addtoany_add_share_services', 10, 1 );`
 
 = How can I add a custom follow button? =
 You can create a plugin or customize the following example PHP code to add to your theme's functions.php file:
@@ -234,7 +234,7 @@ You can create a plugin or customize the following example PHP code to add to yo
 `function addtoany_add_follow_services( $services ) {
 	$services['example_follow_service'] = array(
 		'name'        => 'Example Follow Service',
-		'icon_url'    => 'https://www.google.com/favicon.ico',
+		'icon_url'    => 'https://www.example.com/my-icon.svg',
 		'icon_width'  => 32,
 		'icon_height' => 32,
 		'href'        => 'https://www.example.com/ID',
@@ -345,6 +345,13 @@ Upload (or move) the `add-to-any` plugin directory into the `/wp-content/mu-plug
 5. Settings for Floating Share Bars
 
 == Changelog ==
+
+= 1.7.11 =
+* Add icon size option to Follow buttons widget
+* Replace "Large" and "Small" icon size options with single field
+* Replace old universal buttons with custom button URLs
+* Update CSS to apply style to custom icon sizes
+* Always use HTTPS script and endpoints
 
 = 1.7.10 =
 * Fix vertical floating bar's class name and media query from the previous release

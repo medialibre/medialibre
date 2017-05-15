@@ -3,8 +3,8 @@
 	$widgets      = get_option( 'sidebars_widgets' );
 	$widget_count = count( $widgets['primary'] );
 	?>
-	<aside class="sidebar sidebar-primary" id="sidebar-primary" role="complementary">
-		<button id="toggle-sidebar" class="toggle-sidebar" name="toggle-sidebar" aria-expanded="false">
+	<aside class="sidebar sidebar-primary open" id="sidebar-primary" role="complementary">
+		<button id="toggle-sidebar" class="toggle-sidebar" name="toggle-sidebar" aria-expanded="true">
 			<span class="screen-reader-text"><?php _e( 'open sidebar', 'founder' ); ?></span>
             tags <i class="fa fa-angle-down" title="<?php _e( 'sidebar icon', 'founder' ); ?>" aria-hidden="true"></i>
 		</button>

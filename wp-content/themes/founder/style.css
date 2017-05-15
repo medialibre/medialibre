@@ -77,6 +77,7 @@ h1, h2, .toggle-navigation, .social-media-icons a, .toggle-sidebar i, .comments-
   display: inline-block;
   vertical-align: super;
   color: #666;
+  display: none;
 }
 
 #toggle-sidebar:hover,
@@ -1028,10 +1029,6 @@ a img {
   transition: color 0.1s ease-in-out;
 }
 
-.sidebar-primary-content {
-  display: none;
-}
-
 .sidebar-primary-widgets {
   padding: 1.5em 8.334%;
 }
@@ -1101,9 +1098,6 @@ a img {
 
   .sidebar-primary-content {
     display: block;
-    max-height: 0;
-    overflow: hidden;
-    -webkit-transition: max-height 0.2s ease-in-out;
     transition: max-height 0.2s ease-in-out;
   }
 }

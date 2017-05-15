@@ -156,7 +156,7 @@ jQuery(document).ready(function($){
             sidebarKeyboardNav();
         }
     }
-
+    
     // open search bar
     body.on('click', '#search-icon', openSearchBar);
 

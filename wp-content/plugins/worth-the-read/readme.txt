@@ -1,9 +1,9 @@
-=== Plugin Name ===
+=== Worth The Read ===
 Contributors: brianmcculloh
-Tags: reading, length, progress, reading time, scroll, scroll progress, reading progress
+Tags: reading, length, progress, reading time, scroll, scroll progress, reading progress, read time estimate
 Requires at least: 3.8
-Tested up to: 4.7.3
-Stable tag: 1.2.1
+Tested up to: 4.8.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,16 +13,18 @@ An adjustable progress meter showing how much of the post/page the user has scro
 
 A very unobtrusive and light-weight reading progress bar indicator showing the user how far scrolled through the current post or page they are. You can control placement and color of the progress bar, and you can choose whether it includes just the main content or also the comments.
 
-The progress bar only displays once the user begins scrolling the page so it is as unobtrusive as possible. Once the user stops scrolling or scrolls down past the content the progress bar subtly mutes until it is needed again.
+The progress bar only displays once the user begins scrolling the page so it is as unobtrusive as possible. Once the user stops scrolling or scrolls down past the content the progress bar subtly mutes until it is needed again. Take a look at the demo here: http://www.industrialthemes.com/plugins/
 
 There is also a reading time commitment feature that you can separately enable. Control the placement (above or below title, or above content), style, and whether it displays on posts and/or pages. Uses 200wpm as the metric for average reading time.
+
+You can also place the time commitment label anywhere you want via the [wtr-time] shortcode.
 
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/worth-the-read` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
-3. Use the Settings->Worth The Read screen to configure the plugin
-4. Enable the plugin by selecting the Enable checkbox on the plugin settings screen.
+3. Use the Worth The Read screen to configure the plugin
+4. Enable the plugin by selecting at least one option for "Display On" in the plugin settings screen, such as Posts or Pages
 
 
 == Frequently Asked Questions ==
@@ -33,11 +35,11 @@ Make sure you enabled it in the Worth The Read settings page and that you're act
 
 If the height of your post content is less than the height of the visible page, the progress bar will not display since the user already knows how much content there is. 
 
-The functionality is javascript-based, so if you have a javascript error caused by something else like another plugin or your theme, it could affect the progress bar from displaying.
+The functionality is javascript-based, so if you have a javascript error caused by something else like another plugin or your theme, it could affect the display of the progress bar.
 
 = How much control do I have over the look and feel of the progress bar? =
 
-You can control the foreground color, the background color, and the transparency of the plugin. You can also separately control the background color of the comments portion (if enabled).
+You can control the foreground color, background color, transparency, width, offset, and placement of the progress bar. You can also separately control the background color of the comments portion (if enabled).
 
 = How does it work? =
 
@@ -47,7 +49,26 @@ WordPress action hooks are used to insert small html tags above and below your p
 
 The plugin is as minimally distracting visually as it can be while still being easy to find. It auto-mutes any time the user does not need to visually reference it. Technically speaking, the html tags added to the DOM and corresponding CSS are very minimal and will not have any affect on the rest of the page DOM or any other plugins or your theme.
 
+== Screenshots ==
+
+1. Plugin options screen 1
+2. Plugin options screen 2
+3. Plugin options screen 3
+4. Plugin options screen 4
+
 == Changelog ==
+
+= 1.3.2 =
+* Changed page slug of Redux options for better compatibility
+* Updated installation instructions in readme.txt
+* Removed a couple unneeded admin js/css files after migrating to Redux framework
+
+= 1.3.1 =
+* Fixed tagging issue causing 500 error
+
+= 1.3 =
+* Complete rewrite of options panel in Redux options framework
+* Added shortcode [wtr-time] for custom placement of reading time commitment
 
 = 1.2.1 =
 * Scripts/styles no longer load on homepage if progress bar is not set to display on the homepage

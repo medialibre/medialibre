@@ -62,16 +62,6 @@ $A2A_SHARE_SAVE_services = array(
 		"icon" => "aol",
 		"color" => "2A2A2A",
 	),
-	"app_net" => array(
-		"name" => "App.net",
-		"icon" => "app_net",
-		"color" => "5D5D5D",
-	),
-	"baidu" => array(
-		"name" => "Baidu",
-		"icon" => "baidu",
-		"color" => "2319DC",
-	),
 	"balatarin" => array(
 		"name" => "Balatarin",
 		"icon" => "balatarin",
@@ -236,6 +226,11 @@ $A2A_SHARE_SAVE_services = array(
 		"name" => "Hatena",
 		"icon" => "hatena",
 		"color" => "00A6DB",
+	),
+	"houzz" => array(
+		"name" => "Houzz",
+		"icon" => "houzz",
+		"color" => "7AC143",
 	),
 	"instapaper" => array(
 		"name" => "Instapaper",
@@ -432,6 +427,11 @@ $A2A_SHARE_SAVE_services = array(
 		"icon" => "sms",
 		"color" => "6CBE45",
 	),
+	"stocktwits" => array(
+		"name" => "StockTwits",
+		"icon" => "stocktwits",
+		"color" => "40576F",
+	),
 	"stumbleupon" => array(
 		"name" => "StumbleUpon",
 		"icon" => "stumbleupon",
@@ -456,6 +456,11 @@ $A2A_SHARE_SAVE_services = array(
 		"name" => "Telegram",
 		"icon" => "telegram",
 		"color" => "2CA5E0",
+	),
+	"threema" => array(
+		"name" => "Threema",
+		"icon" => "threema",
+		"color" => "2A2A2A",
 	),
 	"trello" => array(
 		"name" => "Trello",

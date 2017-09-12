@@ -3,7 +3,7 @@ Contributors: micropat, addtoany
 Tags: AddToAny, share, sharing, social, share buttons, share button, social media, media, marketing, links, email, seo, woocommerce, google, linkedin, reddit, facebook, like, twitter, pinterest, whatsapp, instagram, youtube, share this, sharethis, feed, icons
 Requires at least: 3.7
 Tested up to: 4.8
-Stable tag: 1.7.11
+Stable tag: 1.7.17
 
 Share buttons for WordPress including the AddToAny sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp, many more, and follow icons too.
 
@@ -42,7 +42,7 @@ AddToAny is the universal sharing platform, and AddToAny's plugin is the most po
 
 * Loads asynchronously so your content always loads before or in parallel with AddToAny
 * Supports theme features such as HTML5, widgets, infinite scroll, post formats
-* Supports multilingual sites and multisite networks
+* Supports WooCommerce, multilingual sites, and multisite networks
 * No signup, no login, no account necessary
 
 = Mobile Optimized & Retina Ready =
@@ -86,17 +86,20 @@ In WordPress:
 1. Press `Install Now` for the AddToAny plugin
 1. Press `Activate Plugin`
 
-To install manually instead:
+Manual installation:
 
 1. Upload the `add-to-any` directory to the `/wp-content/plugins/` directory
 1. Activate the plugin through the `Plugins` menu in WordPress
-1. Optional settings are available in `Settings` > `AddToAny`
+
+WP-CLI installation:
+
+1. `wp plugin install add-to-any --activate`
 
 == Frequently Asked Questions ==
 
 = Where are the options, and how can I customize the sharing plugin? =
 
-In your Admin panel, go to `Settings` > `AddToAny`.
+In WordPress, go to `Settings` > `AddToAny`.
 
 Setup Follow buttons (like Instagram, YouTube, etc.) using the AddToAny Follow widget in `Appearance` > `Widgets` (or `Appearance` > `Customize`).
 
@@ -148,7 +151,7 @@ Since 2006, AddToAny is trusted across the web to always route to each service's
 
 = How can I use custom icons? =
 
-Upload sharing icons in a single directory to a public location, and make sure the icon filenames match the icon filenames packaged in the AddToAny plugin. In your Admin panel, go to `Settings` > `AddToAny` > `Advanced Options` > check the "Use custom icons" checkbox and specify the URL to your custom icons directory (including the trailing `/`). For AddToAny's universal button, go to Universal Button, select `Image URL` and specify the exact location of your AddToAny universal share icon (including the filename).
+Upload sharing icons in a single directory to a public location, and make sure the icon filenames match the icon filenames packaged in the AddToAny plugin. In WordPress, go to `Settings` > `AddToAny` > `Advanced Options` > check the "Use custom icons" checkbox and specify the URL to your custom icons directory (including the trailing `/`). For AddToAny's universal button, go to Universal Button, select `Image URL` and specify the exact location of your AddToAny universal share icon (including the filename).
 
 = How can I place the share buttons in a specific area of my site? =
 
@@ -184,7 +187,7 @@ To hardcode the shared current URL and modify the title (server-side):
 `<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { 
 	ADDTOANY_SHARE_SAVE_KIT( array( 
 		'linkname' => is_home() ? get_bloginfo( 'description' ) : wp_title( '', false ),
-		'linkurl'  => esc_url_raw( ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ),
+		'linkurl'  => esc_url_raw( home_url( $_SERVER['REQUEST_URI'] ) ),
 	) );
 } ?>`
 
@@ -345,6 +348,33 @@ Upload (or move) the `add-to-any` plugin directory into the `/wp-content/mu-plug
 5. Settings for Floating Share Bars
 
 == Changelog ==
+
+= 1.7.17 =
+* Add Threema
+* Add Houzz
+* Add StockTwits
+* Remove App.net
+* Remove Baidu
+
+= 1.7.16 =
+* Set the CSS enqueue priority to `20` to load after most theme stylesheets
+ * Resolves lines under buttons (`box-shadow`) caused by CSS such as the default Twenty Seventeen theme's stylesheet
+
+= 1.7.15 =
+* Use the `wp_enqueue_scripts` action hook instead of `wp_print_styles` for the plugin's stylesheet
+* Use the `home_url()` instead of the `Host` header when generating the current URL to be shared (thanks Paul)
+
+= 1.7.14 =
+* Fix the standard placement option for WooCommerce Product types
+
+= 1.7.13 =
+* Update standard placement for [WooCommerce](https://woocommerce.com/) to display share buttons after the product meta block instead of the product description
+ * In WooCommerce, you can customize where share buttons display by [editing](https://docs.woocommerce.com/document/editing-projects-templates-safely/) your `share.php` Single Product Share template.
+* Use Japanese language pack (thanks miccweb)
+
+= 1.7.12 =
+* Use `rel="noopener"` on links that open in a new tab/window for site JavaScript performance in some browsers
+* Fix the `[addtoany]` shortcode's `buttons` attribute
 
 = 1.7.11 =
 * Add icon size option to Follow buttons widget
@@ -872,6 +902,9 @@ Upload (or move) the `add-to-any` plugin directory into the `/wp-content/mu-plug
 * For all prior versions, see 1.6.12 or earlier
 
 == Upgrade Notice ==
+
+= 1.7.13 =
+For [WooCommerce](https://woocommerce.com/) sites, the default standard placement for share buttons has moved from the product description to after the product meta block. You can customize exactly where share buttons display by [editing](https://docs.woocommerce.com/document/editing-projects-templates-safely/) your `share.php` Single Product Share template.
 
 = 1.6.12 =
 Automatic placement logic for [WordPress excerpts](https://codex.wordpress.org/Excerpt) has changed. If your theme displays buttons in a post's excerpt/snippet/intro after this plugin update, you can uncheck the "Display at the bottom of excerpts" placement option in AddToAny settings to remove those buttons. Use custom icons? For improved layout and compatibility, specify the width & height of your icons in Settings > AddToAny > Advanced Options.

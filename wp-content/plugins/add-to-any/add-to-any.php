@@ -3,7 +3,7 @@
 Plugin Name: AddToAny Share Buttons
 Plugin URI: https://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
-Version: 1.7.11
+Version: 1.7.17
 Author: AddToAny
 Author URI: https://www.addtoany.com/
 Text Domain: add-to-any
@@ -72,7 +72,7 @@ function A2A_SHARE_SAVE_link_vars( $linkname = false, $linkurl = false, $linkmed
 	// Set linkurl
 	if ( ! $linkurl ) {
 		if ( $use_current_page ) {
-			$linkurl = esc_url_raw ( ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
+			$linkurl = esc_url_raw( home_url( $_SERVER['REQUEST_URI'] ) );
 		} elseif ( isset( $post ) ) {
 			$linkurl = get_permalink( $post->ID );
 		} else {
@@ -336,11 +336,10 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 			
 			$amp_css .= $is_amp && ! empty( $service['color'] ) ? '.a2a_button_' . $safe_name . ' img{background-color:#' . $service['color'] . ';}' : '';
 			
-			$url = ( isset( $href ) ) ? $href : 'https://www.addtoany.com/add_to/' . $safe_name . '?linkurl=' . $linkurl_enc .'&amp;linkname=' . $linkname_enc;
-			$src = ( $icon_url ) ? $icon_url : $icons_dir . $icon . '.' . $icons_type;
-			$counter = ( $counter_enabled ) ? ' a2a_counter' : '';
-			$class_attr = ( $custom_service ) ? '' : ' class="a2a_button_' . $safe_name . $counter . '"';
-			$rel_nofollow = $is_follow ? '' : ' rel="nofollow"'; // ($is_follow indicates a Follow Kit. 'nofollow' is for search crawlers. Different things)
+			$url = isset( $href ) ? $href : 'https://www.addtoany.com/add_to/' . $safe_name . '?linkurl=' . $linkurl_enc .'&amp;linkname=' . $linkname_enc;
+			$src = $icon_url ? $icon_url : $icons_dir . $icon . '.' . $icons_type;
+			$counter = $counter_enabled ? ' a2a_counter' : '';
+			$class_attr = $custom_service ? '' : ' class="a2a_button_' . $safe_name . $counter . '"';
 			
 			if ( isset( $service['target'] ) ) {
 				$target_attr = empty( $service['target'] ) ? '' : ' target="' . $service['target'] . '"';
@@ -348,13 +347,18 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 				$target_attr = ' target="_blank"';
 			}
 			
+			// Use rel="noopener" for links that open in a new tab/window
+			$rel_noopener = $custom_service || ! $target_attr ? '' : ' noopener';
+			$rel_noopener_only = $rel_noopener || $target_attr ? ' rel="noopener"' : '';
+			$rel_attr = $is_follow ? $rel_noopener_only : ' rel="nofollow' . $rel_noopener . '"'; // ($is_follow indicates a Follow Kit. 'nofollow' is for search crawlers. Different things)
+			
 			// Set dimension attributes if using custom icons and dimension is specified
 			if ( isset( $custom_icons ) ) {
 				$width_attr = ! empty( $icons_width ) ? ' width="' . $icons_width . '"' : '';
 				$height_attr = ! empty( $icons_height ) ? ' height="' . $icons_height . '"' : '';
 			}
 			
-			$link = $html_wrap_open . "<a$class_attr href=\"$url\" title=\"$name\"$rel_nofollow$target_attr>";
+			$link = $html_wrap_open . "<a$class_attr href=\"$url\" title=\"$name\"$rel_attr$target_attr>";
 			$link .= ( $large_icons && ! isset( $custom_icons ) && ! $custom_service ) ? "" : "<img src=\"$src\"" . $width_attr . $height_attr . " alt=\"$name\"/>";
 			$link .= "</a>" . $html_wrap_close;
 		}
@@ -876,7 +880,7 @@ function A2A_SHARE_SAVE_add_to_content( $content ) {
 function A2A_SHARE_SAVE_pre_get_posts( $query ) {
 	if ( $query->is_main_query() ) {
 		add_filter( 'the_content', 'A2A_SHARE_SAVE_add_to_content', 98 );
-		add_filter( 'the_excerpt', 'A2A_SHARE_SAVE_add_to_content', 98 );	
+		add_filter( 'the_excerpt', 'A2A_SHARE_SAVE_add_to_content', 98 );
 	}
 }
 
@@ -895,7 +899,7 @@ function A2A_SHARE_SAVE_shortcode( $attributes ) {
 	$linkname =  ! empty( $attributes['title'] ) ? $attributes['title'] : false;
 	$linkurl =  ! empty( $attributes['url'] ) ? $attributes['url'] : false;
 	$linkmedia = ! empty( $attributes['media'] ) ? $attributes['media'] : false;
-	$buttons = ! empty( $buttons ) ? explode( ',', $buttons ) : array();
+	$buttons = ! empty( $attributes['buttons'] ) ? explode( ',', $attributes['buttons'] ) : array();
 	
 	$output_later = true;
 
@@ -989,7 +993,7 @@ function A2A_SHARE_SAVE_stylesheet() {
 	
 }
 
-add_action( 'wp_print_styles', 'A2A_SHARE_SAVE_stylesheet' );
+add_action( 'wp_enqueue_scripts', 'A2A_SHARE_SAVE_stylesheet', 20 );
 
 function A2A_SHARE_SAVE_enqueue_script() {
 	global $A2A_SHARE_SAVE_plugin_url_path;

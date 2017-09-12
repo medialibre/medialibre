@@ -3,8 +3,8 @@ Contributors: gutobenn, noplanman
 Donate link: https://github.com/DiasPHPora/wp-to-diaspora/
 Tags: diaspora, integration, share, post, social, network
 Requires at least: 3.9.2
-Tested up to: 4.7.2
-Stable tag: 1.9.1
+Tested up to: 4.8.0
+Stable tag: 2.0.1
 Author URI: https://github.com/gutobenn
 Plugin URI: https://github.com/DiasPHPora/wp-to-diaspora/
 License: GPLv2 or later
@@ -21,7 +21,7 @@ With the focus on being **intuitive**, sharing your posts to diaspora* is made *
 Simply write your post and have it shared to diaspora* at the same time you publish it on your website.
 
 = Minimum requirements =
-WordPress 3.9.2, PHP 5.3.
+WordPress 3.9.2, PHP 5.4.
 
 = Getting started =
 After installing and activating the plugin, be sure to visit the plugin's settings page at 'Settings -> WP to diaspora' on your WordPress Admin page.
@@ -33,19 +33,12 @@ These settings can easily be adjusted for each individual post by using the meta
 Additional documentation can be found in our [wiki](https://github.com/DiasPHPora/wp-to-diaspora/wiki)
 
 = What's diaspora*? =
-diaspora* is a decentralized social network. More about it on https://diasporafoundation.org/
+diaspora* is a decentralized social network. Read more about the [diaspora* project](https://diasporafoundation.org/).
 
 = This plugin speaks your language =
-* Portuguese (Brazil)
-* Russian -- contributed by [Vitalie Ciubotaru](http://ciubotaru.tk)
-* Japanese -- ""
-* Romanian -- ""
-* French -- contributed by [Fabián Rodriguez](http://fabianrodriguez.com)
-* German -- contributed by [Katrin Leinweber](http://www.konscience.de)
-* Italian -- contributed by [Giulio Roberti](http://www.viroproject.com)
-* Spanish -- contributed by [Lupa Alonzo](http://lupa18.org)
+Many thanks to our many friendly translators, doing an amazing job.
 
-Your language isn't listed? Then feel free to [contribute your language skills](https://poeditor.com/join/project?hash=c085b3654a5e04c69ec942e0f136716a) and help make this plugin more accessible!
+Feel free to help and [contribute translations](https://translate.wordpress.org/projects/wp-plugins/wp-to-diaspora).
 
 = Development =
 This plugin is completely open source and is a work of love by all who have [contributed](https://github.com/DiasPHPora/wp-to-diaspora/graphs/contributors).
@@ -71,10 +64,10 @@ For a manual installation:
 
 == Screenshots ==
 
-1. Configuration page
-2. Meta box on post editor page
-3. Example post on diaspora*
-4. Example post on WordPress
+1. Account setup page
+2. Default settings setup page
+3. Creating an example post in WordPress
+4. The example post created on diaspora*
 
 == Learn ==
 
@@ -91,6 +84,16 @@ Basically, the server your WordPress installation is set up on makes a connectio
 Quite straightforward, right?
 
 == Changelog ==
+
+= 2.0.1 =
+* Update screenshots
+* Update Russian translation
+
+= 2.0.0 =
+* Update components and optimise various parts of the code
+* New minimum PHP version is 5.4
+* Remove dynamic Pod list loading
+* Remove custom SSL certificate management
 
 = 1.9.1 =
 * Fix wrong parameter order for filters
@@ -219,6 +222,10 @@ Quite straightforward, right?
 * First version
 
 == Upgrade Notice ==
+
+= 2.0.0 =
+This update requires at least PHP 5.4.
+If you are still using PHP 5.3, stay on version 1.9.1.
 
 = 1.8.0 =
 Filters have been modified and now get the WP2D_Post object to allow access to all post details.

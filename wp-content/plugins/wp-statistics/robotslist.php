@@ -151,6 +151,7 @@ $wps_robotarray = array(
 	'uMBot-LN',
 	'uni5download',
 	'unrulymedia',
+	'UptimeRobot',
 	'URL_Spider_SQL',
 	'Vagabondo',
 	'vBSEO',
@@ -175,5 +176,5 @@ $wps_robotarray = array(
 	'ZemlyaCrawl'
 );
 
-$wps_robotslist = implode("\n", $wps_robotarray);
+$wps_robotslist = implode( "\n", $wps_robotarray );
 ?>

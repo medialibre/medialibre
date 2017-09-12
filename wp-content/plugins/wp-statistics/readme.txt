@@ -1,10 +1,10 @@
 === WP Statistics ===
-Contributors: GregRoss, mostafa.s1990
+Contributors: mostafa.s1990, GregRoss
 Donate link: https://wp-statistics.com/donate/
 Tags: statistics, stats, visit, visitors, chart, browser, blog, today, yesterday, week, month, year, total, post, page, sidebar, summary, hits, pagerank, google, alexa, live visit
 Requires at least: 3.0
-Tested up to: 4.7
-Stable tag: 12.0.6
+Tested up to: 4.8
+Stable tag: 12.0.12.1
 License: GPL3
 
 Complete statistics for your WordPress site.
@@ -38,15 +38,18 @@ This product includes GeoLite2 data created by MaxMind, available from https://w
 * Comprehensive Admin Manual
 
 = Translations =
-WP Statistics has been translated in to many languages, for the current list and contributors, please visit the [translators](https://wp-statistics.com/translators/) page on [wp-statistics.com](https://wp-statistics.com/).
+WP Statistics has been translated in to many languages, for the current list and contributors, please visit the [translate page](https://translate.wordpress.org/projects/wp-plugins/wp-statistics).
 
 Translations are done by people just like you, help make WP Statistics available to more people around the world and [do a translation](https://wp-statistics.com/translations/) today!
+
+= Contributing and Reporting Bugs =
+WP-Statistics is being developed on GitHub, If you’re interested in contributing to plugin, Please look at [Github page](https://github.com/wp-statistics/wp-statistics)
 
 = Support =
 We're sorry you're having problem with WP Statistics and we're happy to help out.  Here are a few things to do before contacting us:
 
 * Have you read the [FAQs](https://wordpress.org/plugins/wp-statistics/faq/)?
-* Have you read the [manual](https://plugins.svn.wordpress.org/wp-statistics/trunk/manual/WP%20Statistics%20Admin%20Manual.html)?
+* Have you read the [documentation](http://wp-statistics.com/category/documentation)?
 * Have you search the [support forum](https://wordpress.org/support/plugin/wp-statistics) for a similar issue?
 * Have you search the Internet for any error messages you are receiving?
 * Make sure you have access to your PHP error logs.
@@ -73,9 +76,6 @@ Still not having any luck? Open a new thread on one of the support forums and we
 4. Go to the plugin settings page and configure as required (note this will also download the GeoIP database for the fist time).
 
 == Frequently Asked Questions ==
-= Where's the Admin Manual? =
-The admin manual is installed as part of the plugin, simply go to Statistics->Manual to view it.  At the top of the page will also be two icons that will allow you to download it in either ODT or HTML formats.
-
 = What do I do if the plug does not work? =
 Disable then enable the plugin.  You may also want to try removing and re-installing it as well.  If it is still not working, please open a new support thread on the [WordPress support forums](https://wordpress.org/support/plugin/wp-statistics).
 
@@ -283,10 +283,57 @@ You may also downgrade to WP Statistics 10.3 as a temporary measure, but no new 
 10. View latest search engine referrers Statistics page.
 
 == Upgrade Notice ==
-= 12.0.5 =
+= 12.0.9 =
 This is a security fix, please update immediately.
 
 == Changelog ==
+= 12.0.12.1 =
+* Fixed: PHP syntax error for array brackets when the PHP < 5.4
+
+= 12.0.12 =
+* Added: Add-ons page! The Add-ons add functionality to your WP-Statistics. [Click here](https://wp-statistics.com/add-ons/) to see current Add-ons.
+* Fixed: Translations issue.
+* Updated: GeoIP library to v2.6.0
+* Updated: admin.min.css
+
+= 12.0.11 =
+* Release Date: August 17, 2017
+* Fixed: links issue in the last visitors page.
+* Fixed: i18n issues (hardcoded strings, missing or incorrect textdomains).
+* Updated: admin CSS style. set `with` for Hits column in posts/pages list.
+* Updated: Improve consistency, best practices and correct typos in translation strings.
+* Updated: More, Reload and Toggle arrow buttons in metaboxes are consistent with WP core widget metaboxes, with screen-reader-text and key navigation. by [Pedro Mendonça](https://profiles.wordpress.org/pedromendonca/).
+
+= 12.0.10 =
+* Release Date: July 24, 2017
+* Added: UptimeRobot to the default robots list.
+* Fixed: Uses `esc_attr()` for cleaning `$_GET` in referrers page.
+* Removed: `screen_icon()` function from the plugin. (This function has been deprecated).
+
+= 12.0.9 =
+* Release Date: July 3, 2017
+* Fixed: XSS issue with agent and ip in visitors page, Thanks Ryan Dewhurst from Dewhurst Security Team.
+* Updated: GeoIP library to v2.5.0
+* Updated: Maxmind-db reader library to v1.1.3
+
+= 12.0.8.1 =
+* Release Date: July 2, 2017
+* Fixed: load languages file. please visit [translations page](https://wp-statistics.com/translations/) to help translation.
+
+= 12.0.8 =
+* Release Date: June 29, 2017
+* Fixed: SQL Injection vulnerability, thanks John Castro for reporting issue from sucuri.net Team.
+* Added: new hook (`wp_statistics_final_text_report_email`) in email reporting.
+* Removed: all language files from the language folder. Translations have moved to [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/wp-statistics).
+
+= 12.0.7 =
+* Release Date: June 8, 2017
+* WordPress 4.8 compatibility
+* Updated: WP-Statistics logo! Thanks [Arin Hacopian](http://aringrafix.com/) for design the logo.
+* Removed: manual file and moved to [wp-statistics.com/category/documentation](http://wp-statistics.com/category/documentation)
+* Fixed: items show issue in referring page.
+* Fixed: recent visitor link in dashboard widget.
+
 = 12.0.6 =
 * Release Date: April 27, 2017
 * Fixed: Additional XSS fixes, thanks Plugin Vulnerabilities Team.

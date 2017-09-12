@@ -1,7 +1,8 @@
 <?php
 // if not called from WordPress exit
-if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) 
-    exit();
+if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+	exit();
+}
 
 // By default, WP Statistics leaves all data in the database, however a user can select to
 // remove it, in which case the wp_statistics_removal option is set and we should remove that

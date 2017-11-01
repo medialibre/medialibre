@@ -68,6 +68,13 @@ function addtoany_woocommerce_share() {
 	) {
 		return;
 	} else {
+		// If a Sharing Header is set
+		if ( ! empty( $options['header'] ) ) {
+			echo '<div class="addtoany_header">' . stripslashes( $options['header'] ) . '</div>';
+		} else {
+			$html_header = '';
+		}
+		
 		// Display share buttons
 		ADDTOANY_SHARE_SAVE_KIT();
 	}

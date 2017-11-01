@@ -3,7 +3,7 @@
 Plugin Name: AddToAny Share Buttons
 Plugin URI: https://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
-Version: 1.7.17
+Version: 1.7.21
 Author: AddToAny
 Author URI: https://www.addtoany.com/
 Text Domain: add-to-any
@@ -684,6 +684,12 @@ function ADDTOANY_SHARE_SAVE_FLOATING( $args = array() ) {
 			} elseif ( 'right_docked' === $vertical_type ) {
 				$vertical_args['kit_style'] = 'right:' . $offset . ';top:' . $position . ';';
 			}
+			// Background color
+			if ( ! empty( $options['floating_vertical_bg'] ) && 'custom' === $options['floating_vertical_bg'] ) {
+				$vertical_args['kit_style'] .= ! empty( $options['floating_vertical_bg_color'] ) ? 'background-color:' . $options['floating_vertical_bg_color'] . ';' : '';
+			} else {
+				$vertical_args['kit_style'] .= 'background-color:transparent;';
+			}
 			
 			$floating_html .= ADDTOANY_SHARE_SAVE_KIT( $vertical_args );
 		}
@@ -708,6 +714,12 @@ function ADDTOANY_SHARE_SAVE_FLOATING( $args = array() ) {
 				$horizontal_args['kit_style'] = 'bottom:' . $offset . ';left:' . $position . ';';
 			} elseif ( 'right_docked' === $horizontal_type ) {
 				$horizontal_args['kit_style'] = 'bottom:' . $offset . ';right:' . $position . ';';
+			}
+			// Background color
+			if ( ! empty( $options['floating_horizontal_bg'] ) && 'custom' === $options['floating_horizontal_bg'] ) {
+				$horizontal_args['kit_style'] .= ! empty( $options['floating_horizontal_bg_color'] ) ? 'background-color:' . $options['floating_horizontal_bg_color'] . ';' : '';
+			} else {
+				$horizontal_args['kit_style'] .= 'background-color:transparent;';
 			}
 			
 			$floating_html .= ADDTOANY_SHARE_SAVE_KIT( $horizontal_args );
@@ -736,18 +748,29 @@ function A2A_SHARE_SAVE_head_script() {
 	$upload_dir = wp_upload_dir();
 	$static_server = ( $cache ) ? $upload_dir['baseurl'] . '/addtoany' : 'https://static.addtoany.com/menu';
 	
+	// Icon colors
+	$icon_bg = ! empty( $options['icon_bg'] ) && in_array( $options['icon_bg'], array( 'custom', 'transparent' ) ) ? $options['icon_bg'] : false;
+	$icon_bg_color = 'custom' === $icon_bg && ! empty( $options['icon_bg_color'] ) ? $options['icon_bg_color'] : '';
+	$icon_bg_color = 'transparent' === $icon_bg ? 'transparent' : $icon_bg_color;
+	$icon_fg = ! empty( $options['icon_fg'] ) && 'custom' === $options['icon_fg'] ? true : false;
+	$icon_fg_color = $icon_fg && ! empty( $options['icon_fg_color'] ) ? ',' . $options['icon_fg_color'] : '';
+	// Use "unset" keyword for background if only the foreground is set
+	$icon_bg_color = empty( $icon_bg_color ) && ! empty( $icon_fg_color ) ? 'unset' : $icon_bg_color;
+	$icon_color = $icon_bg_color . $icon_fg_color;
+	
 	// Enternal script call + initial JS + set-once variables
 	$additional_js = ( isset( $options['additional_js_variables'] ) ) ? $options['additional_js_variables'] : '' ;
 	$script_configs = ( ( $cache ) ? "\n" . 'a2a_config.static_server="' . $static_server . '";' : '' )
-		. ( ( isset( $options['onclick'] ) && '1' == $options['onclick'] ) ? "\n" . 'a2a_config.onclick=1;' : '' )
-		. ( ( $additional_js ) ? "\n" . stripslashes( $additional_js ) : '' );
+		. ( $icon_color ? "\n" . 'a2a_config.icon_color="' . $icon_color . '";' : '' )
+		. ( isset( $options['onclick'] ) && '1' == $options['onclick'] ? "\n" . 'a2a_config.onclick=1;' : '' )
+		. ( $additional_js ? "\n" . stripslashes( $additional_js ) : '' );
 	$A2A_SHARE_SAVE_external_script_called = true;
 	
 	$javascript_header = "\n" . '<script type="text/javascript">' . "\n"
 	
-		. "var a2a_config=a2a_config||{};"
-		. "a2a_config.callbacks=a2a_config.callbacks||[];"
-		. "a2a_config.templates=a2a_config.templates||{};"
+		. 'window.a2a_config=window.a2a_config||{};'
+		. 'a2a_config.callbacks=[];a2a_config.overlays=[];'
+		. 'a2a_config.templates={};'
 		. A2A_menu_locale()
 		. $script_configs
 		
@@ -843,7 +866,7 @@ function A2A_SHARE_SAVE_add_to_content( $content ) {
 	);
 	
 	// If a Sharing Header is set
-	if ( isset( $options['header'] ) && '' != $options['header'] ) {
+	if ( ! empty( $options['header'] ) ) {
 		$html_header = '<div class="addtoany_header">' . stripslashes( $options['header'] ) . '</div>';
 	} else {
 		$html_header = '';

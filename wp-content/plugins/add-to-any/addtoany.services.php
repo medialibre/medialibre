@@ -650,13 +650,13 @@ $A2A_FOLLOW_services = array(
 		'name' => 'YouTube', 
 		'href' => 'https://www.youtube.com/user/${id}',	
 		'icon' => 'youtube',
-		'color' => 'CD201F',
+		'color' => 'FF0000',
 	),
 	'youtube_channel' => array( 
 		'name' => 'YouTube Channel', 
 		'href' => 'https://www.youtube.com/channel/${id}',	
 		'icon' => 'youtube',
-		'color' => 'CD201F',
+		'color' => 'FF0000',
 	),
 	'feed' => array( 
 		'name' => 'RSS Feed', 

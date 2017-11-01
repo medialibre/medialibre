@@ -107,36 +107,31 @@ function wp_statistics_load_widget_css_and_scripts() {
 	GLOBAL $WP_Statistics;
 
 	// Load the css we use for the statistics pages.
-	wp_enqueue_style( 'log-css', plugin_dir_url( __FILE__ ) . 'assets/css/log' . WP_STATISTICS_MIN_EXT . '.css', true, '1.1' );
-	wp_enqueue_style( 'jqplot-css', plugin_dir_url( __FILE__ ) . 'assets/jqplot/jquery.jqplot' . WP_STATISTICS_MIN_EXT . '.css', true, '1.0.9' );
+	wp_enqueue_style( 'wpstatistics-log-css', plugin_dir_url( __FILE__ ) . 'assets/css/log.css', true, '1.1' );
+	wp_enqueue_style( 'wpstatistics-admin-css', plugin_dir_url( __FILE__ ) . 'assets/css/admin.css', true, '1.0' );
 
 	// Don't forget the right to left support.
 	if ( is_rtl() ) {
-		wp_enqueue_style( 'rtl-css', plugin_dir_url( __FILE__ ) . 'assets/css/rtl' . WP_STATISTICS_MIN_EXT . '.css', true, '1.1' );
+		wp_enqueue_style( 'rtl-css', plugin_dir_url( __FILE__ ) . 'assets/css/rtl.css', true, '1.1' );
 	}
 
-	// Load the charts code.
-	wp_enqueue_script( 'jqplot', plugin_dir_url( __FILE__ ) . 'assets/jqplot/jquery.jqplot' . WP_STATISTICS_MIN_EXT . '.js', true, '1.0.9' );
-	wp_enqueue_script( 'jqplot-daterenderer', plugin_dir_url( __FILE__ ) . 'assets/jqplot/plugins/jqplot.dateAxisRenderer' . WP_STATISTICS_MIN_EXT . '.js', true, '1.0.9' );
-	wp_enqueue_script( 'jqplot-tickrenderer', plugin_dir_url( __FILE__ ) . 'assets/jqplot/plugins/jqplot.canvasAxisTickRenderer' . WP_STATISTICS_MIN_EXT . '.js', true, '1.0.9' );
-	wp_enqueue_script( 'jqplot-axisrenderer', plugin_dir_url( __FILE__ ) . 'assets/jqplot/plugins/jqplot.canvasAxisLabelRenderer' . WP_STATISTICS_MIN_EXT . '.js', true, '1.0.9' );
-	wp_enqueue_script( 'jqplot-textrenderer', plugin_dir_url( __FILE__ ) . 'assets/jqplot/plugins/jqplot.canvasTextRenderer' . WP_STATISTICS_MIN_EXT . '.js', true, '1.0.9' );
-	wp_enqueue_script( 'jqplot-tooltip', plugin_dir_url( __FILE__ ) . 'assets/jqplot/plugins/jqplot.highlighter' . WP_STATISTICS_MIN_EXT . '.js', true, '1.0.9' );
-	wp_enqueue_script( 'jqplot-pierenderer', plugin_dir_url( __FILE__ ) . 'assets/jqplot/plugins/jqplot.pieRenderer' . WP_STATISTICS_MIN_EXT . '.js', true, '1.0.9' );
-	wp_enqueue_script( 'jqplot-enhancedlengend', plugin_dir_url( __FILE__ ) . 'assets/jqplot/plugins/jqplot.enhancedLegendRenderer' . WP_STATISTICS_MIN_EXT . '.js', true, '1.0.9' );
-	wp_enqueue_script( 'jqplot-enhancedpielengend', plugin_dir_url( __FILE__ ) . 'assets/jqplot/plugins/jqplot.enhancedPieLegendRenderer' . WP_STATISTICS_MIN_EXT . '.js', true, '1.0.9' );
+	// Load the map code.
+	wp_enqueue_style( 'jqvmap-css', plugin_dir_url( __FILE__ ) . 'assets/jqvmap/jqvmap.css', true, '1.5.1' );
+	wp_enqueue_script( 'jquery-vmap', plugin_dir_url( __FILE__ ) . 'assets/jqvmap/jquery.vmap.js', true, '1.5.1' );
+	wp_enqueue_script( 'jquery-vmap-world', plugin_dir_url( __FILE__ ) . 'assets/jqvmap/maps/jquery.vmap.world.js', true, '1.5.1' );
 
-	wp_enqueue_style( 'jqvmap-css', plugin_dir_url( __FILE__ ) . 'assets/jqvmap/jqvmap' . WP_STATISTICS_MIN_EXT . '.css', true, '1.5.1' );
-	wp_enqueue_script( 'jquery-vmap', plugin_dir_url( __FILE__ ) . 'assets/jqvmap/jquery.vmap' . WP_STATISTICS_MIN_EXT . '.js', true, '1.5.1' );
-	wp_enqueue_script( 'jquery-vmap-world', plugin_dir_url( __FILE__ ) . 'assets/jqvmap/maps/jquery.vmap.world' . WP_STATISTICS_MIN_EXT . '.js', true, '1.5.1' );
+	// Load chart library
+	if ( !isset( $_GET['post'] ) ) {
+		wp_enqueue_script( 'wp-statistics-chart-js', WP_STATISTICS_PLUGIN_DIR . 'assets/js/Chart.bundle.min.js', false, '2.7.0' );
+	}
 
 	$screen = get_current_screen();
 
 	// Load our custom widgets handling javascript.
 	if ( 'post' == $screen->id || 'page' == $screen->id ) {
-		wp_enqueue_script( 'wp_statistics_editor', plugin_dir_url( __FILE__ ) . 'assets/js/editor' . WP_STATISTICS_MIN_EXT . '.js' );
+		wp_enqueue_script( 'wp_statistics_editor', plugin_dir_url( __FILE__ ) . 'assets/js/editor.js' );
 	} else {
-		wp_enqueue_script( 'wp_statistics_dashboard', plugin_dir_url( __FILE__ ) . 'assets/js/dashboard' . WP_STATISTICS_MIN_EXT . '.js' );
+		wp_enqueue_script( 'wp_statistics_dashboard', plugin_dir_url( __FILE__ ) . 'assets/js/dashboard.js' );
 	}
 }
 
@@ -178,13 +173,13 @@ function wp_statistics_dashboard_inline_javascript() {
 	$page_urls['wp-statistics-search-widget_more_button']       = $admin_url . WP_STATISTICS_SEARCHES_PAGE;
 	$page_urls['wp-statistics-words-widget_more_button']        = $admin_url . WP_STATISTICS_WORDS_PAGE;
 	$page_urls['wp-statistics-top-visitors-widget_more_button'] = $admin_url . WP_STATISTICS_TOP_VISITORS_PAGE;
-	$page_urls['wp-statistics-recent-widget_more_button']     = $admin_url . WP_STATISTICS_VISITORS_PAGE;
+	$page_urls['wp-statistics-recent-widget_more_button']       = $admin_url . WP_STATISTICS_VISITORS_PAGE;
 	$page_urls['wp-statistics-quickstats-widget_more_button']   = $admin_url . WP_STATISTICS_OVERVIEW_PAGE;
 
 	?>
     <script type="text/javascript">
         var wp_statistics_destinations = <?php echo json_encode( $page_urls ); ?>;
-        var wp_statistics_loading_image = '<?php echo $loading_img; ?>'
+        var wp_statistics_loading_image = '<?php echo $loading_img; ?>';
 
         function wp_statistics_wait_for_postboxes() {
 

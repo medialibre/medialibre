@@ -213,6 +213,14 @@ function wp_statistics_get_widget_contents_callback() {
 		'words'
 	);
 
+	if ( array_key_exists( 'format', $_POST ) and $_POST['format'] == 'dashboard' ) {
+		$size = 220;
+		$days = 10;
+	} else {
+		$size = 110;
+		$days = 20;
+	}
+
 	$view_cap = wp_statistics_validate_capability( $WP_Statistics->get_option( 'read_capability', 'manage_options' ) );
 
 	if ( current_user_can( $view_cap ) ) {
@@ -267,11 +275,11 @@ function wp_statistics_get_widget_contents_callback() {
 
 				break;
 			case 'hits':
-				wp_statistics_generate_hits_postbox_content();
+				wp_statistics_generate_hits_postbox_content( $size, $days );
 
 				break;
 			case 'search':
-				wp_statistics_generate_search_postbox_content( $search_engines );
+				wp_statistics_generate_search_postbox_content( $search_engines, $size, $days );
 
 				break;
 			case 'words':
@@ -279,9 +287,15 @@ function wp_statistics_get_widget_contents_callback() {
 
 				break;
 			case 'page':
+				_e( 'This feature temporarily disabled.', 'wp-statistics' );
+
 				if ( array_key_exists( 'page-id', $_POST ) ) {
 					$pageid = (int) $_POST['page-id'];
-					wp_statistics_generate_page_postbox_content( null, $pageid );
+					echo '&nbsp;';
+					echo sprintf( __( '<a href="admin.php?page=wps_pages_page&page-id=%s">Click here</a> to see page stats.', 'wp-statistics' ), $pageid );
+
+					// This feature temporarily disabled because there is conflicts.
+					//wp_statistics_generate_page_postbox_content( null, $pageid );
 				}
 
 				break;

@@ -21,7 +21,7 @@ $args = array(
     // This is where your data is stored in the database and also becomes your global variable name.
     'display_name'         => __( 'Worth The Read', 'wtr' ),
     // Name that appears at the top of your panel
-    'display_version'      => '1.3.2',
+    'display_version'      => '1.3.3',
     // Version that appears at the top of your panel
     'menu_type'            => 'menu',
     //Specify if the admin menu should appear or not. Options: menu or submenu (Under appearance only)
@@ -320,6 +320,45 @@ Redux::setSection( $opt_name, array(
             'subtitle' => __( 'Display on touch screen devices like phones and tablets', 'wtr' ),
             'default'  => false,
         ),
+        array(
+            'id'       => 'progress-placement-touch',
+            'type'     => 'image_select',
+            'title'    => __( 'Touch Placement', 'wtr' ),
+            'subtitle'       => __( 'You can have different placement for touch devices.', 'wtr' ),
+            //Must provide key => value(array:title|img) pairs for radio options
+            'options'  => array(
+                'top' => array(
+                    'alt' => 'Top',
+                    'img' => ReduxFramework::$_url . 'assets/img/top.png'
+                ),
+                'bottom' => array(
+                    'alt' => 'Bottom',
+                    'img' => ReduxFramework::$_url . 'assets/img/bottom.png'
+                ),
+                'left' => array(
+                    'alt' => 'Left',
+                    'img' => ReduxFramework::$_url . 'assets/img/left.png'
+                ),
+                'right' => array(
+                    'alt' => 'Right',
+                    'img' => ReduxFramework::$_url . 'assets/img/right.png'
+                )
+            ),
+            'default'  => 'top',
+            'required' => array('progress-touch', 'equals', '1' )
+        ),
+        array(
+            'id'            => 'progress-offset-touch',
+            'type'          => 'slider',
+            'title'          => __( 'Touch Offset', 'wtr' ),
+            'subtitle'       => __( 'You can have a different offset for touch devices.', 'wtr' ),
+            'default'       => 0,
+            'min'           => 0,
+            'step'          => 1,
+            'max'           => 500,
+            'display_value' => 'text',
+            'required' => array('progress-touch', 'equals', '1' )
+        ),
     )
 ) );
 
@@ -397,6 +436,13 @@ Redux::setSection( $opt_name, array(
             'resolution'    => 0.01,
             'display_value' => 'label'
         ),
+        array(
+            'id'       => 'progress-muted-foreground',
+            'type'     => 'color',
+            'title'    => __( 'Muted Foreground', 'wtr' ),
+            'subtitle' => __( "Foreground color whilte idle (not scrolling)", 'wtr' ),
+            'default'  => '#f44813',
+        ),
     )
 ) );
 
@@ -427,10 +473,24 @@ Redux::setSection( $opt_name, array(
             'default'  => array('post')
         ),
         array(
+            'id'       => 'time-cpts',
+            'type'     => 'button_set',
+            'multi'    => true,
+            'title'    => __( 'Custom Post Types', 'wtr' ),
+            'subtitle' => __( 'You can show the time commitment label on custom post types, too', 'wtr' ),
+            'desc' => __( 'These are added by your theme and/or plugins', 'wtr' ),
+            'data'     => 'post_types',
+            'args'     => array(
+                            'public' => true, 
+                            '_builtin' => false
+                        ),
+        ),
+        array(
             'id'       => 'time-placement',
             'type'     => 'radio',
             'title'    => __( 'Placement', 'wtr' ),
-            'desc' => __( 'You can also use the shortcode <b style="color:#05c134;">[wtr-time]</b>', 'wtr'),
+            'subtitle' => __( 'Only used where specified to display via the options above. If there is nothing selected for Display On or Custom Post Types, the only way to display the time commitment label is by using the shortcode.', 'wtr' ),
+            'desc' => __( 'Or you can use this shortcode: <b style="color:#05c134;">[wtr-time]</b>', 'wtr'),
             'options'  => array(
                 'before-title' => 'Before Title',
                 'after-title' => 'After Title',

@@ -3,7 +3,7 @@
  * Plugin Name: Worth The Read
  * Plugin URI: http://www.welldonemarketing.com
  * Description: Adds read length progress bar to single posts and pages, as well as an optional reading time commitment label to post titles.
- * Version: 1.3.2
+ * Version: 1.3.3
  * Author: Well Done Marketing
  * Author URI: http://www.welldonemarketing.com
  * License: GPL2
@@ -39,6 +39,8 @@ function wtr_wrap_content( $content ) {
 	$options = get_option( 'wtr_settings' );
 	$placement = $options['progress-placement'];
 	$placement_offset = empty($options['progress-offset']) ? 0 : $options['progress-offset'];
+	$placement_touch = $options['progress-placement-touch'];
+	$placement_offset_touch = empty($options['progress-offset-touch']) ? 0 : $options['progress-offset-touch'];
 	$width = $options['progress-thickness'];
 	$fgopacity = $options['progress-foreground-opacity'];
 	$mutedopacity = $options['progress-muted-opacity'];
@@ -49,8 +51,12 @@ function wtr_wrap_content( $content ) {
 	$comments_bg = $options['progress-comments-background'];
 	$fg = $options['progress-foreground'];
 	$bg = $options['progress-background'];
+	$fg_muted = $options['progress-muted-foreground'];
 	$types_builtin = is_array($options['progress-display']) ? $options['progress-display'] : array();
-	$types_cpts = is_array($options['progress-cpts']) ? $options['progress-cpts'] : array();
+	$types_cpts = array();
+	if(isset($options['progress-cpts'])) {
+		if(is_array($options['progress-cpts'])) $types_cpts = $options['progress-cpts'];
+	}
 	$types = array_merge($types_builtin, $types_cpts);
 	if ( !empty($types) && is_singular($types)) {
 		$content = '<div id="wtr-content" 
@@ -62,11 +68,14 @@ function wtr_wrap_content( $content ) {
 	    	data-mutedopacity="' . $mutedopacity . '" 
 	    	data-placement="' . $placement . '" 
 	    	data-placement-offset="' . $placement_offset . '" 
+	    	data-placement-touch="' . $placement_touch . '" 
+		    data-placement-offset-touch="' . $placement_offset_touch . '" 
 	    	data-transparent="' . $transparent . '" 
 	    	data-touch="' . $touch . '" 
 	    	data-comments="' . $comments . '" 
 	    	data-commentsbg="' . $comments_bg . '" 
-	    	data-location="page"
+	    	data-location="page" 
+	    	data-mutedfg="' . $fg_muted . '" 
 	    	>' . $content . '</div>';
 	}
 	return $content;
@@ -79,6 +88,8 @@ function wtr_wrap_home() {
 	$options = get_option( 'wtr_settings' );
 	$placement = $options['progress-placement'];
 	$placement_offset = empty($options['progress-offset']) ? 0 : $options['progress-offset'];
+	$placement_touch = $options['progress-placement-touch'];
+	$placement_offset_touch = empty($options['progress-offset-touch']) ? 0 : $options['progress-offset-touch'];
 	$width = $options['progress-thickness'];
 	$fgopacity = $options['progress-foreground-opacity'];
 	$mutedopacity = $options['progress-muted-opacity'];
@@ -89,7 +100,14 @@ function wtr_wrap_home() {
 	$comments_bg = $options['progress-comments-background'];
 	$fg = $options['progress-foreground'];
 	$bg = $options['progress-background'];
-	$types_home = in_array('home',$options['progress-display']) ? true : false;
+	$fg_muted = $options['progress-muted-foreground'];
+	$types_home = false;
+	if(isset($options['progress-display'])) {
+		if(in_array('home', $options['progress-display'])) {
+			$types_home = true;
+		}
+	}
+
 	# only do this if the home page is not showing a static page
 	# because this would fall under the "page" post type instead
 	if(is_front_page() && is_home() && $types_home) {
@@ -102,11 +120,14 @@ function wtr_wrap_home() {
 		    	data-mutedopacity="' . $mutedopacity . '" 
 		    	data-placement="' . $placement . '" 
 		    	data-placement-offset="' . $placement_offset . '" 
+		    	data-placement-touch="' . $placement_touch . '" 
+		    	data-placement-offset-touch="' . $placement_offset_touch . '" 
 		    	data-transparent="' . $transparent . '" 
 		    	data-touch="' . $touch . '" 
 		    	data-comments="' . $comments . '" 
 		    	data-commentsbg="' . $comments_bg . '" 
 		    	data-location="home" 
+		    	data-mutedfg="' . $fg_muted . '" 
 		    	></div>';
 	}
 }
@@ -125,7 +146,12 @@ function wtr_wrap_comments_footer() {
 	global $post;
 	# don't add this on homepage unless this is set to display there
 	$options = get_option( 'wtr_settings' );
-	$types_home = in_array('home',$options['progress-display']) ? true : false;
+	$types_home = false;
+	if(isset($options['progress-display'])) {
+		if(in_array('home', $options['progress-display'])) {
+			$types_home = true;
+		}
+	}
 	$show_div = true;
 	if(is_front_page() && !$types_home) {
 		$show_div = false;
@@ -145,11 +171,16 @@ function wtr_conditional_title($query){
 }
 function wtr_filter_title( $title, $post_id ) {
 	$options = get_option( 'wtr_settings' );
-	$types = is_array($options['time-display']) ? $options['time-display'] : array();
+	$types_builtin = is_array($options['time-display']) ? $options['time-display'] : array();
+	$types_cpts = array();
+	if(isset($options['time-cpts'])) {
+		if(is_array($options['time-cpts'])) $types_cpts = $options['time-cpts'];
+	}
+	$types = array_merge($types_builtin, $types_cpts);
 	$placement = $options['time-placement'];
     global $post;
     if($post->ID == $post_id && in_the_loop()) {
-    	if((in_array('post',$types) && is_single()) || (in_array('page',$types) && is_page())) {
+    	if((is_singular($types) && !empty($types))) {
     	    if($placement=='before-title') {
     	    	$title = wtr_time_commitment() . $title;
     	    }elseif($placement=='after-title') {
@@ -162,9 +193,14 @@ function wtr_filter_title( $title, $post_id ) {
 add_filter( 'the_content', 'wtr_filter_content', 10, 2);
 function wtr_filter_content( $content ) {
 	$options = get_option( 'wtr_settings' );
-	$types = is_array($options['time-display']) ? $options['time-display'] : array();
+	$types_builtin = is_array($options['time-display']) ? $options['time-display'] : array();
+	$types_cpts = array();
+	if(isset($options['time-cpts'])) {
+		if(is_array($options['time-cpts'])) $types_cpts = $options['time-cpts'];
+	}
+	$types = array_merge($types_builtin, $types_cpts);
 	$placement = $options['time-placement'];
-	if((in_array('post',$types) && is_single()) || (in_array('page',$types) && is_page())) {
+	if((is_singular($types) && !empty($types))) {
 	    if($placement=='before-content') {
 	    	$content = wtr_time_commitment() . $content;
 	    }
@@ -177,6 +213,8 @@ function wtr_time_commitment() {
 	global $post;
 	$word_count = str_word_count(strip_tags(get_post_field( 'post_content', $post->ID )));
 	$time_length = round($word_count / 200);
+	// minimum read time is 1 minute
+	if($time_length == 0) $time_length = 1; 
 	$options = get_option( 'wtr_settings' );
 	$time_format = empty($options['time-format']) ? '# min read' : $options['time-format'];
     $time_label = str_replace('#', '<span class="wtr-time-number">' . $time_length . '</span>', $time_format);

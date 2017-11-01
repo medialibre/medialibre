@@ -8,7 +8,8 @@ jQuery(document).ready(function($) {
 				$bg = $wrap.data('bg'),
 				$placement = $wrap.data('placement'),
 				$placement_offset = $wrap.data('placement-offset'),
-				$placement_offset_admin = $placement_offset + getTopOffset(),
+				$placement_touch = $wrap.data('placement-touch'),
+				$placement_offset_touch = $wrap.data('placement-offset-touch'),
 				$width = $wrap.data('width'),
 				$transparent = $wrap.data('transparent'),
 				$comments = $wrap.data('comments'),
@@ -18,6 +19,7 @@ jQuery(document).ready(function($) {
 				$fgopacity = $wrap.data('fgopacity'),
 				$mutedopacity = $wrap.data('mutedopacity'),
 				$loc = $wrap.data('location');
+
 			//set some defaults
 			if($fg === null || $fg === '') $fg = '#ef490f';
 			if($bg === null || $bg === '') $bg = '#CCCCCC';
@@ -29,6 +31,10 @@ jQuery(document).ready(function($) {
 				$bg = 'none';
 				$comments_bg = 'none';
 			}
+			//get touch vs non-touch options
+			$placement = isTouchDevice() ? $placement_touch : $placement;
+			$placement_offset = isTouchDevice() ? $placement_offset_touch : $placement_offset;
+			var $placement_offset_admin = $placement_offset + getTopOffset();
 			//setup dom elements and add to page
 			var $progress_bg = $('<div>', {id: 'wtr-progress', class: $placement});
 			var $progress_fg = $('<div>', {id: 'wtr-slider'});
@@ -140,6 +146,8 @@ function wtrProgress() {
 	if($wrap.length > 0) {
 
 		var $touch = $wrap.data('touch');
+		var $mutedfg = $wrap.data('mutedfg');
+		var $fg = $wrap.data('fg');
 
 		if((!$touch && !isTouchDevice()) || $touch) {
 
@@ -172,8 +180,10 @@ function wtrProgress() {
 				if(bottomVisible($rel, winHeight * .25)) {
 					$slider.css(orientation, '0');
 					$progress.addClass('mute');
+					$slider.css('background', $mutedfg);
 				} else if((topVisible($wrap, topOffset) || (winScroll + topOffset) > wrapOffset) && winScroll > 0 ) {
 					$progress.addClass('shown').removeClass('mute');
+					$slider.css('background', $fg);
 					//how far past the start are we?
 					percentage = -(100 - ((beyond / wrapHeight) * 100)); //get a negative percentage
 					$slider.css(orientation, percentage + '%');
@@ -181,12 +191,17 @@ function wtrProgress() {
 					//console.log('winScroll=' + winScroll + '\nwrapOffset=' + wrapOffset);
 					$slider.css(orientation, '-100%');
 					$progress.removeClass('shown').removeClass('mute');
+					$slider.css('background', $fg);
 				}
 
 				//mute progress bar after inactivity
 				clearTimeout(jQuery.data(this, 'scrollTimer'));
 			    jQuery.data(this, 'scrollTimer', setTimeout(function() {
 			        $progress.addClass('mute');
+			        $slider.delay(200).queue(function (next) {
+			        	jQuery(this).css('background', $mutedfg);
+			        	next();
+			        });
 			    }, 200));
 			}
 		}

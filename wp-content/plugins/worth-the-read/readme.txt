@@ -1,9 +1,9 @@
-=== Worth The Read ===
+=== Plugin Name ===
 Contributors: brianmcculloh
 Tags: reading, length, progress, reading time, scroll, scroll progress, reading progress, read time estimate
 Requires at least: 3.8
 Tested up to: 4.8.1
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ An adjustable progress meter showing how much of the post/page the user has scro
 
 A very unobtrusive and light-weight reading progress bar indicator showing the user how far scrolled through the current post or page they are. You can control placement and color of the progress bar, and you can choose whether it includes just the main content or also the comments.
 
-The progress bar only displays once the user begins scrolling the page so it is as unobtrusive as possible. Once the user stops scrolling or scrolls down past the content the progress bar subtly mutes until it is needed again. Take a look at the demo here: http://www.industrialthemes.com/plugins/
+The progress bar only displays once the user begins scrolling the page so it is as unobtrusive as possible. Once the user stops scrolling or scrolls down past the content the progress bar subtly mutes until it is needed again.
 
 There is also a reading time commitment feature that you can separately enable. Control the placement (above or below title, or above content), style, and whether it displays on posts and/or pages. Uses 200wpm as the metric for average reading time.
 
@@ -49,14 +49,16 @@ WordPress action hooks are used to insert small html tags above and below your p
 
 The plugin is as minimally distracting visually as it can be while still being easy to find. It auto-mutes any time the user does not need to visually reference it. Technically speaking, the html tags added to the DOM and corresponding CSS are very minimal and will not have any affect on the rest of the page DOM or any other plugins or your theme.
 
-== Screenshots ==
-
-1. Plugin options screen 1
-2. Plugin options screen 2
-3. Plugin options screen 3
-4. Plugin options screen 4
-
 == Changelog ==
+
+= 1.3.3 =
+* Added custom post types to the time commitment label
+* Added new option to change muted progress bar color in addition to opacity
+* Added separate progress bar placement and offset options that apply only to touch devices
+* Improved logic of where to display the time commitment label. You can now display it with a shortcode only instead of auto-placement.
+* Improved time commitment label so the minimum read time is 1 minute (i.e. it will no longer display any "0" minute reads)
+* Increased z-index of the progress slider from 99 to 99999
+* Fixed PHP in_array notices in a few places
 
 = 1.3.2 =
 * Changed page slug of Redux options for better compatibility

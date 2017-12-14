@@ -1,17 +1,17 @@
 [
     {
         "name": "league/html-to-markdown",
-        "version": "4.4.1",
-        "version_normalized": "4.4.1.0",
+        "version": "4.6.0",
+        "version_normalized": "4.6.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/html-to-markdown.git",
-            "reference": "82ea375b5b2b1da1da222644c0565c695bf88186"
+            "reference": "9022e648bc40e44cb3b18438d97ed8715ecbc49b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/html-to-markdown/zipball/82ea375b5b2b1da1da222644c0565c695bf88186",
-            "reference": "82ea375b5b2b1da1da222644c0565c695bf88186",
+            "url": "https://api.github.com/repos/thephpleague/html-to-markdown/zipball/9022e648bc40e44cb3b18438d97ed8715ecbc49b",
+            "reference": "9022e648bc40e44cb3b18438d97ed8715ecbc49b",
             "shasum": ""
         },
         "require": {
@@ -24,14 +24,14 @@
             "phpunit/phpunit": "4.*",
             "scrutinizer/ocular": "~1.1"
         },
-        "time": "2017-03-16T00:45:59+00:00",
+        "time": "2017-10-24T02:45:05+00:00",
         "bin": [
             "bin/html-to-markdown"
         ],
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "4.5-dev"
+                "dev-master": "4.7-dev"
             }
         },
         "installation-source": "dist",

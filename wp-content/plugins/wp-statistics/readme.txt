@@ -1,20 +1,21 @@
 === WP Statistics ===
-Contributors: mostafa.s1990, GregRoss
+Contributors: mostafa.s1990, GregRoss, dedidata
 Donate link: https://wp-statistics.com/donate/
-Tags: statistics, stats, visit, visitors, chart, browser, blog, today, yesterday, week, month, year, total, post, page, sidebar, summary, hits, pagerank, google, alexa, live visit
+Tags: analytics, wordpress analytics, stats, statistics, visit, visitors, hits, chart, browser, today, yesterday, week, month, year, total, post, page, sidebar, google, live visit, search word, agent, google analytics, webmasters, google webmasters, geoip, location
 Requires at least: 3.0
-Tested up to: 4.8
-Stable tag: 12.1.3
-License: GPL3
+Tested up to: 4.9
+Stable tag: 12.3.1
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Complete statistics for your WordPress site.
+Complete WordPress Analytics and Statistics for your site!
 
 == Description ==
 A comprehensive plugin for your WordPress visitor statistics, come visit us at our [website](https://wp-statistics.com) for all the latest news and information.
 
-Track statistics for your WordPress site without depending on external services and uses arrogate data whenever possible to respect your users privacy.
+Track Statistics for your WordPress site without depending on external services and uses arrogate data whenever possible to respect your users privacy.
 
-On screen statistics presented as graphs are easily viewed through the WordPress admin interface.
+On screen Statistics presented as graphs are easily viewed through the WordPress admin interface.
 
 This product includes GeoLite2 data created by MaxMind, available from https://www.maxmind.com.
 
@@ -286,13 +287,50 @@ You may also downgrade to WP Statistics 10.3 as a temporary measure, but no new 
 This is a security fix, please update immediately.
 
 == Changelog ==
+= 12.3.1 =
+* We're sorry about last issues. Now you can update to new version to resolve the problems.
+* Updated: Composer libraries.
+* Fixed: A minor bug in `get_referrer_link`.
+* Improvement: `wp_doing_cron` function, Check before call if is not exist.
+* Fixed: Issue to get IP in Hits class.
+* Fixed: Issue to get prefix table in searched phrases postbox.
+* Fixed: Issue in Browscap, Used the original Browscap library in the plugin.
+* If you have any problem, don't forget to send the report to your web site's [contact form](https://wp-statistics.com/contact/).
+
+= 12.3 =
+* The new version proves itself more than twice as faster because we had a lot of changes in the plugin.
+* Improvement: Management processes and front-end have been separated for more speed.
+* Improvement: MySQL Queries and used multi-index for `wp_statistics_pages`.
+* Improvement: Top Referring widget in Big data. Used Transient cache to build this widget data.
+* Fixed: Issue in checking the Cron request.
+* Fixed: Issue in i18n strings. The `load_plugin_textdomain` missed.
+* Fixed: issue in generating query string in some state pages.
+* Fixed: issue in admin widget. The `id` in label missed and used `get_field_id` method to get a correct id.
+* Fixed: Admin bar menu icon.
+* Updated: Chart.js library to v2.7.1
+
+= 12.2.1 =
+* Fixed: Issue to `add_column` callback.
+
+= 12.2 =
+* The new version proves itself more than twice as faster because we had a lot of changes in the plugin.
+* Improvement: Many functions converted to classes.
+* Improvement: Export data on the optimization page.
+* Improvement: Constants, Include files.
+* Improvement: Setting/Optimization page stylesheet and removed jQuery UI to generate tabs.
+* Added: Top Search Words in the plugin.
+* Fixed: Some notices error.
+* Removed: Some unused variables.
+* Removed: Force English option feature in the plugin.
+* Thanks [Farhad Sakhaei](https://dedidata.com/) To help us with these changes.
+
 = 12.1.3 =
 * We're sorry about last issues. Now you can update to new version to resolve conflict issues.
 * Fixed: Chart conflict issues with other libraries.
 * Fixed: Chart height issue in css.
 * Fixed: Correct numbering for pages > 1 in Top Referring page. [#22](https://github.com/wp-statistics/wp-statistics/pull/22/files)
 * Fixed: Don't run the SQL if `$reffer` is not set. [#21](https://github.com/wp-statistics/wp-statistics/pull/21)
-* Fixed: Refferer url scheme. [#24](https://github.com/wp-statistics/wp-statistics/pull/24) Thanks [Farhad Sakhaei](https://github.com/parsmizban)
+* Fixed: Refferer url scheme. [#24](https://github.com/wp-statistics/wp-statistics/pull/24) Thanks [Farhad Sakhaei](https://github.com/Dedi-Data)
 * Fixed: Network menu icon.
 
 = 12.1.0 =

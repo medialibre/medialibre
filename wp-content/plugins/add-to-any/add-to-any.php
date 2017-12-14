@@ -3,7 +3,7 @@
 Plugin Name: AddToAny Share Buttons
 Plugin URI: https://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
-Version: 1.7.21
+Version: 1.7.22
 Author: AddToAny
 Author URI: https://www.addtoany.com/
 Text Domain: add-to-any
@@ -939,81 +939,68 @@ function A2A_SHARE_SAVE_stylesheet() {
 	
 	$options = $A2A_SHARE_SAVE_options;
 	
-	// Use stylesheet?
-	if ( ! isset( $options['inline_css'] ) || $options['inline_css'] != '-1' && ! is_admin() ) {
-	
-		wp_enqueue_style( 'A2A_SHARE_SAVE', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.14' );
-	
-		// wp_add_inline_style requires WP 3.3+
-		if ( '3.3' <= get_bloginfo( 'version' ) ) {
+	if ( ! is_admin() ) {
+		wp_enqueue_style( 'addtoany', $A2A_SHARE_SAVE_plugin_url_path . '/addtoany.min.css', false, '1.14' );
 		
-			// Prepare inline CSS
-			$inline_css = '';
-			
-			$vertical_type = ( isset( $options['floating_vertical'] ) && 'none' != $options['floating_vertical'] ) ? $options['floating_vertical'] : false;
-			$horizontal_type = ( isset( $options['floating_horizontal'] ) && 'none' != $options['floating_horizontal'] ) ? $options['floating_horizontal'] : false;
-			
-			// If vertical bar is enabled
-			if ( $vertical_type && 
-				// and respsonsiveness is enabled
-				( ! isset( $options['floating_vertical_responsive'] ) || '-1' != $options['floating_vertical_responsive'] )
-			) {
-				
-				// Get min-width for media query
-				$vertical_max_width = ( 
-					isset( $options['floating_vertical_responsive_max_width'] ) && 
-					is_numeric( $options['floating_vertical_responsive_max_width'] ) 
-				) ? $options['floating_vertical_responsive_max_width'] : '980';
-				
-				// Set media query
-				$inline_css .= '@media screen and (max-width:' . $vertical_max_width . 'px){' . "\n"
-					. '.a2a_floating_style.a2a_vertical_style{display:none;}' . "\n"
-					. '}';
-				
-			}
-			
-			// If horizontal bar is enabled
-			if ( $horizontal_type && 
-				// and respsonsiveness is enabled
-				( ! isset( $options['floating_horizontal_responsive'] ) || '-1' != $options['floating_horizontal_responsive'] )
-			) {
-				
-				// Get max-width for media query
-				$horizontal_min_width = ( 
-					isset( $options['floating_horizontal_responsive_min_width'] ) && 
-					is_numeric( $options['floating_horizontal_responsive_min_width'] ) 
-				) ? $options['floating_horizontal_responsive_min_width'] : '981';
-				
-				// Insert newline if there is inline CSS already
-				$inline_css = 0 < strlen( $inline_css ) ? $inline_css . "\n" : $inline_css;
-				
-				// Set media query
-				$inline_css .= '@media screen and (min-width:' . $horizontal_min_width . 'px){' . "\n"
-					. '.a2a_floating_style.a2a_default_style{display:none;}' . "\n"
-					. '}';
-				
-			}
-			
-			// If additional CSS (custom CSS for AddToAny) is set
-			if ( ! empty( $options['additional_css'] ) ) {
-				$custom_css = stripslashes( $options['additional_css'] );
-				
-				// Insert newline if there is inline CSS already
-				$inline_css = 0 < strlen( $inline_css ) ? $inline_css . "\n" : $inline_css;
-				
-				$inline_css .= $custom_css;
-			}
-			
-			// If there is inline CSS
-			if ( 0 < strlen( $inline_css ) ) {
-				// Insert inline CSS
-				wp_add_inline_style( 'A2A_SHARE_SAVE', $inline_css );	
-			}
+		// Prepare inline CSS
+		$inline_css = '';
 		
+		$vertical_type = ( isset( $options['floating_vertical'] ) && 'none' != $options['floating_vertical'] ) ? $options['floating_vertical'] : false;
+		$horizontal_type = ( isset( $options['floating_horizontal'] ) && 'none' != $options['floating_horizontal'] ) ? $options['floating_horizontal'] : false;
+		
+		// If vertical bar is enabled
+		if ( $vertical_type && 
+			// and respsonsiveness is enabled
+			( ! isset( $options['floating_vertical_responsive'] ) || '-1' != $options['floating_vertical_responsive'] )
+		) {
+			// Get min-width for media query
+			$vertical_max_width = ( 
+				isset( $options['floating_vertical_responsive_max_width'] ) && 
+				is_numeric( $options['floating_vertical_responsive_max_width'] ) 
+			) ? $options['floating_vertical_responsive_max_width'] : '980';
+			
+			// Set media query
+			$inline_css .= '@media screen and (max-width:' . $vertical_max_width . 'px){' . "\n"
+				. '.a2a_floating_style.a2a_vertical_style{display:none;}' . "\n"
+				. '}';
 		}
 		
+		// If horizontal bar is enabled
+		if ( $horizontal_type && 
+			// and respsonsiveness is enabled
+			( ! isset( $options['floating_horizontal_responsive'] ) || '-1' != $options['floating_horizontal_responsive'] )
+		) {
+			// Get max-width for media query
+			$horizontal_min_width = ( 
+				isset( $options['floating_horizontal_responsive_min_width'] ) && 
+				is_numeric( $options['floating_horizontal_responsive_min_width'] ) 
+			) ? $options['floating_horizontal_responsive_min_width'] : '981';
+			
+			// Insert newline if there is inline CSS already
+			$inline_css = 0 < strlen( $inline_css ) ? $inline_css . "\n" : $inline_css;
+			
+			// Set media query
+			$inline_css .= '@media screen and (min-width:' . $horizontal_min_width . 'px){' . "\n"
+				. '.a2a_floating_style.a2a_default_style{display:none;}' . "\n"
+				. '}';
+		}
+		
+		// If additional CSS (custom CSS for AddToAny) is set
+		if ( ! empty( $options['additional_css'] ) ) {
+			$custom_css = stripslashes( $options['additional_css'] );
+			
+			// Insert newline if there is inline CSS already
+			$inline_css = 0 < strlen( $inline_css ) ? $inline_css . "\n" : $inline_css;
+			
+			$inline_css .= $custom_css;
+		}
+		
+		// If there is inline CSS
+		if ( 0 < strlen( $inline_css ) ) {
+			// Insert inline CSS
+			wp_add_inline_style( 'addtoany', $inline_css );	
+		}
 	}
-	
 }
 
 add_action( 'wp_enqueue_scripts', 'A2A_SHARE_SAVE_stylesheet', 20 );
@@ -1060,7 +1047,6 @@ function A2A_SHARE_SAVE_refresh_cache() {
 }
 
 function A2A_SHARE_SAVE_schedule_cache() {
-	// WP "Cron" requires WP version 2.1
 	$timestamp = wp_next_scheduled( 'A2A_SHARE_SAVE_refresh_cache' );
 	if ( ! $timestamp) {
 		// Only schedule if currently unscheduled
@@ -1091,9 +1077,6 @@ function A2A_SHARE_SAVE_add_menu_link() {
 		'addtoany',
 		'A2A_SHARE_SAVE_options_page'
 	);
-	
-	/* Using registered $page handle to hook script load, to only load in AddToAny admin */
-	add_filter( 'admin_print_scripts-' . $page, 'A2A_SHARE_SAVE_scripts' );
 }
 
 add_filter( 'admin_menu', 'A2A_SHARE_SAVE_add_menu_link' );

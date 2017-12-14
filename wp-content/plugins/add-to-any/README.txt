@@ -3,7 +3,7 @@ Contributors: micropat, addtoany
 Tags: AddToAny, share, sharing, social, share buttons, share button, social media, media, marketing, links, email, seo, woocommerce, google, linkedin, reddit, facebook, like, twitter, pinterest, whatsapp, instagram, youtube, share this, sharethis, feed, icons
 Requires at least: 3.7
 Tested up to: 4.9
-Stable tag: 1.7.21
+Stable tag: 1.7.22
 
 Share buttons for WordPress including the AddToAny sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp, many more, and follow icons too.
 
@@ -350,6 +350,15 @@ Upload (or move) the `add-to-any` plugin directory into the `/wp-content/mu-plug
 5. Settings for Floating Share Bars
 
 == Changelog ==
+
+= 1.7.22 =
+* Use WordPress 4.9 code editor for Additional CSS and Additional JavaScript boxes
+* Rename CSS handles to `addtoany`
+* Remove Use default CSS option
+ * If needed, you can disable the default stylesheet using `add_action( 'wp_enqueue_scripts', function() { wp_dequeue_style( 'addtoany' ); }, 21 );`
+* Remove menu style button in admin
+* Use Italian language pack (thanks truttle, blogforum)
+* Use Spanish language pack (thanks Luis Rull, Juan Ramón Navas, Yan Arlex)
 
 = 1.7.21 =
 * Fix simplified initial `a2a_config` JS so overlays are not enabled by default

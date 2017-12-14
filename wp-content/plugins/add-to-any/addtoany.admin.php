@@ -82,8 +82,8 @@ function A2A_SHARE_SAVE_enqueue_pointer_script_style( $hook_suffix ) {
 	// Variable required for PHP < 5.5 because empty() only supports variables
 	$options = get_option( 'addtoany_options', array() );
 	
-	// Return if AddToAny options have been set, or WP < 3.3 
-	if ( ! empty( $options ) || get_bloginfo( 'version' ) < '3.3' ) {
+	// Return if AddToAny options have been set
+	if ( ! empty( $options ) ) {
 		return;
 	}
 
@@ -309,7 +309,6 @@ function A2A_SHARE_SAVE_options_page() {
 			$new_options['custom_icons_type'] = ( isset( $_POST['A2A_SHARE_SAVE_custom_icons_type'] ) ) ? $_POST['A2A_SHARE_SAVE_custom_icons_type'] : 'png';
 			$new_options['custom_icons_width'] = ( isset( $_POST['A2A_SHARE_SAVE_custom_icons_width'] ) ) ? $_POST['A2A_SHARE_SAVE_custom_icons_width'] : '';
 			$new_options['custom_icons_height'] = ( isset( $_POST['A2A_SHARE_SAVE_custom_icons_height'] ) ) ? $_POST['A2A_SHARE_SAVE_custom_icons_height'] : '';
-			$new_options['inline_css'] = ( isset( $_POST['A2A_SHARE_SAVE_inline_css'] ) && $_POST['A2A_SHARE_SAVE_inline_css'] == '1') ? '1' : '-1';
 			$new_options['cache'] = ( isset( $_POST['A2A_SHARE_SAVE_cache'] ) && $_POST['A2A_SHARE_SAVE_cache'] == '1' ) ? '1' : '-1';
 			
 			$custom_post_types = array_values( get_post_types( array( 'public' => true, '_builtin' => false ), 'objects' ) );
@@ -528,7 +527,7 @@ function A2A_SHARE_SAVE_options_page() {
 
 			<tr valign="top">
 			<th scope="row"><?php _e('Sharing Header', 'add-to-any'); ?></th>
-			<td><fieldset id="addtoany_extra_section_sharing_header" class="addtoany_extra_section" role="region">
+			<td><fieldset id="addtoany_extra_section_sharing_header" class="addtoany_extra_section<?php if ( ! empty( $options['header'] ) ) echo ' addtoany_show_extra'; ?>" role="region">
 				<label>
 					<input name="A2A_SHARE_SAVE_header" type="text" class="code" placeholder="<?php esc_attr_e( 'Share this:' ); ?>" size="50" value="<?php if ( isset( $options['header'] ) ) esc_attr_e( $options['header'] ); ?>" />
 				</label>
@@ -614,23 +613,12 @@ function A2A_SHARE_SAVE_options_page() {
 					<input name="A2A_SHARE_SAVE_onclick" type="checkbox"<?php if ( isset( $options['onclick'] ) && $options['onclick'] == '1' ) echo ' checked="checked"'; ?> value="1"/>
 					<?php _e('Only show the universal share menu when the user <em>clicks</em> the universal share button', 'add-to-any'); ?>
 				</label>
-				<label>
-					<p><?php _e("You can use AddToAny's Menu Styler to customize the colors of your universal share menu. When you're done, be sure to paste the generated code in the <a href=\"#\" onclick=\"document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus();return false\">Additional JavaScript</a> box below.", 'add-to-any'); ?></p>
-				</label>
-				<p>
-					<a href="https://www.addtoany.com/buttons/share/menu_style/wordpress" class="button-secondary" title="<?php _e("Open the AddToAny Menu Styler in a new window", 'add-to-any'); ?>" target="_blank" onclick="document.getElementById('A2A_SHARE_SAVE_additional_js_variables').focus(); document.getElementById('A2A_SHARE_SAVE_menu_styler_note').style.display='';"><?php _e("Open Menu Styler", 'add-to-any'); ?></a>
-				</p>
 			</fieldset></td>
 			</tr>
 
 			<tr valign="top">
 			<th scope="row"><?php _e('Additional JavaScript', 'add-to-any'); ?></th>
 			<td><fieldset id="addtoany_extra_section_additional_javascript" class="addtoany_extra_section" role="region">
-				<p id="A2A_SHARE_SAVE_menu_styler_note" style="display:none">
-					<label for="A2A_SHARE_SAVE_additional_js_variables" class="updated">
-						<strong><?php _e("Paste the code from AddToAny's Menu Styler in the box below!", 'add-to-any'); ?></strong>
-					</label>
-				</p>
 				<label for="A2A_SHARE_SAVE_additional_js_variables">
 					<p><?php _e('Below you can add special JavaScript code for AddToAny.', 'add-to-any'); ?>
 					<?php _e("Advanced users should explore AddToAny's <a href=\"https://www.addtoany.com/buttons/customize/wordpress\" target=\"_blank\">additional options</a>.", 'add-to-any'); ?></p>
@@ -669,14 +657,6 @@ function A2A_SHARE_SAVE_options_page() {
 				<input name="A2A_SHARE_SAVE_custom_icons_height" type="number" max="300" min="10" maxlength="3" step="2" oninput="if(this.value.length > 3) this.value=this.value.slice(0, 3)" id="A2A_SHARE_SAVE_custom_icons_height" value="<?php if ( isset( $options['custom_icons_height'] ) ) esc_attr_e( $options['custom_icons_height'] ); ?>" class="small-text" />
 				<p class="description">
 					<?php _e("Specify the URL of the directory containing your custom icons. For example, a URL of <code>//example.com/blog/uploads/addtoany/icons/custom/</code> containing <code>facebook.png</code> and <code>twitter.png</code>. Be sure that custom icon filenames match the icon filenames in <code>plugins/add-to-any/icons</code>. For AddToAny's Universal Button, select Image URL and specify the URL of your AddToAny universal share icon (<a href=\"#\" onclick=\"document.getElementsByName('A2A_SHARE_SAVE_button_custom')[0].focus();return false\">above</a>).", 'add-to-any'); ?>
-				</p>
-				<br/>
-				<label for="A2A_SHARE_SAVE_inline_css">
-					<input name="A2A_SHARE_SAVE_inline_css" id="A2A_SHARE_SAVE_inline_css" type="checkbox"<?php if ( ! isset( $options['inline_css'] ) || $options['inline_css'] != '-1' ) echo ' checked="checked"'; ?> value="1"/>
-				<?php _e('Use default CSS', 'add-to-any'); ?>
-				</label>
-				<p class="description">
-					<?php _e("Only disable AddToAny's default stylesheet if you already have the necessary CSS code applied to your AddToAny buttons.", 'add-to-any'); ?>
 				</p>
 				<br/>
 				<label for="A2A_SHARE_SAVE_cache">
@@ -1082,8 +1062,8 @@ function A2A_SHARE_SAVE_admin_head() {
 			jQuery(this).fadeOut('fast');
 		});
 		
-		// Hide each 'extra' section if it does not have a textarea with a value
-		jQuery('.addtoany_extra_section:not(:has(textarea:not(:empty)))').hide()
+		// Hide each 'extra' section if it is not .addtoany_show_extra, or it does not have a textarea with a value
+		jQuery('.addtoany_extra_section:not(.addtoany_show_extra, :has(textarea:not(:empty)))').hide()
 			// Keep it accessible
 			.attr('aria-expanded', 'false')
 			.attr('tabindex', '-1')
@@ -1101,8 +1081,9 @@ function A2A_SHARE_SAVE_admin_head() {
 	});
 	--></script>
 
-	<style type="text/css">
-	.color-field-container{display:none;}
+	<style>
+	.color-field-container,
+	.CodeMirror-hints{display:none;}
 	
 	.ui-sortable-placeholder{background-color:transparent;border:1px dashed #CCC !important;}
 	.addtoany_admin_list{list-style:none;padding:0;margin:0;}
@@ -1172,10 +1153,56 @@ function A2A_SHARE_SAVE_admin_head() {
 
 add_filter( 'admin_head', 'A2A_SHARE_SAVE_admin_head' );
 
-
-
-function A2A_SHARE_SAVE_scripts() {
+function addtoany_admin_scripts( $current_admin_page ) {
+	if ( 'settings_page_addtoany' !== $current_admin_page ) {
+		return;
+	}
+	
 	wp_enqueue_script( 'jquery-ui-sortable' );
 	wp_enqueue_script( 'wp-color-picker' );
 	wp_enqueue_style( 'wp-color-picker' );
+	
+	// If current screen is the default tab and WordPress >= 4.9
+	if ( empty( $_GET['action'] ) && function_exists( 'wp_enqueue_code_editor' ) ) {
+		// Additional JavaScript editor.
+		// Enqueue code editor and settings for manipulating JavaScript.
+		$settings = wp_enqueue_code_editor( array(
+			'type' => 'text/javascript',
+			'jshint' => array(
+				'globals' => array( 'a2a_config' => true ),
+				'quotmark' => false,
+				'undef' => false,
+				'unused' => false,
+			),
+			'codemirror' => array( 'lineNumbers' => false ),
+		) );
+		
+		// If user hasn't disabled CodeMirror.
+		if ( false !== $settings ) {
+			wp_add_inline_script(
+				'code-editor',
+				sprintf(
+					'jQuery( function() { var wpCodeEditor = wp.codeEditor.initialize( "A2A_SHARE_SAVE_additional_js_variables", %s ); window.wpa2aCodeEditorJS = wpCodeEditor.codemirror; } );',
+					wp_json_encode( $settings )
+				)
+			);
+			
+			// Additional CSS editor.
+			// Enqueue code editor and settings for manipulating CSS.
+			$settings = wp_enqueue_code_editor( array(
+				'type' => 'text/css',
+				'codemirror' => array( 'lineNumbers' => false ),
+			) );
+			
+			wp_add_inline_script(
+				'code-editor',
+				sprintf(
+					'jQuery( function() { var wpCodeEditor = wp.codeEditor.initialize( "A2A_SHARE_SAVE_additional_css", %s ); window.wpa2aCodeEditorCSS = wpCodeEditor.codemirror; } );',
+					wp_json_encode( $settings )
+				)
+			);
+		}
+	}
 }
+
+add_action( 'admin_enqueue_scripts', 'addtoany_admin_scripts' );

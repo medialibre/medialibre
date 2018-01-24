@@ -459,7 +459,7 @@ class CCF_Form_Handler {
 		if ( $required && empty( $value ) ) {
 			$errors['website_required'] = esc_html__( 'This field is required.', 'custom-contact-forms' );
 		} else {
-			if ( ! empty( $value ) && ! preg_match( '/^http(s?)\:\/\/(([a-zA-Z0-9\-\._]+(\.[a-zA-Z0-9\-\._]+)+)|localhost)(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?([\d\w\.\/\%\+\-\=\&amp;\?\:\\\&quot;\'\,\|\~\;]*)$/i', $value ) ) {
+			if ( ! empty( $value ) && ! preg_match( '/^http(s?)\:\/\/(([a-zA-Z0-9\-\._]+(\.[a-zA-Z0-9\-\._]+)+)|localhost)(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#@_]*)?([\d\w\.\/\%\+\-\=\&amp;\?\:\\\&quot;\'\,\|\~\;]*)$/i', $value ) ) {
 				$errors['website'] = esc_html__( "This is not a valid URL. URL's must start with http(s)://", 'custom-contact-forms' );
 			}
 		}

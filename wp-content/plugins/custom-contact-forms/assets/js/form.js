@@ -167,7 +167,7 @@
 
 	wp.ccf.validators['simple-captcha'] = wp.ccf.validators['simple-captcha'] || validator( function( input ) {
 		/*if ( input.value ) {
-			var re = /^http(s?)\:\/\/(([a-zA-Z0-9\-\._]+(\.[a-zA-Z0-9\-\._]+)+)|localhost)(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?([\d\w\.\/\%\+\-\=\&amp;\?\:\\\&quot;\'\,\|\~\;]*)$/;
+			var re = /^http(s?)\:\/\/(([a-zA-Z0-9\-\._]+(\.[a-zA-Z0-9\-\._]+)+)|localhost)(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_@]*)?([\d\w\.\/\%\+\-\=\&amp;\?\:\\\&quot;\'\,\|\~\;]*)$/;
 
 			if ( ! re.test( input.value ) ) {
 				this.errors[input.getAttribute( 'name' )].website = input;
@@ -347,7 +347,7 @@
 
 	wp.ccf.validators.website = wp.ccf.validators.website || validator( function( input ) {
 		if ( input.value ) {
-			var re = /^http(s?)\:\/\/(([a-zA-Z0-9\-\._]+(\.[a-zA-Z0-9\-\._]+)+)|localhost)(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?([\d\w\.\/\%\+\-\=\&amp;\?\:\\\&quot;\'\,\|\~\;]*)$/;
+			var re = /^http(s?)\:\/\/(([a-zA-Z0-9\-\._]+(\.[a-zA-Z0-9\-\._]+)+)|localhost)(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_@]*)?([\d\w\.\/\%\+\-\=\&amp;\?\:\\\&quot;\'\,\|\~\;]*)$/;
 
 			if ( ! re.test( input.value ) ) {
 				this.errors[input.getAttribute( 'name' )].website = input;

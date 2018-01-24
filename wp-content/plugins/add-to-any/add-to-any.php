@@ -3,7 +3,7 @@
 Plugin Name: AddToAny Share Buttons
 Plugin URI: https://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
-Version: 1.7.22
+Version: 1.7.23
 Author: AddToAny
 Author URI: https://www.addtoany.com/
 Text Domain: add-to-any
@@ -465,7 +465,7 @@ function ADDTOANY_SHARE_SAVE_BUTTON( $args = array() ) {
 			$button_class .= ' a2a_counter';
 		}
 		
-		$button_html = $html_container_open . $html_wrap_open . '<a class="a2a_dd' . $button_class . $button_additional_classes . ' addtoany_share_save" href="https://www.addtoany.com/share' .$button_href_querystring . '"'
+		$button_html = $html_container_open . $html_wrap_open . '<a class="a2a_dd' . $button_class . $button_additional_classes . ' addtoany_share_save addtoany_share" href="https://www.addtoany.com/share' .$button_href_querystring . '"'
 			. $button_data_url . $button_data_title . $button_data_media . $button_target
 			. '>' . $button . '</a>';
 	
@@ -764,7 +764,6 @@ function A2A_SHARE_SAVE_head_script() {
 		. ( $icon_color ? "\n" . 'a2a_config.icon_color="' . $icon_color . '";' : '' )
 		. ( isset( $options['onclick'] ) && '1' == $options['onclick'] ? "\n" . 'a2a_config.onclick=1;' : '' )
 		. ( $additional_js ? "\n" . stripslashes( $additional_js ) : '' );
-	$A2A_SHARE_SAVE_external_script_called = true;
 	
 	$javascript_header = "\n" . '<script type="text/javascript">' . "\n"
 	
@@ -880,7 +879,7 @@ function A2A_SHARE_SAVE_add_to_content( $content ) {
 		$kit_args['html_wrap_open'] = '';
 		$kit_args['html_wrap_close'] = '';
 	} else {
-		$container_wrap_open = '<div class="addtoany_share_save_container %s">'; // Contains placeholder
+		$container_wrap_open = '<div class="addtoany_share_save_container addtoany_content %s">'; // Contains placeholder
 		$container_wrap_open .= $html_header;
 		$container_wrap_close = '</div>';
 	}

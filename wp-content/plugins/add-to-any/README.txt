@@ -3,7 +3,7 @@ Contributors: micropat, addtoany
 Tags: AddToAny, share, sharing, social, share buttons, share button, social media, media, marketing, links, email, seo, woocommerce, google, linkedin, reddit, facebook, like, twitter, pinterest, whatsapp, instagram, youtube, share this, sharethis, feed, icons
 Requires at least: 3.7
 Tested up to: 4.9
-Stable tag: 1.7.22
+Stable tag: 1.7.23
 
 Share buttons for WordPress including the AddToAny sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp, many more, and follow icons too.
 
@@ -253,11 +253,11 @@ It depends on your theme, but you can try adding the following CSS code to your 
 
 To align right:
 
-`.addtoany_share_save_container { text-align:right; }`
+`.addtoany_content { text-align:right; }`
 
 To align center:
 
-`.addtoany_share_save_container { text-align:center; }`
+`.addtoany_content { text-align:center; }`
 
 = How can I remove the button(s) from individual posts and pages? =
 
@@ -351,10 +351,22 @@ Upload (or move) the `add-to-any` plugin directory into the `/wp-content/mu-plug
 
 == Changelog ==
 
+= 1.7.23 =
+* Add `addtoany_content` class name to container in content
+ * The container's `addtoany_share_save_container` class name will be removed in a future plugin update
+ * Reference `.addtoany_content` instead of `.addtoany_share_save_container`
+* Add `addtoany_share` class name to universal share button
+ * The button's `addtoany_share_save` class name will be removed in a future plugin update
+ * Reference `.addtoany_share` instead of `.addtoany_share_save`
+* Add Medium follow button
+* Update Blogger service code
+* Remove Klipfolio
+* Remove Webnews
+
 = 1.7.22 =
 * Use WordPress 4.9 code editor for Additional CSS and Additional JavaScript boxes
 * Rename CSS handles to `addtoany`
-* Remove Use default CSS option
+* Remove "Use default CSS" option
  * If needed, you can disable the default stylesheet using `add_action( 'wp_enqueue_scripts', function() { wp_dequeue_style( 'addtoany' ); }, 21 );`
 * Remove menu style button in admin
 * Use Italian language pack (thanks truttle, blogforum)
@@ -938,8 +950,11 @@ Upload (or move) the `add-to-any` plugin directory into the `/wp-content/mu-plug
 
 == Upgrade Notice ==
 
+= 1.7.23 =
+If you have CSS code customizations referencing the universal button (`.addtoany_share_save`) or the standard share buttons container (`.addtoany_share_save_container`), those class names have been deprecated and will be removed in a future plugin update. The new class names are `.addtoany_share` and `.addtoany_content` respectively. Please update your custom CSS if you are referencing the deprecated class names.
+
 = 1.7.18 =
-* The background for floating bars now defaults to `transparent`. You can change the background for your floating bars in the "Floating" tab of Settings > AddToAny.
+The background for floating bars now defaults to `transparent`. You can change the background for your floating bars in the "Floating" tab of Settings > AddToAny.
 
 = 1.7.13 =
 For [WooCommerce](https://woocommerce.com/) sites, the default standard placement for share buttons has moved from the product description to after the product meta block. You can customize exactly where share buttons display by [editing](https://docs.woocommerce.com/document/editing-projects-templates-safely/) your `share.php` Single Product Share template.

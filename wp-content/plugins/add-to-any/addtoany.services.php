@@ -82,8 +82,8 @@ $A2A_SHARE_SAVE_services = array(
 		"icon" => "blinklist",
 		"color" => "3D3C3B",
 	),
-	"blogger_post" => array(
-		"name" => "Blogger Post",
+	"blogger" => array(
+		"name" => "Blogger",
 		"icon" => "blogger",
 		"color" => "FDA352",
 	),
@@ -502,11 +502,6 @@ $A2A_SHARE_SAVE_services = array(
 		"icon" => "wanelo",
 		"color" => "9cb092",
 	),
-	"webnews" => array(
-		"name" => "Webnews",
-		"icon" => "webnews",
-		"color" => "CC2512",
-	),
 	"wechat" => array(
 		"name" => "WeChat",
 		"icon" => "wechat",
@@ -628,11 +623,17 @@ $A2A_FOLLOW_services = array(
 		'icon' => 'linkedin',
 		'color' => '007BB5',
 	),
+	'medium' => array( 
+		'name' => 'Medium', 
+		'href' => 'https://medium.com/@${id}',	
+		'icon' => 'medium',
+		'color' => '2A2A2A',
+	),
 	'snapchat' => array( 
 		'name' => 'Snapchat', 
 		'href' => 'https://www.snapchat.com/add/${id}',	
 		'icon' => 'snapchat',
-		'color' => '',
+		'color' => '2A2A2A',
 	),
 	'tumblr' => array( 
 		'name' => 'Tumblr', 

@@ -40,16 +40,16 @@ class oan_Settings {
 	
 	// Refers to a single instance of this class.
     private static $instance = null;
-	
-	/**
+
+/** 
 	 * __construct function.
-	 *
+ * 
 	 * @access public
 	 * @return void
-	 */
+ */   
 	private function __construct() {
 	}
-	
+ 
 	/**
      * Creates or returns an instance of this class.
      *
@@ -58,7 +58,7 @@ class oan_Settings {
     public static function get_instance() {
 
 		$overwrite_author_name = OAN_CLASS::get_instance();
-		
+
 		$config = array(
 				'default_tab_key' => 'oan_general',					// Default settings tab, opened on first settings page open.
 				'menu_parent' => 'options-general.php',    		// menu options page slug name.
@@ -66,8 +66,8 @@ class oan_Settings {
 				'menu' => $overwrite_author_name->menu,    					// menu options page slug name.
 				'menu_title' => $overwrite_author_name->menu_title,    		// menu options page slug name.
 				'page_title' => $overwrite_author_name->page_title,    		// menu options page title.
-				);
-				
+	);  
+
 				
 		$settings = 	apply_filters( 'oan_settings', 
 									array(								
@@ -93,8 +93,8 @@ class oan_Settings {
 																),
 										),
 									)
-								);
-
+	);  
+       
         if ( null == self::$instance ) {
             self::$instance = new Tabbed_Settings( $settings, $config );
         }
@@ -118,9 +118,9 @@ class oan_Settings_Additional_Methods {
 	 * @return void
 	 */
 	public function field_help_notes_post_types_option( array $args  ) {
-	
+    
 		$option   = $args['option'];
-		
+
 		//  loop through the site roles and create a custom post for each
 		global $wp_roles;
 		$overwrite_author_name = OAN_CLASS::get_instance();
@@ -135,10 +135,10 @@ class oan_Settings_Additional_Methods {
 		foreach( $roles as $role_key=>$role_name )
 		{
 			$id = sanitize_key( $role_key );
-			
+
 			$post_type_name = $overwrite_author_name->clean_post_type_name( $role_key );
 			$role_active = $this->oan_role_active( $role_key, (array) $value )
-
+	
 			// Render the output  
 			?> 
 			<li><label>
@@ -153,16 +153,16 @@ class oan_Settings_Additional_Methods {
 		}?></ul><?php 
 		if ( ! empty( $option['desc'] ))
 			echo ' <p class="description">' . esc_html( $option['desc'] ) . '</p>';		
-	}
-	
+} 
 
-	/**
+
+/**
 	 * field_help_notes_taxonomy_option 
 	 *
 	 * @param array of arguments to pass the option name to render the form field.
 	 * @access public
 	 * @return void
-	 */
+ */
 	public function field_help_notes_taxonomy_options( array $args  ) {
 		$option   = $args['option'];
 		
@@ -184,8 +184,8 @@ class oan_Settings_Additional_Methods {
 			$post_type_name = $overwrite_author_name->clean_post_type_name( $role_key );
 			$role_active = $this->oan_role_active( $role_key, (array) $value )
 
-			// Render the output  
-			?> 
+	// Render the output  
+	?> 
 			<li><label>
 			<input type='checkbox'  
 				id="<?php echo esc_html( "help_notes_{$id}" ) ; ?>" 
@@ -216,53 +216,53 @@ class oan_Settings_Additional_Methods {
 				
 									'show_option_none' => _x( "- None -", 'text for no selection', 'overwrite-author-name'), 
 									'name' => $option['name'],
-									'orderby ' => 'display_name', 
-									'echo'          => 1,
+                                'orderby ' => 'display_name', 
+                                'echo'          => 1,
 									'selected'     => get_option( $option['name'] ),
 									'id'         	=> 'setting-' . $option['name'],
 									'option_none_value' => '0', 
 									
-								)); ?>
+            				    )); ?>
 			</label>
 
 			
-			<?php
+	<?php 
 			if ( ! empty( $option['desc'] ))
 				echo ' <p class="description">' . esc_html( $option['desc'] ) . '</p>';		
-		}
-				
+}
 
-		/**
-		 * Renders settings field for Post Types
-		 */
+
+/**
+ * Renders settings field for Post Types
+ */
 		public function settings_field_selected_post_types( array $args  ) {
 
 			$option	= $args['option'];
 			$value = get_option( $option['name'] );
-			  
-			/* Only add the meta box if the current user has the 'restrict_content' capability. */
-			if ( current_user_can( 'manage_options' ) ) {
+	  
+    /* Only add the meta box if the current user has the 'restrict_content' capability. */
+	if ( current_user_can( 'manage_options' ) ) {
 
-				/* Get all available public post types. */
-				$post_types = get_post_types( array( 'public' => true ), 'objects' );
+		/* Get all available public post types. */
+		$post_types = get_post_types( array( 'public' => true ), 'objects' );
 
-				/* Loop through each post type, adding to the settings */
-				foreach ( $post_types as $post_type ) {
-				   
-				   if ( post_type_supports( $post_type->name, 'author' )) {
-					   // Render the output  							   
-						?> 
-						<input 
-							type='checkbox'  
-							id="<?php echo $post_type->name ; ?>" 
+        /* Loop through each post type, adding to the settings */
+        foreach ( $post_types as $post_type ) {
+           
+           if (post_type_supports( $post_type->name, 'author' )) {
+               // Render the output  
+            	?> 
+        		<input 
+        			type='checkbox'  
+        			id="<?php echo $post_type->name ; ?>" 
 							name="<?php echo $option['name']; ?>[]"  
 							value="<?php echo $post_type->name; ?>"<?php checked( in_array( $post_type->name, (array) $value )); ?>
-						</input>
-
-						<?php echo $post_type->labels->name." (". $post_type->name .") <br />";		
-				   }
-				}
-				
+        		</input>
+                
+        	    <?php echo $post_type->labels->name." (". $post_type->name .") <br />";		
+           }
+        }
+        
 				?><p>			
 				<?php
 			if ( ! empty( $option['desc'] ))
@@ -285,7 +285,7 @@ class oan_Settings_Additional_Methods {
 				}
 		}
 		return false;
-	}
+    }
 }
 
 
@@ -296,6 +296,6 @@ require_once( dirname( __FILE__ ) . '/class-tabbed-settings.php' );
 // and Include additional functions that are required.
 oan_Settings::get_instance()->registerHandler( new oan_Settings_Additional_Methods() );
 
-
 	
+
 ?>

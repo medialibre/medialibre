@@ -1,9 +1,8 @@
 === Plugin Name ===
-Contributors: justinticktock
+Contributors: justinticktock, keycapability
 Tags: author, enforce, overwrite, publish
 Requires at least: 3.5
-Tested up to: 4.4
-Stable tag: 1.9
+Tested up to: 4.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,8 +18,15 @@ For increased security the user account used for the corporate identity should a
 
 supports standard and custom post types.
 
-[Plugin site](http://justinandco.com/plugins/overwrite-author-name/).  	
-[GitHub page](https://github.com/justinticktock/overwrite-author-name).
+
+
+= Plugin site =
+
+http://justinandco.com/plugins/overwrite-author-name/
+
+= GitHub - Development =
+
+https://github.com/justinticktock/overwrite-author-name
 
 == Installation ==
 

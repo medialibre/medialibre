@@ -3,7 +3,7 @@ Contributors: micropat, addtoany
 Tags: AddToAny, share, sharing, social, share buttons, share button, social media, media, marketing, links, email, seo, woocommerce, google, linkedin, reddit, facebook, like, twitter, pinterest, whatsapp, instagram, youtube, share this, sharethis, feed, icons
 Requires at least: 3.7
 Tested up to: 4.9
-Stable tag: 1.7.23
+Stable tag: 1.7.25
 
 Share buttons for WordPress including the AddToAny sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp, many more, and follow icons too.
 
@@ -61,7 +61,7 @@ AddToAny is the universal sharing platform, and the AddToAny plugin is the most 
 = Wide Support =
 
 * Over 10 years of development
-* Over 7 million downloads
+* Over 8 million downloads
 * Translated into dozens of languages
 * Ongoing support from the community
 
@@ -145,7 +145,7 @@ For more technical information on setting your pages up for Facebook sharing, se
 
 = Why do share links route through AddToAny? =
 
-Since 2006, AddToAny is trusted across the web to always route to each service's current endpoint. This routing enables publisher customization, visitor personalization, and keeps the AddToAny plugin remarkably lightweight without the need for constant plugin updates. In AddToAny menus, visitors see the services they actually use. On mobile, AddToAny presents the choice of sharing to a service's native app or mobile site and the preference is used on the next share. Publishers take advantage of AddToAny services such as <a href="https://www.addtoany.com/buttons/customize/wordpress/email_template">email templates</a>, <a href="https://www.addtoany.com/buttons/customize/wordpress/twitter_message">Twitter templates</a>, <a href="https://www.addtoany.com/buttons/customize/wordpress/link_tracking">URL shortener & parameters</a>, and more. Just as service icons change, service endpoints change too, and AddToAny is updated daily to reflect service endpoint and API changes.
+AddToAny routing enables publisher customization, visitor personalization, and keeps the AddToAny plugin remarkably lightweight without the need for constant plugin updates. In AddToAny menus, visitors see the services they actually use. On mobile, AddToAny presents the choice of sharing to a service's native app or mobile site and the preference is used on the next share. Publishers take advantage of AddToAny services such as <a href="https://www.addtoany.com/buttons/customize/wordpress/email_template">email templates</a>, <a href="https://www.addtoany.com/buttons/customize/wordpress/twitter_message">Twitter templates</a>, <a href="https://www.addtoany.com/buttons/customize/wordpress/templates">custom parameters</a>, <a href="https://www.addtoany.com/buttons/customize/wordpress/link_tracking">URL shorteners</a>, localization, and more. Just as service icons change, service endpoints change too, and AddToAny is updated daily to reflect service endpoint and API changes.
 
 = Where are buttons such as Instagram, YouTube, Snapchat? =
 
@@ -350,6 +350,17 @@ Upload (or move) the `add-to-any` plugin directory into the `/wp-content/mu-plug
 5. Settings for Floating Share Bars
 
 == Changelog ==
+
+= 1.7.25 =
+* Fix service count options in settings
+* Load JS for the customizer only when the customizer is used (thanks Neil)
+
+= 1.7.24 =
+* Move JS into a single block to prevent issues caused by some site optimization plugins
+* Simplify file paths & URLs
+* Prevent Cloudflare's experimental Rocket Loader from causing script issues
+* Remove Google+ share count options because Google+ no longer provides counters
+* Remove AIM, BuddyMarks, diHITT, Jamespot, Netlog, NewsVine, NUjij, Segnalo, Stumpedia, YouMob
 
 = 1.7.23 =
 * Add `addtoany_content` class name to container in content

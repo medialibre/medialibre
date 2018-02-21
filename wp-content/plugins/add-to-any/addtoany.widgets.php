@@ -19,9 +19,9 @@ class A2A_SHARE_SAVE_Widget extends WP_Widget {
 		);
 		parent::__construct( '', 'AddToAny Share', $widget_ops );
 		
-		// Enqueue script if widget is active (appears in a sidebar) or if in Customizer preview.
+		// Enqueue script if in Customizer preview.
 		// is_customize_preview() @since 4.0.0
-		if ( is_active_widget( false, false, $this->id_base ) || ( function_exists( 'is_customize_preview' ) && is_customize_preview() ) ) {
+		if ( function_exists( 'is_customize_preview' ) && is_customize_preview() ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		}
 	}
@@ -40,9 +40,6 @@ class A2A_SHARE_SAVE_Widget extends WP_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args = array(), $instance ) {
-	
-		global $A2A_SHARE_SAVE_plugin_url_path;
-		
 		$defaults = array(
 			'before_widget' => '',
 			'after_widget' => '',
@@ -111,9 +108,9 @@ class A2A_Follow_Widget extends WP_Widget {
 		);
 		parent::__construct( '', 'AddToAny Follow', $widget_ops );	
 		
-		// Enqueue script if widget is active (appears in a sidebar) or if in Customizer preview.
+		// Enqueue script if in Customizer preview.
 		// is_customize_preview() @since 4.0.0
-		if ( is_active_widget( false, false, $this->id_base ) || ( function_exists( 'is_customize_preview' ) && is_customize_preview() ) ) {
+		if ( function_exists( 'is_customize_preview' ) && is_customize_preview() ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		}
 	}
@@ -130,8 +127,6 @@ class A2A_Follow_Widget extends WP_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args = array(), $instance ) {
-		global $A2A_SHARE_SAVE_plugin_url_path;
-		
 		$defaults = array(
 			'before_widget' => '',
 			'after_widget' => '',

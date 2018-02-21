@@ -193,7 +193,7 @@ function _a2a_valid_hex_color( $value ) {
 
 function A2A_SHARE_SAVE_options_page() {
 
-	global $A2A_SHARE_SAVE_plugin_url_path,
+	global $A2A_SHARE_SAVE_plugin_url,
 		$A2A_SHARE_SAVE_services;
 	
 	// Require admin privs
@@ -355,10 +355,10 @@ function A2A_SHARE_SAVE_options_page() {
 				'show_count' => '-1' // Twitter doesn't provide counts anymore
 			);
 			$new_options['special_google_plusone_options'] = array(
-				'show_count' => ( ( isset( $_POST['addtoany_google_plusone_show_count'] ) && $_POST['addtoany_google_plusone_show_count'] == '1' ) ? '1' : '-1' )
+				'show_count' => '-1' // Google+ doesn't provide counts anymore
 			);
 			$new_options['special_google_plus_share_options'] = array(
-				'show_count' => ( ( isset( $_POST['addtoany_google_plus_share_show_count'] ) && $_POST['addtoany_google_plus_share_show_count'] == '1' ) ? '1' : '-1' )
+				'show_count' => '-1' // Google+ doesn't provide counts anymore
 			);
 			$new_options['special_pinterest_pin_options'] = array(
 				'show_count' => ( ( isset( $_POST['addtoany_pinterest_pin_show_count'] ) && $_POST['addtoany_pinterest_pin_show_count'] == '1' ) ? '1' : '-1' )
@@ -438,7 +438,7 @@ function A2A_SHARE_SAVE_options_page() {
 			<th scope="row"><?php _e("Share Buttons", 'add-to-any'); ?></th>
 			<td><fieldset>
 				<ul id="addtoany_services_sortable" class="addtoany_admin_list addtoany_override">
-					<li class="dummy"><img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path; ?>/icons/transparent.gif" width="32" height="32" alt="" /></li>
+					<li class="dummy"><img src="<?php echo $A2A_SHARE_SAVE_plugin_url; ?>/icons/transparent.gif" width="32" height="32" alt="" /></li>
 				</ul>
 				<p id="addtoany_services_info"><?php _e("Choose the services you want below. &nbsp;Click a chosen service again to remove. &nbsp;Reorder services by dragging and dropping as they appear above.", 'add-to-any'); ?></p>
 				<ul id="addtoany_services_selectable" class="addtoany_admin_list">
@@ -457,31 +457,31 @@ function A2A_SHARE_SAVE_options_page() {
 							? ' class="addtoany_special_service"' : '';
 					?>
 						<li data-addtoany-icon-name="<?php echo $site['icon']; ?>"<?php echo $special_service; ?> id="a2a_wp_<?php echo $service_safe_name; ?>" title="<?php echo $site['name']; ?>">
-							<img src="<?php echo (isset($site['icon_url'])) ? $site['icon_url'] : $A2A_SHARE_SAVE_plugin_url_path.'/icons/'.$site['icon'].'.svg'; ?>" width="<?php echo (isset($site['icon_width'])) ? $site['icon_width'] : '24'; ?>" height="<?php echo (isset($site['icon_height'])) ? $site['icon_height'] : '24'; ?>"<?php if ( isset( $site['color'] ) ) : ?> style="background-color:#<?php echo $site['color']; endif; ?>"><?php echo $site['name']; ?>
+							<img src="<?php echo (isset($site['icon_url'])) ? $site['icon_url'] : $A2A_SHARE_SAVE_plugin_url.'/icons/'.$site['icon'].'.svg'; ?>" width="<?php echo (isset($site['icon_width'])) ? $site['icon_width'] : '24'; ?>" height="<?php echo (isset($site['icon_height'])) ? $site['icon_height'] : '24'; ?>"<?php if ( isset( $site['color'] ) ) : ?> style="background-color:#<?php echo $site['color']; endif; ?>"><?php echo $site['name']; ?>
 						</li>
 				<?php
 					} ?>
 					<li style="clear:left" id="a2a_wp_facebook_like" class="addtoany_special_service addtoany_3p_button" title="Facebook Like button">
-						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/icons/facebook_like_2x.png'; ?>" width="101" height="40" alt="Facebook Like" />
+						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url.'/icons/facebook_like_2x.png'; ?>" width="101" height="40" alt="Facebook Like" />
 					</li>
 					<li id="a2a_wp_twitter_tweet" class="addtoany_special_service addtoany_3p_button" title="Twitter Tweet button">
-						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/icons/twitter_tweet_2x.png'; ?>" width="122" height="40" alt="Twitter Tweet" />
+						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url.'/icons/twitter_tweet_2x.png'; ?>" width="122" height="40" alt="Twitter Tweet" />
 					</li>
 					<li id="a2a_wp_google_plusone" class="addtoany_special_service addtoany_3p_button" title="Google +1 button">
-						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/icons/google_plusone_2x.png'; ?>" width="64" height="40" alt="Google +1" />
+						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url.'/icons/google_plusone_2x.png'; ?>" width="64" height="40" alt="Google +1" />
 					</li>
 					<li id="a2a_wp_google_plus_share" class="addtoany_special_service addtoany_3p_button" title="Google+ Share button">
-						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/icons/google_plus_share_2x.png'; ?>" width="113" height="40" alt="Google+ Share" />
+						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url.'/icons/google_plus_share_2x.png'; ?>" width="113" height="40" alt="Google+ Share" />
 					</li>
 					<li id="a2a_wp_pinterest_pin" class="addtoany_special_service addtoany_3p_button" title="Pinterest Pin It button">
-						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/icons/pinterest_pin_2x.png'; ?>" width="80" height="40" alt="Pinterest Pin It" />
+						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url.'/icons/pinterest_pin_2x.png'; ?>" width="80" height="40" alt="Pinterest Pin It" />
 					</li>
 				</ul>
 				<div id="addtoany_services_tip">
 					<p style="line-height:0">
-						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path; ?>/icons/instagram.svg" width="24" height="24" style="margin-right:8px">
-						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path; ?>/icons/youtube.svg" width="24" height="24" style="margin-right:8px">
-						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path; ?>/icons/snapchat.svg" width="24" height="24">
+						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url; ?>/icons/instagram.svg" width="24" height="24" style="margin-right:8px">
+						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url; ?>/icons/youtube.svg" width="24" height="24" style="margin-right:8px">
+						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url; ?>/icons/snapchat.svg" width="24" height="24">
 					</p>
 					<p>You can setup Instagram, YouTube, Snapchat, and other buttons in an AddToAny Follow widget.</p><p>Add the &quot;AddToAny Follow&quot; widget in <a href="customize.php?autofocus[panel]=widgets&amp;return=options-general.php%3Fpage%3Daddtoany">Customize</a> or <a href="widgets.php">Widgets</a>.</p>
 				</div>
@@ -494,7 +494,7 @@ function A2A_SHARE_SAVE_options_page() {
 				<div class="addtoany_icon_size_large">
 					<label class="addtoany_override a2a_kit_size_32">
 						<input name="A2A_SHARE_SAVE_button" value="A2A_SVG_32" type="radio"<?php if ( ! isset( $options['button'] ) || 'A2A_SVG_32' == $options['button'] ) echo ' checked="checked"'; ?> style="margin:9px 0;vertical-align:middle">
-						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url_path.'/icons/a2a.svg'; ?>" width="32" height="32" alt="AddToAny" onclick="this.parentNode.firstChild.checked=true" />
+						<img src="<?php echo $A2A_SHARE_SAVE_plugin_url.'/icons/a2a.svg'; ?>" width="32" height="32" alt="AddToAny" onclick="this.parentNode.firstChild.checked=true" />
 					</label>
 					<br>
 				</div>
@@ -878,8 +878,8 @@ function A2A_SHARE_SAVE_admin_head() {
 					
 					// Special service options?
 					service_name = services_array[i].substr(7);
-					if (service_name == 'facebook_like' || service_name == 'twitter_tweet' || service_name == 'google_plusone' || service_name == 'google_plus_share' || service_name == 'pinterest_pin') {
-						if (service_name == 'google_plusone' || service_name == 'google_plus_share' || service_name == 'pinterest_pin') {
+					if (service_name == 'facebook_like' || service_name == 'twitter_tweet' || service_name == 'pinterest_pin') {
+						if (service_name == 'pinterest_pin') {
 							show_count_value = (jQuery('#' + services_array[i] + '_show_count').is(':checked')) ? '1' : '-1' ;
 							jQuery('#addtoany_admin_form').append('<input class="addtoany_hidden_options" name="addtoany_' + service_name + '_show_count" type="hidden" value="' + show_count_value + '"/>');
 						}
@@ -927,10 +927,8 @@ function A2A_SHARE_SAVE_admin_head() {
 						+ '<option value="like">Like</option>'
 						+ '<option' + checked + ' value="recommend">Recommend</option>'
 						+ '</select>';
-				} else if ('twitter_tweet' == this_service_name) {
-					// twitter_tweet doesn't provide counts anymore
 				} else {
-					// google_plusone & google_plus_share & pinterest_pin
+					// Common "Show count" for facebook, pinterest, pinterest_pin, etc.
 					if (service_options[this_service_name] && service_options[this_service_name].show_count) {
 						checked = ' checked="checked"';
 					}
@@ -1033,16 +1031,6 @@ function A2A_SHARE_SAVE_admin_head() {
 			|| ! isset( $_POST['addtoany_facebook_like_verb'] ) 
 			&& isset( $options['special_facebook_like_options'] ) && $options['special_facebook_like_options']['verb'] == 'recommend' ) {
 			?>service_options.facebook_like = {verb: 'recommend'};<?php
-		}
-		if ( isset( $_POST['addtoany_google_plusone_show_count'] ) && $_POST['addtoany_google_plusone_show_count'] == '1'
-			|| ! isset( $_POST['addtoany_google_plusone_show_count'] )
-			&& isset( $options['special_google_plusone_options'] ) && $options['special_google_plusone_options']['show_count'] == '1' ) {
-			?>service_options.google_plusone = {show_count: 1};<?php
-		}
-		if ( isset( $_POST['addtoany_google_plus_share_show_count'] ) && $_POST['addtoany_google_plus_share_show_count'] == '1'
-			|| ! isset( $_POST['addtoany_google_plus_share_show_count'] )
-			&& isset( $options['special_google_plus_share_options'] ) && $options['special_google_plus_share_options']['show_count'] == '1' ) {
-			?>service_options.google_plus_share = {show_count: 1};<?php
 		}
 		if ( isset( $_POST['addtoany_pinterest_pin_show_count'] ) && $_POST['addtoany_pinterest_pin_show_count'] == '1'
 			|| ! isset( $_POST['addtoany_pinterest_pin_show_count'] )

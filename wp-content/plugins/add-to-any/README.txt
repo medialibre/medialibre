@@ -2,8 +2,8 @@
 Contributors: micropat, addtoany
 Tags: AddToAny, share, sharing, social, share buttons, share button, social media, media, marketing, links, email, seo, woocommerce, google, linkedin, reddit, facebook, like, twitter, pinterest, whatsapp, instagram, youtube, share this, sharethis, feed, icons
 Requires at least: 3.7
-Tested up to: 4.9
-Stable tag: 1.7.25
+Tested up to: 5.0
+Stable tag: 1.7.26
 
 Share buttons for WordPress including the AddToAny sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp, many more, and follow icons too.
 
@@ -135,7 +135,7 @@ Share a specific image or video to certain services that accept arbitrary media 
 
 = For Facebook sharing, how can I set the thumbnail image and description Facebook uses? =
 
-Facebook expects the Title, Description, and Thumbnail of a shared page to be defined in the Open Graph <a href="https://www.addtoany.com/ext/meta-tags/" target="_blank">meta tags</a> of a shared page.
+Facebook expects the Title, Description, and preview image of a shared page to be defined in the Open Graph <a href="https://www.addtoany.com/ext/meta-tags/" target="_blank">meta tags</a> of a shared page.
 
 Use Facebook's <a href="https://developers.facebook.com/tools/debug/sharing/" target="_blank">Sharing Debugger</a> on your pages to see how Facebook reads your site. "Scrape Again" to test site changes and clear Facebook's cache of a page, or use the <a href="https://developers.facebook.com/tools/debug/sharing/batch/" target="_blank">Batch Invalidator</a> to purge Facebook's cache of multiple URLs.
 
@@ -350,6 +350,12 @@ Upload (or move) the `add-to-any` plugin directory into the `/wp-content/mu-plug
 5. Settings for Floating Share Bars
 
 == Changelog ==
+
+= 1.7.26 =
+* Add Mastodon share button
+* Update admin interface
+* Remove the LinkedIn share count option because LinkedIn no longer provides share counts
+* Remove Oknotizie
 
 = 1.7.25 =
 * Fix service count options in settings

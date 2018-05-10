@@ -257,6 +257,11 @@ $A2A_SHARE_SAVE_services = array(
 		"icon" => "mail_ru",
 		"color" => "356FAC",
 	),
+	"mastodon" => array(
+		"name" => "Mastodon",
+		"icon" => "mastodon",
+		"color" => "2b90d9",
+	),
 	"mendeley" => array(
 		"name" => "Mendeley",
 		"icon" => "mendeley",
@@ -286,11 +291,6 @@ $A2A_SHARE_SAVE_services = array(
 		"name" => "Odnoklassniki",
 		"icon" => "odnoklassniki",
 		"color" => "F2720C",
-	),
-	"oknotizie" => array(
-		"name" => "Oknotizie",
-		"icon" => "oknotizie",
-		"color" => "88D32D",
 	),
 	"outlook_com" => array(
 		"name" => "Outlook.com",

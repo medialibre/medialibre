@@ -1,0 +1,343 @@
+/********************************************************************
+ * General
+ *******************************************************************/
+.wptrans-red-color {
+    color: #ff0927;
+}
+
+.wptrans-warning-color {
+    color: #ff8700;
+}
+
+/********************************************************************
+ * New Options
+ *******************************************************************/
+.option-field * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.option-field-header {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 1.5em;
+    border-left: 7px solid #70b8ba;
+    margin-left: -25px;
+    padding: 7px 0 7px 17px;
+}
+
+.option-field {
+    position: relative;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+    .option-field:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+.option-field-label {
+    width: 200px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.option-field-body {
+    width: calc(95% - 200px);
+    display: inline-block;
+    padding-left: 15px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .option-field-label {
+        width: 100%;
+        display: block;
+    }
+
+    .option-field-body {
+        width: 100%;
+        display: block;
+        padding-left: 0;
+        margin-top: 10px;
+    }
+}
+
+.option-field-tooltip {
+    display: none;
+    position: absolute;
+    top: 80%;
+    left: 0;
+    background: #fff;
+    box-shadow: 0 2px 27px -5px rgba(90, 145, 150, 0.8);
+    z-index: 999;
+    padding: 10px 15px;
+}
+
+    .option-field-tooltip:before {
+        content: '';
+        position: absolute;
+        top: -11px;
+        left: 150px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 10px 10px 10px;
+        border-color: transparent transparent #d0dada transparent;
+        z-index: 990;
+    }
+
+    .option-field-tooltip:after {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: 150px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 10px 10px 10px;
+        border-color: transparent transparent #ffffff transparent;
+        z-index: 991;
+    }
+
+
+/********************************************************************
+ * Pseudo Checkbox
+ */
+.pseudo-checkbox {
+    position: relative;
+    top: -2px;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    border-radius: 13px;
+    background: #CDD1DA;
+    box-shadow: inset 0 2px 3px rgba(0,0,0,.2);
+    cursor: pointer;
+}
+
+    .pseudo-checkbox:after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 22px;
+        height: 22px;
+        border-radius: 10px;
+        background: #FFF;
+        box-shadow: 0 2px 5px rgba(0,0,0,.3);
+        transition: all .2s;
+    }
+
+    .pseudo-checkbox.checked {
+        background: #75d2b4;
+    }
+
+        .pseudo-checkbox.checked:after {
+            left: 26px;
+        }
+
+    .pseudo-checkbox.focused {
+        box-shadow: 0 0 0 3px rgba(255,255,0,.5);
+    }
+
+.pseudo-checkbox-hidden {
+    display: none !important;
+}
+
+.pseudo-button {
+    display: inline-block;
+    border: 2px solid #6da8e1;
+    padding: 7px 20px;
+    cursor: pointer;
+}
+
+    .pseudo-button:hover {
+        background: #6da8e1;
+        color: #fff;
+    }
+
+.pseudo-button__green {
+    border-color: #00C76D;
+}
+
+    .pseudo-button__green:hover {
+        background: #00C76D;
+    }
+
+.pseudo-button__gray {
+    border-color: #77939f;
+    color: #999;
+}
+
+    .pseudo-button__gray:hover {
+        background: #77939f;
+    }
+
+p.description.danger {
+    color: #dd2b19;
+}
+
+p.descrh {
+    font-size: 14px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #eee;
+    position: relative;
+    top: -10px;
+}
+
+
+.wptransbiz-plugin-info {
+    float: right;
+}
+
+
+/********************************************************************
+ * Layout
+ *******************************************************************/
+.wptrans * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.wptrans-cols {
+}
+
+    .wptrans-cols:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+.wptrans-col-left {
+    width: 75%;
+    float: left;
+}
+
+.wptrans-col-right {
+    width: 20%;
+    float: right;
+    padding-top: 20px;
+}
+
+
+/********************************************************************
+ * Widgets
+ */
+
+.wptrans-widget {
+    margin-bottom: 35px;
+}
+
+.wptrans-widget-news {
+}
+
+    .wptrans-widget-news ul li {
+        margin-bottom: 15px;
+    }
+
+
+/********************************************************************
+ * Tabs
+ *******************************************************************/
+
+.wptrans-tab-wrapper {
+    margin: 0;
+    padding-top: 9px;
+    padding-bottom: 0;
+    line-height: inherit;
+}
+
+    .wptrans-tab-wrapper:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+.wptrans-tab {
+    float: left;
+    border-bottom: none;
+    padding: 7px 20px;
+    font-size: 14px;
+    line-height: 24px;
+    background: #fbfbfb;
+    color: #777;
+    text-decoration: none;
+    margin-right: 7px;
+    box-shadow: inset 0 -2px 5px rgba(0,0,0,.05);
+    border-top: 2px solid #ccc;
+    border-bottom: 1px solid #e6e6e6;
+    outline: none;
+}
+
+    .wptrans-tab:focus,
+    .wptrans-tab:active {
+        outline: none;
+        box-shadow: none;
+    }
+
+.wptrans-tab-active {
+    background: #fff;
+    color: #000;
+    box-shadow: none;
+    border-top: 2px solid #ffc93d;
+    border-bottom: 1px solid #fff;
+}
+
+
+.wptrans-tab-in {
+    display: none;
+    padding: 25px;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,.1);
+}
+
+    .wptrans-tab-in.active {
+        display: block;
+    }
+
+
+/********************************************************************
+ * Instruction
+ *******************************************************************/
+.wptrans-instruction {
+    position: relative;
+    border: 2px solid #83c9c8;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.wptrans-instruction-expand {
+    position: absolute;
+    top: 17px;
+    right: 20px;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #83c9c8;
+    border-bottom: 2px solid #83c9c8;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.wptrans-instruction-header {
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.wptrans-instruction-body {
+    display: none;
+    padding-top: 10px;
+}
+
+    .wptrans-instruction-body p {
+        margin: 15px 0;
+    }

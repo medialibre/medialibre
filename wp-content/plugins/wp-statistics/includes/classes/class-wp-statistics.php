@@ -399,18 +399,11 @@ class WP_Statistics {
 	 * Check Opt-Out for data protection
 	 */
 	public function check_opt_out() {
-		// Ger IP hashed
+		// Get IP hashed
 		$get_hash = $this->get_hash_string();
 
-		// Hash IP if the Opt-Out cookie is 0
-		if ( isset( $_COOKIE['wp_statistics_opt_out'] ) and $_COOKIE['wp_statistics_opt_out'] == 0 ) {
-			$this->ip_hash = $get_hash;
-
-			return;
-		}
-
-		// Set cookie and redirect to current URL
-		if ( empty( $_COOKIE['wp_statistics_opt_out'] ) and isset( $_GET['wp_statistics_opt_out'] ) ) {
+		// Set cookie and redirect to current URL if requested
+		if ( isset( $_GET['wp_statistics_opt_out'] ) ) {
 			global $wpdb;
 
 			// Set cookie
@@ -438,6 +431,13 @@ class WP_Statistics {
 			// Redirect user to current location
 			header( 'Location: ' . $current_url );
 			exit;
+		}
+
+		// Hash IP if the Opt-Out cookie is 0 or DNT is set
+		if ( ( isset( $_COOKIE['wp_statistics_opt_out'] ) and $_COOKIE['wp_statistics_opt_out'] == 0 ) or ( isset( $_SERVER['HTTP_DNT'] ) and $_SERVER['HTTP_DNT'] == '1' and ( ! isset( $_COOKIE['wp_statistics_opt_out'] ) or $_COOKIE['wp_statistics_opt_out'] != 1 ) ) ) {
+			$this->ip_hash = $get_hash;
+
+			return;
 		}
 
 		// Show Opt-Out message for the user
@@ -759,7 +759,7 @@ class WP_Statistics {
 		$options['check_online']          = '30';
 		$options['menu_bar']              = false;
 		$options['coefficient']           = '1';
-		$options['opt_out_message']       = 'This website stores some user agent data. These data are used to provide a more personalized experience and to track your whereabouts around our website in compliance with the European General Data Protection Regulation. If you decide to opt-out of any future tracking, a cookie will be set up in your browser to remember this choice for one year. <a href="%accept_url%">I Agree</a>, <a href="%cancel_url%">Deny</a>';
+		$options['opt_out_message']       = __( 'This website stores some user agent data. These data are used to provide a more personalized experience and to track your whereabouts around our website in compliance with the European General Data Protection Regulation. If you decide to opt-out of any future tracking, a cookie will be set up in your browser to remember this choice for one year.', 'wp-statistics' ) . ' <a href="%accept_url%">' . __( 'I Agree', 'wp-statistics' ) . '</a>, <a href="%cancel_url%">' . __( 'Deny', 'wp-statistics' ) . '</a>';
 		$options['stats_report']          = false;
 		$options['time_report']           = 'daily';
 		$options['send_report']           = 'mail';
@@ -842,11 +842,11 @@ class WP_Statistics {
 			return $this->ip;
 		}
 
+		$temp_ip = false;
+
 		// By default we use the remote address the server has.
 		if ( array_key_exists( 'REMOTE_ADDR', $_SERVER ) ) {
 			$temp_ip = $this->get_ip_value( $_SERVER['REMOTE_ADDR'] );
-		} else {
-			$temp_ip = '127.0.0.1';
 		}
 
 		if ( false !== $temp_ip ) {
@@ -867,6 +867,7 @@ class WP_Statistics {
 			'HTTP_X_FORWARDED',
 			'HTTP_FORWARDED_FOR',
 			'HTTP_FORWARDED',
+			'HTTP_X_REAL_IP',
 		);
 
 		foreach ( $envs as $env ) {

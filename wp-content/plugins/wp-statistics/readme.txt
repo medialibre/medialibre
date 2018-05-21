@@ -4,7 +4,7 @@ Donate link: https://wp-statistics.com/donate/
 Tags: analytics, wordpress analytics, stats, statistics, visit, visitors, hits, chart, browser, today, yesterday, week, month, year, total, post, page, sidebar, google, live visit, search word, agent, google analytics, webmasters, google webmasters, geoip, location
 Requires at least: 3.0
 Tested up to: 4.9
-Stable tag: 12.3.6
+Stable tag: 12.3.6.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,7 +47,7 @@ Translations are done by people just like you, help make WP Statistics available
 WP-Statistics is being developed on GitHub, If you’re interested in contributing to plugin, Please look at [Github page](https://github.com/wp-statistics/wp-statistics)
 
 = Support =
-We're sorry you're having problem with WP Statistics and we're happy to help out.  Here are a few things to do before contacting us:
+We're sorry you're having problem with WP Statistics and we're happy to help out. Here are a few things to do before contacting us:
 
 * Have you read the [FAQs](https://wordpress.org/plugins/wp-statistics/faq/)?
 * Have you read the [documentation](http://wp-statistics.com/category/documentation)?
@@ -203,6 +203,11 @@ Introduction of a popup with “Accept” and “Deny” before collection data 
 This is a security fix, please update immediately.
 
 == Changelog ==
+= 12.3.6.1 =
+* Improvement i18n strings.
+* Improvement GDPR, Supported for DNT-Header.
+* Improvement GDPR, Added new option for delete visitor data with IP addresses.
+
 = 12.3.6 =
 * Note: GDPR, We Updated Our [Privacy Policy](https://wp-statistics.com/privacy-and-policy/).
 * Added Privacy tab in the setting page and moved Hash IP Addresses and Store entire user agent in this tab.

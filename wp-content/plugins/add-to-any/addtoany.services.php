@@ -117,11 +117,6 @@ $A2A_SHARE_SAVE_services = array(
 		"icon" => "link",
 		"color" => "0166FF",
 	),
-	"delicious" => array(
-		"name" => "Delicious",
-		"icon" => "delicious",
-		"color" => "39F",
-	),
 	"design_float" => array(
 		"name" => "Design Float",
 		"icon" => "designfloat",
@@ -272,6 +267,11 @@ $A2A_SHARE_SAVE_services = array(
 		"icon" => "meneame",
 		"color" => "FF7D12",
 	),
+	"mix" => array(
+		"name" => "Mix",
+		"icon" => "mix",
+		"color" => "ff8226",
+	),
 	"mixi" => array(
 		"name" => "Mixi",
 		"icon" => "mixi",
@@ -316,11 +316,6 @@ $A2A_SHARE_SAVE_services = array(
 		"name" => "Pocket",
 		"icon" => "pocket",
 		"color" => "EE4056",
-	),
-	"polyvore" => array(
-		"name" => "Polyvore",
-		"icon" => "polyvore",
-		"color" => "2A2A2A",
 	),
 	"print" => array(
 		"name" => "Print",
@@ -402,8 +397,8 @@ $A2A_SHARE_SAVE_services = array(
 		"icon" => "svejo",
 		"color" => "5BD428",
 	),
-	"symbaloo_feeds" => array(
-		"name" => "Symbaloo Feeds",
+	"symbaloo_bookmarks" => array(
+		"name" => "Symbaloo Bookmarks",
 		"icon" => "symbaloo",
 		"color" => "6DA8F7",
 	),
@@ -477,19 +472,9 @@ $A2A_SHARE_SAVE_services = array(
 		"icon" => "xing",
 		"color" => "165B66",
 	),
-	"yahoo_bookmarks" => array(
-		"name" => "Yahoo Bookmarks",
-		"icon" => "yahoo",
-		"color" => "400090",
-	),
 	"yahoo_mail" => array(
 		"name" => "Yahoo Mail",
 		"icon" => "yahoo",
-		"color" => "400090",
-	),
-	"yahoo_messenger" => array(
-		"name" => "Yahoo Messenger",
-		"icon" => "yim",
 		"color" => "400090",
 	),
 	"yoolink" => array(

@@ -3,7 +3,7 @@
 Plugin Name: Overwrite Author Name
 Plugin URI: http://justinandco.com/plugins/overwrite-author-name/
 Description: Overwrite Author Name to ensure on publish a users name will be replaced, this allows the site to have a consistent authorship albeit content provided by multiple authors.
-Version: 2.0
+Version: 2.1
 Author: Justin Fletcher
 Author URI: http://justinandco.com
 Text Domain: overwrite-author-name

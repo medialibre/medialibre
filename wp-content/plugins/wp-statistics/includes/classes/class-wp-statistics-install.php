@@ -258,7 +258,10 @@ class WP_Statistics_Install {
 						'wps_coefficient',
 						'wps_pages',
 						'wps_track_all_pages',
+						'wps_use_cache_plugin',
+						'wps_geoip_city',
 						'wps_disable_column',
+						'wps_hit_post_metabox',
 						'wps_menu_bar',
 						'wps_hide_notices',
 						'wps_chart_totals',
@@ -272,6 +275,7 @@ class WP_Statistics_Install {
 						'wps_robotlist',
 						'wps_exclude_ip',
 						'wps_exclude_loginpage',
+						'wps_exclude_adminpage',
 					);
 					$var_options    = array( 'wps_disable_se_%', 'wps_exclude_%' );
 					$widget_options = array(

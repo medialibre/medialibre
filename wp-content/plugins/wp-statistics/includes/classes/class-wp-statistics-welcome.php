@@ -39,10 +39,10 @@ class WP_Statistics_Welcome {
 			'wp-statistics-admin-js',
 			WP_Statistics::$reg['plugin-url'] . 'assets/js/admin.js',
 			array( 'jquery' ),
-            WP_Statistics::$reg['version']
+			WP_Statistics::$reg['version']
 		);
 
-		include( WP_Statistics::$reg['plugin-dir'] . "includes/templates/welcomes/last-version.php" );
+		include( WP_Statistics::$reg['plugin-dir'] . "includes/templates/welcome.php" );
 	}
 
 	/**
@@ -52,13 +52,16 @@ class WP_Statistics_Welcome {
 	public static function do_welcome( $upgrader_object, $options ) {
 		$current_plugin_path_name = 'wp-statistics/wp-statistics.php';
 
-		if ( $options['action'] == 'update' and $options['type'] == 'plugin' and isset($options['plugins']) ) {
+		if ( isset( $options['action'] ) and $options['action'] == 'update' and isset( $options['type'] ) and $options['type'] == 'plugin' and isset( $options['plugins'] ) ) {
 			foreach ( $options['plugins'] as $each_plugin ) {
 				if ( $each_plugin == $current_plugin_path_name ) {
 					global $WP_Statistics;
 
 					// Enable welcome page in database
 					$WP_Statistics->update_option( 'show_welcome_page', true );
+
+					// Run the upgrader
+					WP_Statistics_Updates::do_upgrade();
 				}
 			}
 		}

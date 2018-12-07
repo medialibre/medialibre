@@ -120,13 +120,24 @@ class WP_Statistics {
 	 * @var array
 	 */
 	public static $page = array();
+	/**
+	 * Rest Api init
+	 *
+	 * @var array
+	 */
+	public $restapi;
+	/**
+	 * Check Plugin Cache is enabled
+	 *
+	 * @var bool|string
+	 */
+	public $use_cache = false;
 
 	/**
 	 * __construct
 	 * WP_Statistics constructor.
 	 */
 	public function __construct() {
-
 		if ( ! isset( WP_Statistics::$reg['plugin-url'] ) ) {
 			/**
 			 * Plugin URL
@@ -174,8 +185,27 @@ class WP_Statistics {
 			return;
 		}
 
+		// Autoload composer
+		require( WP_Statistics::$reg['plugin-dir'] . 'includes/vendor/autoload.php' );
+
+		// Define an autoload method to automatically load classes in /includes/classes
+		spl_autoload_register( array( $this, 'autoload' ) );
+
+		//Set TimeZone
 		$this->set_timezone();
+
+		//Set Options
 		$this->load_options();
+
+		// Check the cache option is enabled.
+		if ( $this->get_option( 'use_cache_plugin' ) == true ) {
+			$this->use_cache = 1;
+		}
+
+		//Load Rest Api
+		$this->init_rest_api();
+
+		//Get user Ip
 		$this->get_IP();
 
 		// Check if the has IP is enabled.
@@ -183,13 +213,8 @@ class WP_Statistics {
 			$this->ip_hash = $this->get_hash_string();
 		}
 
+		//Set Pages
 		$this->set_pages();
-
-		// Autoload composer
-		require( WP_Statistics::$reg['plugin-dir'] . 'includes/vendor/autoload.php' );
-
-		// define an autoload method to automatically load classes in /includes/classes
-		spl_autoload_register( array( $this, 'autoload' ) );
 
 		// Add init actions.
 		// For the main init we're going to set our priority to 9 to execute before most plugins
@@ -247,6 +272,13 @@ class WP_Statistics {
 	 */
 	public function init() {
 		load_plugin_textdomain( 'wp-statistics', false, WP_Statistics::$reg['plugin-dir'] . 'languages' );
+	}
+
+	/**
+	 * Check the REST API
+	 */
+	public function init_rest_api() {
+		$this->restapi = new WP_Statistics_Rest();
 	}
 
 	/**
@@ -324,7 +356,7 @@ class WP_Statistics {
 			WP_Statistics::$page['referrers'] = 'wps_referrers_page';
 			//define('WP_STATISTICS_REFERRERS_PAGE', 'wps_referrers_page');
 			/**
-			 * Searched Phrases Page
+			 * Searched Words Page
 			 */
 			WP_Statistics::$page['searched-phrases'] = 'wps_searched_phrases_page';
 			//define('WP_STATISTICS_SEARCHED_PHRASES_PAGE', 'wps_searched_phrases_page');
@@ -386,8 +418,20 @@ class WP_Statistics {
 	/**
 	 * Generate hash string
 	 */
-	private function get_hash_string() {
-		return '#hash#' . sha1( $this->ip . $_SERVER['HTTP_USER_AGENT'] );
+	public function get_hash_string() {
+		// Check If Rest Request
+		if ( $this->restapi->is_rest() ) {
+			return $this->restapi->params( 'hash_ip' );
+		}
+
+		// Check the user agent has exist.
+		if ( array_key_exists( 'HTTP_USER_AGENT', $_SERVER ) ) {
+			$key = $_SERVER['HTTP_USER_AGENT'];
+		} else {
+			$key = 'Unknown';
+		}
+
+		return '#hash#' . sha1( $this->ip . $key );
 	}
 
 	/**
@@ -406,6 +450,27 @@ class WP_Statistics {
 	 */
 	static function widget() {
 		register_widget( 'WP_Statistics_Widget' );
+	}
+
+	/**
+	 * geo ip Loader
+	 * @throws \MaxMind\Db\Reader\InvalidDatabaseException
+	 */
+	static function geoip_loader( $pack ) {
+
+		$upload_dir = wp_upload_dir();
+		$geoip      = $upload_dir['basedir'] . '/wp-statistics/' . WP_Statistics_Updates::$geoip[ $pack ]['file'] . '.mmdb';
+		if ( file_exists( $geoip ) ) {
+			try {
+				$reader = new GeoIp2\Database\Reader( $geoip );
+			} catch ( \MaxMind\Db\Reader\InvalidDatabaseException $e ) {
+				return false;
+			}
+		} else {
+			return false;
+		}
+
+		return $reader;
 	}
 
 	/**
@@ -695,7 +760,6 @@ class WP_Statistics {
 		// If this is a first time install or an upgrade and we've added options, set some intelligent defaults.
 		$options['anonymize_ips']         = false;
 		$options['geoip']                 = false;
-		$options['browscap']              = false;
 		$options['useronline']            = true;
 		$options['visits']                = true;
 		$options['visitors']              = true;
@@ -712,6 +776,8 @@ class WP_Statistics {
 		$options['robotlist']             = $wps_robotslist;
 		$options['exclude_administrator'] = true;
 		$options['disable_se_clearch']    = true;
+		$options['disable_se_qwant']      = true;
+		$options['disable_se_baidu']      = true;
 		$options['disable_se_ask']        = true;
 		$options['map_type']              = 'jqvmap';
 
@@ -780,6 +846,13 @@ class WP_Statistics {
 	 */
 	public function get_IP() {
 
+		//Check If Rest Request
+		if ( $this->restapi->is_rest() ) {
+			$this->ip = $this->restapi->params( 'ip' );
+
+			return $this->ip;
+		}
+
 		// Check to see if we've already retrieved the IP address and if so return the last result.
 		if ( $this->ip !== false ) {
 			return $this->ip;
@@ -830,8 +903,8 @@ class WP_Statistics {
 
 		// If the anonymize IP enabled for GDPR.
 		if ( $this->get_option( 'anonymize_ips' ) == true ) {
-            $this->ip = substr($this->ip, 0, strrpos($this->ip, '.')).'.000';
-        }
+			$this->ip = substr( $this->ip, 0, strrpos( $this->ip, '.' ) ) . '.0';
+		}
 
 		return $this->ip;
 	}
@@ -857,34 +930,28 @@ class WP_Statistics {
 	 * @return array|\string[]
 	 */
 	public function get_UserAgent() {
-
-		// Parse the agent string.
-		try {
-			$agent = parse_user_agent();
-		} catch ( Exception $e ) {
-			$agent = array(
-				'browser'  => _x( 'Unknown', 'Browser', 'wp-statistics' ),
-				'platform' => _x( 'Unknown', 'Platform', 'wp-statistics' ),
-				'version'  => _x( 'Unknown', 'Version', 'wp-statistics' ),
+		//Check If Rest Request
+		if ( $this->restapi->is_rest() ) {
+			return array(
+				'browser'  => $this->restapi->params( 'browser' ),
+				'platform' => $this->restapi->params( 'platform' ),
+				'version'  => $this->restapi->params( 'version' )
 			);
 		}
 
-		// null isn't a very good default, so set it to Unknown instead.
-		if ( $agent['browser'] == null ) {
-			$agent['browser'] = _x( 'Unknown', 'Browser', 'wp-statistics' );
-		}
-		if ( $agent['platform'] == null ) {
-			$agent['platform'] = _x( 'Unknown', 'Platform', 'wp-statistics' );
-		}
-		if ( $agent['version'] == null ) {
-			$agent['version'] = _x( 'Unknown', 'Version', 'wp-statistics' );
+		// Check function exist.
+		if ( function_exists( 'getallheaders' ) ) {
+			$user_agent = getallheaders();
+		} else {
+			$user_agent = $_SERVER['HTTP_USER_AGENT'];
 		}
 
-		// Uncommon browsers often have some extra cruft, like brackets, http:// and other strings that we can strip out.
-		$strip_strings = array( '"', "'", '(', ')', ';', ':', '/', '[', ']', '{', '}', 'http' );
-		foreach ( $agent as $key => $value ) {
-			$agent[ $key ] = str_replace( $strip_strings, '', $agent[ $key ] );
-		}
+		$result = new WhichBrowser\Parser( $user_agent );
+		$agent  = array(
+			'browser'  => ( isset( $result->browser->name ) ) ? $result->browser->name : _x( 'Unknown', 'Browser', 'wp-statistics' ),
+			'platform' => ( isset( $result->os->name ) ) ? $result->os->name : _x( 'Unknown', 'Platform', 'wp-statistics' ),
+			'version'  => ( isset( $result->os->version->value ) ) ? $result->os->version->value : _x( 'Unknown', 'Version', 'wp-statistics' ),
+		);
 
 		return $agent;
 	}
@@ -897,6 +964,14 @@ class WP_Statistics {
 	 * @return array|bool|string|void
 	 */
 	public function get_Referred( $default_referrer = false ) {
+
+		//Check If Rest Request
+		if ( $this->restapi->is_rest() ) {
+			$this->referrer = $this->restapi->params( 'referred' );
+
+			return $this->referrer;
+		}
+
 		if ( $this->referrer !== false ) {
 			return $this->referrer;
 		}
@@ -1361,15 +1436,8 @@ class WP_Statistics {
 	 *
 	 * @return string
 	 */
-	public function get_referrer_link( $referrer, $length = - 1 ) {
+	public function get_referrer_link( $referrer ) {
 		$html_referrer = $this->html_sanitize_referrer( $referrer );
-		if ( $length > 0 && strlen( $referrer ) > $length ) {
-			$html_referrer_limited = $this->html_sanitize_referrer( $referrer, $length );
-			$eplises               = '[...]';
-		} else {
-			$html_referrer_limited = $html_referrer;
-			$eplises               = '';
-		}
 
 		if ( substr( $html_referrer, 0, 7 ) !== 'http://' and substr( $html_referrer, 0, 8 ) !== 'https://' ) {
 			// relative address, use '//' to adapt both http and https
@@ -1378,8 +1446,11 @@ class WP_Statistics {
 			$html_nr_referrer = $html_referrer;
 		}
 
-		return "<a href='{$html_nr_referrer}'><div class='dashicons dashicons-admin-links'></div>{$html_referrer_limited}{$eplises}</a>";
+		$base_url = parse_url( $html_nr_referrer );
+
+		return "<a href='{$html_nr_referrer}' title='{$html_nr_referrer}'>{$base_url['host']}</a>";
 	}
+
 
 	/**
 	 * Unsupported Version Admin Notice

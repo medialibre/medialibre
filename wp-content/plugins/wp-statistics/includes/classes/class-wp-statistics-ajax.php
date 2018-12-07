@@ -330,6 +330,14 @@ class WP_Statistics_Ajax {
 				}
 			}
 
+			if ( $_POST['widget'] == "top_visitors" ) {
+				$widget = 'top.visitors';
+			}
+
+			if ( $_POST['widget'] == "searched_phrases" ) {
+				$widget = 'searched.phrases';
+			}
+
 			if ( 'map' == $widget || 'hitsmap' == $widget ) {
 				$widget = 'jqv.map';
 			}
@@ -387,18 +395,10 @@ class WP_Statistics_Ajax {
 
 					break;
 				case 'page':
-					_e( 'This feature temporarily disabled.', 'wp-statistics' );
-
 					if ( array_key_exists( 'page-id', $_POST ) ) {
 						$pageid = (int) $_POST['page-id'];
-						echo '&nbsp;';
-						echo sprintf(
-							__( '<a href="%s">Click here</a> to see page stats.', 'wp-statistics' ),
-							'admin.php?page=wps_pages_page&page-id=' . $pageid
-						);
 
-						// This feature temporarily disabled because there is conflicts.
-						//wp_statistics_generate_page_postbox_content( null, $pageid );
+						wp_statistics_generate_page_postbox_content( null, $pageid );
 					}
 
 					break;

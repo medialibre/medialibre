@@ -387,11 +387,6 @@ $A2A_SHARE_SAVE_services = array(
 		"icon" => "stocktwits",
 		"color" => "40576F",
 	),
-	"stumbleupon" => array(
-		"name" => "StumbleUpon",
-		"icon" => "stumbleupon",
-		"color" => "EF4E23",
-	),
 	"svejo" => array(
 		"name" => "Svejo",
 		"icon" => "svejo",

@@ -48,20 +48,19 @@ class A2A_SHARE_SAVE_Widget extends WP_Widget {
 		);
 		
 		$args = wp_parse_args( $args, $defaults );
-		extract( $args );
 		
-		echo $before_widget;
+		echo $args['before_widget'];
 		
 		if ( isset( $instance ) && ! empty( $instance['title'] ) ) {
 			$title = apply_filters( 'widget_title', $instance['title'] );
-			echo $before_title . $title . $after_title;
+			echo $args['before_title'] . $title . $args['after_title'];
 		}
 		
 		ADDTOANY_SHARE_SAVE_KIT( array(
 			"use_current_page" => true,
 		) );
 
-		echo $after_widget;
+		echo $args['after_widget'];
 	}
 	
 	/**
@@ -135,15 +134,14 @@ class A2A_Follow_Widget extends WP_Widget {
 		);
 		
 		$args = wp_parse_args( $args, $defaults );
-		extract( $args );
 		
-		echo $before_widget;
+		echo $args['before_widget'];
 		
 		$instance = is_array( $instance ) ? $instance : array();
 		
 		if ( ! empty( $instance['title'] ) ) {
 			$title = apply_filters( 'widget_title', $instance['title'] );
-			echo $before_title . $title . $after_title;
+			echo $args['before_title'] . $title . $args['after_title'];
 		}
 		
 		$active_services = array();
@@ -163,7 +161,7 @@ class A2A_Follow_Widget extends WP_Widget {
 			'icon_size' => ! empty( $instance['icon_size'] ) ? $instance['icon_size'] : '32',
 		) );
 
-		echo $after_widget;
+		echo $args['after_widget'];
 	}
 	
 	/**

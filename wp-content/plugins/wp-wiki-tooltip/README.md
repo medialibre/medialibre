@@ -5,9 +5,9 @@ Tags: wiki, wikipedia, mediawiki, tooltip, tooltipster, shortcode
 
 Requires at least: 3.0
 
-Tested up to: 4.9.4
+Tested up to: 5.0.2
 
-Stable tag: 1.8.0
+Stable tag: 1.9.0
 
 Donate link: https://n1da.net/specials/wp-wiki-tooltip/spenden/
 
@@ -23,7 +23,7 @@ Main features of the current version are:
 
 * Setup at least one wanted Wiki base and several other options at a backend page
 * Integrate the Wiki tooltip using shortcodes in Posts and Pages
-* shortcodes can be created by a [TinyMCE](https://codex.wordpress.org/TinyMCE) plugin
+* Shortcodes can be created by a [TinyMCE](https://codex.wordpress.org/TinyMCE) plugin
 
 # Frequently Asked Questions
 
@@ -43,6 +43,10 @@ Yes, you can define extra CSS style properties that are used at all links to Wik
 
 Since version 1.7.0 you can define a minimum screen width that is necessary to show the tooltips!
 
+## Can I use the content of a certain section instead the complete Wiki page?
+
+Since version 1.9.0 you can request a section by its title (anchor) using an extra attribute of the shortcode (```section="anchor-of-section"```)!
+
 # Installation
 
 1. Upload the Wiki tooltip plugin to your blog,
@@ -55,14 +59,23 @@ Since version 1.7.0 you can define a minimum screen width that is necessary to s
 
 1. Options and Settings page: manage several Wiki URLs
 2. Options and Settings page: set some options how to show tooltips
-3. Options and Settings page: set styling of tooltips
-4. Options and Settings page: enable and style thumbnails
-5. Integrate the plugin by shortcodes in Posts and Pages
-6. Use the [TinyMCE](https://codex.wordpress.org/TinyMCE) plugin to get help by a popup form
-7. See nice and helpful tooltips
+3. Options and Settings page: set some Error Handling options
+4. Options and Settings page: set styling of tooltips
+5. Options and Settings page: enable and style thumbnails
+6. Integrate the plugin by shortcodes in Posts and Pages
+7. Use the [TinyMCE](https://codex.wordpress.org/TinyMCE) plugin to get help by a popup form - also available in the Gutenberg Classic Block
+8. See nice and helpful tooltips
 
 # Changelog
 The last three major releases are listed here, only. Find complete log of all changes in the [extra changelog file](https://github.com/nida78/wp-wiki-tooltip/blob/master/CHANGELOG.md)!
+
+## [1.9.0 - C6H13NO2 | Isoleucine ]
+*Release Date - January 1st, 2019*
+
+* sections of Wiki pages can be used for tooltips, now (use shortcode attribute ```section="anchor-of-section"```)
+* the used Tooltipster plugin is updated to its version 4.2.6
+* a new option is available to set the animation how the tooltip appears
+* the new JavaScript I18N Support was implemented for the Classic-Block of Gutenberg
 
 ## [1.8.0 - C6H9N3O2 | Histidine]
 *Release Date - February 23rd, 2018*
@@ -78,13 +91,10 @@ The last three major releases are listed here, only. Find complete log of all ch
 * you can set if tooltips are triggered by click or hover
 * a minimum screen width can defined that is necessary to enable tooltips
 
-## [1.6.0 - C5H9NO4 | Glutamic Acid]
-*Release Date - January 30th, 2016*
-
-* the plugin comes with a [TinyMCE](https://codex.wordpress.org/TinyMCE) plugin that helps users creating the shortcodes
-* some new graphical assets have been added to support high-DPI displays (aka ‘retina’) and Right-to-Left languages
-
 # Upgrade Notice
+
+## General
+You should review the settings page after every update
 
 ## Upgrade to 1.4.0
 The former Wiki URL is not transferred into this version. Review the settings page after update to insert the wanted Wiki URL again!
@@ -92,6 +102,6 @@ The former Wiki URL is not transferred into this version. Review the settings pa
 ## Elder Upgrades
 Nothing special to consider.
 
+[1.9.0 - C6H13NO2 | Isoleucine ]: https://github.com/nida78/wp-wiki-tooltip/releases/tag/1.9.0
 [1.8.0 - C6H9N3O2 | Histidine]: https://github.com/nida78/wp-wiki-tooltip/releases/tag/1.8.0
 [1.7.0 - C2H5NO2 | Glycine]: https://github.com/nida78/wp-wiki-tooltip/releases/tag/1.7.0
-[1.6.0 - C5H9NO4 | Glutamic Acid]: https://github.com/nida78/wp-wiki-tooltip/releases/tag/1.6.0

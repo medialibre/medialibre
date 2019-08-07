@@ -6,10 +6,10 @@ Plugin URI: https://github.com/elpak/Greeklish-permalink-wordpress
 Description: Convert greek characters to latin (greeklish). Greek text turns into a long series of non-readable symbols when appeared in URLs, which makes it look bad. This plugin solves the problem and it just works!
 Tags: greek, greeklish permalink, latin, greeklish, slugs, permalinks, gr, autoconvert
 Author: Panagiotis Kontogiannis
-Version: 3.0
+Version: 3.1
 Author URI: https://www.problogger.gr
 Requires at least: 3.0
-Tested up to: 4.9.4
+Tested up to: 5.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

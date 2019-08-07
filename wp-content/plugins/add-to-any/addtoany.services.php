@@ -12,11 +12,6 @@ $A2A_SHARE_SAVE_services = array(
 		"icon" => "twitter",
 		"color" => "55ACEE",
 	),
-	"google_plus" => array(
-		"name" => "Google+",
-		"icon" => "google_plus",
-		"color" => "DD4B39",
-	),
 	"pinterest" => array(
 		"name" => "Pinterest",
 		"icon" => "pinterest",
@@ -160,7 +155,7 @@ $A2A_SHARE_SAVE_services = array(
 	"evernote" => array(
 		"name" => "Evernote",
 		"icon" => "evernote",
-		"color" => "8BE056",
+		"color" => "00A82D",
 	),
 	"facebook_messenger" => array(
 		"name" => "Facebook Messenger",
@@ -182,6 +177,11 @@ $A2A_SHARE_SAVE_services = array(
 		"icon" => "folkd",
 		"color" => "0F70B2",
 	),
+	"google_gmail" => array(
+		"name" => "Gmail",
+		"icon" => "gmail",
+		"color" => "DD5347",
+	),
 	"google_bookmarks" => array(
 		"name" => "Google Bookmarks",
 		"icon" => "google",
@@ -191,11 +191,6 @@ $A2A_SHARE_SAVE_services = array(
 		"name" => "Google Classroom",
 		"icon" => "google_classroom",
 		"color" => "FFC112",
-	),
-	"google_gmail" => array(
-		"name" => "Google Gmail",
-		"icon" => "gmail",
-		"color" => "DD5347",
 	),
 	"hacker_news" => array(
 		"name" => "Hacker News",
@@ -266,6 +261,11 @@ $A2A_SHARE_SAVE_services = array(
 		"name" => "Meneame",
 		"icon" => "meneame",
 		"color" => "FF7D12",
+	),
+	"mewe" => array(
+		"name" => "MeWe",
+		"icon" => "mewe",
+		"color" => "007DA1",
 	),
 	"mix" => array(
 		"name" => "Mix",
@@ -534,12 +534,6 @@ $A2A_FOLLOW_services = array(
 		'href' => 'https://github.com/${id}',	
 		'icon' => 'github',
 		'color' => '2A2A2A',
-	),
-	'google_plus' => array( 
-		'name' => 'Google+', 
-		'href' => 'https://plus.google.com/${id}',	
-		'icon' => 'google_plus',
-		'color' => 'DD4B39',
 	),
 	'linkedin' => array( 
 		'name' => 'LinkedIn', 

@@ -3,7 +3,7 @@
 Plugin Name: AddToAny Share Buttons
 Plugin URI: https://www.addtoany.com/
 Description: Share buttons for your pages including AddToAny's universal sharing button, Facebook, Twitter, Google+, Pinterest, WhatsApp and many more.
-Version: 1.7.33
+Version: 1.7.36
 Author: AddToAny
 Author URI: https://www.addtoany.com/
 Text Domain: add-to-any
@@ -248,11 +248,11 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 		
 		// Include Facebook Like and Twitter Tweet etc. unless no_special_services arg is true
 		if ( ! isset( $args['no_special_services'] ) || false == $args['no_special_services'] ) {
-			array_unshift( $service_codes, 'facebook_like', 'twitter_tweet', 'google_plusone', 'google_plus_share', 'pinterest_pin' );
+			array_unshift( $service_codes, 'facebook_like', 'twitter_tweet', 'pinterest_pin' );
 		}
 	
 		// Use default services if services have not been selected yet
-		$active_services = isset( $options['active_services'] ) ? $options['active_services'] : array( 'facebook', 'twitter', 'google_plus' );
+		$active_services = isset( $options['active_services'] ) ? $options['active_services'] : array( 'facebook', 'twitter', 'email' );
 		// Services set by "buttons" arg? Then use "buttons" arg instead
 		$active_services = empty( $args['buttons'] ) ? $active_services : $args['buttons'];
 	}
@@ -266,7 +266,7 @@ function ADDTOANY_SHARE_SAVE_ICONS( $args = array() ) {
 		if ( ! in_array( $active_service, $service_codes ) )
 			continue;
 
-		if ( $active_service == 'facebook_like' || $active_service == 'twitter_tweet' || $active_service == 'google_plusone' || $active_service == 'google_plus_share' || $active_service == 'pinterest_pin' ) {
+		if ( $active_service == 'facebook_like' || $active_service == 'twitter_tweet' || $active_service == 'pinterest_pin' ) {
 			$special_args = $args;
 			$special_args['output_later'] = true;
 			$link = ADDTOANY_SHARE_SAVE_SPECIAL( $active_service, $special_args );
@@ -503,16 +503,6 @@ function ADDTOANY_SHARE_SAVE_SPECIAL( $special_service_code, $args = array() ) {
 		$special_html = sprintf( $special_anchor_template, $special_service_code, $custom_attributes );
 	}
 	
-	elseif ( $special_service_code == 'google_plusone' ) {
-		$custom_attributes .= ' data-href="' . esc_attr( $args['linkurl'] ) . '"';
-		$special_html = sprintf( $special_anchor_template, $special_service_code, $custom_attributes );
-	}
-	
-	elseif ( $special_service_code == 'google_plus_share' ) {
-		$custom_attributes .= ' data-href="' . esc_attr( $args['linkurl'] ) . '"';
-		$special_html = sprintf( $special_anchor_template, $special_service_code, $custom_attributes );
-	}
-	
 	elseif ( $special_service_code == 'pinterest_pin' ) {
 		$custom_attributes .= ( isset( $options['special_pinterest_pin_options']['show_count'] )
 			&& $options['special_pinterest_pin_options']['show_count'] == '1' ) ? '' : ' data-pin-config="none"';
@@ -615,7 +605,7 @@ function ADDTOANY_SHARE_SAVE_FLOATING( $args = array() ) {
 	$horizontal_type = ( isset( $options['floating_horizontal'] ) && 'none' != $options['floating_horizontal'] ) ? $options['floating_horizontal'] : false;
 
 	if ( is_singular() ) {
-		// Disabled for this singular post?
+		// Sharing disabled for this singular post?
 		$sharing_disabled = get_post_meta( get_the_ID(), 'sharing_disabled', true );
 		$sharing_disabled = apply_filters( 'addtoany_sharing_disabled', $sharing_disabled );
 		
@@ -763,6 +753,12 @@ function A2A_SHARE_SAVE_head_script() {
 	
 	if ( is_admin() || is_feed() || $script_disabled )
 		return;
+
+	if ( is_singular() ) {
+		// Sharing disabled for this singular post?
+		$sharing_disabled = get_post_meta( get_the_ID(), 'sharing_disabled', true );
+		$sharing_disabled = apply_filters( 'addtoany_sharing_disabled', $sharing_disabled );
+	}
 		
 	$options = get_option( 'addtoany_options', array() );
 
@@ -801,10 +797,11 @@ function A2A_SHARE_SAVE_head_script() {
 
 	// Floating vertical relative to content
 	$floating_js = '';
-	if ( 
-		isset( $options['floating_vertical'] ) && 
-		in_array( $options['floating_vertical'], array( 'left_attached', 'right_attached' ) ) &&
-		! empty( $options['floating_vertical_attached_to'] )
+	if (
+		isset( $options['floating_vertical'] )
+		&& in_array( $options['floating_vertical'], array( 'left_attached', 'right_attached' ) )
+		&& ! empty( $options['floating_vertical_attached_to'] )
+		&& empty( $sharing_disabled )
 	) {
 		// Top position
 		$floating_js_position = ( isset( $options['floating_vertical_position'] ) ) ? $options['floating_vertical_position'] . 'px' : '100px';

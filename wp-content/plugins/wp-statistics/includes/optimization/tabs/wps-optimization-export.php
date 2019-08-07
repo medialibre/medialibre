@@ -1,7 +1,8 @@
-<div class="wrap">
+<div class="wrap wps-wrap">
 
     <form method="post">
         <input type="hidden" name="wps_export" value="true">
+		<?php wp_nonce_field( 'wp_statistics_export_nonce', 'wps_export_file' ); ?>
         <table class="form-table">
             <tbody>
             <tr valign="top">
@@ -16,12 +17,11 @@
                 <td>
                     <select dir="ltr" id="table-to-export" name="table-to-export" required>
                         <option value=""><?php _e( 'Please select', 'wp-statistics' ); ?></option>
-                        <option value="useronline"><?php echo $wpdb->prefix . 'statistics_useronline'; ?></option>
-                        <option value="visit"><?php echo $wpdb->prefix . 'statistics_visit'; ?></option>
-                        <option value="visitor"><?php echo $wpdb->prefix . 'statistics_visitor'; ?></option>
-                        <option value="exclusions"><?php echo $wpdb->prefix . 'statistics_exclusions'; ?></option>
-                        <option value="pages"><?php echo $wpdb->prefix . 'statistics_pages'; ?></option>
-                        <option value="search"><?php echo $wpdb->prefix . 'statistics_search'; ?></option>
+						<?php
+						foreach ( wp_statistics_db_table( 'all', array( 'historical', 'visitor_relationships' ) ) as $tbl_key => $tbl_name ) {
+							echo '<option value="' . $tbl_key . '">' . $tbl_name . '</option>';
+						}
+						?>
                     </select>
 
                     <p class="description"><?php _e( 'Select the table for the output file.', 'wp-statistics' ); ?></p>
@@ -52,11 +52,7 @@
 
                 <td>
                     <input id="export-headers" type="checkbox" value="1" name="export-headers">
-
-                    <p class="description"><?php _e(
-							'Include a header row as the first line of the exported file.',
-							'wp-statistics'
-						); ?></p>
+                    <p class="description"><?php _e( 'Include a header row as the first line of the exported file.', 'wp-statistics' ); ?></p>
 					<?php submit_button( __( 'Start Now!', 'wp-statistics' ), 'primary', 'export-file-submit' ); ?>
                 </td>
             </tr>

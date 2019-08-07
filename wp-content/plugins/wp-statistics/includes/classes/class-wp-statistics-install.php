@@ -6,6 +6,12 @@
 class WP_Statistics_Install {
 
 	/**
+	 * List Of wp-statistics Mysql Table
+	 * @var array
+	 */
+	public static $db_table = array( 'useronline', 'visit', 'visitor', 'exclusions', 'pages', 'search', 'historical', 'visitor_relationships' );
+
+	/**
 	 * WP_Statistics_Install constructor.
 	 *
 	 * @internal param $WP_Statistics
@@ -96,6 +102,7 @@ class WP_Statistics_Install {
 			$create_pages_table = ( "
 					CREATE TABLE {$wpdb->prefix}statistics_pages (
 						uri varchar(255) NOT NULL,
+						type varchar(255) NOT NULL,
 						date date NOT NULL,
 						count int(11) NOT NULL,
 						id int(11) NOT NULL,
@@ -134,22 +141,16 @@ class WP_Statistics_Install {
 					) CHARSET=utf8" );
 
 			// Check to see if the historical table exists yet, aka if this is a upgrade instead of a first install.
-			$result = $wpdb->query(
-				"SHOW TABLES WHERE `Tables_in_{$wpdb->dbname}` = '{$wpdb->prefix}statistics_historical'"
-			);
+			$result = $wpdb->query( "SHOW TABLES WHERE `Tables_in_{$wpdb->dbname}` = '{$wpdb->prefix}statistics_historical'" );
 
 			if ( $result == 1 ) {
 				// Before we update the historical table, check to see if it exists with the old keys
 				$result = $wpdb->query( "SHOW COLUMNS FROM {$wpdb->prefix}statistics_historical LIKE 'key'" );
 
 				if ( $result > 0 ) {
-					$wpdb->query(
-						"ALTER TABLE `{$wpdb->prefix}statistics_historical` CHANGE `id` `page_id` bigint(20)"
-					);
+					$wpdb->query( "ALTER TABLE `{$wpdb->prefix}statistics_historical` CHANGE `id` `page_id` bigint(20)" );
 					$wpdb->query( "ALTER TABLE `{$wpdb->prefix}statistics_historical` CHANGE `key` `ID` bigint(20)" );
-					$wpdb->query(
-						"ALTER TABLE `{$wpdb->prefix}statistics_historical` CHANGE `type` `category` varchar(25)"
-					);
+					$wpdb->query( "ALTER TABLE `{$wpdb->prefix}statistics_historical` CHANGE `type` `category` varchar(25)" );
 				}
 			}
 
@@ -170,9 +171,7 @@ class WP_Statistics_Install {
 			// Some old versions (in the 5.0.x line) of MySQL have issue with the compound index on the visitor table
 			// so let's make sure it was created, if not, use the older format to create the table manually instead of
 			// using the dbDelta() call.
-			$result = $wpdb->query(
-				"SHOW TABLES WHERE `Tables_in_{$wpdb->dbname}` = '{$wpdb->prefix}statistics_visitor'"
-			);
+			$result = $wpdb->query( "SHOW TABLES WHERE `Tables_in_{$wpdb->dbname}` = '{$wpdb->prefix}statistics_visitor'" );
 
 			if ( $result != 1 ) {
 				$wpdb->query( $create_visitor_table_old );
@@ -193,6 +192,19 @@ class WP_Statistics_Install {
 				$wpdb->query( "ALTER TABLE `{$wpdb->prefix}statistics_visitor` DROP `AString`" );
 			}
 
+			//Added page_id column in statistics_pages if not exist
+			$result = $wpdb->query( "SHOW COLUMNS FROM {$wpdb->prefix}statistics_pages LIKE 'page_id'" );
+			if ( $result == 0 ) {
+				$wpdb->query( "ALTER TABLE `{$wpdb->prefix}statistics_pages` ADD `page_id` BIGINT(20) NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`page_id`);" );
+			}
+
+			//Added User_id and Page_id in user online table
+			$result = $wpdb->query( "SHOW COLUMNS FROM {$wpdb->prefix}statistics_useronline LIKE 'user_id'" );
+			if ( $result == 0 ) {
+				$wpdb->query( "ALTER TABLE `{$wpdb->prefix}statistics_useronline` ADD `user_id` BIGINT(48) NOT NULL AFTER `location`, ADD `page_id` BIGINT(48) NOT NULL AFTER `user_id`, ADD `type` VARCHAR(100) NOT NULL AFTER `page_id`;" );
+				$wpdb->query( "DELETE FROM `{$wpdb->prefix}usermeta` WHERE `meta_key` = 'meta-box-order_toplevel_page_wps_overview_page';" );
+			}
+
 			// Store the new version information.
 			update_option( 'wp_statistics_plugin_version', WP_Statistics::$reg['version'] );
 			update_option( 'wp_statistics_db_version', WP_Statistics::$reg['version'] );
@@ -201,9 +213,7 @@ class WP_Statistics_Install {
 			$dbupdates = array( 'date_ip_agent' => false, 'unique_date' => false );
 
 			// Check the number of index's on the visitors table, if it's only 5 we need to check for duplicate entries and remove them
-			$result = $wpdb->query(
-				"SHOW INDEX FROM {$wpdb->prefix}statistics_visitor WHERE Key_name = 'date_ip_agent'"
-			);
+			$result = $wpdb->query( "SHOW INDEX FROM {$wpdb->prefix}statistics_visitor WHERE Key_name = 'date_ip_agent'" );
 
 			// Note, the result will be the number of fields contained in the index, so in our case 5.
 			if ( $result != 5 ) {
@@ -211,9 +221,7 @@ class WP_Statistics_Install {
 			}
 
 			// Check the number of index's on the visits table, if it's only 5 we need to check for duplicate entries and remove them
-			$result = $wpdb->query(
-				"SHOW INDEX FROM {$wpdb->prefix}statistics_visit WHERE Key_name = 'unique_date'"
-			);
+			$result = $wpdb->query( "SHOW INDEX FROM {$wpdb->prefix}statistics_visit WHERE Key_name = 'unique_date'" );
 
 			// Note, the result will be the number of fields contained in the index, so in our case 1.
 			if ( $result != 1 ) {
@@ -227,7 +235,6 @@ class WP_Statistics_Install {
 			if ( WP_Statistics::$installed_version == false ) {
 
 				// If this is a first time install, we just need to setup the primary values in the tables.
-
 				$WP_Statistics->Primary_Values();
 
 				// By default, on new installs, use the new search table.
@@ -236,7 +243,6 @@ class WP_Statistics_Install {
 			} else {
 
 				// If this is an upgrade, we need to check to see if we need to convert anything from old to new formats.
-
 				// Check to see if the "new" settings code is in place or not, if not, upgrade the old settings to the new system.
 				if ( get_option( 'wp_statistics' ) === false ) {
 					$core_options   = array(
@@ -254,6 +260,7 @@ class WP_Statistics_Install {
 						'wps_check_online',
 						'wps_visits',
 						'wps_visitors',
+						'wps_visitors_log',
 						'wps_store_ua',
 						'wps_coefficient',
 						'wps_pages',
@@ -308,9 +315,7 @@ class WP_Statistics_Install {
 					// Handle the core options, we're going to strip off the 'wps_' header as we store them in the new settings array.
 					foreach ( $core_options as $option ) {
 						$new_name = substr( $option, 4 );
-
 						$WP_Statistics->store_option( $new_name, get_option( $option ) );
-
 						delete_option( $option );
 					}
 
@@ -327,15 +332,11 @@ class WP_Statistics_Install {
 
 					foreach ( $var_options as $option ) {
 						// Handle the special variables options.
-						$result = $wpdb->get_results(
-							"SELECT * FROM {$wpdb->prefix}options WHERE option_name LIKE '{$option}'"
-						);
+						$result = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}options WHERE option_name LIKE '{$option}'" );
 
 						foreach ( $result as $opt ) {
 							$new_name = substr( $opt->option_name, 4 );
-
 							$WP_Statistics->store_option( $new_name, $opt->option_value );
-
 							delete_option( $opt->option_name );
 						}
 					}
@@ -392,35 +393,6 @@ class WP_Statistics_Install {
 				$WP_Statistics->store_option( 'force_robot_update', true );
 			}
 
-			// For version 8.0, we're removing the old %option% types from the reports, so let's upgrade anyone who still has them to short codes.
-			$report_content = $WP_Statistics->get_option( 'content_report' );
-
-			// Check to make sure we have a report to process.
-			if ( trim( $report_content ) == '' ) {
-				// These are the variables we can replace in the template and the short codes we're going to replace them with.
-				$template_vars = array(
-					'user_online'       => '[wpstatistics stat=usersonline]',
-					'today_visitor'     => '[wpstatistics stat=visitors time=today]',
-					'today_visit'       => '[wpstatistics stat=visits time=today]',
-					'yesterday_visitor' => '[wpstatistics stat=visitors time=yesterday]',
-					'yesterday_visit'   => '[wpstatistics stat=visits time=yesterday]',
-					'total_visitor'     => '[wpstatistics stat=visitors time=total]',
-					'total_visit'       => '[wpstatistics stat=visits time=total]',
-				);
-
-				// Replace the items in the template.
-				$final_report = preg_replace_callback(
-					'/%(.*?)%/im',
-					function ( $m ) {
-						return $template_vars[ $m[1] ];
-					},
-					$report_content
-				);
-
-				// Store the updated report content.
-				$WP_Statistics->store_option( 'content_report', $final_report );
-			}
-
 			// Save the settings now that we've set them.
 			$WP_Statistics->save_options();
 
@@ -450,4 +422,320 @@ class WP_Statistics_Install {
 			}
 		}
 	}
+
+	/**
+	 * Setup Visitor RelationShip Table
+	 */
+	public static function setup_visitor_relationship_table() {
+		global $wpdb;
+
+		$table_name = $wpdb->prefix . 'statistics_visitor_relationships';
+		if ( $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) != $table_name ) {
+
+			// This includes the dbDelta function from WordPress.
+			if ( ! function_exists( 'dbDelta' ) ) {
+				require( ABSPATH . 'wp-admin/includes/upgrade.php' );
+			}
+
+			$create_visitor_relationships_table =
+				"CREATE TABLE IF NOT EXISTS $table_name (
+				`ID` bigint(20) NOT NULL AUTO_INCREMENT,
+				`visitor_id` bigint(20) NOT NULL,
+				`page_id` bigint(20) NOT NULL,
+				`date` datetime NOT NULL,
+				PRIMARY KEY  (ID),
+				KEY visitor_id (visitor_id),
+				KEY page_id (page_id)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8";
+
+			dbDelta( $create_visitor_relationships_table );
+		}
+	}
+
+	/**
+	 * Update WordPress Page Type for older wp-statistics Version
+	 *
+	 * @since 12.6
+	 *
+	 * -- List Methods ---
+	 * _init_page_type_updater        -> define WordPress Hook
+	 * _get_require_number_update     -> Get number of rows that require update page type
+	 * _is_require_update_page        -> Check Wp-statistics require update page table
+	 * _get_page_type_by_obj          -> Get Page Type by information
+	 */
+	public static function _init_page_type_updater() {
+
+		# Check Require Admin Process
+		if ( self::_is_require_update_page() === true ) {
+
+			# Add Admin Notice
+			add_action( 'admin_notices', function () {
+				echo '<div class="notice notice-info is-dismissible" id="wp-statistics-update-page-area" style="display: none;">';
+				echo '<p style="margin-top: 17px; float:' . ( is_rtl() ? 'right' : 'left' ) . '">';
+				echo __( 'WP-Statistics database requires upgrade.', 'wp-statistics' );
+				echo '</p>';
+				echo '<div style="float:' . ( is_rtl() ? 'left' : 'right' ) . '">';
+				echo '<button type="button" id="wps-upgrade-db" class="button button-primary" style="padding: 20px;line-height: 0px;box-shadow: none !important;border: 0px !important;margin: 10px 0;"/>' . __( 'Upgrade Database', 'wp-statistics' ) . '</button>';
+				echo '</div>';
+				echo '<div style="clear:both;"></div>';
+				echo '</div>';
+			} );
+
+			# Add Script
+			add_action( 'admin_footer', function () {
+				?>
+                <script>
+                    jQuery(document).ready(function () {
+
+                        // Check Page is complete Loaded
+                        jQuery(window).load(function () {
+                            jQuery("#wp-statistics-update-page-area").fadeIn(2000);
+                            jQuery("#wp-statistics-update-page-area button.notice-dismiss").hide();
+                        });
+
+                        // Update Page type function
+                        function wp_statistics_update_page_type() {
+
+                            //Complete Progress
+                            let wps_end_progress = `<div id="wps_end_process" style="display:none;">`;
+                            wps_end_progress += `<p>`;
+                            wps_end_progress += `<?php _e( 'Database upgrade operation completed!', 'wp-statistics' ); ?>`;
+                            wps_end_progress += `</p>`;
+                            wps_end_progress += `</div>`;
+                            wps_end_progress += `<button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>`;
+
+                            //new Ajax Request
+                            jQuery.ajax({
+                                url: ajaxurl,
+                                type: 'get',
+                                dataType: "json",
+                                cache: false,
+                                data: {
+                                    'action': 'wp_statistics_update_post_type_db',
+                                    'number_all': <?php echo self::_get_require_number_update(); ?>
+                                },
+                                success: function (data) {
+                                    if (data.process_status === "complete") {
+
+                                        // Get Process Area
+                                        let wps_notice_area = jQuery("#wp-statistics-update-page-area");
+                                        //Add Html Content
+                                        wps_notice_area.html(wps_end_progress);
+                                        //Fade in content
+                                        jQuery("#wps_end_process").fadeIn(2000);
+                                        //enable demiss button
+                                        wps_notice_area.removeClass('notice-info').addClass('notice-success');
+                                    } else {
+
+                                        //Get number Process
+                                        jQuery("span#wps_num_page_process").html(data.number_process);
+                                        //Get process Percentage
+                                        jQuery("progress#wps_upgrade_html_progress").attr("value", data.percentage);
+                                        jQuery("span#wps_num_percentage").html(data.percentage);
+                                        //again request
+                                        wp_statistics_update_page_type();
+                                    }
+                                },
+                                error: function () {
+                                    jQuery("#wp-statistics-update-page-area").html('<p><?php _e( 'Error occurred during operation. Please refresh the page.', 'wp-statistics' ); ?></p>');
+                                }
+                            });
+                        }
+
+                        //Click Start Progress
+                        jQuery(document).on('click', 'button#wps-upgrade-db', function (e) {
+                            e.preventDefault();
+
+                            // Added Progress Html
+                            let wps_progress = `<div id="wps_process_upgrade" style="display:none;"><p>`;
+                            wps_progress += `<?php _e( 'Please don\'t close the browser window until the database operation was completed.', 'wp-statistic' ); ?>`;
+                            wps_progress += `</p><p><b>`;
+                            wps_progress += `<?php echo __( 'Item processed', 'wp-statistics' ); ?>`;
+                            wps_progress += ` : <span id="wps_num_page_process">0</span> / <?php echo number_format( self::_get_require_number_update() ); ?> &nbsp;<span class="wps-text-warning">(<span id="wps_num_percentage">0</span>%)</span></b></p>`;
+                            wps_progress += '<p><progress id="wps_upgrade_html_progress" value="0" max="100" style="height: 20px;width: 100%;"></progress></p></div>';
+
+                            // set new Content
+                            jQuery("#wp-statistics-update-page-area").html(wps_progress);
+                            jQuery("#wps_process_upgrade").fadeIn(2000);
+
+                            // Run WordPress Ajax Updator
+                            wp_statistics_update_page_type();
+                        });
+
+                        //Remove Notice event
+                        jQuery(document).on('click', '#wp-statistics-update-page-area button.notice-dismiss', function (e) {
+                            e.preventDefault();
+                            jQuery("#wp-statistics-update-page-area").fadeOut('normal');
+                        });
+                    });
+                </script>
+				<?php
+			} );
+
+		}
+
+		# Add Admin Ajax Process
+		add_action( 'wp_ajax_wp_statistics_update_post_type_db', function () {
+			global $wpdb;
+
+			# Create Default Obj
+			$return = array( 'process_status' => 'complete', 'number_process' => 0, 'percentage' => 0 );
+
+			# Check is Ajax WordPress
+			if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+
+				# Check Status Of Process
+				if ( self::_is_require_update_page() === true ) {
+
+					# Number Process Per Query
+					$number_per_query = 80;
+
+					# Check Number Process
+					$number_process = self::_get_require_number_update();
+					$i              = 0;
+					if ( $number_process > 0 ) {
+
+						# Start Query
+						$query = $wpdb->get_results( "SELECT * FROM `" . wp_statistics_db_table( 'pages' ) . "` WHERE `type` = '' ORDER BY `page_id` DESC LIMIT 0,{$number_per_query}", ARRAY_A );
+						foreach ( $query as $row ) {
+
+							# Get Page Type
+							$page_type = self::_get_page_type_by_obj( $row['id'], $row['uri'] );
+
+							# Update Table
+							$wpdb->update(
+								wp_statistics_db_table( 'pages' ),
+								array(
+									'type' => $page_type
+								),
+								array( 'page_id' => $row['page_id'] )
+							);
+
+							$i ++;
+						}
+
+						if ( $_GET['number_all'] > $number_per_query ) {
+							# calculate number process
+							$return['number_process'] = $_GET['number_all'] - ( $number_process - $i );
+
+							# Calculate Per
+							$return['percentage'] = round( ( $return['number_process'] / $_GET['number_all'] ) * 100 );
+
+							# Set Process
+							$return['process_status'] = 'incomplete';
+
+						} else {
+
+							$return['number_process'] = $_GET['number_all'];
+							$return['percentage']     = 100;
+							update_option( 'wp_statistics_update_page_type', 'yes' );
+						}
+					}
+				} else {
+
+					# Closed Process
+					update_option( 'wp_statistics_update_page_type', 'yes' );
+				}
+
+				# Export Data
+				wp_send_json( $return );
+				exit;
+			}
+		} );
+
+
+	}
+
+	public static function _get_require_number_update() {
+		global $wpdb;
+		return $wpdb->get_var( "SELECT COUNT(*) FROM `" . wp_statistics_db_table( 'pages' ) . "` WHERE `type` = ''" );
+	}
+
+	public static function _is_require_update_page() {
+
+		# require update option name
+		$opt_name = 'wp_statistics_update_page_type';
+
+		# Check exist option
+		$get_opt = get_option( $opt_name );
+		if ( ! empty( $get_opt ) ) {
+			return false;
+		}
+
+		# Check number require row
+		if ( self::_get_require_number_update() > 0 ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	public static function _get_page_type_by_obj( $obj_ID, $page_url ) {
+
+		//Default page type
+		$page_type = 'unknown';
+
+		//check if Home Page
+		if ( $page_url == "/" ) {
+			return 'home';
+
+		} else {
+
+			// Page url
+			$page_url = ltrim( $page_url, "/" );
+			$page_url = trim( get_bloginfo( 'url' ), "/" ) . "/" . $page_url;
+
+			// Check Page Path is exist
+			$exist_page = url_to_postid( $page_url );
+
+			//Check Post Exist
+			if ( $exist_page > 0 ) {
+
+				# Get Post Type
+				$p_type = get_post_type( $exist_page );
+
+				# Check Post Type
+				if ( $p_type == "product" ) {
+					$page_type = 'product';
+				} elseif ( $p_type == "page" ) {
+					$page_type = 'page';
+				} elseif ( $p_type == "attachment" ) {
+					$page_type = 'attachment';
+				} else {
+					$page_type = 'post';
+				}
+
+			} else {
+
+				# Check is Term
+				$term = get_term( $obj_ID );
+				if ( is_wp_error( get_term_link( $term ) ) === true ) {
+					//Don't Stuff
+				} else {
+					//Which Taxonomy
+					$taxonomy = $term->taxonomy;
+
+					//Check Url is contain
+					$term_link = get_term_link( $term );
+					$term_link = ltrim( str_ireplace( get_bloginfo( 'url' ), "", $term_link ), "/" );
+					if ( stristr( $page_url, $term_link ) === false ) {
+						//Return Unknown
+					} else {
+						//Check Type of taxonomy
+						if ( $taxonomy == "category" ) {
+							$page_type = 'category';
+						} elseif ( $taxonomy == "post_tag" ) {
+							$page_type = 'post_tag';
+						} else {
+							$page_type = 'tax';
+						}
+					}
+
+				}
+			}
+		}
+
+		return $page_type;
+	}
+
 }

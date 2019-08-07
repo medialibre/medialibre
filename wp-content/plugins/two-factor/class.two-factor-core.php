@@ -47,6 +47,9 @@ class Two_Factor_Core {
 		add_filter( 'manage_users_columns', array( __CLASS__, 'filter_manage_users_columns' ) );
 		add_filter( 'wpmu_users_columns', array( __CLASS__, 'filter_manage_users_columns' ) );
 		add_filter( 'manage_users_custom_column', array( __CLASS__, 'manage_users_custom_column' ), 10, 3 );
+
+		// Run only after the core wp_authenticate_username_password() check.
+		add_filter( 'authenticate', array( __CLASS__, 'filter_authenticate' ), 50 );
 	}
 
 	/**
@@ -239,6 +242,55 @@ class Two_Factor_Core {
 	}
 
 	/**
+	 * Prevent login through XML-RPC and REST API for users with at least one
+	 * two-factor method enabled.
+	 *
+	 * @param  WP_User|WP_Error $user Valid WP_User only if the previous filters
+	 *                                have verified and confirmed the
+	 *                                authentication credentials.
+	 *
+	 * @return WP_User|WP_Error
+	 */
+	public static function filter_authenticate( $user ) {
+		if ( $user instanceof WP_User && self::is_api_request() && self::is_user_using_two_factor( $user->ID ) && ! self::is_user_api_login_enabled( $user->ID ) ) {
+			return new WP_Error(
+				'invalid_application_credentials',
+				__( 'Error: API login for user disabled.', 'two-factor' )
+			);
+		}
+
+		return $user;
+	}
+
+	/**
+	 * If the current user can login via API requests such as XML-RPC and REST.
+	 *
+	 * @param  integer $user_id User ID.
+	 *
+	 * @return boolean
+	 */
+	public static function is_user_api_login_enabled( $user_id ) {
+		return (bool) apply_filters( 'two_factor_user_api_login_enable', false, $user_id );
+	}
+
+	/**
+	 * Is the current request an XML-RPC or REST request.
+	 *
+	 * @return boolean
+	 */
+	public static function is_api_request() {
+		if ( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) {
+			return true;
+		}
+
+		if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
 	 * Display the login form.
 	 *
 	 * @since 0.1-dev
@@ -255,7 +307,7 @@ class Two_Factor_Core {
 			wp_die( esc_html__( 'Failed to create a login nonce.', 'two-factor' ) );
 		}
 
-		$redirect_to = isset( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : $_SERVER['REQUEST_URI'];
+		$redirect_to = isset( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : admin_url();
 
 		self::login_html( $user, $login_nonce['key'], $redirect_to );
 	}
@@ -285,7 +337,7 @@ class Two_Factor_Core {
 		if ( isset( $providers[ $_GET['provider'] ] ) ) {
 			$provider = $providers[ $_GET['provider'] ];
 		} else {
-			wp_die( esc_html__( 'Cheatin&#8217; uh?' ), 403 );
+			wp_die( esc_html__( 'Cheatin&#8217; uh?', 'two-factor' ), 403 );
 		}
 
 		self::login_html( $user, $_GET['wp-auth-nonce'], $_GET['redirect_to'], '', $provider );
@@ -422,7 +474,7 @@ class Two_Factor_Core {
 				?>
 			</a>
 		</p>
-
+		</div>
 		<style>
 		/* @todo: migrate to an external stylesheet. */
 		.backup-methods-wrap {
@@ -556,7 +608,7 @@ class Two_Factor_Core {
 			if ( isset( $providers[ $_POST['provider'] ] ) ) {
 				$provider = $providers[ $_POST['provider'] ];
 			} else {
-				wp_die( esc_html__( 'Cheatin&#8217; uh?' ), 403 );
+				wp_die( esc_html__( 'Cheatin&#8217; uh?', 'two-factor' ), 403 );
 			}
 		} else {
 			$provider = self::get_primary_provider_for_user( $user->ID );
@@ -631,7 +683,7 @@ class Two_Factor_Core {
 	 * @return array          Updated array of columns.
 	 */
 	public static function filter_manage_users_columns( array $columns ) {
-		$columns['two-factor'] = __( 'Two-Factor' );
+		$columns['two-factor'] = __( 'Two-Factor', 'two-factor' );
 		return $columns;
 	}
 
@@ -683,10 +735,10 @@ class Two_Factor_Core {
 
 		?>
 		<input type="hidden" name="<?php echo esc_attr( self::ENABLED_PROVIDERS_USER_META_KEY ); ?>[]" value="<?php /* Dummy input so $_POST value is passed when no providers are enabled. */ ?>" />
-		<table class="form-table">
+		<table class="form-table" id="two-factor-options">
 			<tr>
 				<th>
-					<?php esc_html_e( 'Two-Factor Options' ); ?>
+					<?php esc_html_e( 'Two-Factor Options', 'two-factor' ); ?>
 				</th>
 				<td>
 					<table class="two-factor-methods-table">

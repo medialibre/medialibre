@@ -314,7 +314,8 @@ if ( ! function_exists( 'ct_founder_social_icons_output' ) ) {
 			'github',
 			'google-plus',
 			'behance',
-			'facebook'
+			'facebook',
+                        'mastodon'
 		);
 
 		// store the site name and url

@@ -154,6 +154,10 @@ a:hover, a:active, a:focus {
   color: #800000;
 }
 
+.tooltips {
+  border-bottom: 1px #800000 dashed;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;

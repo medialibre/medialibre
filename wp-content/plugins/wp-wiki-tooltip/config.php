@@ -1,58 +1,70 @@
 <?php
 
-$wp_wiki_tooltip_default_options = array(
+$wp_wiki_tooltip_default_options = [
 
-    'wiki-urls' => array (
-        'standard' => 1,
-        'data' => array (
-            '1' => array ( // standard URL of Wiki to get contents from
-                'id' => 'EN',
-                'url' => 'https://en.wikipedia.org/w/api.php',
-                'sitename' => 'Wikipedia'
-            )
-        )
-    ),
+    'base' => [
 
-    'cache' => array ( // NOT USED: cache settings - default "1 week"
+        'wiki-urls' => [
+            'standard' => 1,
+            'data' => [
+                '1' => [ // standard URL of Wiki to get contents from
+                    'id' => 'EN',
+                    'url' => 'https://en.wikipedia.org/w/api.php',
+                    'sitename' => 'Wikipedia'
+                ]
+            ]
+        ],
 
-        'count' => 1, // how many
+        'cache' => [ // NOT USED: cache settings - default "1 week"
 
-        'unit' => 'week' // what
-    ),
+            'count' => 1, // how many
 
-    'a-target' => '_blank', // where to open links to wiki pages
+            'unit' => 'week' // what
+        ],
 
-    'trigger' => 'hover', // what triggers the tooltip
+        'a-target' => '_blank', // where to open links to wiki pages
 
-    'trigger-hover-action' => 'none', // how does the link work if trigger is "hover"
+        'trigger' => 'hover', // what triggers the tooltip
 
-    'min-screen-width' => '0', // activate tooltips only if screen is greater than this number of pixel
+        'trigger-hover-action' => 'none', // how does the link work if trigger is "hover"
 
-    'page-error-handling' => 'show-default', // how should errors of pages be handled
+        'min-screen-width' => '0', // activate tooltips only if screen is greater than this number of pixel
+    ],
 
-    'own-error-title' => '', // the self-defined title of the error message
+    'error' => [
 
-    'own-error-message' => '', // the self-defined message of the error message
+        'page-error-handling' => 'show-default', // how should errors of pages be handled
 
-    'section-error-handling' => 'show-page', // how should errors of sections be handled
+        'own-error-title' => '', // the self-defined title of the error message
 
-    'theme' => 'default', // use default theme of Tooltipster
+        'own-error-message' => '', // the self-defined message of the error message
 
-    'animation' => 'fade', // use standard animation when a tooltip appears
+        'section-error-handling' => 'show-page', // how should errors of sections be handled
+    ],
 
-    'tooltip-head' => 'font-size: 125%; font-weight: bold;', // make the head of the tooltip a little bigger
+    'design' => [
 
-    'tooltip-body' => '', // no special body styles in tooltip
+        'theme' => 'default', // use default theme of Tooltipster
 
-    'tooltip-foot' => 'font-style: italic; font-weight: bold;', // make the footer link somehow nicer
+        'animation' => 'fade', // use standard animation when a tooltip appears
 
-    'a-style' => 'font-style: italic;',  // line of css for the style attribute
+        'tooltip-head' => 'font-size: 125%; font-weight: bold;', // make the head of the tooltip a little bigger
 
-    'thumb-enable' => 'off', // enable thumbnails in tooltips
+        'tooltip-body' => '', // no special body styles in tooltip
 
-    'thumb-align' => 'right', // alignment of the thumbnails
+        'tooltip-foot' => 'font-style: italic; font-weight: bold;', // make the footer link somehow nicer
 
-    'thumb-width' => '200', // standard width of the thumbnails
+        'a-style' => 'font-style: italic;',  // line of css for the style attribute
+    ],
 
-    'thumb-style' => '', // stylesheets for thumbnail images
-);
+    'thumb' => [
+
+        'thumb-enable' => 'off', // enable thumbnails in tooltips
+
+        'thumb-align' => 'right', // alignment of the thumbnails
+
+        'thumb-width' => '200', // standard width of the thumbnails
+
+        'thumb-style' => '', // stylesheets for thumbnail images
+    ]
+];

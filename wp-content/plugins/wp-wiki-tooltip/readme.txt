@@ -2,8 +2,8 @@
 Contributors: nida78
 Tags: wiki, wikipedia, mediawiki, tooltip, tooltipster, shortcode
 Requires at least: 3.0
-Tested up to: 5.2.2
-Stable tag: 1.9.1
+Tested up to: 5.5.3
+Stable tag: 1.10.0
 Donate link: https://n1da.net/specials/wp-wiki-tooltip/spenden/
 License: GPLv2 or later
 
@@ -11,7 +11,7 @@ Adds explaining tooltips querying their content from a MediaWiki installation, e
 
 == Description ==
 
-Adds explaining tooltips querying their content from a [MediaWiki](https://www.mediawiki.org "see MediaWiki docs") installation, e.g. [Wikipedia.org](https://www.wikipedia.org "see the well-known Wikipedia"). Therefore shortcodes can be used in Posts and Pages to mark keywords and link them to public Wiki pages. The well-known package of [Tooltipster](http://iamceege.github.io/tooltipster/ "Tooltipster rocks :)") is used to create the nice and themable tooltips.
+Adds explaining tooltips querying their content from a [MediaWiki](https://www.mediawiki.org "see MediaWiki docs") installation, e.g. [Wikipedia.org](https://www.wikipedia.org "see the well-known Wikipedia"). Therefore shortcodes can be used in Posts and Pages to mark keywords and link them to public Wiki pages. The well-known package of [Tooltipster](https://calebjacob.github.io/tooltipster/ "Tooltipster rocks :)") is used to create the nice and themable tooltips.
 
 Main features of the current version are:
 
@@ -43,7 +43,7 @@ Since version 1.9.0 you can request a section by its title (anchor) using an ext
 
 == Installation ==
 
-1. Upload the Wiki tooltip plugin to your blog,
+1. Find Wiki tooltip plugin in the "Add Plugins" page within your WordPress installation or Upload the Wiki tooltip plugin to your blog,
 2. Activate it,
 3. Create at least one Wiki base and review the global options on the settings page
 4. Add some shortcodes to your Posts and Pages, and
@@ -51,17 +51,26 @@ Since version 1.9.0 you can request a section by its title (anchor) using an ext
 
 == Screenshots ==
 
-1. Options and Settings page: manage several Wiki URLs
-2. Options and Settings page: set some options how to show tooltips
-3. Options and Settings page: set some Error Handling options
-4. Options and Settings page: set styling of tooltips
-5. Options and Settings page: enable and style thumbnails
+1. Wiki-Tooltips Settings - Base Settings (top): manage several Wiki URLs
+2. Wiki-Tooltips Settings - Base Settings (bottom): set some options how to show tooltips
+3. Wiki-Tooltips Settings - Error Handling: set some Error Handling options
+4. Wiki-Tooltips Settings - Designs: set designs, stylings, and animations of tooltips
+5. Wiki-Tooltips Settings - Thumbnails: enable and style thumbnails
 6. Integrate the plugin by shortcodes in Posts and Pages
-7. Use the [TinyMCE](https://codex.wordpress.org/TinyMCE) plugin to get help by a popup form - also available in the Gutenberg Classic Block
+7. Use the [TinyMCE](https://codex.wordpress.org/TinyMCE) plugin to get help by a popup form - also available in the Gutenberg's Classic Block
 8. See nice and helpful tooltips
 
 == Changelog ==
 The last three major releases are listed here, only. Find complete log of all changes in the [extra changelog file](https://github.com/nida78/wp-wiki-tooltip/blob/master/CHANGELOG.md)!
+
+= 1.10.0 - C6H13NO2 | Leucine =
+*Release Date - December 5th, 2020*
+
+* the backend page is splitted into several tabs to have more space for some new settings in the future
+* all dynamic JavaScript code that was printed in HTML is moved into static JS files to avoid problems with other plugins
+* all JavaScript is improved by removing small mistakes and minor hitches
+* the used Tooltipster plugin is updated to its version 4.2.8
+* some improvements for binding external resources
 
 = 1.9.0 - C6H13NO2 | Isoleucine =
 *Release Date - January 1st, 2019*
@@ -79,16 +88,13 @@ The last three major releases are listed here, only. Find complete log of all ch
 * a new version of Tooltipster plugin was released that leads to some programmatic and design changes
 * a preview for every tooltip designs is available at options page now
 
-= 1.7.0 - C2H5NO2 | Glycine =
-*Release Date - October 22nd, 2016*
-
-* you can set if tooltips are triggered by click or hover
-* a minimum screen width can defined that is necessary to enable tooltips
-
 == Upgrade Notice ==
 
 = General =
 You should review the settings page after every update
+
+= Upgrade to 1.10.0 =
+Due to the introduction of the tabbed settings page you have to review all settings after update!
 
 = Upgrade to 1.4.0 =
 The former Wiki URL is not transferred into this version. Review the settings page after update to insert the wanted Wiki URL again!

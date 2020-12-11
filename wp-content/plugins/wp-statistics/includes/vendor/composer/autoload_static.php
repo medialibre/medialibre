@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite38eff48d6e6d75cf438d3ef850d45a7
+class ComposerStaticInit2ac516f03a394ec3d1721352b7f43359
 {
     public static $prefixLengthsPsr4 = array (
         'W' => 
@@ -79,22 +79,11 @@ class ComposerStaticInite38eff48d6e6d75cf438d3ef850d45a7
         ),
     );
 
-    public static $prefixesPsr0 = array (
-        'P' => 
-        array (
-            'Parsedown' => 
-            array (
-                0 => __DIR__ . '/..' . '/erusev/parsedown',
-            ),
-        ),
-    );
-
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite38eff48d6e6d75cf438d3ef850d45a7::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite38eff48d6e6d75cf438d3ef850d45a7::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInite38eff48d6e6d75cf438d3ef850d45a7::$prefixesPsr0;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2ac516f03a394ec3d1721352b7f43359::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2ac516f03a394ec3d1721352b7f43359::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

@@ -2,9 +2,9 @@
 Contributors: micropat, addtoany
 Tags: buttons, share, icons, social media, share buttons, sharing, share button, media, social, marketing, links, email, seo, woocommerce, google, linkedin, reddit, facebook, twitter, pinterest, whatsapp, instagram, youtube, share this, sharethis, feed
 Requires at least: 3.7
-Tested up to: 5.2
-Requires PHP: 5.2
-Stable tag: 1.7.36
+Tested up to: 5.5
+Requires PHP: 5.6
+Stable tag: 1.7.42
 
 Share buttons for WordPress including the AddToAny sharing button, Facebook, Twitter, WhatsApp, Pinterest, Reddit, many more, and follow icons too.
 
@@ -19,7 +19,7 @@ AddToAny is the home of universal sharing, and the AddToAny plugin is the most p
 * [**Standard**](https://www.addtoany.com/buttons/customize/wordpress/standalone_services) share buttons — share each piece of content
 * [**Floating**](https://www.addtoany.com/buttons/customize/wordpress/floating_share_buttons) share buttons — responsive & customizable, vertical & horizontal
 * **Counters** — fast & official [share counts](https://www.addtoany.com/buttons/customize/wordpress/share_counters) in the same style
-* **Follow** buttons** — [social media links](https://www.addtoany.com/buttons/customize/wordpress/follow_buttons) to your Instagram, YouTube, Snapchat
+* **Follow** buttons — [social media links](https://www.addtoany.com/buttons/customize/wordpress/follow_buttons) to your Instagram, YouTube, Snapchat
 * **Image** sharing buttons - share buttons for [sharing images](https://www.addtoany.com/buttons/customize/wordpress/image_sharing)
 * **Vector** share buttons & follow buttons — [custom color](https://www.addtoany.com/buttons/customize/wordpress/icon_color) SVG icons
 * **Custom** share icons — use your own if you prefer
@@ -346,11 +346,34 @@ Upload (or move) the `add-to-any` plugin directory into the `/wp-content/mu-plug
 
 == Changelog ==
 
+= 1.7.42 =
+* Update the "Show sharing buttons" meta box to not display in the WordPress editor when automatic placement is disabled for the current post type
+
+= 1.7.41 =
+* Update Facebook icon color
+* Update CSS to automatically set left and right margins for standard placement in content
+* Fix alignment in the default Twenty Twenty theme
+
+= 1.7.40 =
+* Require PHP 5.3 as a bare minimum for compatibility features
+
+= 1.7.39 =
+* Fix AMP version of the AddToAny universal icon
+* Enable the `addtoany_content_priority` filter hook to modify the priority of standard placement in content
+* Add a workaround for a bug in Jetpack's Related Posts on AMP pages that prevents some added content from loading
+* Bump minimum PHP version to 5.6
+
+= 1.7.38 =
+* Update AMP support for compatibility with AMP's standard mode
+
+= 1.7.37 =
+* Harden option to toggle standard sharing placement on pages and the "page" post type
+
 = 1.7.36 =
 * Apply the "Show sharing buttons" option to the floating vertical bar when Placement is set to "Attach to content"
 
 = 1.7.35 =
-* Remove Google+ because Google is [shut down Google+](https://support.google.com/plus/answer/9195133)
+* Remove Google+ because Google [shut down Google+](https://support.google.com/plus/answer/9195133)
 
 = 1.7.34 =
 * Add MeWe

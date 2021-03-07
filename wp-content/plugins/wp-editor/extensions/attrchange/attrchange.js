@@ -82,9 +82,9 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 					mutations.forEach(function(e) {
 						var _this = e.target;
 						//get new value if trackValues is true
-						if (cfg.trackValues) {							
+						if (cfg.trackValues) {
 							e.newValue = $(_this).attr(e.attributeName);
-						}						
+						}
 						if (typeof $(this).data('attrchange-tdisconnect') === 'undefined') { //disconnected logically
 							cfg.callback.call(_this, e);
 						}
@@ -98,14 +98,14 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 			} else if (isDOMAttrModifiedSupported()) { //Opera
 				//Good old Mutation Events
 				return this.data('attrchange-method', 'DOMAttrModified').on('DOMAttrModified', function(event) {
-					if (event.originalEvent) { event = event.originalEvent; }//jQuery normalization is not required 
+					if (event.originalEvent) { event = event.originalEvent; }//jQuery normalization is not required
 					event.attributeName = event.attrName; //property names to be consistent with MutationObserver
 					event.oldValue = event.prevValue; //property names to be consistent with MutationObserver
 					if (typeof $(this).data('attrchange-tdisconnect') === 'undefined') { //disconnected logically
 						cfg.callback.call(this, event);
 					}
 				});
-			} else if ('onpropertychange' in document.body) { //works only in IE		
+			} else if ('onpropertychange' in document.body) { //works only in IE
 				return this.data('attrchange-method', 'propertychange').on('propertychange', function(e) {
 					e.attributeName = window.event.propertyName;
 					//to set the attr old value

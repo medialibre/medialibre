@@ -1,6 +1,57 @@
 <?php
 class WPEditorSetting {
 
+  public static function settings_table_allow_list() {
+    $settings_table_allow_list = array(
+      'admin_page_roles',
+      'change_plugin_editor_font_size',
+      'change_post_editor_font_size',
+      'change_theme_editor_font_size',
+      'enable_plugin_active_line',
+      'enable_plugin_editor_height',
+      'enable_plugin_line_numbers',
+      'enable_plugin_line_wrapping',
+      'enable_plugin_tab_characters',
+      'enable_plugin_tab_size',
+      'enable_post_active_line',
+      'enable_post_editor',
+      'enable_post_editor_height',
+      'enable_post_line_numbers',
+      'enable_post_line_wrapping',
+      'enable_post_tab_characters',
+      'enable_post_tab_size',
+      'enable_theme_active_line',
+      'enable_theme_editor_height',
+      'enable_theme_line_numbers',
+      'enable_theme_line_wrapping',
+      'enable_theme_tab_characters',
+      'enable_theme_tab_size',
+      'hide_default_plugin_editor',
+      'hide_default_theme_editor',
+      'hide_wpeditor_menu',
+      'plugin_create_new',
+      'plugin_editor_allowed_extensions',
+      'plugin_editor_theme',
+      'plugin_file_upload',
+      'plugin_indent_unit',
+      'post_editor_theme',
+      'post_indent_unit',
+      'replace_plugin_edit_links',
+      'run_overview',
+      'settings_tab',
+      'theme_create_new',
+      'theme_editor_allowed_extensions',
+      'theme_editor_theme',
+      'theme_file_upload',
+      'theme_indent_unit',
+      'upgrade',
+      'version',
+      'wpeditor_logging',
+    );
+
+    return apply_filters( 'wpe_get_settings_table_allow_list', $settings_table_allow_list );
+  }
+
   /**
    * Get Settings
    *
@@ -244,28 +295,37 @@ class WPEditorSetting {
   public static function missing_callback( $args ) {
     printf(
       __( 'The callback function used for the %s setting is missing.', 'easy-digital-downloads' ),
-      '<strong>' . $args['id'] . '</strong>'
+      '<strong>' . esc_html( $args['id'] ) . '</strong>'
     );
   }
 
   public static function wpe_multiselect_callback( $args ) {
     global $wpe_options; //need to set this up
 
-    ob_start(); ?>
-      
-
-    <?php echo ob_get_clean();
+    // This had an ob_start(), ob_get_clean() with only whitespace so I changed it to this
+    // to allow for further investigation.
+    echo "\n    \n\n";
   }
-  
+
   public static function set_value( $key, $value ) {
     global $wpdb;
     $settings_table = WPEditor::get_table_name( 'settings' );
-    
+
+    if ( ! in_array( $key, self::settings_table_allow_list(), true ) ) {
+      return;
+    }
+
     if ( ! empty( $key ) ) {
-      $db_key = $wpdb->get_var( "SELECT `key` from $settings_table where `key`='$key'" );
+      $db_key = $wpdb->get_var(
+        $wpdb->prepare (
+          "SELECT `key` from {$wpdb->prefix}wpeditor_settings where `key`= %s ",
+          $key
+        )
+      );
       if ( $db_key ) {
         if ( ! empty( $value ) || $value !== 0 ) {
-          $wpdb->update( $settings_table, 
+          $wpdb->update(
+            "{$wpdb->prefix}wpeditor_settings",
             array( 'key'=>$key, 'value'=>$value ),
             array( 'key'=>$key ),
             array( '%s', '%s' ),
@@ -273,32 +333,47 @@ class WPEditorSetting {
           );
         }
         else {
-          $wpdb->query( "DELETE from $settings_table where `key`='$key'" );
+          $wpdb->query(
+            $wpdb->prepare (
+              "DELETE from {$wpdb->prefix}wpeditor_settings where `key`= %s ",
+              $key
+            )
+          );
         }
       }
       else {
         if ( !empty( $value ) || $value !== 0 ) {
-          $wpdb->insert( $settings_table, 
+          $wpdb->insert( "{$wpdb->prefix}wpeditor_settings",
             array( 'key'=>$key, 'value'=>$value ),
             array( '%s', '%s' )
           );
         }
       }
     }
-    
+
   }
-  
+
   public static function get_value( $key, $entities=false ) {
     $value = false;
     global $wpdb;
     $settings_table = WPEditor::get_table_name( 'settings' );
-    $value = $wpdb->get_var( "SELECT `value` from $settings_table where `key`='$key'" );
-    
+
+    if ( ! in_array( $key, self::settings_table_allow_list(), true ) ) {
+      return '';
+    }
+
+    $value = $wpdb->get_var(
+      $wpdb->prepare (
+        "SELECT `value` from {$wpdb->prefix}wpeditor_settings where `key`= %s ",
+        $key
+      )
+    );
+
     if(!empty( $value ) && $entities ) {
       $value = htmlentities( $value );
     }
-    
+
     return $value;
   }
-  
+
 }

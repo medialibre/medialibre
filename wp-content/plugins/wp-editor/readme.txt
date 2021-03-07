@@ -2,9 +2,9 @@
 Contributors: benjaminprojas
 Donate link: http://wpeditor.net/
 Tags: code editor, plugin editor, theme editor, page editor, post editor, pages, posts, html, codemirror, plugins, themes, editor, fancybox, post.php, post-new.php, ajax, syntax highlighting, html syntax highlighting
-Requires at least: 3.0
+Requires at least: 3.9
 Tested up to: 4.6.1
-Stable tag: 1.2.6.3
+Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,7 +33,7 @@ WP Editor is a plugin for WordPress that replaces the default plugin and theme e
 1. Upload the `wp-editor.zip` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
-== Frequently Asked Questions == 
+== Frequently Asked Questions ==
 
 = Does WP Editor provide syntax highlighting for the page/post editor? =
 Yes! This feature was added in version 1.1 of WP Editor. If it's not enabled by default, visit the settings page, click on the "Post Editor" section and enable it there.
@@ -68,6 +68,9 @@ Yes! While we don't have a need for further developers at this time, any financi
 5. Fancybox integration
 
 == Changelog ==
+
+= 1.2.7 =
+* Security release: fixes SQLi vulnerabilities.
 
 = 1.2.6.3 =
 * Fixed multiple XSS vulnerabilities
@@ -124,7 +127,7 @@ Yes! While we don't have a need for further developers at this time, any financi
 * Fixed display of warning message for active theme
 * Fixed typos on settings page
 
-= 1.2.2 = 
+= 1.2.2 =
 * Fixed issues with PHP 5.4+
 * Fixed issue with selecting theme file types not working
 * Fixed issue with double scrollbar
@@ -152,7 +155,7 @@ Yes! While we don't have a need for further developers at this time, any financi
 * Fixed text selection in all editors
 * Fixed post editor highlighter not loading when visual editor is disabled
 
-= 1.1.0.2 = 
+= 1.1.0.2 =
 * Added ability to customize tab characters and size for all editors
 * Added ability to set custom editor heights for all editors
 * Updated CodeMirror library to 2.33
@@ -160,11 +163,11 @@ Yes! While we don't have a need for further developers at this time, any financi
 * Fixed issue with media button toolbar not inserting shortcodes/content when in visual mode
 * Fixed issue with blockquote QuickTag inserting twice
 
-= 1.1.0.1 = 
+= 1.1.0.1 =
 * Fixed Upload/Insert media buttons not working in page/post editor
 * Removed legacy CSS theme files
 
-= 1.1 = 
+= 1.1 =
 * Added syntax highlighter for page/post editor
 * Added in monospace font for default theme/plugin/post editor
 * Updated Edit links in plugins page to work with WP 3.4 updates
@@ -193,6 +196,9 @@ Yes! While we don't have a need for further developers at this time, any financi
 * Initial release of WP Editor
 
 == Upgrade Notice ==
+
+= 1.2.7 =
+Security release: fixes SQLi vulnerabilities. Please upgrade immediately.
 
 = 1.2.6.3 =
 Fixed multiple XSS vulnerabilities
@@ -245,7 +251,7 @@ Added ability to download individual plugin and theme files being edited
 Added ability to save page/post editor in fullscreen mode
 Fixed PHP Warning when viewing drop-ins and mustuse plugins
 
-= 1.2.2 = 
+= 1.2.2 =
 Fixed issues with PHP 5.4+
 Fixed issue with selecting theme file types not working
 Fixed issue with double scrollbar
@@ -270,12 +276,12 @@ Fixed conflicts with multiple plugins and themes
 Fixed text selection in all editors
 Fixed post editor highlighter not loading when visual editor is disabled
 
-= 1.1.0.2 = 
+= 1.1.0.2 =
 CodeMirror 2.33
 Fixed issue with media button toolbar not inserting shortcodes/content when in visual mode
 Fixed issue with blockquote QuickTag inserting twice
 
-= 1.1.0.1 = 
+= 1.1.0.1 =
 Fixed media buttons not working in Page/Post editor
 
 = 1.1 =

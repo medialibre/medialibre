@@ -389,6 +389,7 @@ class Pages
             'from' => '',
             'to' => ''
         );
+
         $args = wp_parse_args($args, $defaults);
 
         // Date Time SQL

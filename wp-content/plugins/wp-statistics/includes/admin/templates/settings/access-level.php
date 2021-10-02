@@ -2,6 +2,7 @@
 //Get List Roles Wordpress
 global $wp_roles;
 ?>
+<div class="postbox">
     <table class="form-table">
         <tbody>
         <tr valign="top">
@@ -73,4 +74,6 @@ global $wp_roles;
 
         </tbody>
     </table>
-<?php submit_button(__('Update', 'wp-statistics'), 'primary', 'submit');
+</div>
+
+<?php submit_button(__('Update', 'wp-statistics'), 'primary', 'submit', '', array('OnClick' => "var wpsCurrentTab = getElementById('wps_current_tab'); wpsCurrentTab.value='access-settings'")); ?>

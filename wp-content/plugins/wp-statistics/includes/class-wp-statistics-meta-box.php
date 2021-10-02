@@ -128,7 +128,7 @@ class Meta_Box
             ),
             'referring'       => array(
                 'page_url'          => 'referrers',
-                'name'              => __('Top Referring Sites', 'wp-statistics'),
+                'name'              => __('Top Referring', 'wp-statistics'),
                 'require'           => array('visitors' => true),
                 'hidden'            => true,
                 'show_on_dashboard' => true,
@@ -183,7 +183,7 @@ class Meta_Box
                 'place'             => 'side'
             ),
             'about'           => array(
-                'name'              => sprintf(__('WP Statistics - Version %s', 'wp-statistics'), WP_STATISTICS_VERSION),
+                'name'              => sprintf(__('WP Statistics - v%s', 'wp-statistics'), WP_STATISTICS_VERSION),
                 'show_on_dashboard' => false,
                 'js'                => false,
                 'place'             => 'side'
@@ -195,7 +195,7 @@ class Meta_Box
                 'disable_overview'  => true
             ),
             'top-pages-chart' => array(
-                'name'              => __('Top 5 Pages Trends', 'wp-statistics'),
+                'name'              => __('Top 5 Trending Pages', 'wp-statistics'),
                 'show_on_dashboard' => false,
                 'disable_overview'  => true
             ),

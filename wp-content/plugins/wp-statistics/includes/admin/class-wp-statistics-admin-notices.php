@@ -47,13 +47,13 @@ class Admin_Notices
 
     public function enable_rest_api()
     {
-
         if (Option::get('use_cache_plugin') and false === ($check_rest_api = get_transient('check-wp-statistics-rest'))) {
 
             // Check Connect To WordPress Rest API
             $status = true;
             $message = '';
-            $request = wp_remote_get(get_rest_url(null, RestAPI::$namespace . '/check'), array('timeout' => 30));
+            $request = wp_remote_get(get_rest_url(null, RestAPI::$namespace . '/check'), array('timeout' => 30, 'sslverify' => false));
+
             if (is_wp_error($request)) {
                 $status = false;
                 $message = $request->get_error_message();
@@ -125,7 +125,7 @@ class Admin_Notices
     {
         $option = get_option('wp_statistics_disable_addons_notice');
         if (!empty($option) and $option == "no") {
-            Helper::wp_admin_notice(__("Your WP-Statistics's Add-On(s) are not compatible with the new version of WP-Statistics and disabled automatically, please try to update them.", "wp-statistics"), "info", true, "wp-statistics-disable-all-addons-admin-notice");
+            Helper::wp_admin_notice(__("Your WP-Statistic's Add-On(s) are not compatible with the new version of WP-Statistics and disabled automatically, please try to update them.", "wp-statistics"), "info", true, "wp-statistics-disable-all-addons-admin-notice");
             ?>
             <script>
                 jQuery(document).ready(function ($) {

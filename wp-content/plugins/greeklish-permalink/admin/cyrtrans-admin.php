@@ -260,7 +260,7 @@ class Cyrtrans_Plugin_Admin {
 
         </form>
         <h2>
-            Αν σας αρέσει το plugin μας κέρασε μας μια μπίρα :-)
+            Αν σου αρέσει το plugin μας κέρασε μας μια μπύρα :-)
         </h2>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
             <input type="hidden" name="cmd" value="_s-xclick" />

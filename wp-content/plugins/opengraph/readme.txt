@@ -2,27 +2,25 @@
 Contributors: willnorris, pfefferle
 Tags: social, opengraph, ogp, facebook
 Requires at least: 2.3
-Tested up to: 5.4
-Stable tag: 1.10.0
+Tested up to: 5.9
+Stable tag: 1.11.0
 License: Apache License, Version 2.0
-License URI: http://www.apache.org/licenses/LICENSE-2.0.html
+License URI: https://www.apache.org/licenses/LICENSE-2.0.html
 
 
-Adds Open Graph metadata to your posts and pages so that they look great when shared on sites like Facebook and Google+.
+Adds Open Graph metadata to your posts and pages so that they look great when shared on sites like Facebook and Twitter.
 
 == Description ==
 
-The [Open Graph protocol][] enables any web page to become a rich object in a social graph.  Most notably, this allows for these pages to be used with Facebook's [Like Button][] and [Graph API][] as well as within [Google+][] posts.
+The [Open Graph protocol][] enables any web page to become a rich object in a social graph.  Most notably, this allows for these pages to be used with Facebook's [Like Button][] and [Graph API][] as well as within Twitter posts.
 
-The Open Graph plugin inserts the Open Graph metadata into WordPress posts and pages, and provides a simple extension mechansim for other plugins and themes to override this data, or to provide additional Open Graph data.
+The Open Graph plugin inserts the Open Graph metadata into WordPress posts and pages, and provides a simple extension mechanism for other plugins and themes to override this data, or to provide additional Open Graph data.
 
-This plugin does not directly add social plugins like the Facebook Like Button or the Google [+1 Button][] to your pages (though they're pretty simple to add).  It will however make your pages look great when shared using those kinds of tools.
+This plugin does not directly add social plugins like the Facebook Like Button to your pages (though they're pretty simple to add).  It will however make your pages look great when shared using those kinds of tools.
 
-[Open Graph Protocol]: http://ogp.me/
+[Open Graph Protocol]: https://ogp.me/
 [Like Button]: https://developers.facebook.com/docs/reference/plugins/like
 [Graph API]: https://developers.facebook.com/docs/reference/api/
-[Google+]: http://www.google.com/+
-[+1 Button]: https://developers.google.com/+/plugins/+1button/
 
 
 == Frequently Asked Questions ==
@@ -55,7 +53,7 @@ Note that you may need to define the RDFa prefix for your properties.  Do this u
 
 = How to enable/disable "strict mode" =
 
-The plugin populates the meta 'name' attribute alongside the 'property' attribute by default. Because both, the `og:*` and `twitter:*` names, are actually registered at http://wiki.whatwg.org/wiki/MetaExtensions, this stays compliant with the HTML5 spec. If you want to use a more strict way anyways, you can enable the scrict mode by adding the following line to your `config.php`
+The plugin populates the meta 'name' attribute alongside the 'property' attribute by default. Because both, the `og:*` and `twitter:*` names, are actually registered at https://wiki.whatwg.org/wiki/MetaExtensions, this stays compliant with the HTML5 spec. If you want to use a more strict way anyways, you can enable the scrict mode by adding the following line to your `config.php`
 
     define( 'OPENGRAPH_STRICT_MODE', true );
 
@@ -63,6 +61,10 @@ The plugin populates the meta 'name' attribute alongside the 'property' attribut
 == Changelog ==
 
 Project maintained on github at [willnorris/wordpress-opengraph](https://github.com/willnorris/wordpress-opengraph).
+
+= version 1.11.0 (October 21, 2021) =
+ - fixed attachment issue
+ - fixed PHP 7.4 issue
 
 = version 1.10.0 (April 20, 2020) =
  - basic video support

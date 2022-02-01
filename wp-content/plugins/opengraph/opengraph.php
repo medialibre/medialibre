@@ -5,7 +5,7 @@
  * Description: Adds Open Graph metadata to your pages
  * Author: Will Norris
  * Author URI: https://willnorris.com/
- * Version: 1.10.0
+ * Version: 1.11.0
  * License: Apache License, Version 2.0
  * License URI: http://www.apache.org/licenses/LICENSE-2.0.html
  * Text Domain: opengraph
@@ -219,7 +219,7 @@ function opengraph_default_image( $image ) {
 		$max_images = 1;
 	}
 
-	if ( is_singular() ) {
+	if ( is_singular() && ! is_attachment() ) {
 		$id        = get_queried_object_id();
 		$image_ids = array();
 
@@ -393,7 +393,7 @@ function opengraph_default_description( $description, $length = 55 ) {
 
 	// strip description to first 55 words.
 	$description = strip_tags( strip_shortcodes( $description ) );
-	$description = __opengraph_trim_text( $description, $length );
+	$description = opengraph_trim_text( $description, $length );
 
 	return esc_attr( $description );
 }
@@ -598,7 +598,7 @@ add_filter( 'site_icon_image_sizes', 'opengraph_site_icon_image_sizes' );
  * Helper function to trim text using the same default values for length and
  * 'more' text as wp_trim_excerpt.
  */
-function __opengraph_trim_text( $text, $length = 55 ) {
+function opengraph_trim_text( $text, $length = 55 ) {
 	$excerpt_length = apply_filters( 'excerpt_length', $length );
 	$excerpt_more   = apply_filters( 'excerpt_more', ' [...]' );
 

@@ -372,6 +372,11 @@ $A2A_SHARE_SAVE_services = array(
 		"icon" => "sms",
 		"color" => "6CBE45",
 	),
+	"snapchat" => array(
+		"name" => "Snapchat",
+		"icon" => "snapchat",
+		"color" => "2A2A2A",
+	),
 	"stocktwits" => array(
 		"name" => "StockTwits",
 		"icon" => "stocktwits",

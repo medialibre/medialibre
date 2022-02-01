@@ -1,10 +1,10 @@
 === AddToAny Share Buttons ===
 Contributors: micropat, addtoany
 Tags: buttons, share, icons, social media, share buttons, sharing, share button, media, social, marketing, links, email, seo, woocommerce, google, linkedin, reddit, facebook, twitter, pinterest, whatsapp, instagram, youtube, share this, sharethis, feed
-Requires at least: 3.7
-Tested up to: 5.8
+Requires at least: 4.5
+Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 1.7.48
+Stable tag: 1.8.4
 
 Share buttons for WordPress including the AddToAny sharing button, Facebook, Twitter, WhatsApp, Pinterest, Reddit, many more, and follow icons too.
 
@@ -19,7 +19,7 @@ AddToAny is the home of universal sharing, and the AddToAny plugin is the most p
 * [**Standard**](https://www.addtoany.com/buttons/customize/wordpress/standalone_services) share buttons — share each piece of content
 * [**Floating**](https://www.addtoany.com/buttons/customize/wordpress/floating_share_buttons) share buttons — responsive & customizable, vertical & horizontal
 * **Counters** — fast & official [share counts](https://www.addtoany.com/buttons/customize/wordpress/share_counters) in the same style
-* **Follow** buttons — [social media links](https://www.addtoany.com/buttons/customize/wordpress/follow_buttons) to your Instagram, YouTube, Snapchat
+* **Follow** buttons — [social media links](https://www.addtoany.com/buttons/customize/wordpress/follow_buttons) to your Instagram, YouTube, Discord, Snapchat
 * **Image** sharing buttons - share buttons for [sharing images](https://www.addtoany.com/buttons/customize/wordpress/image_sharing)
 * **Vector** share buttons & follow buttons — [custom color](https://www.addtoany.com/buttons/customize/wordpress/icon_color) SVG icons
 * **Custom** share icons — use your own if you prefer
@@ -63,7 +63,7 @@ AddToAny is the home of universal sharing, and the AddToAny plugin is the most p
 = Wide Support =
 
 * Over 10 years of development
-* Over 12 million downloads
+* Over 14 million downloads
 * Translated into dozens of languages
 * Ongoing support from the community
 
@@ -345,6 +345,37 @@ Upload (or move) the `add-to-any` plugin directory into the `/wp-content/mu-plug
 5. Settings for Floating Share Bars
 
 == Changelog ==
+
+= 1.8.4 =
+* Update admin for jQuery UI 1.13.0 in WordPress 5.9
+
+= 1.8.3 =
+* Update AMP support
+* Update vertical floating share buttons bar for AMP pages
+ * Supports "Left docked" or "Right docked" placement options
+* Update horizontal floating share buttons bar for AMP pages
+ * Full width layout overrides placement options
+* Add round corners to AMP share buttons in content
+* Skip plugin scripts on AMP pages
+
+= 1.8.2 =
+* Update AddToAny core script loading
+* Rename enqueued `addtoany` scripts to `addtoany-core` and `addtoany-jquery`
+* Load the local JS file asynchronously by default
+
+= 1.8.1 =
+* Add Discord follow button
+* Add Snapchat share button
+* Fix AddToAny loading when a non-WordPress version of jQuery is used
+
+= 1.8.0 =
+* Switch to more recent WordPress functions (especially for loading plugin script assets)
+* Load the local JS file asynchronously by default
+* Update allowed HTML output for the floating bars
+* A centered horizontal floating bar now requires WordPress 5.5.0+ (or some custom CSS)
+* The `addtoany_script_disabled` hook now additionally disables the plugin's local JS & CSS
+* Additional input validation & sanitization in admin
+* Additional output escaping
 
 = 1.7.48 =
 * Escape a custom universal button's image URL

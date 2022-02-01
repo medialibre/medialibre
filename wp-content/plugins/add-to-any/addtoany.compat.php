@@ -1,4 +1,65 @@
 <?php
+
+/**
+ * Strips out disallowed HTML using wp_kses_post() while temporarily allowing 
+ * some additional HTML attributes and CSS in a style attribute.
+ */
+function addtoany_kses( $string ) {
+	/**
+	 * Temporarily allow specific CSS properties in a `style` attribute.
+	 * @since WordPress 2.8.1
+	 */
+	add_filter( 'safe_style_css', 'addtoany_kses_allow_css_properties' );
+
+	/**
+	 * Temporarily allow specific CSS declarations in a `style` attribute.
+	 * @since WordPress 5.5.0
+	 */
+	add_filter( 'safecss_filter_attr_allow_css', 'addtoany_kses_allow_css_declarations', 10, 2 );
+
+	// Strip out any disallowed HTML.
+	$string = wp_kses( $string, addtoany_expanded_allowed_html() );
+	
+	// Revert kses filters to originals.
+	remove_filter( 'safe_style_css', 'addtoany_kses_allow_css_properties' );
+	remove_filter( 'safecss_filter_attr_allow_css', 'addtoany_kses_allow_css_declarations', 10, 2 );
+
+	return $string;
+}
+
+/**
+ * Returns `wp_kses_allowed_html( 'post' )` with additional allowed HTML.
+ */
+function addtoany_expanded_allowed_html() {
+	$allowed = wp_kses_allowed_html( 'post' );
+	// Add AMP attributes.
+	$allowed['a']['on'] = true;
+	return $allowed;
+}
+
+/**
+ * Allows some additional CSS properties in a `style` attribute.
+ */
+function addtoany_kses_allow_css_properties( $props ) {
+	$props[] = 'bottom';
+	$props[] = 'left';
+	$props[] = 'right';
+	$props[] = 'top';
+	$props[] = 'transform';
+	return $props;
+}
+
+/**
+ * Allows additional CSS declarations for specific properties in a `style` attribute.
+ */
+function addtoany_kses_allow_css_declarations( $allow_css, $css_test_string ) {
+	$parts = explode( ':', $css_test_string, 2 );
+	if ( 'transform' === $parts[0] ) {
+		// Allow translateX or translateY with a percentage value.
+		return ! ! preg_match( '/^translate[X|Y]\(-?\d{1,6}%\)$/', trim( $parts[1] ) );
+	}
+	return $allow_css;
+}
 	
 /**
  * Load theme compatibility functions.
@@ -20,24 +81,6 @@ function addtoany_excerpt_remove() {
 			remove_filter( 'the_excerpt', 'A2A_SHARE_SAVE_add_to_content', 98 );
 		}	
 	}
-}
-
-/**
- * Load AMP (Accelerated Mobile Pages) compatibility functions.
- */
-
-add_action( 'amp_post_template_css', 'addtoany_amp_additional_css_styles' );
-
-function addtoany_amp_additional_css_styles( $amp_template ) {
-	// CSS only.
-	?>
-	.addtoany_list a {
-		padding: 0 4px;
-	}
-	.addtoany_list a amp-img {
-		display: inline-block;
-	}
-	<?php
 }
 
 /**

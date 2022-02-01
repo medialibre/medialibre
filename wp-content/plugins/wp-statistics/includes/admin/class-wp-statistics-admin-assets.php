@@ -277,7 +277,7 @@ class Admin_Assets
             'er_valid_ip'   => __('Please enter a valid ip.', 'wp-statistics'),
             'please_wait'   => __('Please Wait ...', 'wp-statistics'),
             'user'          => __('User', 'wp-statistics'),
-            'rest_connect' => __('An error occurred while connecting to WordPress REST API. It seems blocked by one of your plugins or your theme.', 'wp-statistics'),
+            'rest_connect'  => __('An error occurred while connecting to WordPress REST API. It seems blocked by one of your plugins or your theme.', 'wp-statistics'),
         );
 
         // Rest-API Meta Box Url
@@ -359,7 +359,7 @@ class Admin_Assets
             'dayNamesMin'     => Helper::strip_array_indices($wp_locale->weekday_initial),
             'dateFormat'      => 'yy-mm-dd', // Format time for Jquery UI
             'firstDay'        => get_option('start_of_week'),
-            'isRTL'           => (int)$wp_locale->is_rtl(),
+            'isRTL'           => $wp_locale->is_rtl(),
         );
     }
 }

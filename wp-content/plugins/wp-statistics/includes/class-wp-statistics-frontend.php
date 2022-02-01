@@ -97,14 +97,14 @@ class Frontend
         $params = wp_parse_args($params, UserAgent::getUserAgent());
 
         //Set Referred
-        $params['referred'] = Referred::get();
+        $params['referred'] = urlencode(Referred::get());
 
         //Set IP
         $params['ip'] = esc_html(IP::getIP());
 
         //exclude
-        $exclude                  = Exclusion::check();
-        $params['exclusion_match'] = ($exclude['exclusion_match'] === true ? 'yes' : 'no');
+        $exclude                    = Exclusion::check();
+        $params['exclusion_match']  = ($exclude['exclusion_match'] === true ? 'yes' : 'no');
         $params['exclusion_reason'] = (string)$exclude['exclusion_reason'];
 
         //User Agent String

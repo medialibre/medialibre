@@ -2,9 +2,8 @@
     <?php
     if (isset($select_box)) {
         ?>
-        <br />
-        <?php echo $select_box['title']; ?>:&nbsp;
-        <select name="<?php echo $select_box['name']; ?>" id="<?php echo $select_box['name']; ?>">
+        <br/>
+        <?php echo $select_box['title']; ?>:&nbsp;<select name="<?php echo $select_box['name']; ?>" id="<?php echo $select_box['name']; ?>">
             <?php
             foreach ($select_box['list'] as $value => $name) {
                 $selected = ((isset($select_box['active']) and $select_box['active'] == $value) ? ' selected' : '');
@@ -13,7 +12,7 @@
                 <?php
             }
             ?>
-        </select><input type="submit" value="<?php _e('Select', 'wp-statistics'); ?>" class="button-primary btn-danger wps-btn-inline"><br />
+        </select><input type="submit" value="<?php _e('Select', 'wp-statistics'); ?>" class="button-primary btn-danger wps-btn-inline"><br/>
         <?php
     }
     ?>
@@ -43,11 +42,6 @@
             }
         }
         ?>
-
-        <!-- set Page Pagination To Form -->
-        <?php if (isset($pagination) and $pagination > 1) { ?>
-            <input name="<?php echo \WP_STATISTICS\Admin_Template::$paginate_link_name; ?>" type="hidden" value="<?php echo $pagination; ?>">
-        <?php } ?>
 
         <!-- Set Jquery DatePicker -->
         <input type="text" size="18" name="date-from" data-wps-date-picker="from" value="<?php echo $DateRang['from']; ?>" placeholder="YYYY-MM-DD" autocomplete="off">
